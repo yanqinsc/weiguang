@@ -19,12 +19,13 @@ class Article extends Model
             return self::leftJoin('categories as c', 'category_id', '=', 'c.id')
                 ->select('articles.id', 'title', 'thumb', 'author', 'summary', 'views', 'created_at', 'c.name as category')
                 ->orderBy('articles.id', 'desc')
+                ->where('deleted', '=', '0')
                 ->paginate($paginate_number);
         } else {
             // 展示其它分类文章
             return self::leftJoin('categories as c', 'category_id', '=', 'c.id')
                 ->select('articles.id', 'title', 'thumb', 'author', 'summary', 'views', 'created_at', 'c.name as category')
-                ->where('category_id', '=', $category_id)
+                ->where([['category_id', '=', $category_id], ['deleted', '=', '0']])
                 ->orderBy('articles.id', 'desc')
                 ->paginate($paginate_number);
         }
@@ -37,10 +38,10 @@ class Article extends Model
      */
     public static function getArticle($id)
     {
-        return self::leftJoin('category as c', 'category_id', '=', 'c.id')
-            ->leftJoin('article_body as b', 'articles.id', '=', 'b.aid')
-            ->where(['articles.id', '=', $id])
-            ->select('articles.id', 'title', 'thumb', 'author', 'summary', 'views', 'comments', 'body', 'add_time', 'c.abbreviation', 'c.name as category')
+        return self::leftJoin('categories as c', 'category_id', '=', 'c.id')
+            ->leftJoin('article_bodies as b', 'articles.id', '=', 'b.aid')
+            ->where([['articles.id', '=', $id], ['deleted', '=', '0']])
+            ->select('articles.id', 'title', 'thumb', 'author', 'summary', 'views', 'comments', 'body', 'created_at', 'c.abbreviation', 'c.name as category')
             ->first();
     }
 
@@ -54,6 +55,7 @@ class Article extends Model
         return self::select('id', 'title')
             ->orderBy('comments', 'desc')
             ->orderBy('views', 'desc')
+            ->where('deleted', '=', '0')
             ->limit(6)
             ->get();
     }

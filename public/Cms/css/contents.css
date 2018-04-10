@@ -1,0 +1,115 @@
+.list-item {
+    padding-top: 2em;
+    font-size: 20px;
+    height: 11em;
+    border-bottom: 2px dashed #dee2e6;
+    min-width: 500px;
+
+}
+
+.title-picture {
+    float: left;
+    width: 9em;
+    height: 6.8em;
+    background-color: orange;
+}
+
+.title-picture i {
+    display: block;
+    color: #fff;
+    font-size: 4em;
+    font-weight: bold;
+    margin-left: 40%;
+}
+
+.title-text {
+    margin-right: 1em;
+    width: 26em;
+    height: 6.8em;
+    float: right;
+}
+
+.title-text i {
+    color: #a2a2a2;
+    margin-right: 10px;
+}
+
+.title-text > .title {
+    font-size: 26px;
+    margin-bottom: -5px;
+}
+
+.title-text a {
+    font-weight: bold;
+    color: #3a3a3a;
+    padding-right: 25px;
+    background-position: center right;
+    right: 0;
+    transition: all 0.5s ease-out;
+    text-decoration-line: none;
+}
+
+.title-text a:hover {
+    color: #99dd00;
+}
+
+.title-text > span {
+    color: #656565;
+    font-size: 14px;
+    display: inline-block;
+    margin-bottom: 15px;
+    line-height: 5px;
+}
+
+.title-text > .describe {
+    font-size: 16px;
+    color: #656565;
+}
+
+.new {
+    background: #9faa65;
+    display: inline-block;
+    color: #fff;
+    border-radius: 2px;
+    width: 35px;
+    height: 17px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 17px;
+}
+
+.abstract {
+    width: 450px;
+    margin-top: 15px;
+}
+
+.pagination {
+    margin-top: 20px;
+    float: right;
+}
+
+@media screen and (max-width: 1200px) {
+    .abstract {
+        padding-right: 50px;
+    }
+
+    .list-item {
+        font-size: 10px;
+    }
+
+    .title-text {
+        margin-right: 4em;
+    }
+
+    .title-text > .describe {
+        display: none;
+    }
+
+    .title-text > .title {
+        margin-bottom: 5px;
+    }
+
+    .title-picture i {
+        margin-top: 5%;
+    }
+}

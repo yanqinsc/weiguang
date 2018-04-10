@@ -4,7 +4,8 @@
     </div>
     <ul>
         @foreach($hot_articles as $article)
-        <li><a href="{{route('article', ['id' => $article->id])}}" title="{{$article->title}}">{{$article->title}}</a></li>
+            <li><a href="{{route('article/index', ['id' => $article->id])}}"
+                   title="{{$article->title}}">{{$article->title}}</a></li>
         @endforeach
     </ul>
 </div>
