@@ -10,7 +10,7 @@
                     <img src="{{$article->thumb}}" alt="{{$article->title}}" class="title-picture">
                 @endif
                 <div class="title-text">
-                    <p class="title"><a href="{{route('article/index', ['id' => $article->id])}}">{{$article->title}}
+                    <p class="title"><a href="{{route('article', ['id' => $article->id])}}">{{$article->title}}
                             (作者：{{$article->author}})</a></p>
                     <span>{{substr($article->created_at, 0, 10)}} - {{$article->category}}
                         - 阅 {{$article->views}}</span>

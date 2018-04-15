@@ -34,7 +34,7 @@
             @foreach( $categories as $item)
             <li class="nav-item">
                 <a class="nav-link" id="{{$item->abbreviation}}"
-                   href="{{route('contents/index', ['category' => $item->abbreviation])}}">{{$item->name}}</a>
+                   href="{{route('contents', ['category' => $item->abbreviation])}}">{{$item->name}}</a>
             </li>
             @endforeach
         </ul>

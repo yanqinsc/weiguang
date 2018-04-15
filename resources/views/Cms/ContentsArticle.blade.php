@@ -2,8 +2,8 @@
 
 @section('content')
     <div id="article">
-    <span class="position">当前位置：<a href="/">首页</a> > <a
-                href="{{url('contents/article', ['category' => $article->abbreviation])}}">{{$article->category}}</a> > 正文</span>
+    <span class="position">当前位置：<a href="{{env('APP_URL')}}">首页</a> > <a
+                href="{{route('contents', ['category' => $article->abbreviation])}}">{{$article->category}}</a> > 正文</span>
         <div class="article-title">
             <a id="comment-number">{{$article->comments}}</a>
             <div id="title-text">

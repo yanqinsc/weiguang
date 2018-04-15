@@ -11,7 +11,14 @@
 |
 */
 
-Route::get('/', 'Cms\ContentsController@index')->name('home');
-Route::get('/contents/{category}', 'Cms\ContentsController@index')->name('contents/index');
-Route::get('/article/{id}', 'Cms\ArticleController@index')->name('article/index');
+Route::namespace('Cms')->group(function () {
+    Route::get('/', 'ContentsController@index')->name('home');
+    Route::get('/contents/{category}', 'ContentsController@index')->name('contents');
+    Route::get('/article/{id}', 'ArticleController@index')->name('article');
+});
+
+Route::prefix('system')->namespace('Admin')->group(function () {
+    Route::get('/', 'DashboardController@index')->name('dashboard');
+});
+
 
