@@ -17,10 +17,10 @@ Route::namespace('Cms')->group(function () {
     Route::get('/article/{id}', 'ArticleController@index')->name('article');
 });
 
-Route::prefix('system')->namespace('Admin')->group(function () {
-    Route::get('/', 'DashboardController@index')->name('dashboard');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
+
+Route::prefix('home')->namespace('Admin')->middleware('auth')->group(function () {
+    Route::get('/', 'HomeController@index')->name('home');
+});

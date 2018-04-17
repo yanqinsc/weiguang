@@ -3,9 +3,11 @@
 namespace App\Model\Cms;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Article extends Model
 {
+    use SoftDeletes;
     /**
      * 查找某个分类下的所有文章
      * @param $category_id
@@ -19,13 +21,12 @@ class Article extends Model
             return self::leftJoin('categories as c', 'category_id', '=', 'c.id')
                 ->select('articles.id', 'title', 'comments', 'thumb', 'author', 'summary', 'views', 'created_at', 'c.name as category')
                 ->orderBy('articles.id', 'desc')
-                ->where('deleted', '=', '0')
                 ->paginate($paginate_number);
         } else {
             // 展示其它分类文章
             return self::leftJoin('categories as c', 'category_id', '=', 'c.id')
                 ->select('articles.id', 'title', 'comments', 'thumb', 'author', 'summary', 'views', 'created_at', 'c.name as category')
-                ->where([['category_id', '=', $category_id], ['deleted', '=', '0']])
+                ->where('category_id', '=', $category_id)
                 ->orderBy('articles.id', 'desc')
                 ->paginate($paginate_number);
         }
@@ -40,7 +41,7 @@ class Article extends Model
     {
         return self::leftJoin('categories as c', 'category_id', '=', 'c.id')
             ->leftJoin('article_bodies as b', 'articles.id', '=', 'b.aid')
-            ->where([['articles.id', '=', $id], ['deleted', '=', '0']])
+            ->where('articles.id', '=', $id)
             ->select('articles.id', 'title', 'thumb', 'author', 'summary', 'views', 'comments', 'body', 'created_at', 'c.abbreviation', 'c.name as category')
             ->first();
     }
@@ -55,7 +56,6 @@ class Article extends Model
         return self::select('id', 'title')
             ->orderBy('comments', 'desc')
             ->orderBy('views', 'desc')
-            ->where('deleted', '=', '0')
             ->limit(6)
             ->get();
     }

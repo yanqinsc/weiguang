@@ -11,14 +11,14 @@ class ContentsController extends Controller
     /**
      * 列表页
      * @param Request $request
-     * @param $category
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|\think\response\View
+     * @param string $category
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(Request $request, $category = 'home')
     {
         // 读取文章信息
         if ($category == 'home') {
-            $categoryInfo = (object)['id' => 0, 'name' => 'home'];
+            $categoryInfo = (object)['id' => 0, 'name' => '首页'];
         } else {
             $categoryInfo = Category::getInfoByAbbreviation($category, ['id', 'name']);
         }
