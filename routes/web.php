@@ -12,7 +12,7 @@
 */
 
 Route::namespace('Cms')->group(function () {
-    Route::get('/', 'ContentsController@index')->name('home');
+    Route::get('/', 'ContentsController@index')->name('index');
     Route::get('/contents/{category}', 'ContentsController@index')->name('contents');
     Route::get('/article/{id}', 'ArticleController@index')->name('article');
 });
@@ -21,4 +21,6 @@ Route::prefix('system')->namespace('Admin')->group(function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
 });
 
+Auth::routes();
 
+Route::get('/home', 'HomeController@index')->name('home');

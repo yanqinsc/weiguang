@@ -1,4 +1,4 @@
-@include('Cms.layouts.header')
+@include('cms.layouts.header')
 <div class="container main border">
     <div class="row">
         <div class="col-md-8">
@@ -7,10 +7,10 @@
 @show
         </div>
         <div class="col-md-4 sidebar">
-            @include('Cms.layouts.sidebar')
+            @include('cms.layouts.sidebar')
         </div>
     </div>
 </div>
-@include('Cms.layouts.footer')
+@include('cms.layouts.footer')
 
 

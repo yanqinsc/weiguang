@@ -7,19 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset('Cms/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('Cms/css/sidebar.css')}}">
+    <link rel="stylesheet" href="{{asset('cms/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('cms/css/sidebar.css')}}">
     @if($current_controller == 'contents')
-<link rel="stylesheet" href="{{asset('Cms/css/contents.css')}}">
+<link rel="stylesheet" href="{{asset('cms/css/contents.css')}}">
     @endif
 
     @if($current_controller == 'article')
-<link rel="stylesheet" href="{{asset('Cms/css/article.css')}}">
+<link rel="stylesheet" href="{{asset('cms/css/article.css')}}">
     @endif
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/"><img src="{{asset('Cms/images/logo.png')}}" alt=""></a>
+    <a class="navbar-brand" href="/"><img src="{{asset('cms/images/logo.png')}}" alt=""></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -29,7 +29,7 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a class="nav-link" id="home"
-                   href="{{route('home')}}">首页</a>
+                   href="{{route('index')}}">首页</a>
             </li>
             @foreach( $categories as $item)
             <li class="nav-item">

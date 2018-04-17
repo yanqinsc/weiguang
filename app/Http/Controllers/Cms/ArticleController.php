@@ -17,7 +17,7 @@ class ArticleController extends Controller
     {
         $article = Article::getArticle($id);
 
-        return view('Cms.ContentsArticle', [
+        return view('cms.contents.article', [
             'article' => $article,
             'current_controller' => 'article'
         ]);

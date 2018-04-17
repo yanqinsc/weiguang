@@ -1,11 +1,20 @@
-@extends('Cms.layouts.base')
+@extends('cms.layouts.base')
 
 @section('content')
     <div>
         @foreach($contents as $article)
             <section class="list-item">
                 @if(empty($article->thumb))
-                    <div class="title-picture"><i>{{$article->views}}</i></div>
+                    <div class="title-picture">
+                        <i>
+                            @if($article->comments <= 99)
+                                {{$article->comments}}
+                            @else
+                                99+
+                            @endif
+
+                        </i>
+                    </div>
                 @else
                     <img src="{{$article->thumb}}" alt="{{$article->title}}" class="title-picture">
                 @endif

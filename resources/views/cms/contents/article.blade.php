@@ -1,4 +1,4 @@
-@extends('Cms.layouts.base')
+@extends('cms.layouts.base')
 
 @section('content')
     <div id="article">

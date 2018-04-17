@@ -17,14 +17,14 @@ class Article extends Model
         if ($category_id === 0) {
             // 首页展示所有分类最新文章
             return self::leftJoin('categories as c', 'category_id', '=', 'c.id')
-                ->select('articles.id', 'title', 'thumb', 'author', 'summary', 'views', 'created_at', 'c.name as category')
+                ->select('articles.id', 'title', 'comments', 'thumb', 'author', 'summary', 'views', 'created_at', 'c.name as category')
                 ->orderBy('articles.id', 'desc')
                 ->where('deleted', '=', '0')
                 ->paginate($paginate_number);
         } else {
             // 展示其它分类文章
             return self::leftJoin('categories as c', 'category_id', '=', 'c.id')
-                ->select('articles.id', 'title', 'thumb', 'author', 'summary', 'views', 'created_at', 'c.name as category')
+                ->select('articles.id', 'title', 'comments', 'thumb', 'author', 'summary', 'views', 'created_at', 'c.name as category')
                 ->where([['category_id', '=', $category_id], ['deleted', '=', '0']])
                 ->orderBy('articles.id', 'desc')
                 ->paginate($paginate_number);

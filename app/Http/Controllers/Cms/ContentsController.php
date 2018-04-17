@@ -25,7 +25,7 @@ class ContentsController extends Controller
 
         $contents = Article::getListByCategory($categoryInfo->id, 10);
 
-        return view('Cms.ContentsIndex', [
+        return view('cms.contents.index', [
             'current_controller' => 'contents',
             'active_nav_item' => $category,
             'active_nav_name' => $categoryInfo->name,
