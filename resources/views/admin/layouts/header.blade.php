@@ -12,13 +12,13 @@
             <ul class="nav navbar-nav">
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="{{ asset('Admin/adminlte/dist/img/user2-160x160.jpg') }}" class="user-image"
+                        <img src="{{ asset('admin/adminlte/dist/img/user2-160x160.jpg') }}" class="user-image"
                              alt="User Image">
                         <span class="hidden-xs">小石同学</span>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="user-header">
-                            <img src="{{ asset('Admin/adminlte/dist/img/user2-160x160.jpg') }}" class="img-circle"
+                            <img src="{{ asset('admin/adminlte/dist/img/user2-160x160.jpg') }}" class="img-circle"
                                  alt="User Image">
                             <p>
                                 小石同学 - Web Developer

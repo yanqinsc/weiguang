@@ -31,7 +31,7 @@ CREATE TABLE `wg_abilities` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `abilities_scope_index` (`scope`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of wg_abilities
@@ -58,7 +58,7 @@ CREATE TABLE `wg_articles` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM;
 
 -- ----------------------------
 -- Records of wg_articles
@@ -96,7 +96,7 @@ DROP TABLE IF EXISTS `wg_article_bodies`;
 CREATE TABLE `wg_article_bodies` (
   `aid` int(10) unsigned NOT NULL,
   `body` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '文章正文'
-) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM;
 
 -- ----------------------------
 -- Records of wg_article_bodies
@@ -139,7 +139,7 @@ CREATE TABLE `wg_assigned_roles` (
   KEY `assigned_roles_role_id_index` (`role_id`),
   KEY `assigned_roles_scope_index` (`scope`),
   CONSTRAINT `assigned_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `wg_roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 
 -- ----------------------------
 -- Records of wg_assigned_roles
@@ -157,7 +157,7 @@ CREATE TABLE `wg_categories` (
   `is_nav` char(1) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0' COMMENT '是否作为导航栏频道',
   `desc` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '分类详情',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM;
 
 -- ----------------------------
 -- Records of wg_categories
@@ -174,7 +174,7 @@ CREATE TABLE `wg_class` (
   `class` tinyint(3) unsigned NOT NULL,
   `school_id` smallint(5) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM;
 
 -- ----------------------------
 -- Records of wg_class
@@ -189,7 +189,7 @@ CREATE TABLE `wg_migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 
 -- ----------------------------
 -- Records of wg_migrations
@@ -207,7 +207,7 @@ CREATE TABLE `wg_password_resets` (
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   KEY `password_resets_email_index` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 
 -- ----------------------------
 -- Records of wg_password_resets
@@ -227,7 +227,7 @@ CREATE TABLE `wg_permissions` (
   KEY `permissions_ability_id_index` (`ability_id`),
   KEY `permissions_scope_index` (`scope`),
   CONSTRAINT `permissions_ability_id_foreign` FOREIGN KEY (`ability_id`) REFERENCES `wg_abilities` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 
 -- ----------------------------
 -- Records of wg_permissions
@@ -248,7 +248,7 @@ CREATE TABLE `wg_roles` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `roles_name_unique` (`name`,`scope`),
   KEY `roles_scope_index` (`scope`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 
 -- ----------------------------
 -- Records of wg_roles
@@ -264,7 +264,7 @@ CREATE TABLE `wg_school` (
   `short_name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '学校简称',
   `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM;
 
 -- ----------------------------
 -- Records of wg_school
@@ -295,7 +295,7 @@ CREATE TABLE `wg_users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_name_unique` (`name`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 
 -- ----------------------------
 -- Records of wg_users
