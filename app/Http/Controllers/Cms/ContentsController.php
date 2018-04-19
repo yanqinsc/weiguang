@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Cms;
 
-use App\Model\Cms\Article;
-use App\Model\Cms\Category;
+use App\Model\Article;
+use App\Model\Category;
 use Illuminate\Http\Request;
 
 class ContentsController extends Controller

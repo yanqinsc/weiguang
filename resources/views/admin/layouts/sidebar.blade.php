@@ -20,6 +20,8 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
+                    <li><a href="{{ route('article.create') }}"><i class="fa fa-edit"></i>添加文章</a></li>
+                    <li><a href="{{ route('article.index') }}"><i class="fa fa-list-ul"></i>文章管理</a></li>
                     <li><a href="pages/forms/general.html"><i class="fa fa-list-ul"></i>分类管理</a></li>
                     <li><a href="pages/forms/advanced.html"><i class="fa fa-edit"></i>草稿箱</a></li>
                     <li><a href="pages/forms/editors.html"><i class="fa fa-trash"></i>回收站</a></li>

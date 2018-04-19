@@ -6,6 +6,9 @@
     <title>{{ env('APP_NAME_CH') }} | 管理系统</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     @include('admin.common.css')
+@if($title == '添加文章')
+        @include('UEditor::head')
+@endif
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">

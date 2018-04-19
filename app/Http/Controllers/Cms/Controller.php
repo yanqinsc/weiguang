@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Cms;
 
-use App\Model\Cms\Article;
-use App\Model\Cms\Category;
+use App\Model\Article;
+use App\Model\Category;
 use Illuminate\Support\Facades\View;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;

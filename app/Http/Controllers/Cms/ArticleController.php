@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Cms;
 
 use Illuminate\Http\Request;
-use App\Model\Cms\Article;
+use App\Model\Article;
 
 class ArticleController extends Controller
 {

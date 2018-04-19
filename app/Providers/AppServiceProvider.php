@@ -4,8 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use App\Model\Cms\Category;
-use App\Model\Cms\Article;
+use App\Model\Category;
+use App\Model\Article;
 
 
 class AppServiceProvider extends ServiceProvider
