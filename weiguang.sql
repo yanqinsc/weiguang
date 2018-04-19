@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 100214
 File Encoding         : 65001
 
-Date: 2018-04-18 07:49:40
+Date: 2018-04-19 08:00:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,7 +31,7 @@ CREATE TABLE `wg_abilities` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `abilities_scope_index` (`scope`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of wg_abilities
@@ -58,7 +58,7 @@ CREATE TABLE `wg_articles` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM;
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of wg_articles
@@ -96,7 +96,7 @@ DROP TABLE IF EXISTS `wg_article_bodies`;
 CREATE TABLE `wg_article_bodies` (
   `aid` int(10) unsigned NOT NULL,
   `body` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '文章正文'
-) ENGINE=MyISAM;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of wg_article_bodies
@@ -139,7 +139,7 @@ CREATE TABLE `wg_assigned_roles` (
   KEY `assigned_roles_role_id_index` (`role_id`),
   KEY `assigned_roles_scope_index` (`scope`),
   CONSTRAINT `assigned_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `wg_roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of wg_assigned_roles
@@ -157,7 +157,7 @@ CREATE TABLE `wg_categories` (
   `is_nav` char(1) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0' COMMENT '是否作为导航栏频道',
   `desc` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '分类详情',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of wg_categories
@@ -174,7 +174,7 @@ CREATE TABLE `wg_class` (
   `class` tinyint(3) unsigned NOT NULL,
   `school_id` smallint(5) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of wg_class
@@ -189,7 +189,7 @@ CREATE TABLE `wg_migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of wg_migrations
@@ -207,7 +207,7 @@ CREATE TABLE `wg_password_resets` (
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   KEY `password_resets_email_index` (`email`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of wg_password_resets
@@ -227,7 +227,7 @@ CREATE TABLE `wg_permissions` (
   KEY `permissions_ability_id_index` (`ability_id`),
   KEY `permissions_scope_index` (`scope`),
   CONSTRAINT `permissions_ability_id_foreign` FOREIGN KEY (`ability_id`) REFERENCES `wg_abilities` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of wg_permissions
@@ -248,7 +248,7 @@ CREATE TABLE `wg_roles` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `roles_name_unique` (`name`,`scope`),
   KEY `roles_scope_index` (`scope`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of wg_roles
@@ -264,10 +264,55 @@ CREATE TABLE `wg_school` (
   `short_name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '学校简称',
   `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of wg_school
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for wg_students
+-- ----------------------------
+DROP TABLE IF EXISTS `wg_students`;
+CREATE TABLE `wg_students` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `real_name` varchar(255) NOT NULL DEFAULT '',
+  `phone` char(11) NOT NULL DEFAULT '',
+  `email` varchar(255) NOT NULL DEFAULT '',
+  `qq` varchar(255) NOT NULL DEFAULT '',
+  `class_id` int(11) unsigned NOT NULL DEFAULT 0,
+  `school_id` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `address` varchar(255) NOT NULL DEFAULT '',
+  `intro` text DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of wg_students
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for wg_teachers
+-- ----------------------------
+DROP TABLE IF EXISTS `wg_teachers`;
+CREATE TABLE `wg_teachers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) NOT NULL DEFAULT 0,
+  `real_name` varchar(255) NOT NULL DEFAULT '',
+  `phone` char(11) NOT NULL DEFAULT '',
+  `email` varchar(255) NOT NULL DEFAULT '',
+  `qq` varchar(255) NOT NULL DEFAULT '',
+  `class_ids` varchar(255) NOT NULL DEFAULT '0',
+  `school_id` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `address` varchar(255) NOT NULL DEFAULT '',
+  `subject_id` tinyint(4) unsigned NOT NULL DEFAULT 0 COMMENT '学科ID',
+  `intro` text DEFAULT NULL,
+  `type` char(1) NOT NULL DEFAULT '1' COMMENT '1|初中 2|高中',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of wg_teachers
 -- ----------------------------
 
 -- ----------------------------
@@ -279,13 +324,6 @@ CREATE TABLE `wg_users` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `true_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '真实姓名',
-  `sex` char(1) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '2' COMMENT '性别 0|男 1|女 2|未知',
-  `phone` char(15) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `qq` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `class_id` int(11) NOT NULL DEFAULT 0,
-  `school_id` smallint(6) NOT NULL DEFAULT 0,
-  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `score` int(11) NOT NULL DEFAULT 0,
   `type` char(1) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1' COMMENT '类型 0|管理员 1|学生 2|教师',
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -295,9 +333,9 @@ CREATE TABLE `wg_users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_name_unique` (`name`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of wg_users
 -- ----------------------------
-INSERT INTO `wg_users` VALUES ('1', 'panda', 'yanqinsc@qq.com', '$2y$10$hipe3dXnOMqEjPmHG2HV/uOHfumA0lD5lqpqyrGJ3oll2q4f7nnj2', '', '2', '', '', '0', '0', '', '0', '1', 'lHYiXFwSM1rz7wN8hVc6m1vXURZLZj33aUG8M9K4NcCjArR6lpQGg0MhqbVe', '2018-04-16 23:49:09', '2018-04-16 23:49:09', null);
+INSERT INTO `wg_users` VALUES ('1', 'yanqinsc', 'yanqinsc@qq.com', '$2y$10$hipe3dXnOMqEjPmHG2HV/uOHfumA0lD5lqpqyrGJ3oll2q4f7nnj2', '0', '0', 'bxgIwxh1t6j1P3bNsWZrvVEQKsAypeCKwP9I3lNSCdzmA8e07G4dLiyVxVSm', '2018-04-16 23:49:09', '2018-04-16 23:49:09', null);

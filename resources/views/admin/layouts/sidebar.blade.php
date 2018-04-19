@@ -34,9 +34,9 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="pages/forms/editors.html"><i class="fa fa-user"></i>用户管理</a></li>
-                    <li><a href="pages/forms/general.html"><i class="fa fa-group"></i>角色管理</a></li>
-                    <li><a href="pages/forms/advanced.html"><i class="fa fa-key"></i>权限管理</a></li>
+                    <li><a href=""><i class="fa fa-user"></i>添加用户</a></li>
+                    <li><a href=""><i class="fa fa-group"></i>添加角色</a></li>
+                    <li><a href="{{ route('ability.create') }}"><i class="fa fa-key"></i>添加权限</a></li>
 
                 </ul>
             </li>

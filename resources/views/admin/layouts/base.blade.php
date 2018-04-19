@@ -11,9 +11,21 @@
 <div class="wrapper">
     @include('admin.layouts.header')
     @include('admin.layouts.sidebar')
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                微光|控制台
+                <small>孜孜不倦，不紧不慢</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+                <li class="active">概况</li>
+            </ol>
+        </section>
     @section('content')
         This is the content!
     @show
+    </div>
     @include('admin.layouts.footer')
 </div>
 @include('admin.common.js')

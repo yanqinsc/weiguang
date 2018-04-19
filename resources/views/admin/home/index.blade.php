@@ -1,18 +1,6 @@
 @extends('admin.layouts.base')
 
 @section('content')
-    <div class="content-wrapper">
-        <section class="content-header">
-            <h1>
-                微光|控制台
-                <small>孜孜不倦，不紧不慢</small>
-            </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
-                <li class="active">概况</li>
-            </ol>
-        </section>
-
         <section class="content">
             <div class="row">
                 <div class="col-lg-3 col-xs-6">
@@ -42,5 +30,4 @@
                 </div>
             </div>
         </section>
-    </div>
 @endsection
