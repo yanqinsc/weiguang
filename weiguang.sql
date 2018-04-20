@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2018-04-20 09:55:03
+Date: 2018-04-20 10:08:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,7 +31,7 @@ CREATE TABLE `wg_abilities` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `abilities_scope_index` (`scope`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of wg_abilities
@@ -39,6 +39,12 @@ CREATE TABLE `wg_abilities` (
 INSERT INTO `wg_abilities` VALUES ('1', 'create-ability', '创建新的操作权限', null, null, '0', null, '2018-04-19 09:29:22', '2018-04-19 09:29:22');
 INSERT INTO `wg_abilities` VALUES ('2', 'ability-list', '查看权限列表', null, null, '0', null, '2018-04-19 11:39:04', '2018-04-19 11:39:04');
 INSERT INTO `wg_abilities` VALUES ('3', 'ability-edit', '编辑权限信息', null, null, '0', null, '2018-04-19 11:40:32', '2018-04-19 11:40:32');
+INSERT INTO `wg_abilities` VALUES ('4', 'create-role', '创建用户角色', null, null, '0', null, '2018-04-20 09:59:03', '2018-04-20 09:59:03');
+INSERT INTO `wg_abilities` VALUES ('5', 'role-list', '角色管理页', null, null, '0', null, '2018-04-20 10:00:36', '2018-04-20 10:00:36');
+INSERT INTO `wg_abilities` VALUES ('6', 'role-edit', '编辑角色信息', null, null, '0', null, '2018-04-20 10:04:55', '2018-04-20 10:04:55');
+INSERT INTO `wg_abilities` VALUES ('7', 'create-user', '添加用户', null, null, '0', null, '2018-04-20 10:06:43', '2018-04-20 10:06:43');
+INSERT INTO `wg_abilities` VALUES ('8', 'user-list', '用户管理', null, null, '0', null, '2018-04-20 10:06:59', '2018-04-20 10:06:59');
+INSERT INTO `wg_abilities` VALUES ('9', 'user-edit', '编辑用户信息', null, null, '0', null, '2018-04-20 10:07:19', '2018-04-20 10:07:19');
 
 -- ----------------------------
 -- Table structure for wg_articles

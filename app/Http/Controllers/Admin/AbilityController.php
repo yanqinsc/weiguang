@@ -50,6 +50,8 @@ class AbilityController extends Controller
             'name' => $request->name,
             'title' => $request->title
         ]);
+
+        return redirect(route('ability.index'));
     }
 
     /**
