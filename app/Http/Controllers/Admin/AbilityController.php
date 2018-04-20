@@ -2,43 +2,54 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Model\WgAbility;
 use Bouncer;
 use Illuminate\Http\Request;
 
 class AbilityController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display all abilities.
      *
-     * @return \Illuminate\Http\Response
+     * @param WgAbility $ability
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(WgAbility $ability)
     {
-        //
+        $abilities = $ability->getAbilities();
+        return view('admin.ability.index', [
+            'abilities' => $abilities,
+            'title' => '权限管理'
+        ]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new ability.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        return view('admin.ability.index');
+        return view('admin.ability.create', [
+            'title' => '添加权限'
+        ]);
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * Store a newly created ability in storage.
+     * @param Request $request
      */
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'bail|required|unique:abilities|max:150'
+            'name' => 'bail|required|unique:abilities|max:150',
+            'title' => 'max:255',
         ]);
-        Bouncer::allow();
+
+        Bouncer::ability()->create([
+            'name' => $request->name,
+            'title' => $request->title
+        ]);
     }
 
     /**

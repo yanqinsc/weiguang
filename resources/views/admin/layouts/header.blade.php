@@ -1,7 +1,7 @@
 <header class="main-header">
     <a href="index2.html" class="logo">
         <span class="logo-mini"><b>W</b>G</span>
-        <span class="logo-lg">微光管理系统 V0.1</span>
+        <span class="logo-lg">{{ env('APP_NAME_CH') }} | 个人中心</span>
     </a>
     <nav class="navbar navbar-static-top">
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">

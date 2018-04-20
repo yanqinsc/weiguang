@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : MaraDB
-Source Server Version : 100214
+Source Server         : Localhost
+Source Server Version : 50719
 Source Host           : localhost:3306
 Source Database       : weiguang
 
 Target Server Type    : MYSQL
-Target Server Version : 100214
+Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2018-04-20 07:45:04
+Date: 2018-04-20 09:55:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -25,17 +25,20 @@ CREATE TABLE `wg_abilities` (
   `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `entity_id` int(10) unsigned DEFAULT NULL,
   `entity_type` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `only_owned` tinyint(1) NOT NULL DEFAULT 0,
+  `only_owned` tinyint(1) NOT NULL DEFAULT '0',
   `scope` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `abilities_scope_index` (`scope`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of wg_abilities
 -- ----------------------------
+INSERT INTO `wg_abilities` VALUES ('1', 'create-ability', '创建新的操作权限', null, null, '0', null, '2018-04-19 09:29:22', '2018-04-19 09:29:22');
+INSERT INTO `wg_abilities` VALUES ('2', 'ability-list', '查看权限列表', null, null, '0', null, '2018-04-19 11:39:04', '2018-04-19 11:39:04');
+INSERT INTO `wg_abilities` VALUES ('3', 'ability-edit', '编辑权限信息', null, null, '0', null, '2018-04-19 11:40:32', '2018-04-19 11:40:32');
 
 -- ----------------------------
 -- Table structure for wg_articles
@@ -52,7 +55,7 @@ CREATE TABLE `wg_articles` (
   `is_top` char(0) DEFAULT '' COMMENT '是否置顶  NULL|否',
   `is_hot` char(0) DEFAULT '' COMMENT '是否热门文章  NULL|否',
   `is_new` char(0) DEFAULT NULL COMMENT '是否最新文章 NULL|否',
-  `category_id` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `category_id` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `assoc_id` int(10) unsigned DEFAULT NULL COMMENT '作者的关联ID，一般为学生id',
   `publisher_id` int(11) unsigned DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -222,7 +225,7 @@ CREATE TABLE `wg_permissions` (
   `ability_id` int(10) unsigned NOT NULL,
   `entity_id` int(10) unsigned NOT NULL,
   `entity_type` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `forbidden` tinyint(1) NOT NULL DEFAULT 0,
+  `forbidden` tinyint(1) NOT NULL DEFAULT '0',
   `scope` int(11) DEFAULT NULL,
   KEY `permissions_entity_index` (`entity_id`,`entity_type`,`scope`),
   KEY `permissions_ability_id_index` (`ability_id`),
@@ -281,10 +284,10 @@ CREATE TABLE `wg_students` (
   `phone` char(11) NOT NULL DEFAULT '',
   `email` varchar(255) NOT NULL DEFAULT '',
   `qq` varchar(255) NOT NULL DEFAULT '',
-  `class_id` int(11) unsigned NOT NULL DEFAULT 0,
-  `school_id` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `class_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `school_id` smallint(5) unsigned NOT NULL DEFAULT '0',
   `address` varchar(255) NOT NULL DEFAULT '',
-  `intro` text DEFAULT NULL,
+  `intro` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -298,16 +301,16 @@ CREATE TABLE `wg_students` (
 DROP TABLE IF EXISTS `wg_teachers`;
 CREATE TABLE `wg_teachers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `uid` int(11) NOT NULL DEFAULT 0,
+  `uid` int(11) NOT NULL DEFAULT '0',
   `real_name` varchar(255) NOT NULL DEFAULT '',
   `phone` char(11) NOT NULL DEFAULT '',
   `email` varchar(255) NOT NULL DEFAULT '',
   `qq` varchar(255) NOT NULL DEFAULT '',
   `class_ids` varchar(255) NOT NULL DEFAULT '0',
-  `school_id` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `school_id` smallint(5) unsigned NOT NULL DEFAULT '0',
   `address` varchar(255) NOT NULL DEFAULT '',
-  `subject_id` tinyint(4) unsigned NOT NULL DEFAULT 0 COMMENT '学科ID',
-  `intro` text DEFAULT NULL,
+  `subject_id` tinyint(4) unsigned NOT NULL DEFAULT '0' COMMENT '学科ID',
+  `intro` text,
   `type` char(1) NOT NULL DEFAULT '1' COMMENT '1|初中 2|高中',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -325,7 +328,7 @@ CREATE TABLE `wg_users` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `score` int(11) NOT NULL DEFAULT 0,
+  `score` int(11) NOT NULL DEFAULT '0',
   `type` char(1) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1' COMMENT '类型 0|管理员 1|学生 2|教师',
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,

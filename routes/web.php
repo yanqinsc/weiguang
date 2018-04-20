@@ -26,7 +26,7 @@ Route::prefix('home')->namespace('Admin')->middleware('auth')->group(function ()
 
     Route::resource('ability', 'AbilityController', ['names' =>[
         'create' => 'ability.create',
-        'index' => 'abilities'
+        'index' => 'ability.index'
     ]]);
 
     Route::resource('article', 'ArticleController', ['names' =>[

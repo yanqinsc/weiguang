@@ -39,6 +39,7 @@
                     <li><a href=""><i class="fa fa-user"></i>添加用户</a></li>
                     <li><a href=""><i class="fa fa-group"></i>添加角色</a></li>
                     <li><a href="{{ route('ability.create') }}"><i class="fa fa-key"></i>添加权限</a></li>
+                    <li><a href="{{ route('ability.index') }}"><i class="fa fa-list"></i>权限管理</a></li>
 
                 </ul>
             </li>
