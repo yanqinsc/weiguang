@@ -17,7 +17,7 @@
     <div class="content-wrapper">
         <section class="content-header">
             <h1>
-                微光|控制台
+                {{ $title }}
                 <small>孜孜不倦，不紧不慢</small>
             </h1>
             <ol class="breadcrumb">

@@ -23,14 +23,6 @@ Auth::routes();
 
 Route::prefix('home')->namespace('Admin')->middleware('auth')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
-
-    Route::resource('ability', 'AbilityController', ['names' =>[
-        'create' => 'ability.create',
-        'index' => 'ability.index'
-    ]]);
-
-    Route::resource('article', 'ArticleController', ['names' =>[
-        'create' => 'article.create',
-        'index' => 'article.index'
-    ]]);
+    Route::resource('ability', 'AbilityController');
+    Route::resource('article', 'ArticleController');
 });

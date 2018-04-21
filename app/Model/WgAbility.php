@@ -6,8 +6,16 @@ use Silber\Bouncer\Database\Ability;
 
 class WgAbility extends Ability
 {
-    public function getAbilities()
+    public function getAbilities($number, $condition = null)
     {
-        return $this->select('id', 'name', 'title')->get();
+        if (empty($condition)) {
+            return $this->select('id', 'name', 'title')->paginate($number);
+        } else {
+            return $this->select('id', 'name', 'title')
+                ->where('name', 'LIKE', "%$condition%")
+                ->paginate($number)
+                ->appends(['condition' => $condition]);
+        }
+
     }
 }
