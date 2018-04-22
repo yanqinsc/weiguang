@@ -1,6 +1,7 @@
-@extends('admin.layouts.base')
-
-@section('content')
+<!doctype html>
+<html lang="en">
+@include('admin.layouts.header')
+<body>
     <div class="box">
         <div class="box-header">
             <h3 class="box-title">文章管理</h3>
@@ -71,4 +72,7 @@
         </div>
 
     </div>
-@endsection
+    <input type="hidden" name="paginate_number" value="{{ $paginate_number }}">
+    @include('admin.layouts.footer')
+</body>
+</html>

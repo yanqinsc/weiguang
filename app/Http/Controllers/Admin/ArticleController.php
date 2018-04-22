@@ -15,9 +15,9 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::select('id', 'title', 'author', 'thumb', 'summary')
-            ->where('publisher_id', '=', Auth::user()->id)
-            ->get();
+        $number = (int)$request->number ?: 10;
+        $condition = $request->condition;
+        $articles = Article::getListByUid(Auth::user()->id);
 
         return view('admin.article.index', [
             'articles' => $articles,

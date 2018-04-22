@@ -23,9 +23,9 @@ class AbilityController extends Controller
         $condition = $request->condition;
         $abilities = $ability->getAbilities($number, $condition);
 
-        return view('admin.ability.index', [
+        return view('admin.role.index', [
             'abilities' => $abilities,
-            'title' => '权限管理',
+            'title' => '角色管理',
             'paginate_number' => $number,
             'condition' => $request->condition ?: ''
         ]);
@@ -38,8 +38,8 @@ class AbilityController extends Controller
      */
     public function create()
     {
-        return view('admin.ability.create', [
-            'title' => '添加权限'
+        return view('admin.role.create', [
+            'title' => '添加角色'
         ]);
     }
 
@@ -58,7 +58,7 @@ class AbilityController extends Controller
             'title' => $request->title
         ]);
 
-        return redirect(route('ability.index'));
+        return redirect(route('role.index'));
     }
 
     /**
@@ -82,7 +82,7 @@ class AbilityController extends Controller
     {
         $result = WgAbility::find($id);
 
-        return view('admin.ability.edit', [
+        return view('admin.role.edit', [
             'title' => '编辑权限',
             'info' => $result,
             'errorMsg' => $result ? null : '发生错误，指定的权限不存在！',
@@ -114,7 +114,7 @@ class AbilityController extends Controller
 
 
         if (WgAbility::where($condition)->update($data)) {
-            return redirect(route('ability.index'));
+            return redirect(route('role.index'));
         }else {
             return redirect()->back()->withErrors('更新失败,该权限可能已存在。');
         }

@@ -19,10 +19,10 @@ Route::namespace('Cms')->group(function () {
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
-
 Route::prefix('home')->namespace('Admin')->middleware('auth')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/index', 'HomeController@home')->name('home.index');
     Route::resource('ability', 'AbilityController');
     Route::resource('article', 'ArticleController');
+    Route::resource('role', 'RoleController');
 });

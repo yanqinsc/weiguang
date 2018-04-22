@@ -10,9 +10,12 @@
 
 .list {
     width: 98%;
-    margin-top: 2%;
+    margin-top: 1%;
     margin-left: auto;
     margin-right: auto;
+    max-height: 653px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 #list_paginate {
@@ -21,7 +24,6 @@
 
 .button-bar {
     margin-bottom: 1%;
-    margin-top: 1%;
 }
 
 .box {
@@ -35,7 +37,41 @@
 .color-red {
     color: #FF0000;
 }
+
 .show-error {
     width: 100%;
     text-align: center;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.content-header>h1 {
+    margin-bottom: 12px;
+}
+
+#sub_page {
+    width: 100%;
+    min-height: 5200px;
+}
+
+.main-footer {
+    position: fixed;
+    bottom:0;
+    width: 88%;
+}
+
+#form-destroy {
+    display: none;
+    width: 300px;
+    height: 150px;
+    background-color: #fff;
+    position: fixed;
+    top: 5%;
+    left: 40%;
+    padding-top: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-shadow: 1px 1px 2px;
 }

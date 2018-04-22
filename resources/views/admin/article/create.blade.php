@@ -1,6 +1,8 @@
-@extends('admin.layouts.base')
-
-@section('content')
+<!doctype html>
+<html lang="en">
+@include('admin.layouts.header')
+@include('UEditor::head')
+<body>
     <form method="post" action="{{ route('article.store') }}">
         {{ csrf_field() }}
         <div class="box-header with-border">
@@ -29,4 +31,6 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </form>
-@endsection
+    @include('admin.layouts.footer')
+</body>
+</html>

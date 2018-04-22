@@ -59,4 +59,15 @@ class Article extends Model
             ->limit(6)
             ->get();
     }
+
+    /**
+     * 通过用户ID获取用户已发表文章
+     * @param $uid
+     */
+    public static function getListByUid($uid)
+    {
+        self::select('id', 'title', 'author', 'thumb', 'summary')
+            ->where('publisher_id', '=', $uid)
+            ->get();
+    }
 }

@@ -5,7 +5,7 @@
 <div class="box box-info list">
     <div class="box-body">
         <div class="button-bar">
-            <a class="btn btn-app bg-olive" href="{{ route('ability.create') }}">
+            <a class="btn btn-app bg-olive" href="{{ route('role.create') }}">
                 <i class="fa fa-plus"></i> 添加权限
             </a>
         </div>
