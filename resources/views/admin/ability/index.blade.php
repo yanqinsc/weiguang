@@ -6,7 +6,7 @@
     <div class="box-body">
         <div class="button-bar">
             <a class="btn btn-app bg-olive" href="{{ route('ability.create') }}">
-                <i class="fa fa-plus"></i> 添加权限
+                <i class="fa fa-plus"></i>权限管理
             </a>
         </div>
         <div class="dataTables_wrapper form-inline dt-bootstrap">
