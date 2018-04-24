@@ -17,6 +17,26 @@
                 <span class="input-group-addon">注释</span>
                 <input name="title" type="text" class="form-control">
             </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">上级ID</span>
+                <input name="pid" type="number" class="form-control input-20" max="999">
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">图标</span>
+                <input name="icon" type="text" class="form-control input-50">
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">排序</span>
+                <input name="order" type="number" class="form-control input-20" max="999">
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">菜单</span>
+                <input name="is_menu" type="number" class="form-control input-20" max="1" placeholder="0|否 &nbsp;&nbsp; 1|是">
+            </div>
         </div>
         <p class="color-red show-error">@if($errors->has('name')) {{ $errors->first() }} @endif</p>
         <div class="box-footer">
@@ -24,5 +44,6 @@
         </div>
     </form>
     @include('admin.layouts.footer')
+
 </body>
 </html>

@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="{{ asset('admin/adminlte/dist/css/adminLTE.min.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/adminlte/dist/css/skins/_all-skins.min.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin/adminlte/plugins/iCheck/all.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/css/custom.css') }}">
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
