@@ -35,7 +35,7 @@
             <br>
             <div class="input-group">
                 <span class="input-group-addon">菜单</span>
-                <input name="is_menu" type="number" class="form-control input-20" max="1" placeholder="0|否 &nbsp;&nbsp; 1|是">
+                <input name="is_menu" type="number" class="form-control input-20" max="1" placeholder="0|1">
             </div>
         </div>
         <p class="color-red show-error">@if($errors->has('name')) {{ $errors->first() }} @endif</p>
@@ -44,6 +44,5 @@
         </div>
     </form>
     @include('admin.layouts.footer')
-
 </body>
 </html>

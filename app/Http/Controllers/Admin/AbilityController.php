@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 class AbilityController extends Controller
 {
     /**
-     * 权限管理
+     * Ability list
      * @param WgAbility $ability
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -32,7 +32,7 @@ class AbilityController extends Controller
     }
 
     /**
-     * 添加权限
+     * Add ability
      *
      * @return \Illuminate\Http\Response
      */
@@ -44,7 +44,7 @@ class AbilityController extends Controller
     }
 
     /**
-     * 写入权限
+     * Save ability
      *
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
@@ -73,7 +73,7 @@ class AbilityController extends Controller
     }
 
     /**
-     * 编辑权限页
+     * Edit ability
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
@@ -91,7 +91,7 @@ class AbilityController extends Controller
     }
 
     /**
-     * 保存编辑内容
+     * Update ability
      *
      * @param  \Illuminate\Http\Request $request
      * @param  int $id
@@ -101,17 +101,20 @@ class AbilityController extends Controller
     {
         $this->inputValidate($request);
 
-        // 如果name存在则只更新title
+        // If 'name' exists just update other info
         $data = [];
-        if (!$this->isNameExist($request->name)) {
+        if (!$this->doesNameExist($request->name)) {
             $data['name'] = $request->name;
         } else {
             $condition['name'] = $request->name;
         }
 
         $data['title'] = $request->title;
+        $data['pid'] = $request->pid;
+        $data['icon'] = $request->icon;
+        $data['order'] = $request->order;
+        $data['is_menu'] = $request->is_menu;
         $condition['id'] = $id;
-
 
         if (WgAbility::where($condition)->update($data)) {
             return redirect(route('ability.index'));
@@ -121,7 +124,7 @@ class AbilityController extends Controller
     }
 
     /**
-     * 删除权限
+     * Delete ability
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
@@ -138,7 +141,7 @@ class AbilityController extends Controller
     }
 
     /**
-     * 权限相关输入验证
+     * Validate input data
      * @param $request
      */
     private function inputValidate($request) {
@@ -153,11 +156,11 @@ class AbilityController extends Controller
     }
 
     /**
-     * 检查给定权限是否重名
+     * Whether the given name exists
      * @param $name
      * @return bool
      */
-    private function isNameExist($name) {
+    private function doesNameExist($name) {
         return WgAbility::where('name', $name)->first() ? true : false;
     }
 }
