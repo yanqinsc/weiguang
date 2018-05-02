@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Model\Permissions;
 use Bouncer;
 use App\Model\WgAbility;
+use App\Model\AbilityMeta;
+use App\Model\Permissions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -53,10 +54,22 @@ class AbilityController extends Controller
     {
         $this->inputValidate($request);
 
-        Bouncer::ability()->create([
-            'name' => $request->name,
-            'title' => $request->title
-        ]);
+        DB::transaction(function () use ($request) {
+            $ability = Bouncer::ability()->create([
+                'name' => $request->name,
+                'title' => $request->title
+            ]);
+
+            AbilityMeta::insert([
+                'ability_id' => $ability->id,
+                'pid' => $request->pid,
+                'route_name' => $request->route,
+                'icon' => $request->icon ?: '',
+                'order' => $request->order,
+                'is_menu' => $request->is_menu == 1 ? '' : null
+            ]);
+        });
+
 
         return redirect(route('ability.index'));
     }
@@ -80,12 +93,17 @@ class AbilityController extends Controller
      */
     public function edit($id)
     {
-        $result = WgAbility::find($id);
+        $ability = WgAbility::find($id);
+        $meta = AbilityMeta::where('ability_id', '=', $id)->first();
+
+        if (!$ability || !$meta) {
+            return redirect()->back()->withErrors('该权限不存在，请重试。');
+        }
 
         return view('admin.ability.edit', [
             'title' => '编辑权限',
-            'info' => $result,
-            'errorMsg' => $result ? null : '发生错误，指定的权限不存在！',
+            'ability' => $ability,
+            'meta' => $meta,
             'id' => $id
         ]);
     }
@@ -104,21 +122,28 @@ class AbilityController extends Controller
         // If 'name' exists just update other info
         $data = [];
         if (!$this->doesNameExist($request->name)) {
-            $data['name'] = $request->name;
+            $ability['name'] = $request->name;
         } else {
             $condition['name'] = $request->name;
         }
 
-        $data['title'] = $request->title;
         $data['pid'] = $request->pid;
         $data['icon'] = $request->icon;
         $data['order'] = $request->order;
-        $data['is_menu'] = $request->is_menu;
+        $data['is_menu'] = $request->is_menu == 1 ? '' : null;
+        $ability['title'] = $request->title;
         $condition['id'] = $id;
 
-        if (WgAbility::where($condition)->update($data)) {
+        DB::beginTransaction();
+
+        $resA = WgAbility::where($condition)->update($ability);
+        $resB = AbilityMeta::where('ability_id', '=', $id)->update($data);
+
+        if ($resA && $resB) {
+            DB::commit();
             return redirect(route('ability.index'));
-        }else {
+        } else {
+            DB::rollBack();
             return redirect()->back()->withErrors('更新失败,该权限可能已存在。');
         }
     }
@@ -131,7 +156,7 @@ class AbilityController extends Controller
      */
     public function destroy($id)
     {
-        $abilityId = (int) $id;
+        $abilityId = (int)$id;
         $permissions = new Permissions();
         DB::transaction(function () use ($abilityId, $permissions) {
             $permissions->destroyAbilityById($abilityId);
@@ -144,7 +169,8 @@ class AbilityController extends Controller
      * Validate input data
      * @param $request
      */
-    private function inputValidate($request) {
+    private function inputValidate($request)
+    {
         $request->validate([
             'name' => [
                 'bail', 'required',
@@ -152,6 +178,9 @@ class AbilityController extends Controller
                 'regex:"^[-_0-9a-z]{6,16}$"'
             ],
             'title' => 'max:255',
+            'pid' => 'required|integer',
+            'is_menu' => 'required|digits_between:0,1',
+            'route' => 'required',
         ]);
     }
 
@@ -160,7 +189,8 @@ class AbilityController extends Controller
      * @param $name
      * @return bool
      */
-    private function doesNameExist($name) {
+    private function doesNameExist($name)
+    {
         return WgAbility::where('name', $name)->first() ? true : false;
     }
 }

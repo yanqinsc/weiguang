@@ -88,7 +88,7 @@
                     </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href=""><i class="fa fa-user" target="sub_page"></i>添加用户</a></li>
+                        <li><a href=""><i class="fa fa-user" target="sub_page"></i>用户管理</a></li>
                         <li><a href="{{ route('role.index') }}"><i class="fa fa-group" target="sub_page"></i>角色管理</a></li>
                         <li><a href="{{ route('ability.index') }}" target="sub_page"><i class="fa fa-key"></i>权限管理</a></li>
                     </ul>
