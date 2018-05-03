@@ -8,4 +8,9 @@ class AbilityMeta extends Model
 {
     protected $table = 'ability_meta';
     public $timestamps = false;
+
+    public static function destroyById($id)
+    {
+        self::where('ability_id', $id)->delete();
+    }
 }

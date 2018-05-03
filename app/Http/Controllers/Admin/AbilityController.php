@@ -94,7 +94,7 @@ class AbilityController extends Controller
     public function edit($id)
     {
         $ability = WgAbility::find($id);
-        $meta = AbilityMeta::where('ability_id', '=', $id)->first();
+        $meta = AbilityMeta::where('ability_id', $id)->first();
 
         if (!$ability || !$meta) {
             return redirect()->back()->withErrors('该权限不存在，请重试。');
@@ -137,7 +137,7 @@ class AbilityController extends Controller
         DB::beginTransaction();
 
         $resA = WgAbility::where($condition)->update($ability);
-        $resB = AbilityMeta::where('ability_id', '=', $id)->update($data);
+        $resB = AbilityMeta::where('ability_id',$id)->update($data);
 
         if ($resA && $resB) {
             DB::commit();
@@ -159,8 +159,9 @@ class AbilityController extends Controller
         $abilityId = (int)$id;
         $permissions = new Permissions();
         DB::transaction(function () use ($abilityId, $permissions) {
-            $permissions->destroyAbilityById($abilityId);
+            $permissions->destroyById($abilityId);
             WgAbility::destroy($abilityId);
+            AbilityMeta::destroyById($abilityId);
         });
         return redirect()->back();
     }

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Permissions extends Model
 {
 
-    public function destroyAbilityById($id)
+    public function destroyById($id)
     {
         $this->where('ability_id', $id)->delete();
     }

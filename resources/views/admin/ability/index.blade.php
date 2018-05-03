@@ -46,10 +46,16 @@
                                 style="width: 197px;">ID
                             </th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Browser: activate to sort column ascending" style="width: 242px;">排序
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                 aria-label="Browser: activate to sort column ascending" style="width: 242px;">名称
                             </th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                 aria-label="Platform(s): activate to sort column ascending" style="width: 216px;">备注
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Engine version: activate to sort column ascending" style="width: 169px;">路由
                             </th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                 aria-label="Engine version: activate to sort column ascending" style="width: 169px;">管理
@@ -59,8 +65,10 @@
                         @foreach($abilities as $ability)
                             <tr role="row" class="{{ $ability->id % 2 != 0 ? "odd" : "even"}}">
                                 <td class="sorting_1">{{ $ability->id }}</td>
+                                <td>{{ $ability->order }}</td>
                                 <td>{{ $ability->name }}</td>
                                 <td>{{ $ability->title }}</td>
+                                <td>{{ $ability->route_name }}</td>
                                 <td>
                                     <a href="{{ route('ability.edit', ['id' => $ability->id]) }}" title="编辑"><i
                                                 class="fa fa-edit"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
