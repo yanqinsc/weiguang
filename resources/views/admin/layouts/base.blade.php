@@ -6,7 +6,7 @@
     <header class="main-header">
         <a href="{{ url('/') }}" class="logo">
             <span class="logo-mini"><b>W</b>G</span>
-            <span class="logo-lg">{{ env('APP_NAME_CH') }}</span>
+            <span class="logo-lg">{{ config('app.name_ch') }}</span>
         </a>
         <nav class="navbar navbar-static-top">
             <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
