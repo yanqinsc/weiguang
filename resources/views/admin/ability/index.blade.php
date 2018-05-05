@@ -41,7 +41,7 @@
                             <tr role="row" class="{{ $ability->id % 2 != 0 ? "odd" : "even"}}">
                                 <td class="sorting_1">{{ $ability->id }}</td>
                                 <td>{{ $ability->order }}</td>
-                                <td>{{ $ability->title }}</td>
+                                <td><i class="sub-menu fa fa-plus-square-o"></i> {{ $ability->title }}</td>
                                 <td>{{ $ability->name }}</td>
                                 <td>{{ $ability->route_name }}</td>
                                 <td>
@@ -78,13 +78,18 @@
 @include('admin.layouts.footer')
 <script>
     $(function () {
-        $("#ajax").click(function () {
-            $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
+        $(".sub-menu").click(function () {
+            if ($(this).hasClass('fa-plus-square-o')) {
+                $(this).removeClass('fa-plus-square-o').addClass('fa-minus-square-o');
+            } else {
+                $(this).removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
+            }
 
-            let url = '/home/ability/sub?id=1';
-            $.get(url,function (result) {
-                alert(result);
-            });
+            // $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
+            // let url = '/home/ability/sub?id=1';
+            // $.get(url,function (result) {
+            //     alert(result);
+            // });
         });
     });
 </script>

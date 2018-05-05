@@ -16,8 +16,9 @@ class AbilityController extends Controller
     {
         $abilities = $ability->leftJoin('ability_meta', 'id', '=', 'ability_id')
             ->select('id', 'name', 'title', 'icon', 'route_name', 'order', 'pid')
-            ->where()
-              ->get();
+            ->where('pid', 0)
+            ->orderBy('order', 'desc')
+            ->get();
 
         return view('admin.ability.index', [
             'abilities' => $abilities,
