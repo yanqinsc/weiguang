@@ -12,21 +12,16 @@ use Illuminate\Support\Facades\DB;
 
 class AbilityController extends Controller
 {
-    public function index(WgAbility $ability, Request $request)
+    public function index(WgAbility $ability)
     {
-        $number = (int)$request->number ?: 10;
-        $condition = $request->condition;
-        $abilities = $ability->getAbilities($number, $condition);
-
-        foreach ($abilities as $ability) {
-
-        }
+        $abilities = $ability->leftJoin('ability_meta', 'id', '=', 'ability_id')
+            ->select('id', 'name', 'title', 'icon', 'route_name', 'order', 'pid')
+            ->where()
+              ->get();
 
         return view('admin.ability.index', [
             'abilities' => $abilities,
-            'title' => '权限管理',
-            'paginate_number' => $number,
-            'condition' => $request->condition ?: ''
+            'title' => '权限管理'
         ]);
     }
 
