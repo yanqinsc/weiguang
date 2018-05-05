@@ -12,17 +12,15 @@ use Illuminate\Support\Facades\DB;
 
 class AbilityController extends Controller
 {
-    /**
-     * Ability list
-     * @param WgAbility $ability
-     * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function index(WgAbility $ability, Request $request)
     {
         $number = (int)$request->number ?: 10;
         $condition = $request->condition;
         $abilities = $ability->getAbilities($number, $condition);
+
+        foreach ($abilities as $ability) {
+
+        }
 
         return view('admin.ability.index', [
             'abilities' => $abilities,
@@ -32,24 +30,14 @@ class AbilityController extends Controller
         ]);
     }
 
-    /**
-     * Add ability
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function create(Request $request)
     {
         return view('admin.ability.create', [
-            'title' => '添加权限'
+            'title' => '添加权限',
+            'pid' => (int)$request->id ?: null
         ]);
     }
 
-    /**
-     * Save ability
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
     public function store(Request $request)
     {
         $this->inputValidate($request);
@@ -74,23 +62,11 @@ class AbilityController extends Controller
         return redirect(route('ability.index'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Edit ability
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $ability = WgAbility::find($id);
@@ -108,13 +84,6 @@ class AbilityController extends Controller
         ]);
     }
 
-    /**
-     * Update ability
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $this->inputValidate($request);
@@ -128,32 +97,18 @@ class AbilityController extends Controller
         }
 
         $data['pid'] = $request->pid;
-        $data['icon'] = $request->icon;
+        $data['icon'] = $request->icon ?: '';
         $data['order'] = $request->order;
         $data['is_menu'] = $request->is_menu == 1 ? '' : null;
         $ability['title'] = $request->title;
         $condition['id'] = $id;
 
-        DB::beginTransaction();
-
-        $resA = WgAbility::where($condition)->update($ability);
-        $resB = AbilityMeta::where('ability_id',$id)->update($data);
-
-        if ($resA && $resB) {
-            DB::commit();
-            return redirect(route('ability.index'));
-        } else {
-            DB::rollBack();
-            return redirect()->back()->withErrors('更新失败,该权限可能已存在。');
-        }
+        DB::transaction(function () use ($data, $request, $ability, $condition) {
+            WgAbility::where($condition)->update($ability);
+            AbilityMeta::where('ability_id', $condition['id'])->update($data);
+        });
     }
 
-    /**
-     * Delete ability
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $abilityId = (int)$id;

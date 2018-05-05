@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 100214
 File Encoding         : 65001
 
-Date: 2018-05-03 07:40:44
+Date: 2018-05-05 11:33:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,14 +31,21 @@ CREATE TABLE `wg_abilities` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `abilities_scope_index` (`scope`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of wg_abilities
 -- ----------------------------
 INSERT INTO `wg_abilities` VALUES ('1', 'authorization', '授权管理', null, null, '0', null, '2018-04-30 08:54:32', '2018-05-03 00:07:31');
-INSERT INTO `wg_abilities` VALUES ('2', 'create-list', '权限管理', null, null, '0', null, '2018-04-30 08:55:27', '2018-04-30 08:55:27');
-INSERT INTO `wg_abilities` VALUES ('3', 'create-ability', '添加权限', null, null, '0', null, '2018-04-30 08:57:06', '2018-04-30 08:57:06');
+INSERT INTO `wg_abilities` VALUES ('2', 'ability-list', '权限管理', null, null, '0', null, '2018-04-30 08:55:27', '2018-05-03 21:35:08');
+INSERT INTO `wg_abilities` VALUES ('3', 'create-ability', '添加权限', null, null, '0', null, '2018-04-30 08:57:06', '2018-05-03 21:13:28');
+INSERT INTO `wg_abilities` VALUES ('5', 'edit-ability', '编辑权限', null, null, '0', null, '2018-05-03 20:59:57', '2018-05-03 21:14:01');
+INSERT INTO `wg_abilities` VALUES ('6', 'destroy-ability', '删除权限', null, null, '0', null, '2018-05-03 21:02:09', '2018-05-03 21:14:21');
+INSERT INTO `wg_abilities` VALUES ('7', 'role-list', '角色管理', null, null, '0', null, '2018-05-03 21:03:43', '2018-05-03 21:14:55');
+INSERT INTO `wg_abilities` VALUES ('8', 'create-role', '添加角色', null, null, '0', null, '2018-05-03 21:04:21', '2018-05-03 21:04:21');
+INSERT INTO `wg_abilities` VALUES ('9', 'edit-role', '编辑角色信息', null, null, '0', null, '2018-05-03 21:04:56', '2018-05-03 21:04:56');
+INSERT INTO `wg_abilities` VALUES ('10', 'destroy-role', '删除角色', null, null, '0', null, '2018-05-03 21:05:34', '2018-05-03 21:05:34');
+INSERT INTO `wg_abilities` VALUES ('11', 'role-permissions', '为角色分配权限', null, null, '0', null, '2018-05-03 21:10:41', '2018-05-03 21:10:41');
 
 -- ----------------------------
 -- Table structure for wg_ability_meta
@@ -58,8 +65,15 @@ CREATE TABLE `wg_ability_meta` (
 -- Records of wg_ability_meta
 -- ----------------------------
 INSERT INTO `wg_ability_meta` VALUES ('1', '0', '#', 'fa-lock', '0', '');
-INSERT INTO `wg_ability_meta` VALUES ('2', '1', 'ability.index', 'fa-key', '0', '');
-INSERT INTO `wg_ability_meta` VALUES ('3', '2', 'ability.create', '', '0', null);
+INSERT INTO `wg_ability_meta` VALUES ('2', '1', 'ability.index', 'fa-key', '98', '');
+INSERT INTO `wg_ability_meta` VALUES ('3', '2', 'ability.create', '', '99', null);
+INSERT INTO `wg_ability_meta` VALUES ('5', '2', 'ability.edit', '', '98', null);
+INSERT INTO `wg_ability_meta` VALUES ('6', '2', 'ability.destroy', '', '97', null);
+INSERT INTO `wg_ability_meta` VALUES ('7', '1', 'role.index', 'fa-group', '98', '');
+INSERT INTO `wg_ability_meta` VALUES ('8', '7', 'role.create', '', '99', null);
+INSERT INTO `wg_ability_meta` VALUES ('9', '7', 'role.edit', '', '98', null);
+INSERT INTO `wg_ability_meta` VALUES ('10', '7', 'role.destroy', '', '97', null);
+INSERT INTO `wg_ability_meta` VALUES ('11', '7', 'role.permissions', '', '96', null);
 
 -- ----------------------------
 -- Table structure for wg_assigned_roles

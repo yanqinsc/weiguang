@@ -70,6 +70,8 @@
                                 <td>{{ $ability->title }}</td>
                                 <td>{{ $ability->route_name }}</td>
                                 <td>
+                                    <a href="{{ route('ability.create', ['id' => $ability->id]) }}" title="添加下级权限"><i
+                                                class="fa fa-plus"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     <a href="{{ route('ability.edit', ['id' => $ability->id]) }}" title="编辑"><i
                                                 class="fa fa-edit"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     <a href="javascript:void(0) " data-url="{{ route('ability.destroy', ['id' => $ability->id]) }}"
