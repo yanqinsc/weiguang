@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 100214
 File Encoding         : 65001
 
-Date: 2018-05-05 11:33:49
+Date: 2018-05-05 23:13:01
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,7 +31,7 @@ CREATE TABLE `wg_abilities` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `abilities_scope_index` (`scope`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of wg_abilities
@@ -46,6 +46,10 @@ INSERT INTO `wg_abilities` VALUES ('8', 'create-role', '添加角色', null, nul
 INSERT INTO `wg_abilities` VALUES ('9', 'edit-role', '编辑角色信息', null, null, '0', null, '2018-05-03 21:04:56', '2018-05-03 21:04:56');
 INSERT INTO `wg_abilities` VALUES ('10', 'destroy-role', '删除角色', null, null, '0', null, '2018-05-03 21:05:34', '2018-05-03 21:05:34');
 INSERT INTO `wg_abilities` VALUES ('11', 'role-permissions', '为角色分配权限', null, null, '0', null, '2018-05-03 21:10:41', '2018-05-03 21:10:41');
+INSERT INTO `wg_abilities` VALUES ('12', 'article', '文章管理', null, null, '0', null, '2018-05-05 14:12:29', '2018-05-05 14:12:29');
+INSERT INTO `wg_abilities` VALUES ('13', 'article-index', '文章列表', null, null, '0', null, '2018-05-05 14:15:26', '2018-05-05 14:15:26');
+INSERT INTO `wg_abilities` VALUES ('14', 'create-article', '添加文章', null, null, '0', null, '2018-05-05 14:29:23', '2018-05-05 14:29:23');
+INSERT INTO `wg_abilities` VALUES ('15', 'edit-article', '编辑文章', null, null, '0', null, '2018-05-05 14:30:36', '2018-05-05 14:30:36');
 
 -- ----------------------------
 -- Table structure for wg_ability_meta
@@ -74,6 +78,10 @@ INSERT INTO `wg_ability_meta` VALUES ('8', '7', 'role.create', '', '99', null);
 INSERT INTO `wg_ability_meta` VALUES ('9', '7', 'role.edit', '', '98', null);
 INSERT INTO `wg_ability_meta` VALUES ('10', '7', 'role.destroy', '', '97', null);
 INSERT INTO `wg_ability_meta` VALUES ('11', '7', 'role.permissions', '', '96', null);
+INSERT INTO `wg_ability_meta` VALUES ('12', '0', '#', 'fa-files-o', '99', '');
+INSERT INTO `wg_ability_meta` VALUES ('13', '12', 'article.index', 'fa-list-ul', '99', '');
+INSERT INTO `wg_ability_meta` VALUES ('14', '13', 'article.create', 'fa-edit', '99', '');
+INSERT INTO `wg_ability_meta` VALUES ('15', '13', 'article.edit', 'fa-edit', '98', null);
 
 -- ----------------------------
 -- Table structure for wg_assigned_roles
@@ -316,4 +324,4 @@ CREATE TABLE `wg_users` (
 -- ----------------------------
 -- Records of wg_users
 -- ----------------------------
-INSERT INTO `wg_users` VALUES ('1', 'yanqinsc', '$2y$10$hipe3dXnOMqEjPmHG2HV/uOHfumA0lD5lqpqyrGJ3oll2q4f7nnj2', '', '小石', 'http://weiguang/admin/adminlte/dist/img/user2-160x160.jpg', 'yanqinsc@qq.com', '', '', '', '0', '0', '孜孜不倦，不紧不慢', 'XNZV5zgiwqpZpsWW7Qc6dJzsl56PyjStn0ZRudlFi74Gukw0FI7yYq7mEGia', '2018-04-16 23:49:09', '2018-04-16 23:49:09', null);
+INSERT INTO `wg_users` VALUES ('1', 'yanqinsc', '$2y$10$hipe3dXnOMqEjPmHG2HV/uOHfumA0lD5lqpqyrGJ3oll2q4f7nnj2', '', '小石', 'http://weiguang/admin/adminlte/dist/img/user2-160x160.jpg', 'yanqinsc@qq.com', '', '', '', '0', '0', '孜孜不倦，不紧不慢', 'd1gZQThZpmYXeLOdSlg7N0o1Rz9R9JB69zC6AsQrmcSWeE4RYr5uHvPOXhDb', '2018-04-16 23:49:09', '2018-04-16 23:49:09', null);
