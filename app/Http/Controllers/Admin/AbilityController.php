@@ -14,11 +14,7 @@ class AbilityController extends Controller
 {
     public function index(WgAbility $ability)
     {
-        $abilities = $ability->leftJoin('ability_meta', 'id', '=', 'ability_id')
-            ->select('id', 'name', 'title', 'icon', 'route_name', 'order', 'pid')
-            ->where('pid', 0)
-            ->orderBy('order', 'desc')
-            ->get();
+        $abilities = $ability->getAbilitiesByPid(0);
 
         return view('admin.ability.index', [
             'abilities' => $abilities,
@@ -53,7 +49,6 @@ class AbilityController extends Controller
                 'is_menu' => $request->is_menu == 1 ? '' : null
             ]);
         });
-
 
         return redirect(route('ability.index'));
     }
@@ -143,6 +138,14 @@ class AbilityController extends Controller
      */
     private function doesNameExist($name)
     {
-        return WgAbility::where('name', $name)->first() ? true : false;
+        return WgAbility::where('name', $name)->exists();
+    }
+
+    public function getSubAbility(WgAbility $ability, Request $request)
+    {
+        if ($request->ajax()) {
+            $request->validate(['pid' => 'required|integer|min:1']);
+            return $ability->getAbilitiesByPid($request->pid);
+        }
     }
 }

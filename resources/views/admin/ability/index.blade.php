@@ -18,10 +18,11 @@
                         <tr role="row">
                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                 aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending"
-                                style="width: 197px;">ID
+                                style="width: 197px;">排序
                             </th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-label="Browser: activate to sort column ascending" style="width: 242px;">排序
+                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending"
+                                style="width: 197px;">ID
                             </th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                 aria-label="Browser: activate to sort column ascending" style="width: 242px;">名称
@@ -38,19 +39,28 @@
                         </thead>
                         <tbody>
                         @foreach($abilities as $ability)
-                            <tr role="row" class="{{ $ability->id % 2 != 0 ? "odd" : "even"}}">
+                            <tr id="tr-{{ $ability->id }}" role="row"
+                                class="{{ $ability->id % 2 != 0 ? "odd" : "even"}}">
+                                <td class="sorting_1">{{ $ability->order }}</td>
                                 <td class="sorting_1">{{ $ability->id }}</td>
-                                <td>{{ $ability->order }}</td>
-                                <td><i class="sub-menu fa fa-plus-square-o"></i> {{ $ability->title }}</td>
+                                <td>
+                                    <i class="sub-menu fa @if($ability->sub_count > 0) fa-plus-square-o @endif"
+                                       data-pid="{{ $ability->id }}"></i> {{ $ability->title }}
+                                </td>
                                 <td>{{ $ability->name }}</td>
                                 <td>{{ $ability->route_name }}</td>
                                 <td>
-                                    <a href="{{ route('ability.create', ['id' => $ability->id]) }}" title="添加下级权限"><i
-                                                class="fa fa-plus"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="{{ route('ability.edit', ['id' => $ability->id]) }}" title="编辑"><i
-                                                class="fa fa-edit"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="javascript:void(0) " data-url="{{ route('ability.destroy', ['id' => $ability->id]) }}"
-                                       title="删除" class="a-remove"><i class="fa fa-trash"></i></a>
+                                    <a href="{{ route('ability.create', ['id' => $ability->id]) }}" title="添加下级权限">
+                                        <i class="fa fa-plus"></i>
+                                    </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="{{ route('ability.edit', ['id' => $ability->id]) }}" title="编辑">
+                                        <i class="fa fa-edit"></i>
+                                    </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="javascript:void(0) "
+                                       data-url="{{ route('ability.destroy', ['id' => $ability->id]) }}"
+                                       title="删除" class="a-remove">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach
@@ -77,21 +87,70 @@
 </form>
 @include('admin.layouts.footer')
 <script>
+    // 查看下级元素
     $(function () {
-        $(".sub-menu").click(function () {
-            if ($(this).hasClass('fa-plus-square-o')) {
-                $(this).removeClass('fa-plus-square-o').addClass('fa-minus-square-o');
-            } else {
-                $(this).removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
-            }
-
-            // $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
-            // let url = '/home/ability/sub?id=1';
-            // $.get(url,function (result) {
-            //     alert(result);
-            // });
-        });
+        let newTr = [];
+        $(".sub-menu").click(getSubmenu(newTr));
+        console.log(newTr);
     });
+
+    function getSubmenu(obj) {
+        obj = [];
+        let trId = $(this).parent('td').parent('tr').attr('id');
+        let subClass = $('tr[class^=' + trId + ']');
+        if ($(this).hasClass('fa-plus-square-o')) {
+            $(this).removeClass('fa-plus-square-o').addClass('fa-minus-square-o');
+            if (subClass.length > 0) {
+                subClass.show();
+            }
+        } else {
+            $(this).removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
+            subClass.hide();
+        }
+
+        // 如果对应DOM元素不存在则添加
+        if (!subClass.length) {
+            let url = '/home/ability/submenu?pid=' + $(this).attr('data-pid');
+            $.get(url, function (result) {
+                result.forEach(function (item, index) {
+                    let len = trId.match(eval('/-/g')).length;
+                    let delimiter = '';
+                    for (i=0; i < len; i++) {
+                        delimiter += '— ';
+                    }
+                    let title = '<i class="sub-menu fa  fa-plus-square-o" data-pid="' + item.id + '"></i> ' + item.title;
+                    if (item.sub_count === 1) {
+                        title = item.title;
+                    }
+                    title = delimiter + title;
+
+                    let html =
+                        '<tr class="' + trId + '" id="' + trId + '-' + item.id + '"><td class="sorting_1">' + item.order + '</td>' +
+                        '<td class="sorting_1">' + item.id + '</td>' +
+                        '<td>' + title + '</td>' +
+                        '<td>' + item.name + '</td>' +
+                        '<td>' + item.route_name + '</td>' +
+                        '<td>' +
+                        '<a href="http://weiguang/home/ability/create?id=' + item.id + '" title="添加下级权限">' +
+                        '<i class="fa fa-plus"></i>' +
+                        '</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                        '<a href="http://weiguang/home/ability/' + item.id + '/edit" title="编辑">' +
+                        '<i class="fa fa-edit"></i>' +
+                        '</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                        '<a href="javascript:void(0) " data-url="http://weiguang/home/ability/' + item.id + '" title="删除" class="a-remove">' +
+                        '<i class="fa fa-trash"></i>' +
+                        '</a>' +
+                        '</td>' +
+                        '</tr>';
+                    $('#' + trId).after(html);
+                    obj[index] = '#' + trId + '-' + item.id;
+                    // 为新增节点添加事件
+                    //$('#' + trId + '-' + item.id).click(getSubmenu);
+                });
+
+            });
+        }
+    }
 </script>
 </body>
 </html>

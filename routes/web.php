@@ -22,6 +22,7 @@ Auth::routes();
 Route::prefix('home')->namespace('Admin')->middleware('auth')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/index', 'HomeController@home')->name('home.index');
+    Route::get('ability/submenu', 'AbilityController@getSubAbility');
     Route::resource('ability', 'AbilityController');
     Route::resource('article', 'ArticleController');
     Route::resource('role', 'RoleController');
