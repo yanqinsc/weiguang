@@ -55,22 +55,20 @@ class AbilityController extends Controller
 
     public function show($id)
     {
-        //
+        dd($id);
     }
 
     public function edit($id)
     {
         $ability = WgAbility::find($id);
-        $meta = AbilityMeta::where('ability_id', $id)->first();
 
-        if (!$ability || !$meta) {
+        if (!$ability) {
             return redirect()->back()->withErrors('该权限不存在，请重试。');
         }
 
         return view('admin.ability.edit', [
             'title' => '编辑权限',
             'ability' => $ability,
-            'meta' => $meta,
             'id' => $id
         ]);
     }
@@ -79,10 +77,10 @@ class AbilityController extends Controller
     {
         $this->inputValidate($request);
 
-        // If 'name' exists just update other info
         $data = [];
+        // If 'name' exists just update other info
         if (!$this->doesNameExist($request->name)) {
-            $ability['name'] = $request->name;
+            $data['name'] = $request->name;
         } else {
             $condition['name'] = $request->name;
         }
@@ -91,13 +89,12 @@ class AbilityController extends Controller
         $data['icon'] = $request->icon ?: '';
         $data['order'] = $request->order;
         $data['is_menu'] = $request->is_menu == 1 ? '' : null;
-        $ability['title'] = $request->title;
+        $data['title'] = $request->title;
         $condition['id'] = $id;
 
-        DB::transaction(function () use ($data, $request, $ability, $condition) {
-            WgAbility::where($condition)->update($ability);
-            AbilityMeta::where('ability_id', $condition['id'])->update($data);
-        });
+        WgAbility::where($condition)->update($data);
+
+        return redirect(route('ability.index'));
     }
 
     public function destroy($id)

@@ -6,7 +6,7 @@
     <div class="box-body">
         <div class="button-bar">
             <a class="btn btn-app bg-olive" href="{{ route('ability.create') }}">
-                <i class="fa fa-plus"></i>权限管理
+                <i class="fa fa-plus"></i>添加权限
             </a>
         </div>
         <div class="dataTables_wrapper form-inline dt-bootstrap">
@@ -89,13 +89,10 @@
 <script>
     // 查看下级元素
     $(function () {
-        let newTr = [];
-        $(".sub-menu").click(getSubmenu(newTr));
-        console.log(newTr);
+        $('.sub-menu').click(getSubmenu);
     });
 
-    function getSubmenu(obj) {
-        obj = [];
+    function getSubmenu() {
         let trId = $(this).parent('td').parent('tr').attr('id');
         let subClass = $('tr[class^=' + trId + ']');
         if ($(this).hasClass('fa-plus-square-o')) {
@@ -131,21 +128,20 @@
                         '<td>' + item.name + '</td>' +
                         '<td>' + item.route_name + '</td>' +
                         '<td>' +
-                        '<a href="http://weiguang/home/ability/create?id=' + item.id + '" title="添加下级权限">' +
+                        '<a href="/home/ability/create?id=' + item.id + '" title="添加下级权限">' +
                         '<i class="fa fa-plus"></i>' +
                         '</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                        '<a href="http://weiguang/home/ability/' + item.id + '/edit" title="编辑">' +
+                        '<a href="/home/ability/' + item.id + '/edit" title="编辑">' +
                         '<i class="fa fa-edit"></i>' +
                         '</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                        '<a href="javascript:void(0) " data-url="http://weiguang/home/ability/' + item.id + '" title="删除" class="a-remove">' +
+                        '<a href="javascript:void(0) " data-url="/home/ability/' + item.id + '" title="删除" class="a-remove">' +
                         '<i class="fa fa-trash"></i>' +
                         '</a>' +
                         '</td>' +
                         '</tr>';
                     $('#' + trId).after(html);
-                    obj[index] = '#' + trId + '-' + item.id;
-                    // 为新增节点添加事件
-                    //$('#' + trId + '-' + item.id).click(getSubmenu);
+                    // 更新按钮上绑定的点击事件
+                    $('.sub-menu').unbind().click(getSubmenu);
                 });
 
             });

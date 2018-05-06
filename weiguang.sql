@@ -231,7 +231,7 @@ CREATE TABLE `wg_roles`  (
 -- ----------------------------
 -- Records of wg_roles
 -- ----------------------------
-INSERT INTO `wg_roles` VALUES (1, 'admin', 'Admin', NULL, NULL, '2018-04-22 11:45:48', '2018-04-22 11:45:48');
+INSERT INTO `wg_roles` VALUES (1, 'admin', 'admin', NULL, NULL, '2018-04-22 11:45:48', '2018-04-22 11:45:48');
 INSERT INTO `wg_roles` VALUES (2, 'teacher', 'Teacher', NULL, NULL, '2018-04-22 11:53:32', '2018-04-22 11:53:32');
 
 -- ----------------------------

@@ -19,7 +19,7 @@ Route::namespace('Cms')->group(function () {
 
 Auth::routes();
 
-Route::prefix('home')->namespace('Admin')->middleware('auth')->group(function () {
+Route::prefix('home')->namespace('admin')->middleware('auth')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/index', 'HomeController@home')->name('home.index');
     Route::get('ability/submenu', 'AbilityController@getSubAbility');
