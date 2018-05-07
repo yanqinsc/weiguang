@@ -34,28 +34,29 @@ class AbilityController extends Controller
     {
         $this->inputValidate($request);
 
-        DB::transaction(function () use ($request) {
-            $ability = Bouncer::ability()->create([
-                'name' => $request->name,
-                'title' => $request->title
-            ]);
+        if ($this->doesNameExist($request->name)) {
+            redirect()->back()->withErrors('权限标识不能重复');
+        }
 
-            AbilityMeta::insert([
-                'ability_id' => $ability->id,
-                'pid' => $request->pid,
-                'route_name' => $request->route,
-                'icon' => $request->icon ?: '',
-                'order' => $request->order,
-                'is_menu' => $request->is_menu == 1 ? '' : null
-            ]);
-        });
+        $now = date('Y-m-d H:i:s');
+        Bouncer::ability()->insert([
+            'name' => $request->name,
+            'title' => $request->title,
+            'pid' => $request->pid,
+            'route_name' => $request->route,
+            'icon' => $request->icon ?: '',
+            'order' => $request->order,
+            'is_menu' => $request->is_menu == 1 ? '' : null,
+            'created_at' => $now,
+            'updated_at' => $now
+        ]);
 
         return redirect(route('ability.index'));
     }
 
     public function show($id)
     {
-        dd($id);
+        //
     }
 
     public function edit($id)

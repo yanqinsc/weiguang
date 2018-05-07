@@ -80,6 +80,9 @@
     width: 20% !important;
 }
 
+.input-30 {
+    width: 30% !important;
+}
 .input-50 {
     width: 50% !important;
 }
@@ -90,6 +93,10 @@
 
 .sub-menu {
     cursor: pointer;
+}
+
+#ability-list td a {
+    margin-left: 25px;
 }
 
 @media (min-width: 768px) {

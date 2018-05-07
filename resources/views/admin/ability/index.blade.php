@@ -12,7 +12,7 @@
         <div class="dataTables_wrapper form-inline dt-bootstrap">
             <div class="row">
                 <div class="col-sm-12">
-                    <table id="example1" class="table table-bordered table-striped dataTable" role="grid"
+                    <table id="ability-list" class="table table-bordered table-striped dataTable" role="grid"
                            aria-describedby="abilities">
                         <thead>
                         <tr role="row">
@@ -52,10 +52,10 @@
                                 <td>
                                     <a href="{{ route('ability.create', ['id' => $ability->id]) }}" title="添加下级权限">
                                         <i class="fa fa-plus"></i>
-                                    </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </a>
                                     <a href="{{ route('ability.edit', ['id' => $ability->id]) }}" title="编辑">
                                         <i class="fa fa-edit"></i>
-                                    </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </a>
                                     <a href="javascript:void(0) "
                                        data-url="{{ route('ability.destroy', ['id' => $ability->id]) }}"
                                        title="删除" class="a-remove">
@@ -130,10 +130,10 @@
                         '<td>' +
                         '<a href="/home/ability/create?id=' + item.id + '" title="添加下级权限">' +
                         '<i class="fa fa-plus"></i>' +
-                        '</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                        '</a> '+
                         '<a href="/home/ability/' + item.id + '/edit" title="编辑">' +
                         '<i class="fa fa-edit"></i>' +
-                        '</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                        '</a> ' +
                         '<a href="javascript:void(0) " data-url="/home/ability/' + item.id + '" title="删除" class="a-remove">' +
                         '<i class="fa fa-trash"></i>' +
                         '</a>' +

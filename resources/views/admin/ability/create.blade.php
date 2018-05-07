@@ -9,18 +9,18 @@
     </div>
     <div class="box-body">
         <div class="input-group">
-            <span class="input-group-addon">名称</span>
+            <span class="input-group-addon">标识</span>
             <input name="name" type="text" class="form-control" placeholder="只能是英文、数字或下划线的组合">
         </div>
         <br>
         <div class="input-group">
-            <span class="input-group-addon">注释</span>
+            <span class="input-group-addon">名称</span>
             <input name="title" type="text" class="form-control">
         </div>
         <br>
         <div class="input-group">
             <span class="input-group-addon">PID</span>
-            <input name="pid" type="number" class="form-control input-20" min="0" max="999"
+            <input name="pid" type="number" class="form-control input-30" min="0" max="999"
                    @if($pid) value="{{ $pid }}" @endif>
         </div>
         <br>
@@ -31,17 +31,17 @@
         <br>
         <div class="input-group">
             <span class="input-group-addon">排序</span>
-            <input name="order" type="number" class="form-control input-20" max="999">
+            <input name="order" type="number" class="form-control input-30" max="999">
         </div>
         <br>
         <div class="input-group">
             <span class="input-group-addon">是否菜单</span>
-            <input name="is_menu" type="number" class="form-control input-20" min="0" max="1" placeholder="0|1">
+            <input name="is_menu" type="number" class="form-control input-30" min="0" max="1" placeholder="0|1">
         </div>
         <br>
         <div class="input-group">
             <span class="input-group-addon">路由名称</span>
-            <input name="route" type="text" class="form-control input-50">
+            <input name="route" type="text" class="form-control input-70">
         </div>
     </div>
     <p class="color-red show-error">@if($errors->any()) {{ $errors->first() }} @endif</p>

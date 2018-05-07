@@ -11,7 +11,7 @@
  Target Server Version : 50721
  File Encoding         : 65001
 
- Date: 06/05/2018 00:28:48
+ Date: 07/05/2018 23:34:16
 */
 
 SET NAMES utf8mb4;
@@ -37,26 +37,28 @@ CREATE TABLE `wg_abilities`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `abilities_scope_index`(`scope`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+  INDEX `abilities_scope_index`(`scope`) USING BTREE,
+  UNIQUE INDEX `abilities_name_unique`(`name`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of wg_abilities
 -- ----------------------------
 INSERT INTO `wg_abilities` VALUES (1, 0, 'authorization', '授权管理', NULL, NULL, 0, NULL, '#', 'fa-lock', 0, '', '2018-04-30 08:54:32', '2018-05-03 00:07:31');
-INSERT INTO `wg_abilities` VALUES (2, 1, 'ability-list', '权限管理', NULL, NULL, 0, NULL, 'ability.index', 'fa-key', 98, '', '2018-04-30 08:55:27', '2018-05-03 21:35:08');
+INSERT INTO `wg_abilities` VALUES (2, 1, 'ability-list', '权限管理', NULL, NULL, 0, NULL, 'ability.index', 'fa-key', 99, '', '2018-04-30 08:55:27', '2018-05-07 22:53:44');
 INSERT INTO `wg_abilities` VALUES (3, 2, 'create-ability', '添加权限', NULL, NULL, 0, NULL, 'ability.create', '', 99, NULL, '2018-04-30 08:57:06', '2018-05-03 21:13:28');
 INSERT INTO `wg_abilities` VALUES (4, 2, 'edit-ability', '编辑权限', NULL, NULL, 0, NULL, 'ability.edit', '', 98, NULL, '2018-05-03 20:59:57', '2018-05-03 21:14:01');
 INSERT INTO `wg_abilities` VALUES (5, 2, 'destroy-ability', '删除权限', NULL, NULL, 0, NULL, 'ability.destroy', '', 97, NULL, '2018-05-03 21:02:09', '2018-05-03 21:14:21');
-INSERT INTO `wg_abilities` VALUES (6, 1, 'role-list', '角色管理', NULL, NULL, 0, NULL, 'role.index', 'fa-group', 98, '', '2018-05-03 21:03:43', '2018-05-03 21:14:55');
+INSERT INTO `wg_abilities` VALUES (6, 1, 'role-list', '角色管理', NULL, NULL, 0, NULL, 'role.index', 'fa-group', 98, '', '2018-05-03 21:03:43', '2018-05-07 22:53:55');
 INSERT INTO `wg_abilities` VALUES (7, 6, 'create-role', '添加角色', NULL, NULL, 0, NULL, 'role.create', '', 99, NULL, '2018-05-03 21:04:21', '2018-05-03 21:04:21');
-INSERT INTO `wg_abilities` VALUES (8, 6, 'edit-role', '编辑角色信息', NULL, NULL, 0, NULL, 'role.edit', '', 98, NULL, '2018-05-03 21:04:56', '2018-05-03 21:04:56');
+INSERT INTO `wg_abilities` VALUES (8, 6, 'edit-role', '编辑角色', NULL, NULL, 0, NULL, 'role.edit', '', 98, NULL, '2018-05-03 21:04:56', '2018-05-06 22:40:42');
 INSERT INTO `wg_abilities` VALUES (9, 6, 'destroy-role', '删除角色', NULL, NULL, 0, NULL, 'role.destroy', '', 97, NULL, '2018-05-03 21:05:34', '2018-05-03 21:05:34');
-INSERT INTO `wg_abilities` VALUES (10, 6, 'role-permissions', '为角色分配权限', NULL, NULL, 0, NULL, 'role.permissions', '', 96, NULL, '2018-05-03 21:10:41', '2018-05-03 21:10:41');
+INSERT INTO `wg_abilities` VALUES (10, 6, 'role-permissions', '分配权限', NULL, NULL, 0, NULL, 'role.permissions', '', 96, NULL, '2018-05-03 21:10:41', '2018-05-06 22:21:26');
 INSERT INTO `wg_abilities` VALUES (11, 0, 'article', '文章管理', NULL, NULL, 0, NULL, '#', 'fa-files-o', 99, '', '2018-05-05 14:12:29', '2018-05-05 14:12:29');
-INSERT INTO `wg_abilities` VALUES (12, 11, 'article-index', '文章列表', NULL, NULL, 0, NULL, 'article.index', 'fa-list-ul', 99, '', '2018-05-05 14:15:26', '2018-05-05 14:15:26');
-INSERT INTO `wg_abilities` VALUES (13, 11, 'create-article', '添加文章', NULL, NULL, 0, NULL, 'article.create', 'fa-edit', 99, '', '2018-05-05 14:29:23', '2018-05-05 14:29:23');
-INSERT INTO `wg_abilities` VALUES (14, 12, 'edit-article', '编辑文章', NULL, NULL, 0, NULL, 'article.edit', 'fa-edit', 98, NULL, '2018-05-05 14:30:36', '2018-05-05 14:30:36');
+INSERT INTO `wg_abilities` VALUES (12, 11, 'article-list', '文章列表', NULL, NULL, 0, NULL, 'article.index', 'fa-list-ul', 99, '', '2018-05-05 14:15:26', '2018-05-05 14:15:26');
+INSERT INTO `wg_abilities` VALUES (13, 12, 'create-article', '添加文章', NULL, NULL, 0, NULL, 'article.create', 'fa-edit', 99, '', '2018-05-05 14:29:23', '2018-05-05 14:29:23');
+INSERT INTO `wg_abilities` VALUES (14, 12, 'edit-article', '编辑文章', NULL, NULL, 0, NULL, 'article.edit', '', 98, NULL, '2018-05-05 14:30:36', '2018-05-05 14:30:36');
+INSERT INTO `wg_abilities` VALUES (15, 12, 'destroy-article', '删除文章', NULL, NULL, 0, NULL, 'article.create', '', 97, NULL, '2018-05-07 23:27:09', '2018-05-07 23:27:09');
 
 -- ----------------------------
 -- Table structure for wg_ability_meta
@@ -231,7 +233,7 @@ CREATE TABLE `wg_roles`  (
 -- ----------------------------
 -- Records of wg_roles
 -- ----------------------------
-INSERT INTO `wg_roles` VALUES (1, 'admin', 'admin', NULL, NULL, '2018-04-22 11:45:48', '2018-04-22 11:45:48');
+INSERT INTO `wg_roles` VALUES (1, 'admin', 'Admin', NULL, NULL, '2018-04-22 11:45:48', '2018-04-22 11:45:48');
 INSERT INTO `wg_roles` VALUES (2, 'teacher', 'Teacher', NULL, NULL, '2018-04-22 11:53:32', '2018-04-22 11:53:32');
 
 -- ----------------------------

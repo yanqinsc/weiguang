@@ -63,36 +63,22 @@
             </div>
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">导航栏</li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-files-o"></i>
-                        <span>文章管理</span>
-                        <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="{{ route('article.create') }}" target="sub_page"><i class="fa fa-edit"></i>添加文章</a></li>
-                        <li><a href="{{ route('article.index') }}" target="sub_page"><i class="fa fa-list-ul"></i>文章管理</a></li>
-                        <li><a href="pages/forms/general.html" target="sub_page"><i class="fa fa-list-ul"></i>分类管理</a></li>
-                        <li><a href="pages/forms/advanced.html" target="sub_page"><i class="fa fa-edit"></i>草稿箱</a></li>
-                        <li><a href="pages/forms/editors.html" target="sub_page"><i class="fa fa-trash"></i>回收站</a></li>
-                    </ul>
-                </li>
+                @foreach($menu as $item)
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-lock"></i>
-                        <span>授权管理</span>
+                        <span>{{ $item['title'] }}</span>
                         <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href=""><i class="fa fa-user" target="sub_page"></i>用户管理</a></li>
-                        <li><a href="{{ route('role.index') }}"><i class="fa fa-group" target="sub_page"></i>角色管理</a></li>
-                        <li><a href="{{ route('ability.index') }}" target="sub_page"><i class="fa fa-key"></i>权限管理</a></li>
+                        @foreach($item['sub_menu'] as $value)
+                        <li><a href="{{ route($value['route_name']) }}" target="sub_page"><i class="fa {{ $value['icon'] }}"></i>{{ $value['title'] }}</a></li>
+                        @endforeach
                     </ul>
                 </li>
+                @endforeach
             </ul>
         </section>
     </aside>
