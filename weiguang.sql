@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : Localhost
+ Source Server         : MariaDB
  Source Server Type    : MySQL
- Source Server Version : 50719
+ Source Server Version : 50721
  Source Host           : localhost:3306
  Source Schema         : weiguang
 
  Target Server Type    : MySQL
- Target Server Version : 50719
+ Target Server Version : 50721
  File Encoding         : 65001
 
- Date: 08/05/2018 09:37:17
+ Date: 08/05/2018 22:07:54
 */
 
 SET NAMES utf8mb4;
@@ -44,7 +44,7 @@ CREATE TABLE `wg_abilities`  (
 -- ----------------------------
 -- Records of wg_abilities
 -- ----------------------------
-INSERT INTO `wg_abilities` VALUES (1, 0, 'authorization', '授权管理', NULL, NULL, 0, NULL, '#', 'fa-lock', 0, '', '2018-04-30 08:54:32', '2018-05-03 00:07:31');
+INSERT INTO `wg_abilities` VALUES (1, 0, 'authorization', '授权管理', NULL, NULL, 0, NULL, '#', 'fa-lock', 0, '', '2018-04-30 08:54:32', '2018-05-08 21:04:53');
 INSERT INTO `wg_abilities` VALUES (2, 1, 'ability-list', '权限管理', NULL, NULL, 0, NULL, 'ability.index', 'fa-key', 99, '', '2018-04-30 08:55:27', '2018-05-07 22:53:44');
 INSERT INTO `wg_abilities` VALUES (3, 2, 'create-ability', '添加权限', NULL, NULL, 0, NULL, 'ability.create', '', 99, NULL, '2018-04-30 08:57:06', '2018-05-03 21:13:28');
 INSERT INTO `wg_abilities` VALUES (4, 2, 'edit-ability', '编辑权限', NULL, NULL, 0, NULL, 'ability.edit', '', 98, NULL, '2018-05-03 20:59:57', '2018-05-03 21:14:01');
@@ -74,11 +74,6 @@ CREATE TABLE `wg_assigned_roles`  (
   INDEX `assigned_roles_scope_index`(`scope`) USING BTREE,
   CONSTRAINT `assigned_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `wg_roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of wg_assigned_roles
--- ----------------------------
-INSERT INTO `wg_assigned_roles` VALUES (2, 1, 'App\\User', NULL);
 
 -- ----------------------------
 -- Table structure for wg_categories
@@ -201,8 +196,8 @@ CREATE TABLE `wg_roles`  (
 -- ----------------------------
 -- Records of wg_roles
 -- ----------------------------
-INSERT INTO `wg_roles` VALUES (1, 'admin', '管理员', NULL, NULL, '2018-04-22 11:45:48', '2018-04-22 11:45:48');
-INSERT INTO `wg_roles` VALUES (2, 'teacher', '教师', NULL, NULL, '2018-04-22 11:53:32', '2018-04-22 11:53:32');
+INSERT INTO `wg_roles` VALUES (1, 'admin', '管理员', NULL, NULL, '2018-04-22 11:45:48', '2018-05-08 21:00:41');
+INSERT INTO `wg_roles` VALUES (2, 'teacher', '教师', NULL, NULL, '2018-04-22 11:53:32', '2018-05-08 20:52:47');
 INSERT INTO `wg_roles` VALUES (3, 'student', '学生', NULL, NULL, '2018-05-08 09:35:38', '2018-05-08 09:35:38');
 
 -- ----------------------------

@@ -92,9 +92,13 @@ class AbilityController extends Controller
         $data['title'] = $request->title;
         $condition['id'] = $id;
 
-        WgAbility::where($condition)->update($data);
+        $result = WgAbility::where($condition)->update($data);
 
-        return redirect(route('ability.index'));
+        if ($result) {
+            return redirect(route('ability.index'));
+        } else {
+            return redirect()->back()->withErrors('更新失败，该权限标识可能已存在。');
+        }
     }
 
     public function destroy($id)

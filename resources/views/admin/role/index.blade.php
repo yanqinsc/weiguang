@@ -6,7 +6,7 @@
     <div class="box-body">
         <div class="button-bar">
             <a class="btn btn-app bg-olive" href="{{ route('role.create') }}">
-                <i class="fa fa-plus"></i> 角色管理
+                <i class="fa fa-plus"></i> 添加角色
             </a>
         </div>
         <div class="dataTables_wrapper form-inline dt-bootstrap">
@@ -37,9 +37,9 @@
                                 <td>{{ $role->name }}</td>
                                 <td>{{ $role->title }}</td>
                                 <td>
-                                    <a href="{{ route('ability.edit', ['id' => $role->id]) }}" title="编辑"><i
+                                    <a href="{{ route('role.edit', ['id' => $role->id]) }}" title="编辑"><i
                                                 class="fa fa-edit"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="javascript:void(0) " data-url="{{ route('ability.destroy', ['id' => $role->id]) }}"
+                                    <a href="javascript:void(0) " data-url="{{ route('role.destroy', ['id' => $role->id]) }}"
                                        title="删除" class="a-remove"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>

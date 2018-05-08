@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Bouncer;
-use App\Model\Permissions;
+use App\Model\AssignedRoles;
 use Illuminate\Http\Request;
 use Silber\Bouncer\Database\Role;
 use Illuminate\Support\Facades\DB;
@@ -50,15 +50,16 @@ class RoleController extends Controller
 
     public function edit($id)
     {
-        $role = Wgrole::find($id);
+        $role = new Role();
+        $result = $role->find($id);
 
-        if (!$role) {
+        if (!$result) {
             return redirect()->back()->withErrors('该角色不存在，请重试。');
         }
 
         return view('admin.role.edit', [
             'title' => '编辑角色',
-            'role' => $role,
+            'role' => $result,
             'id' => $id
         ]);
     }
@@ -66,34 +67,36 @@ class RoleController extends Controller
     public function update(Request $request, $id)
     {
         $this->inputValidate($request);
+        $role = new Role();
 
         $data = [];
         // If 'name' exists just update other info
-        if (!$this->doesNameExist($request->name)) {
+        if (!$this->doesNameExist($role, $request->name)) {
             $data['name'] = $request->name;
         } else {
             $condition['name'] = $request->name;
         }
 
-        $data['pid'] = $request->pid;
-        $data['icon'] = $request->icon ?: '';
-        $data['order'] = $request->order;
-        $data['is_menu'] = $request->is_menu == 1 ? '' : null;
         $data['title'] = $request->title;
         $condition['id'] = $id;
 
-        Wgrole::where($condition)->update($data);
+        $result = $role->where($condition)->update($data);
+        if($result) {
+            return redirect(route('role.index'));
+        } else {
+            return redirect()->back()->withErrors('更新错误，该角色标识可能已存在');
+        }
 
-        return redirect(route('role.index'));
     }
 
     public function destroy($id)
     {
         $roleId = (int)$id;
-        $permissions = new Permissions();
-        DB::transaction(function () use ($roleId, $permissions) {
-            $permissions->destroyById($roleId);
-            Wgrole::destroy($roleId);
+        $role = new Role();
+        $assignedRoles = new AssignedRoles();
+        DB::transaction(function () use ($roleId, $assignedRoles, $role) {
+            $assignedRoles->destroyByRoleId($roleId);
+            $role->destroy($roleId);
         });
         return redirect()->back();
     }
