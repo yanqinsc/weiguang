@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use Bouncer;
 use App\Model\WgAbility;
-use App\Model\AbilityMeta;
 use App\Model\Permissions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -105,7 +104,6 @@ class AbilityController extends Controller
         DB::transaction(function () use ($abilityId, $permissions) {
             $permissions->destroyById($abilityId);
             WgAbility::destroy($abilityId);
-            AbilityMeta::destroyById($abilityId);
         });
         return redirect()->back();
     }

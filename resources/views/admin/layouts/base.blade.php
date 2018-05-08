@@ -66,7 +66,7 @@
                 @foreach($menu as $item)
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-lock"></i>
+                        <i class="fa {{ $item['icon'] }}"></i>
                         <span>{{ $item['title'] }}</span>
                         <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>

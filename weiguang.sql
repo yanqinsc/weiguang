@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : MariaDB
+ Source Server         : Localhost
  Source Server Type    : MySQL
- Source Server Version : 50721
+ Source Server Version : 50719
  Source Host           : localhost:3306
  Source Schema         : weiguang
 
  Target Server Type    : MySQL
- Target Server Version : 50721
+ Target Server Version : 50719
  File Encoding         : 65001
 
- Date: 07/05/2018 23:34:16
+ Date: 08/05/2018 09:37:17
 */
 
 SET NAMES utf8mb4;
@@ -37,8 +37,8 @@ CREATE TABLE `wg_abilities`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `abilities_scope_index`(`scope`) USING BTREE,
-  UNIQUE INDEX `abilities_name_unique`(`name`) USING BTREE
+  UNIQUE INDEX `abilities_name_unique`(`name`) USING BTREE,
+  INDEX `abilities_scope_index`(`scope`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -56,41 +56,9 @@ INSERT INTO `wg_abilities` VALUES (9, 6, 'destroy-role', '删除角色', NULL, N
 INSERT INTO `wg_abilities` VALUES (10, 6, 'role-permissions', '分配权限', NULL, NULL, 0, NULL, 'role.permissions', '', 96, NULL, '2018-05-03 21:10:41', '2018-05-06 22:21:26');
 INSERT INTO `wg_abilities` VALUES (11, 0, 'article', '文章管理', NULL, NULL, 0, NULL, '#', 'fa-files-o', 99, '', '2018-05-05 14:12:29', '2018-05-05 14:12:29');
 INSERT INTO `wg_abilities` VALUES (12, 11, 'article-list', '文章列表', NULL, NULL, 0, NULL, 'article.index', 'fa-list-ul', 99, '', '2018-05-05 14:15:26', '2018-05-05 14:15:26');
-INSERT INTO `wg_abilities` VALUES (13, 12, 'create-article', '添加文章', NULL, NULL, 0, NULL, 'article.create', 'fa-edit', 99, '', '2018-05-05 14:29:23', '2018-05-05 14:29:23');
+INSERT INTO `wg_abilities` VALUES (13, 12, 'create-article', '添加文章', NULL, NULL, 0, NULL, 'article.create', 'fa-edit', 99, NULL, '2018-05-05 14:29:23', '2018-05-05 14:29:23');
 INSERT INTO `wg_abilities` VALUES (14, 12, 'edit-article', '编辑文章', NULL, NULL, 0, NULL, 'article.edit', '', 98, NULL, '2018-05-05 14:30:36', '2018-05-05 14:30:36');
 INSERT INTO `wg_abilities` VALUES (15, 12, 'destroy-article', '删除文章', NULL, NULL, 0, NULL, 'article.create', '', 97, NULL, '2018-05-07 23:27:09', '2018-05-07 23:27:09');
-
--- ----------------------------
--- Table structure for wg_ability_meta
--- ----------------------------
-DROP TABLE IF EXISTS `wg_ability_meta`;
-CREATE TABLE `wg_ability_meta`  (
-  `ability_id` int(11) UNSIGNED NOT NULL DEFAULT 0,
-  `pid` int(11) UNSIGNED NOT NULL COMMENT '归属的菜单ID',
-  `route_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '功能路由名称',
-  `icon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '菜单中显示的图标',
-  `order` int(255) NOT NULL DEFAULT 0 COMMENT '排序 倒叙排列 数值越大排序越靠前',
-  `is_menu` char(0) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`ability_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'abilities表的扩展数据，与权限表一对一关系' ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of wg_ability_meta
--- ----------------------------
-INSERT INTO `wg_ability_meta` VALUES (1, 0, '#', 'fa-lock', 0, '');
-INSERT INTO `wg_ability_meta` VALUES (2, 1, 'ability.index', 'fa-key', 98, '');
-INSERT INTO `wg_ability_meta` VALUES (3, 2, 'ability.create', '', 99, NULL);
-INSERT INTO `wg_ability_meta` VALUES (5, 2, 'ability.edit', '', 98, NULL);
-INSERT INTO `wg_ability_meta` VALUES (6, 2, 'ability.destroy', '', 97, NULL);
-INSERT INTO `wg_ability_meta` VALUES (7, 1, 'role.index', 'fa-group', 98, '');
-INSERT INTO `wg_ability_meta` VALUES (8, 7, 'role.create', '', 99, NULL);
-INSERT INTO `wg_ability_meta` VALUES (9, 7, 'role.edit', '', 98, NULL);
-INSERT INTO `wg_ability_meta` VALUES (10, 7, 'role.destroy', '', 97, NULL);
-INSERT INTO `wg_ability_meta` VALUES (11, 7, 'role.permissions', '', 96, NULL);
-INSERT INTO `wg_ability_meta` VALUES (12, 0, '#', 'fa-files-o', 99, '');
-INSERT INTO `wg_ability_meta` VALUES (13, 12, 'article.index', 'fa-list-ul', 99, '');
-INSERT INTO `wg_ability_meta` VALUES (14, 13, 'article.create', 'fa-edit', 99, '');
-INSERT INTO `wg_ability_meta` VALUES (15, 13, 'article.edit', 'fa-edit', 98, NULL);
 
 -- ----------------------------
 -- Table structure for wg_assigned_roles
@@ -228,13 +196,14 @@ CREATE TABLE `wg_roles`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `roles_name_unique`(`name`, `scope`) USING BTREE,
   INDEX `roles_scope_index`(`scope`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of wg_roles
 -- ----------------------------
-INSERT INTO `wg_roles` VALUES (1, 'admin', 'Admin', NULL, NULL, '2018-04-22 11:45:48', '2018-04-22 11:45:48');
-INSERT INTO `wg_roles` VALUES (2, 'teacher', 'Teacher', NULL, NULL, '2018-04-22 11:53:32', '2018-04-22 11:53:32');
+INSERT INTO `wg_roles` VALUES (1, 'admin', '管理员', NULL, NULL, '2018-04-22 11:45:48', '2018-04-22 11:45:48');
+INSERT INTO `wg_roles` VALUES (2, 'teacher', '教师', NULL, NULL, '2018-04-22 11:53:32', '2018-04-22 11:53:32');
+INSERT INTO `wg_roles` VALUES (3, 'student', '学生', NULL, NULL, '2018-05-08 09:35:38', '2018-05-08 09:35:38');
 
 -- ----------------------------
 -- Table structure for wg_school

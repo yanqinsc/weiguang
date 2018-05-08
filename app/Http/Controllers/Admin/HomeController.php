@@ -24,6 +24,7 @@ class HomeController extends Controller
                 $menu[$item['id']] = $item;
             }
         }
+
         // 归纳二级菜单
         foreach ($items as $key => $item) {
             if ($item['pid'] === 0) {

@@ -2,92 +2,126 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Bouncer;
+use App\Model\Permissions;
 use Illuminate\Http\Request;
+use Silber\Bouncer\Database\Role;
+use Illuminate\Support\Facades\DB;
+
 
 class RoleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Role $role, Request $request)
+    public function index(Role $role)
     {
-        $number = (int)$request->number ?: 10;
-        $condition = $request->condition;
-        $roles = $role->getRoles($number, $condition);
+        $roles = $role->select('id', 'name', 'title')->orderBy('id')->get();
 
         return view('admin.role.index', [
-            'abilities' => $roles,
-            'title' => '角色管理',
-            'paginate_number' => $number,
-            'condition' => $request->condition ?: ''
+            'roles' => $roles,
+            'title' => '角色管理'
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('admin.role.create', [
+            'title' => '添加角色'
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(Role $role, Request $request)
     {
-        //
+        $this->inputValidate($request);
+        if ($this->doesNameExist($role, $request->name)) {
+            return redirect()->back()->withErrors('角色标识不能重复');
+        }
+
+        Bouncer::role()->create([
+            'name' => $request->name,
+            'title' => $request->title
+        ]);
+
+        return redirect(route('role.index'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $role = Wgrole::find($id);
+
+        if (!$role) {
+            return redirect()->back()->withErrors('该角色不存在，请重试。');
+        }
+
+        return view('admin.role.edit', [
+            'title' => '编辑角色',
+            'role' => $role,
+            'id' => $id
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $this->inputValidate($request);
+
+        $data = [];
+        // If 'name' exists just update other info
+        if (!$this->doesNameExist($request->name)) {
+            $data['name'] = $request->name;
+        } else {
+            $condition['name'] = $request->name;
+        }
+
+        $data['pid'] = $request->pid;
+        $data['icon'] = $request->icon ?: '';
+        $data['order'] = $request->order;
+        $data['is_menu'] = $request->is_menu == 1 ? '' : null;
+        $data['title'] = $request->title;
+        $condition['id'] = $id;
+
+        Wgrole::where($condition)->update($data);
+
+        return redirect(route('role.index'));
+    }
+
+    public function destroy($id)
+    {
+        $roleId = (int)$id;
+        $permissions = new Permissions();
+        DB::transaction(function () use ($roleId, $permissions) {
+            $permissions->destroyById($roleId);
+            Wgrole::destroy($roleId);
+        });
+        return redirect()->back();
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Validate input data
+     * @param $request
      */
-    public function destroy($id)
+    private function inputValidate($request)
     {
-        //
+        $request->validate([
+            'name' => [
+                'bail', 'required',
+                'max:150',
+                'regex:"^[-_0-9a-z]{3,16}$"'
+            ],
+            'title' => 'max:255'
+        ]);
+    }
+
+    /**
+     * Whether the given name exists
+     * @param Role $role
+     * @param $name
+     * @return mixed
+     */
+    private function doesNameExist(Role $role, $name)
+    {
+        return $role->where('name', $name)->exists();
     }
 }
