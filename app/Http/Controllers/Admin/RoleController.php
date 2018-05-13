@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Bouncer;
+use App\Model\WgAbility;
 use App\Model\AssignedRoles;
 use Illuminate\Http\Request;
 use Silber\Bouncer\Database\Role;
@@ -126,5 +127,16 @@ class RoleController extends Controller
     private function doesNameExist(Role $role, $name)
     {
         return $role->where('name', $name)->exists();
+    }
+
+
+    public function permissions(WgAbility $ability)
+    {
+        $abilities = $ability->getAbilitiesByPid(0);
+
+        return view('admin.role.permissions', [
+            'abilities' => $abilities,
+            'title' => '权限管理'
+        ]);
     }
 }

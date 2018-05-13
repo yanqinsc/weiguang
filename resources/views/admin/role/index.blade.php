@@ -38,9 +38,11 @@
                                 <td>{{ $role->title }}</td>
                                 <td>
                                     <a href="{{ route('role.edit', ['id' => $role->id]) }}" title="编辑"><i
-                                                class="fa fa-edit"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                class="fa fa-edit"></i></a>
                                     <a href="javascript:void(0) " data-url="{{ route('role.destroy', ['id' => $role->id]) }}"
                                        title="删除" class="a-remove"><i class="fa fa-trash"></i></a>
+                                    <a href="{{ route('role.permissions', ['id' => $role->id]) }}" title="配置权限"><i
+                                                class="fa fa-cogs"></i></a>
                                 </td>
                             </tr>
                         @endforeach

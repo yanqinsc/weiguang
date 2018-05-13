@@ -18,6 +18,10 @@
     overflow-x: hidden;
 }
 
+.list td a {
+    margin-left: 25px;
+}
+
 #list_paginate {
     float: right;
 }
@@ -93,10 +97,6 @@
 
 .sub-menu {
     cursor: pointer;
-}
-
-#ability-list td a {
-    margin-left: 25px;
 }
 
 @media (min-width: 768px) {

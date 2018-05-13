@@ -4,11 +4,6 @@
 <body>
 <div class="box box-info list">
     <div class="box-body">
-        <div class="button-bar">
-            <a class="btn btn-app bg-olive" href="{{ route('ability.create') }}">
-                <i class="fa fa-plus"></i>添加权限
-            </a>
-        </div>
         <div class="dataTables_wrapper form-inline dt-bootstrap">
             <div class="row">
                 <div class="col-sm-12">
@@ -16,6 +11,10 @@
                            aria-describedby="abilities">
                         <thead>
                         <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending"
+                                style="width: 197px;">授权
+                            </th>
                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                 aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending"
                                 style="width: 197px;">排序
@@ -41,6 +40,7 @@
                         @foreach($abilities as $ability)
                             <tr id="tr-{{ $ability->id }}" role="row"
                                 class="{{ $ability->id % 2 != 0 ? "odd" : "even"}}">
+                                <td class="sorting_1"><input type="checkbox" value="{{ $ability->id }}"></td>
                                 <td class="sorting_1">{{ $ability->order }}</td>
                                 <td class="sorting_1">{{ $ability->id }}</td>
                                 <td>
