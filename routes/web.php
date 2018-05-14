@@ -23,7 +23,8 @@ Route::prefix('home')->namespace('admin')->middleware('auth')->group(function ()
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/index', 'HomeController@home')->name('home.index');
     Route::get('ability/submenu', 'AbilityController@getSubAbility');
-    Route::get('role/permissions', 'RoleController@permissions')->name('role.permissions');
+    Route::post('role/assign/{id}', 'RoleController@assign');
+    Route::get('role/permissions/{id}', 'RoleController@permissions')->name('role.permissions');
     Route::resource('ability', 'AbilityController');
     Route::resource('article', 'ArticleController');
     Route::resource('role', 'RoleController');

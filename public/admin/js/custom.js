@@ -51,18 +51,7 @@ function getSubmenu() {
                 }
                 title = delimiter + title;
                 let checkBox = '';
-                if ($('input[type=checkbox]').length > 0) {
-                    checkBox = '<td class="sorting_1"><input class="assign" type="checkbox" value="' + item.id + '"></td>';
-                }
-                let html =
-                    '<tr class="' + trId + '" id="' + trId + '-' + item.id + '">' +
-                    checkBox +
-                    '<td class="sorting_1">' + item.order + '</td>' +
-                    '<td class="sorting_1">' + item.id + '</td>' +
-                    '<td>' + title + '</td>' +
-                    '<td>' + item.name + '</td>' +
-                    '<td>' + item.route_name + '</td>' +
-                    '<td>' +
+                let action = '<td>' +
                     '<a href="/home/ability/create?id=' + item.id + '" title="添加下级权限">' +
                     '<i class="fa fa-plus"></i>' +
                     '</a> ' +
@@ -74,16 +63,35 @@ function getSubmenu() {
                     '</a>' +
                     '</td>' +
                     '</tr>';
+
+                if ($('input[type=checkbox]').length > 0) {
+                    checkBox = '<td class="sorting_1"><input name="assign" type="checkbox" value="' + item.id + '"></td>';
+                    action = '';
+                }
+                let html =
+                    '<tr class="' + trId + '" id="' + trId + '-' + item.id + '">' +
+                    checkBox +
+                    '<td class="sorting_1">' + item.order + '</td>' +
+                    '<td class="sorting_1">' + item.id + '</td>' +
+                    '<td>' + title + '</td>' +
+                    '<td>' + item.name + '</td>' +
+                    '<td>' + item.route_name + '</td>' +
+                    action
+                    ;
                 $('#' + trId).after(html);
                 // update the click event that bind on button
                 $('.sub-menu').unbind().click(getSubmenu);
             });
         });
     }
-
-    $('.assign').change(function () {
-        if ($(this).attr('checked')) {
-            alert(321);
-        }
-    });
 }
+
+
+$('input[name=assign]').change(function () {
+    if ($(this).is(':checked')) {
+        let roleId = $('input[name=roleId]').val();
+        let url = '/home/role/assign/';
+        $.post(url);
+    } else {
+    }
+});

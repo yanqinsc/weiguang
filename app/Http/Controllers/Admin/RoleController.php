@@ -130,13 +130,19 @@ class RoleController extends Controller
     }
 
 
-    public function permissions(WgAbility $ability)
+    public function permissions(WgAbility $ability, $id)
     {
         $abilities = $ability->getAbilitiesByPid(0);
 
         return view('admin.role.permissions', [
             'abilities' => $abilities,
+            'roleId' => $id,
             'title' => '权限管理'
         ]);
+    }
+
+    public function assign()
+    {
+        return 321;
     }
 }
