@@ -54,7 +54,7 @@
             </div>
         </div>
     </div>
-    <input type="hidden" name="roleId" value="{{ $roleId }}">
+    <input type="hidden" name="roleName" value="{{ $roleName }}">
 </div>
 <form id="form-destroy" method="post">
     {{ method_field('DELETE') }}
