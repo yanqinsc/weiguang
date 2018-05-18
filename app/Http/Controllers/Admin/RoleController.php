@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Model\Admin;
 use Bouncer;
 use App\Model\WgAbility;
 use App\Model\AssignedRoles;
 use Illuminate\Http\Request;
 use Silber\Bouncer\Database\Role;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 
 class RoleController extends Controller
@@ -102,10 +104,6 @@ class RoleController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Validate input data
-     * @param $request
-     */
     private function inputValidate($request)
     {
         $request->validate([
@@ -119,7 +117,7 @@ class RoleController extends Controller
     }
 
     /**
-     * Whether the given name exists
+     * 检查角色名称是否存在
      * @param Role $role
      * @param $name
      * @return mixed
@@ -129,20 +127,53 @@ class RoleController extends Controller
         return $role->where('name', $name)->exists();
     }
 
-
-    public function permissions(WgAbility $ability, $name)
+    /**
+     * 角色权限分配页面
+     * @param WgAbility $ability
+     * @param $role
+     * @param Admin $admin
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function permissions(WgAbility $ability, $role, Admin $admin)
     {
-        $abilities = $ability->getAbilitiesByPid(0);
+
+        $user = Auth::user();
+        $abilities = $ability->all();
+        $had = $user->getAbilities();
+
+        foreach ($abilities as &$ability) {
+            foreach ($had as $value) {
+                if ($ability->id === $value->id) {
+                    $ability->checked = 1;
+                    continue;
+                }
+            }
+        }
+
+        $abilities = $this->accessMerge($abilities);
 
         return view('admin.role.permissions', [
             'abilities' => $abilities,
-            'roleName' => $name,
+            'roleName' => $role,
+            'had' => $had,
             'title' => '权限管理'
         ]);
     }
 
-    public function assign($roldId, $ability_id)
-    {
-        return 321;
+    /**
+     * 处理权限的层级关系
+     * @param $abilities
+     * @param int $pid
+     * @return array
+     */
+    private function accessMerge ($abilities, $pid=0) {
+        $result = [];
+        foreach ($abilities as $ability) {
+            if ($ability['pid']==$pid) {
+                $ability['child'] = $this->accessMerge($abilities, $ability['id']);
+                $result[] = $ability;
+            }
+        }
+        return $result;
     }
 }

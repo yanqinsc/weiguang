@@ -19,12 +19,20 @@ Route::namespace('Cms')->group(function () {
 
 Auth::routes();
 
-Route::prefix('home')->namespace('admin')->middleware('auth')->group(function () {
+// 后台用户认证
+Route::prefix('admin')->group(function () {
+    // Authentication Routes...
+    Route::get('login', 'Admin\Auth\LoginController@showLoginForm')->name('admin_login');
+    Route::post('login', 'Admin\Auth\LoginController@login');
+    Route::post('logout', 'Admin\Auth\LoginController@logout')->name('admin_logout');
+});
+
+Route::prefix('teacher')->namespace('admin')->middleware('auth:admin')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
-    Route::get('/index', 'HomeController@home')->name('home.index');
-    Route::get('ability/submenu', 'AbilityController@getSubAbility');
+    Route::get('index', 'HomeController@home')->name('home.index');
+    Route::get('ability/submenu', 'AbilityController@getSubAbility')->name('ability.submenu');
     Route::post('role/assign/{name}/{abilityId}', 'RoleController@assign');
-    Route::get('role/permissions/{name}', 'RoleController@permissions')->name('role.permissions');
+    Route::get('role/permissions/{role}', 'RoleController@permissions')->name('role.permissions');
     Route::resource('ability', 'AbilityController');
     Route::resource('article', 'ArticleController');
     Route::resource('role', 'RoleController');
