@@ -34,7 +34,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest')->except('admin_logout');
     }
 
     /**
@@ -46,13 +46,35 @@ class LoginController extends Controller
         return view('admin.auth.login');
     }
 
+    /**
+     * 使用自定义Guard
+     * @return mixed
+     */
     protected function guard()
     {
         return Auth::guard('admin');
     }
 
+    /**
+     * 使用用户名登录
+     * @return string
+     */
     public function username()
     {
         return 'name';
+    }
+
+    /**
+     * 自定登出跳转页面
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        return redirect(route('admin_login'));
     }
 }

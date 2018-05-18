@@ -34,12 +34,12 @@
                                     <a href="#" class="btn btn-default btn-flat">主页</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="{{ route('logout') }}" class="btn btn-default btn-flat"
+                                    <a href="{{ route('admin_logout') }}" class="btn btn-default btn-flat"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         退出
                                     </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ route('admin_logout') }}" method="post" style="display: none;">
                                         {{ csrf_field() }}
                                     </form>
                                 </div>
