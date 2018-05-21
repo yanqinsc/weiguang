@@ -2,7 +2,7 @@
 <html lang="en">
 @include('admin.layouts.header')
 <body>
-<form class="box box-info create" method="post" action="{{ route('role.update', ['id' => $id]) }}">
+<form class="box box-warning create" method="post" action="{{ route('role.update', ['id' => $id]) }}">
     {{ csrf_field() }}
     {{ method_field('PUT') }}
     <div class="box-header with-border">

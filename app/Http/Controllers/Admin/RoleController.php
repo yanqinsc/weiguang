@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Model\Admin;
 use Bouncer;
 use App\Model\WgAbility;
 use App\Model\AssignedRoles;
@@ -131,12 +130,10 @@ class RoleController extends Controller
      * 角色权限分配页面
      * @param WgAbility $ability
      * @param $role
-     * @param Admin $admin
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function permissions(WgAbility $ability, $role, Admin $admin)
+    public function permissions(WgAbility $ability, $role)
     {
-
         $user = Auth::user();
         $abilities = $ability->all();
         $had = $user->getAbilities();
@@ -151,7 +148,6 @@ class RoleController extends Controller
         }
 
         $abilities = $this->accessMerge($abilities);
-
         return view('admin.role.permissions', [
             'abilities' => $abilities,
             'roleName' => $role,
@@ -166,14 +162,33 @@ class RoleController extends Controller
      * @param int $pid
      * @return array
      */
-    private function accessMerge ($abilities, $pid=0) {
+    private function accessMerge ($abilities, $pid=0)
+    {
         $result = [];
         foreach ($abilities as $ability) {
             if ($ability['pid']==$pid) {
-                $ability['child'] = $this->accessMerge($abilities, $ability['id']);
+                $ability['children'] = $this->accessMerge($abilities, $ability['id']);
                 $result[] = $ability;
             }
         }
         return $result;
+    }
+
+    /**
+     * 授权
+     * @param Request $request
+     */
+    public function roleAuthorize (Request $request)
+    {
+        if ($request->ajax()) {
+            $role = $request->role;
+            $ability = $request->ability;
+            if ($request->allow === 'true') {
+                Bouncer::allow($role)->to($ability);
+            } else {
+                Bouncer::disallow($role)->to($ability);
+            }
+        }
+        Bouncer::refresh();
     }
 }

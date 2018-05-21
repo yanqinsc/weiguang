@@ -27,13 +27,17 @@ Route::prefix('admin')->group(function () {
     Route::post('logout', 'Admin\Auth\LoginController@logout')->name('admin_logout');
 });
 
-Route::prefix('teacher')->namespace('admin')->middleware('auth:admin')->group(function () {
+Route::prefix('panel')->namespace('admin')->middleware('auth:admin')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('index', 'HomeController@home')->name('home.index');
     Route::get('ability/submenu', 'AbilityController@getSubAbility')->name('ability.submenu');
-    Route::post('role/assign/{name}/{abilityId}', 'RoleController@assign');
+    Route::post('role/authorize', 'RoleController@roleAuthorize')->name('role.authorize');
     Route::get('role/permissions/{role}', 'RoleController@permissions')->name('role.permissions');
     Route::resource('ability', 'AbilityController');
     Route::resource('article', 'ArticleController');
     Route::resource('role', 'RoleController');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

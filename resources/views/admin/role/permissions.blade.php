@@ -1,75 +1,73 @@
 <!doctype html>
 <html lang="en">
 @include('admin.layouts.header')
+<link rel="stylesheet" href="{{ asset('admin/css/permissions.css') }}">
 <body>
-<div class="box box-info list">
+<div class="box box-danger list">
     <div class="box-body">
         <div class="dataTables_wrapper form-inline dt-bootstrap">
             <div class="row">
                 <div class="col-sm-12">
-                    <table class="table table-bordered table-striped dataTable" role="grid"
-                           aria-describedby="abilities">
-                        <thead>
-                        <tr role="row">
-                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending"
-                                style="width: 197px;">授权
-                            </th>
-                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending"
-                                style="width: 197px;">排序
-                            </th>
-                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending"
-                                style="width: 197px;">ID
-                            </th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-label="Browser: activate to sort column ascending" style="width: 242px;">名称
-                            </th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-label="Platform(s): activate to sort column ascending" style="width: 216px;">标识
-                            </th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-label="Engine version: activate to sort column ascending" style="width: 169px;">路由
-                            </th>
-                        </thead>
-                        <tbody>
-                        @foreach($abilities as $ability)
-                            <tr id="tr-{{ $ability->id }}" role="row"
-                                class="{{ $ability->id % 2 != 0 ? "odd" : "even"}}">
-                                <td class="sorting_1"><input type="checkbox" name="assign" value="{{ $ability->id }}"></td>
-                                <td class="sorting_1">{{ $ability->order }}</td>
-                                <td class="sorting_1">{{ $ability->id }}</td>
-                                <td>
-                                    <i class="sub-menu fa @if($ability->sub_count > 0) fa-plus-square-o @endif"
-                                       data-pid="{{ $ability->id }}"></i> {{ $ability->title }}
-                                </td>
-                                <td>{{ $ability->name }}</td>
-                                <td>{{ $ability->route_name }}</td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                    @foreach($abilities as $ability)
+                        <ul class="top">
+                            <li>
+                                <label for="ability-{{ $ability->id }}">
+                                    <input id="ability-{{ $ability->id }}" type="checkbox" value="{{ $ability->name }}"
+                                           @if($ability->checked) checked @endif> {{ $ability->title }}
+                                </label>
+                            </li>
+                            @if($ability->children)
+                                <br>
+                                <li>
+                                    @foreach($ability->children as $son)
+                                        <ul class="son">
+                                            <li>
+                                                <label for="ability-{{ $son->id }}">
+                                                    <input id="ability-{{ $son->id }}" type="checkbox"
+                                                           value="{{ $son->name }}"
+                                                           @if($son->checked) checked @endif> {{ $son->title }}
+                                                </label>
+                                            </li>
+                                            @if($son->children)
+                                                <li>
+                                                    <ul class="grandson">
+                                                        <br>
+                                                        @foreach($son->children as $grandson)
+                                                            <li>
+                                                                <label for="ability-{{ $grandson->id }}">
+                                                                    <input id="ability-{{ $grandson->id }}"
+                                                                           type="checkbox" value="{{ $grandson->name }}"
+                                                                           @if($grandson->checked) checked @endif> {{ $grandson->title }}
+                                                                </label>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                </li>
+                                            @endif
+                                        </ul>
+                                    @endforeach
+                                </li>
+                            @endif
+                        </ul>
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
     <input type="hidden" name="roleName" value="{{ $roleName }}">
 </div>
-<form id="form-destroy" method="post">
-    {{ method_field('DELETE') }}
-    {{ csrf_field() }}
-    <div>
-        <div>
-            执行该操作后该条记录将被永久删除，确定删除？
-        </div>
-        <br>
-        <div class="timeline-footer">
-            <button type="submit" class="btn btn-danger">确定</button>
-            <button id="comfirm-cancel" type="button" class="btn btn-success">取消</button>
-        </div>
-    </div>
-</form>
 @include('admin.layouts.footer')
+<script type="text/javascript">
+    $(':checkbox').change(function () {
+        let url = '{{ route('role.authorize') }}';
+        let data = {
+            _token: '{{ csrf_token() }}',
+            role: $('[name=roleName]').val(),
+            ability: $(this).val(),
+            allow: !!$(this).is(':checked')
+        };
+        $.post(url, data);
+    });
+</script>
 </body>
 </html>
