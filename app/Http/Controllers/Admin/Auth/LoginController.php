@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin\Auth;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Extensions\AuthenticatesLogout;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
@@ -19,7 +20,9 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    use AuthenticatesUsers, AuthenticatesLogout {
+        AuthenticatesLogout::logout insteadof AuthenticatesUsers;
+    }
 
     /**
      * Where to redirect users after login.
@@ -35,7 +38,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('admin_logout');
+        $this->middleware('guest:admin')->except('logout');
     }
 
     /**
@@ -63,19 +66,5 @@ class LoginController extends Controller
     public function username()
     {
         return 'name';
-    }
-
-    /**
-     * 自定登出跳转页面
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function logout(Request $request)
-    {
-        $this->guard()->logout();
-
-        $request->session()->invalidate();
-
-        return redirect(route('admin_login'));
     }
 }

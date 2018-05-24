@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 100214
 File Encoding         : 65001
 
-Date: 2018-05-18 08:18:35
+Date: 2018-05-24 22:03:29
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -86,7 +86,7 @@ CREATE TABLE `wg_admins` (
 -- ----------------------------
 -- Records of wg_admins
 -- ----------------------------
-INSERT INTO `wg_admins` VALUES ('1', 'yanqinsc', '$2y$10$hipe3dXnOMqEjPmHG2HV/uOHfumA0lD5lqpqyrGJ3oll2q4f7nnj2', '', '小石', '/admin/adminlte/dist/img/user2-160x160.jpg', 'yanqinsc@qq.com', '', '', '', '孜孜不倦，不紧不慢', 'd1gZQThZpmYXeLOdSlg7N0o1Rz9R9JB69zC6AsQrmcSWeE4RYr5uHvPOXhDb', '2018-04-16 23:49:09', '2018-04-16 23:49:09', null);
+INSERT INTO `wg_admins` VALUES ('1', 'yanqinsc', '$2y$10$hipe3dXnOMqEjPmHG2HV/uOHfumA0lD5lqpqyrGJ3oll2q4f7nnj2', '', '小石', '/admin/adminlte/dist/img/user2-160x160.jpg', 'yanqinsc@qq.com', '', '', '', '孜孜不倦，不紧不慢', 'jXP4g4eKrTYGPX373IC0dn1AIaU7Bxnfw8mIgXYMdTd70Z6vzPP4DOK8UUSO', '2018-04-16 23:49:09', '2018-04-16 23:49:09', null);
 
 -- ----------------------------
 -- Table structure for wg_assigned_roles
@@ -198,6 +198,9 @@ CREATE TABLE `wg_permissions` (
 -- Records of wg_permissions
 -- ----------------------------
 INSERT INTO `wg_permissions` VALUES ('1', '1', 'roles', '0', null);
+INSERT INTO `wg_permissions` VALUES ('11', '1', 'roles', '0', null);
+INSERT INTO `wg_permissions` VALUES ('15', '1', 'roles', '0', null);
+INSERT INTO `wg_permissions` VALUES ('13', '1', 'roles', '0', null);
 
 -- ----------------------------
 -- Table structure for wg_posts
@@ -284,7 +287,14 @@ CREATE TABLE `wg_sessions` (
 -- ----------------------------
 -- Records of wg_sessions
 -- ----------------------------
-INSERT INTO `wg_sessions` VALUES ('WjM50oFmNuTQkl1VKhcXkaSxJZatTLeVn9tZigbs', '1', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiRzR2ZkpydEc5RU5HTXhkZ3dza2ZFNlBSZW8yWXBuMmhSTXk2R1dGZiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly93ZWlndWFuZy90ZWFjaGVyL2FiaWxpdHkiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', '1526602683');
+INSERT INTO `wg_sessions` VALUES ('7I19d0nmb8uWpy0DWZRRHCxUp537gebejJsCxxhE', '1', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', 'YTo1OntzOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjY6Il90b2tlbiI7czo0MDoidVBpc2R4M21MS2IwZEN2M1lFdmUxOG45V01LWHhjblk1VGxENFoxQyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly93ZWlndWFuZy9wYW5lbC9pbmRleCI7fXM6MzoidXJsIjthOjE6e3M6ODoiaW50ZW5kZWQiO3M6MjA6Imh0dHA6Ly93ZWlndWFuZy9ob21lIjt9czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', '1527169926');
+INSERT INTO `wg_sessions` VALUES ('klf3Swsda2mX6ENlH2VLREr6aUwKcJCmnmYZtX4c', '1', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', 'YTo1OntzOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjY6Il90b2tlbiI7czo0MDoicXNRS212NzYzZXJuMXFhOU5kUnNleEkyWFh4dFFTNUNDQWVJZEdQMyI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czoyMToiaHR0cDovL3dlaWd1YW5nL3BhbmVsIjt9czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjA6Imh0dHA6Ly93ZWlndWFuZy9ob21lIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', '1527170277');
+INSERT INTO `wg_sessions` VALUES ('mhndZLzzuAmVFSNfMMHtEZzcCuHBd2mpHGhbQRg5', '1', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', 'YTo1OntzOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjY6Il90b2tlbiI7czo0MDoicXNRS212NzYzZXJuMXFhOU5kUnNleEkyWFh4dFFTNUNDQWVJZEdQMyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI3OiJodHRwOi8vd2VpZ3VhbmcvcGFuZWwvaW5kZXgiO31zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', '1527170556');
+INSERT INTO `wg_sessions` VALUES ('nacagCI9HoAL2FJJsnOqySqUfs9Mn8orSrAIjidO', '1', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', 'YTo2OntzOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjY6Il90b2tlbiI7czo0MDoicXNRS212NzYzZXJuMXFhOU5kUnNleEkyWFh4dFFTNUNDQWVJZEdQMyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjIwOiJodHRwOi8vd2VpZ3VhbmcvaG9tZSI7fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', '1527170446');
+INSERT INTO `wg_sessions` VALUES ('O6bWriyGjNk7iv3Uo3jNGL2LsnvKbXQwoCrPp7gL', '1', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', 'YTo1OntzOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjY6Il90b2tlbiI7czo0MDoicXNRS212NzYzZXJuMXFhOU5kUnNleEkyWFh4dFFTNUNDQWVJZEdQMyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI3OiJodHRwOi8vd2VpZ3VhbmcvcGFuZWwvaW5kZXgiO31zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', '1527170452');
+INSERT INTO `wg_sessions` VALUES ('Olr6F35xs4BlNVu5vjgs78PkD2hkVDiQ2jHmc9KG', null, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', 'YTo0OntzOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjY6Il90b2tlbiI7czo0MDoicXNRS212NzYzZXJuMXFhOU5kUnNleEkyWFh4dFFTNUNDQWVJZEdQMyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI3OiJodHRwOi8vd2VpZ3VhbmcvYWRtaW4vbG9naW4iO319', '1527170558');
+INSERT INTO `wg_sessions` VALUES ('p9dtwMGgpxHJVgd8ULjvdPZLTIobo0Nk5TysXU4P', '1', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', 'YTo2OntzOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjY6Il90b2tlbiI7czo0MDoicXNRS212NzYzZXJuMXFhOU5kUnNleEkyWFh4dFFTNUNDQWVJZEdQMyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjIwOiJodHRwOi8vd2VpZ3VhbmcvaG9tZSI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', '1527170545');
+INSERT INTO `wg_sessions` VALUES ('PIUqZLMD4ZCIgYdFYkUxlfa1XBl2mTzilDBbfvM3', '1', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', 'YTo2OntzOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjY6Il90b2tlbiI7czo0MDoidVBpc2R4M21MS2IwZEN2M1lFdmUxOG45V01LWHhjblk1VGxENFoxQyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly93ZWlndWFuZy9wYW5lbC9pbmRleCI7fXM6MzoidXJsIjthOjA6e31zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', '1527170001');
 
 -- ----------------------------
 -- Table structure for wg_students
@@ -351,4 +361,4 @@ CREATE TABLE `wg_users` (
 -- ----------------------------
 -- Records of wg_users
 -- ----------------------------
-INSERT INTO `wg_users` VALUES ('1', 'yanqinsc', '$2y$10$hipe3dXnOMqEjPmHG2HV/uOHfumA0lD5lqpqyrGJ3oll2q4f7nnj2', '', '小石', '/admin/adminlte/dist/img/user2-160x160.jpg', 'yanqinsc@qq.com', '', '', '', '0', '0', '我可是要成为盼盼老公的男人！！！', '8wSYfqrtQQFjSNR9pkIFEtPgze1uzUZbbonrvNme7E1cixnyrvyCLdrQAjQt', '2018-04-16 23:49:09', '2018-04-16 23:49:09', null);
+INSERT INTO `wg_users` VALUES ('1', 'yanqinsc', '$2y$10$hipe3dXnOMqEjPmHG2HV/uOHfumA0lD5lqpqyrGJ3oll2q4f7nnj2', '', '小石', '/admin/adminlte/dist/img/user2-160x160.jpg', 'yanqinsc@qq.com', '', '', '', '0', '0', '我可是要成为盼盼老公的男人！！！', 'zfjG8PxyrO4UrDAcV3JDodBKCDXp6WSdmtnWVzeDoz2ZwWN8GB2EuEf9Dys3', '2018-04-16 23:49:09', '2018-04-16 23:49:09', null);
