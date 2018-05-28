@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Model\WgAbility;
-use Illuminate\Http\Request;
+use App\Model\Permissions;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    public function index(WgAbility $ability)
+    public function index(Permissions $permissions)
     {
         // 获取侧边栏菜单
-        $items = $ability->select('id', 'pid', 'title', 'route_name', 'icon', 'is_menu')
-            ->whereNotNull('is_menu')
-            ->orderBy('order', 'desc')
+        $authUser = Auth::user();
+        $items = $permissions->from('permissions as p')
+            ->leftJoin('abilities as a', 'a.id', '=', 'ability_id')
+            ->select('a.id', 'a.pid', 'a.title', 'a.route_name', 'a.icon', 'a.is_menu')
+            ->whereNotNull('a.is_menu')
+            ->where(['p.entity_id' => $authUser->id, 'p.entity_type' => 'roles'])
+            ->orderBy('a.order', 'desc')
             ->get()
             ->toArray();
 
@@ -37,7 +40,7 @@ class HomeController extends Controller
         return view('admin.layouts.base', [
             'title' => '控制台',
             'menu' => $menu,
-            'user' => Auth::user()
+            'user' => $authUser
         ]);
     }
 

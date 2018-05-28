@@ -72,11 +72,13 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                     </a>
+                    @if(isset($item['sub_menu']))
                     <ul class="treeview-menu">
                         @foreach($item['sub_menu'] as $value)
                         <li><a href="{{ route($value['route_name']) }}" target="sub_page"><i class="fa {{ $value['icon'] }}"></i>{{ $value['title'] }}</a></li>
                         @endforeach
                     </ul>
+                    @endif
                 </li>
                 @endforeach
             </ul>

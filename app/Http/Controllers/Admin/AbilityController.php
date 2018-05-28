@@ -8,11 +8,11 @@ use App\Model\Permissions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-
 class AbilityController extends Controller
 {
     public function index(WgAbility $ability)
     {
+        $this->middleware('can:ability-list');
         $abilities = $ability->getAbilitiesByPid(0);
 
         return view('admin.ability.index', [
@@ -23,6 +23,8 @@ class AbilityController extends Controller
 
     public function create(Request $request)
     {
+        $this->middleware('can:ability-list,create-ability');
+
         return view('admin.ability.create', [
             'title' => '添加权限',
             'pid' => (int)$request->id ?: null
@@ -31,6 +33,7 @@ class AbilityController extends Controller
 
     public function store(Request $request)
     {
+        $this->middleware('can:ability-list,create-ability');
         $this->inputValidate($request);
 
         if ($this->doesNameExist($request->name)) {
@@ -60,6 +63,7 @@ class AbilityController extends Controller
 
     public function edit($id)
     {
+        $this->middleware('can:ability-list,edit-ability');
         $ability = WgAbility::find($id);
 
         if (!$ability) {
@@ -75,6 +79,7 @@ class AbilityController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->middleware('can:ability-list,edit-ability');
         $this->inputValidate($request);
 
         $data = [];
@@ -103,6 +108,7 @@ class AbilityController extends Controller
 
     public function destroy($id)
     {
+        $this->middleware('can:ability-list,destroy-ability');
         $abilityId = (int)$id;
         $permissions = new Permissions();
         DB::transaction(function () use ($abilityId, $permissions) {
@@ -132,7 +138,7 @@ class AbilityController extends Controller
     }
 
     /**
-     * Whether the given name exists
+     * 检查权限名称是否重复
      * @param $name
      * @return bool
      */
@@ -141,6 +147,12 @@ class AbilityController extends Controller
         return WgAbility::where('name', $name)->exists();
     }
 
+    /**
+     * 权限管理页面获取下级权限列表
+     * @param WgAbility $ability
+     * @param Request $request
+     * @return mixed
+     */
     public function getSubAbility(WgAbility $ability, Request $request)
     {
         if ($request->ajax()) {

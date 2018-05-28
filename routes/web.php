@@ -21,18 +21,17 @@ Auth::routes();
 
 // 后台用户认证
 Route::prefix('admin')->group(function () {
-    // Authentication Routes...
     Route::get('login', 'Admin\Auth\LoginController@showLoginForm')->name('admin_login');
     Route::post('login', 'Admin\Auth\LoginController@login');
     Route::post('logout', 'Admin\Auth\LoginController@logout')->name('admin_logout');
 });
 
 Route::prefix('panel')->namespace('admin')->middleware('auth:admin')->group(function () {
-    Route::get('/', 'HomeController@index')->name('home');
     Route::get('index', 'HomeController@home')->name('home.index');
-    Route::get('ability/submenu', 'AbilityController@getSubAbility')->name('ability.submenu');
-    Route::post('role/authorize', 'RoleController@roleAuthorize')->name('role.authorize');
-    Route::get('role/permissions/{role}', 'RoleController@permissions')->name('role.permissions');
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('ability/submenu', 'AbilityController@getSubAbility')->name('ability.submenu')->middleware('can:ability-list');
+    Route::post('role/authorize', 'RoleController@roleAuthorize')->name('role.authorize')->middleware('can:role-permissions');
+    Route::get('role/permissions/{role}', 'RoleController@permissions')->name('role.permissions')->middleware('can:role-permissions');
     Route::resource('ability', 'AbilityController');
     Route::resource('article', 'ArticleController');
     Route::resource('role', 'RoleController');

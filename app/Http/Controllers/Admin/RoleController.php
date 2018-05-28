@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers\Admin;
 
+
 use Bouncer;
 use App\Model\WgAbility;
+use App\Model\Permissions;
 use App\Model\AssignedRoles;
 use Illuminate\Http\Request;
 use Silber\Bouncer\Database\Role;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
-
 
 class RoleController extends Controller
 {
     public function index(Role $role)
     {
+        $this->middleware('can:role-list');
         $roles = $role->select('id', 'name', 'title')->orderBy('id')->get();
 
         return view('admin.role.index', [
@@ -25,6 +26,8 @@ class RoleController extends Controller
 
     public function create()
     {
+        $this->middleware('can:role-list,create-role');
+
         return view('admin.role.create', [
             'title' => '添加角色'
         ]);
@@ -32,6 +35,7 @@ class RoleController extends Controller
 
     public function store(Role $role, Request $request)
     {
+        $this->middleware('can:role-list,create-role');
         $this->inputValidate($request);
         if ($this->doesNameExist($role, $request->name)) {
             return redirect()->back()->withErrors('角色标识不能重复');
@@ -52,6 +56,7 @@ class RoleController extends Controller
 
     public function edit($id)
     {
+        $this->middleware('can:role-list,edit-role');
         $role = new Role();
         $result = $role->find($id);
 
@@ -68,6 +73,7 @@ class RoleController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->middleware('can:role-list,edit-role');
         $this->inputValidate($request);
         $role = new Role();
 
@@ -83,7 +89,7 @@ class RoleController extends Controller
         $condition['id'] = $id;
 
         $result = $role->where($condition)->update($data);
-        if($result) {
+        if ($result) {
             return redirect(route('role.index'));
         } else {
             return redirect()->back()->withErrors('更新错误，该角色标识可能已存在');
@@ -93,6 +99,7 @@ class RoleController extends Controller
 
     public function destroy($id)
     {
+        $this->middleware('can:role-list,destroy-role');
         $roleId = (int)$id;
         $role = new Role();
         $assignedRoles = new AssignedRoles();
@@ -129,18 +136,20 @@ class RoleController extends Controller
     /**
      * 角色权限分配页面
      * @param WgAbility $ability
+     * @param Permissions $permissions
+     * @param Role $roleModel
      * @param $role
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function permissions(WgAbility $ability, $role)
+    public function permissions(WgAbility $ability, Permissions $permissions, Role $roleModel, $role)
     {
-        $user = Auth::user();
+        $role = $roleModel->where('name', '=', $role)->first();
         $abilities = $ability->all();
-        $had = $user->getAbilities();
+        $had = $permissions->where('entity_id', '=', $role->id)->get();
 
         foreach ($abilities as &$ability) {
             foreach ($had as $value) {
-                if ($ability->id === $value->id) {
+                if ($ability->id === $value->ability_id) {
                     $ability->checked = 1;
                     continue;
                 }
@@ -148,11 +157,12 @@ class RoleController extends Controller
         }
 
         $abilities = $this->accessMerge($abilities);
+
         return view('admin.role.permissions', [
             'abilities' => $abilities,
-            'roleName' => $role,
+            'roleName' => $role->name,
             'had' => $had,
-            'title' => '权限管理'
+            'title' => '权限分配-' . $role->title
         ]);
     }
 
@@ -162,11 +172,11 @@ class RoleController extends Controller
      * @param int $pid
      * @return array
      */
-    private function accessMerge ($abilities, $pid=0)
+    private function accessMerge($abilities, $pid = 0)
     {
         $result = [];
         foreach ($abilities as $ability) {
-            if ($ability['pid']==$pid) {
+            if ($ability['pid'] == $pid) {
                 $ability['children'] = $this->accessMerge($abilities, $ability['id']);
                 $result[] = $ability;
             }
@@ -178,7 +188,7 @@ class RoleController extends Controller
      * 授权
      * @param Request $request
      */
-    public function roleAuthorize (Request $request)
+    public function roleAuthorize(Request $request)
     {
         if ($request->ajax()) {
             $role = $request->role;

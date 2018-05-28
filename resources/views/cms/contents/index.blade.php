@@ -7,8 +7,8 @@
                 @if(empty($article->thumb))
                     <div class="title-picture">
                         <i>
-                            @if($article->comments <= 99)
-                                {{ $article->comments }}
+                            @if($article->comment_count <= 99)
+                                {{ $article->comment_count }}
                             @else
                                 99+
                             @endif
@@ -20,11 +20,11 @@
                 @endif
                 <div class="title-text">
                     <p class="title"><a href="{{ route('article', ['id' => $article->id]) }}">{{ $article->title }}
-                            (作者：{{ $article->author }})</a></p>
+                            (作者：{{ $article->author_id }})</a></p>
                     <span>{{ substr($article->created_at, 0, 10) }} - {{ $article->category }}
-                        - 阅 {{ $article->views }}</span>
+                        - 阅 {{ $article->view_count }}</span>
                     <p class="describe">
-                        {{ $article->summary }}
+                        {{ $article->excerpt }}
                     </p>
                 </div>
             </section>

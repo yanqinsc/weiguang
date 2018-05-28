@@ -5,7 +5,7 @@ namespace App\Model;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Post extends Model
+class Article extends Model
 {
     use SoftDeletes;
     /**
@@ -19,13 +19,13 @@ class Post extends Model
         if ($category_id === 0) {
             // 首页展示所有分类最新文章
             return self::leftJoin('categories as c', 'category_id', '=', 'c.id')
-                ->select('articles.id', 'title', 'comments', 'thumb', 'author', 'summary', 'views', 'created_at', 'c.name as category')
+                ->select('articles.id', 'title', 'comment_count', 'thumb', 'author_id', 'excerpt', 'view_count', 'created_at', 'c.name as category')
                 ->orderBy('articles.id', 'desc')
                 ->paginate($paginate_number);
         } else {
             // 展示其它分类文章
             return self::leftJoin('categories as c', 'category_id', '=', 'c.id')
-                ->select('articles.id', 'title', 'comments', 'thumb', 'author', 'summary', 'views', 'created_at', 'c.name as category')
+                ->select('articles.id', 'title', 'comment_count', 'thumb', 'author_id', 'excerpt', 'view_count', 'created_at', 'c.name as category')
                 ->where('category_id', '=', $category_id)
                 ->orderBy('articles.id', 'desc')
                 ->paginate($paginate_number);
@@ -40,9 +40,8 @@ class Post extends Model
     public static function getArticle($id)
     {
         return self::leftJoin('categories as c', 'category_id', '=', 'c.id')
-            ->leftJoin('article_bodies as b', 'articles.id', '=', 'b.aid')
             ->where('articles.id', '=', $id)
-            ->select('articles.id', 'title', 'thumb', 'author', 'summary', 'views', 'comments', 'body', 'created_at', 'c.abbreviation', 'c.name as category')
+            ->select('articles.id', 'title', 'thumb', 'author_id', 'excerpt', 'view_count', 'comment_count', 'content', 'created_at', 'c.slug', 'c.name as category')
             ->first();
     }
 
@@ -54,8 +53,8 @@ class Post extends Model
     public static function getHotList()
     {
         return self::select('id', 'title')
-            ->orderBy('comments', 'desc')
-            ->orderBy('views', 'desc')
+            ->orderBy('comment_count', 'desc')
+            ->orderBy('view_count', 'desc')
             ->limit(6)
             ->get();
     }
@@ -66,7 +65,7 @@ class Post extends Model
      */
     public static function getListByUid($uid)
     {
-        self::select('id', 'title', 'author', 'thumb', 'summary')
+        self::select('id', 'title', 'author_id', 'thumb', 'excerpt')
             ->where('publisher_id', '=', $uid)
             ->get();
     }
