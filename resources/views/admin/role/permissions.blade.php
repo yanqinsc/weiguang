@@ -3,53 +3,37 @@
 @include('admin.layouts.header')
 <link rel="stylesheet" href="{{ asset('admin/css/permissions.css') }}">
 <body>
+
 <div class="box box-danger list">
     <div class="box-body">
         <div class="dataTables_wrapper form-inline dt-bootstrap">
             <div class="row">
                 <div class="col-sm-12">
-                    @foreach($abilities as $ability)
-                        <ul class="top">
-                            <li>
-                                <label for="ability-{{ $ability->id }}">
+                    <table class="table table-bordered table-striped dataTable" role="grid"
+                           aria-describedby="abilities">
+                        <thead>
+                        <tr role="row">
+                            <th style="width: 8px;">授权</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Browser: activate to sort column ascending" style="width: 242px;">名称
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Platform(s): activate to sort column ascending" style="width: 216px;">标识
+                            </th>
+                        </thead>
+                        <tbody>
+                        @foreach($abilities as $ability)
+                            <tr role="row" class="{{ $ability->id % 2 != 0 ? "odd" : "even"}}">
+                                <td>
                                     <input id="ability-{{ $ability->id }}" type="checkbox" value="{{ $ability->name }}"
-                                           @if($ability->checked) checked @endif> {{ $ability->title }}
-                                </label>
-                            </li>
-                            @if($ability->children)
-                                <br>
-                                <li>
-                                    @foreach($ability->children as $son)
-                                        <ul class="son">
-                                            <li>
-                                                <label for="ability-{{ $son->id }}">
-                                                    <input id="ability-{{ $son->id }}" type="checkbox"
-                                                           value="{{ $son->name }}"
-                                                           @if($son->checked) checked @endif> {{ $son->title }}
-                                                </label>
-                                            </li>
-                                            @if($son->children)
-                                                <li>
-                                                    <ul class="grandson">
-                                                        <br>
-                                                        @foreach($son->children as $grandson)
-                                                            <li>
-                                                                <label for="ability-{{ $grandson->id }}">
-                                                                    <input id="ability-{{ $grandson->id }}"
-                                                                           type="checkbox" value="{{ $grandson->name }}"
-                                                                           @if($grandson->checked) checked @endif> {{ $grandson->title }}
-                                                                </label>
-                                                            </li>
-                                                        @endforeach
-                                                    </ul>
-                                                </li>
-                                            @endif
-                                        </ul>
-                                    @endforeach
-                                </li>
-                            @endif
-                        </ul>
-                    @endforeach
+                                           @if($ability->checked) checked @endif>
+                                </td>
+                                <td>{{ $ability->title }}</td>
+                                <td>{{ $ability->name }}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

@@ -2,23 +2,22 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Model\Permissions;
+use App\Model\Admin;
+use App\Model\AssignedRoles;
+use Bouncer;
+use App\Model\Menu;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    public function index(Permissions $permissions)
+    public function index(Menu $menu, AssignedRoles $assignedRoles)
     {
         // 获取侧边栏菜单
         $authUser = Auth::user();
-        $items = $permissions->from('permissions as p')
-            ->leftJoin('abilities as a', 'a.id', '=', 'ability_id')
-            ->select('a.id', 'a.pid', 'a.title', 'a.route_name', 'a.icon', 'a.is_menu')
-            ->whereNotNull('a.is_menu')
-            ->where(['p.entity_id' => $authUser->id, 'p.entity_type' => 'roles'])
-            ->orderBy('a.order', 'desc')
-            ->get()
-            ->toArray();
+
+        $role = $assignedRoles->where('entity_id', $authUser->id)->first();
+
+        $items = $menu->orderBy('order', 'desc')->where('role_id', $role->role_id)->get()->toArray();
 
         $menu = [];
         // 获取一级菜单
@@ -37,6 +36,7 @@ class HomeController extends Controller
             }
         }
 
+//        dd($menu);
         return view('admin.layouts.base', [
             'title' => '控制台',
             'menu' => $menu,

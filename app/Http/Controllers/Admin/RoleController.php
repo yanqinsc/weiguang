@@ -13,9 +13,17 @@ use Illuminate\Support\Facades\DB;
 
 class RoleController extends Controller
 {
-    public function index(Role $role)
+    public function __construct()
     {
         $this->middleware('can:role-list');
+        $this->middleware('can:role-create')->only(['create', 'store']);
+        $this->middleware('can:role-edit')->only(['edit', 'update']);
+        $this->middleware('can:role-destroy')->only('destroy');
+        $this->middleware('can:role-permissions')->only(['permissions', 'roleAuthorize']);
+    }
+
+    public function index(Role $role)
+    {
         $roles = $role->select('id', 'name', 'title')->orderBy('id')->get();
 
         return view('admin.role.index', [
@@ -26,8 +34,6 @@ class RoleController extends Controller
 
     public function create()
     {
-        $this->middleware('can:role-list,create-role');
-
         return view('admin.role.create', [
             'title' => '添加角色'
         ]);
@@ -35,7 +41,6 @@ class RoleController extends Controller
 
     public function store(Role $role, Request $request)
     {
-        $this->middleware('can:role-list,create-role');
         $this->inputValidate($request);
         if ($this->doesNameExist($role, $request->name)) {
             return redirect()->back()->withErrors('角色标识不能重复');
@@ -56,7 +61,6 @@ class RoleController extends Controller
 
     public function edit($id)
     {
-        $this->middleware('can:role-list,edit-role');
         $role = new Role();
         $result = $role->find($id);
 
@@ -73,7 +77,6 @@ class RoleController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->middleware('can:role-list,edit-role');
         $this->inputValidate($request);
         $role = new Role();
 
@@ -99,7 +102,6 @@ class RoleController extends Controller
 
     public function destroy($id)
     {
-        $this->middleware('can:role-list,destroy-role');
         $roleId = (int)$id;
         $role = new Role();
         $assignedRoles = new AssignedRoles();

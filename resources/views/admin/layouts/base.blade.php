@@ -91,7 +91,7 @@
                 <small>{{ $user->motto }}</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="{{ route('home') }}"><i class="fa fa-dashboard"></i> 控制台</a></li>
+                <li><a href="/panel"><i class="fa fa-dashboard"></i> 控制台</a></li>
                 <li class="active" id="current-title-right">个人中心</li>
             </ol>
         </section>

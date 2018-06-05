@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin\Auth;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Extensions\AuthenticatesLogout;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
