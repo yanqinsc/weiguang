@@ -42,12 +42,10 @@
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     <a href="javascript:void(0) "
-                                       data-url="{{ route('ability.destroy', ['id' => $user->id]) }}"
+                                       data-url="{{ route('admins.destroy', ['id' => $user->id]) }}"
                                        title="删除" class="a-remove">
-                                        <i class="fa fa-trash"></i>
+                                        <i class="fa fa-ban"></i>
                                     </a>
-                                    <a href="{{ route('role.permissions', ['name' => $user->name]) }}" title="分配角色"><i
-                                                class="fa fa-group"></i></a>
                                 </td>
                             </tr>
                         @endforeach
@@ -63,7 +61,7 @@
     {{ csrf_field() }}
     <div>
         <div>
-            执行该操作后，该权限将被永久删除，所有拥有该权限的用户都将收到影响，确定删除？
+            执行该操作后，该账户将被禁用，确定？
         </div>
         <br>
         <div class="timeline-footer">

@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Bouncer;
 use App\Model\Admin;
-use App\Model\Permissions;
-use DeepCopy\f001\A;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Silber\Bouncer\Database\Role;
 
 class UserController extends Controller
 {
@@ -91,43 +89,42 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'real_name' => 'max:20',
-            'phone' => 'regex:"^[0-9]{11,15}$"'
+            'real_name' => 'max:20|nullable',
+            'phone' => [
+                'nullable',
+                'regex:"^[0-9]{11,15}$"'
+            ],
+            'password' => [
+                'max:150',
+                'regex:"^[0-9a-z]{6,16}$"',
+                'nullable'
+            ],
+            'email' => 'email|unique:admins|nullable',
+            'nickname' => 'max:50|unique:admins|nullable',
+            'role' => 'alpha|max:10|nullable'
         ]);
 
-        $data = [
+        $data = array_filter([
+            'email' => $request->email,
+            'password' => $request->password,
+            'nickname' => $request->nickname,
             'real_name' => $request->real_name,
             'phone' => $request->phone,
             'avatar' => $request->avatar,
-            'address' => $request->address ?: '',
+            'address' => $request->address,
             'motto' => $request->motto
-        ];
+        ]);
 
-        if ($request->password) {
-            $request->validate([
-                'password' => [
-                    'max:150',
-                    'regex:"^[0-9a-z]{6,16}$"'
-                ]
-            ]);
-            $data['password'] = bcrypt($request->password);
+        $user = Admin::where(['id' => (int)$id])->first();
+        $result = $user->update($data);
+
+        if ($request->role) {
+            if (Role::where('name', $request->role)->exists()) {
+                Bouncer::assign($request->role)->to($user);
+            } else {
+                return redirect()->back()->withErrors('角色名错误。');
+            }
         }
-
-        if ($request->email) {
-            $request->validate([
-                'email' => 'email'
-            ]);
-            $data['email'] = $request->email;
-        }
-
-        if ($request->nickname) {
-            $request->validate([
-                'nickname' => 'max:50|unique:admins'
-            ]);
-            $data['nickname'] = $request->nickname;
-        }
-
-        $result = Admin::where(['id' => (int)$id])->update($data);
 
         if ($result) {
             return redirect(route('admins.index'));
@@ -138,12 +135,7 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        $abilityId = (int)$id;
-        $permissions = new Permissions();
-        DB::transaction(function () use ($abilityId, $permissions) {
-            $permissions->destroyById($abilityId);
-            WgAbility::destroy($abilityId);
-        });
+        Admin::where('id', (int)$id)->delete();
         return redirect()->back();
     }
 }

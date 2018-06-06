@@ -79,9 +79,8 @@ class RoleController extends Controller
     {
         $this->inputValidate($request);
         $role = new Role();
-
         $data = [];
-        // If 'name' exists just update other info
+
         if (!$this->doesNameExist($role, $request->name)) {
             $data['name'] = $request->name;
         } else {

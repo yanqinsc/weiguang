@@ -105,6 +105,8 @@ ul {
 
 @media (min-width: 768px) {
     .navbar-nav>li>a {
-        padding-bottom: 33px;
+        padding-top: 16px;
+        padding-right: 25px;
     }
 }
+

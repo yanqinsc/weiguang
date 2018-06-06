@@ -9,18 +9,26 @@ use Illuminate\Support\Facades\Auth;
 class ArticleController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 查看所有文章
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $number = (int)$request->number ?: 10;
-        $condition = $request->condition;
-        $articles = Article::getListByUid(Auth::user()->id);
+        $query = Article::leftJoin('categories as c', 'category_id', '=', 'c.id')
+            ->leftJoin('users as u', 'author_id', '=', 'u.id')
+            ->leftJoin('admins as a', 'publisher_id', '=', 'a.id')
+            ->select('articles.id', 'title', 'comment_count', 'a.name as author', 'u.name as publisher', 'excerpt', 'view_count',
+                'articles.created_at', 'c.id as category_id', 'c.name as category')
+            ->orderBy('articles.id', 'desc');
 
+        $request->category_id && $query->where('c.id', $request->category_id);
+        $articles = $query->paginate($number);
+//dd($articles);
         return view('admin.article.index', [
             'articles' => $articles,
+            'paginate_number' => $number,
             'title' => '文章管理'
         ]);
     }

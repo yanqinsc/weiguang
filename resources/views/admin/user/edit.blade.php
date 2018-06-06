@@ -16,42 +16,47 @@
         <br>
         <div class="input-group">
             <span class="input-group-addon">昵称</span>
-            <input name="nickname" type="text" class="form-control">
+            <input name="nickname" type="text" class="form-control" placeholder="{{ $user->nickname }}">
         </div>
         <br>
         <div class="input-group">
             <span class="input-group-addon">姓名</span>
-            <input name="real_name" type="text" class="form-control" value="{{ $user->real_name }}">
+            <input name="real_name" type="text" class="form-control" placeholder="{{ $user->real_name }}">
         </div>
         <br>
         <div class="input-group">
             <span class="input-group-addon">Email</span>
-            <input name="email" type="email" class="form-control">
+            <input name="email" type="email" class="form-control"  placeholder="{{ $user->email }}">
         </div>
         <br>
         <div class="input-group">
             <span class="input-group-addon">电话</span>
-            <input name="phone" type="text" class="form-control" value="{{ $user->phone }}" >
+            <input name="phone" type="text" class="form-control" placeholder="{{ $user->phone }}" >
         </div>
         <br>
         <div class="input-group">
             <span class="input-group-addon">地址</span>
-            <input name="phone" type="text" class="form-control" value="{{ $user->address }}" >
+            <input name="phone" type="text" class="form-control" placeholder="{{ $user->address }}" >
         </div>
         <br>
         <div class="input-group">
             <span class="input-group-addon">头像</span>
-            <input name="avatar" type="text" class="form-control" value="{{ $user->avatar }}" >
+            <input name="avatar" type="text" class="form-control" placeholder="{{ $user->avatar }}" >
         </div>
         <br>
         <div class="input-group">
             <span class="input-group-addon">座右铭</span>
-            <input name="motto" type="text" class="form-control" value="{{ $user->motto }}" >
+            <input name="motto" type="text" class="form-control" placeholder="{{ $user->motto }}" >
         </div>
         <br>
         <div class="input-group">
             <span class="input-group-addon">密码</span>
             <input name="password" type="password" class="form-control">
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon">角色</span>
+            <input name="role" type="text" class="form-control">
         </div>
     </div>
     <p class="color-red show-error">@if($errors->any()) {{ $errors->first() }} @endif</p>

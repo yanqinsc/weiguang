@@ -11,7 +11,7 @@
  Target Server Version : 100214
  File Encoding         : 65001
 
- Date: 05/06/2018 08:28:45
+ Date: 06/06/2018 22:20:45
 */
 
 SET NAMES utf8mb4;
@@ -85,10 +85,10 @@ CREATE TABLE `wg_admins`  (
 -- ----------------------------
 -- Records of wg_admins
 -- ----------------------------
-INSERT INTO `wg_admins` VALUES (1, 'yanqinsc', '$2y$10$hipe3dXnOMqEjPmHG2HV/uOHfumA0lD5lqpqyrGJ3oll2q4f7nnj2', '小石', '晏勤', '/admin/adminlte/dist/img/user2-160x160.jpg', 'yanqinsc@qq.com', '', '', '', '孜孜不倦，不紧不慢', 'ksQNcdpwMaFFTebzH4od2vWsA1skNCZACIOD6WzMEYugrZnWwlzCL2Oagn1w', '2018-04-16 23:49:09', '2018-04-16 23:49:09', NULL);
+INSERT INTO `wg_admins` VALUES (1, 'yanqinsc', '$2y$10$hipe3dXnOMqEjPmHG2HV/uOHfumA0lD5lqpqyrGJ3oll2q4f7nnj2', '小石', '晏勤', '/admin/adminlte/dist/img/user2-160x160.jpg', 'yanqinsc@qq.com', '', '', '', '孜孜不倦，不紧不慢', 'fsx4Q3gssCAcBVFO4RrOfNqaNUQJzVgrHtz0SUbC8RyalCcsCymIh7e8le02', '2018-04-16 23:49:09', '2018-04-16 23:49:09', NULL);
 INSERT INTO `wg_admins` VALUES (4, 'panda', '$2y$10$hipe3dXnOMqEjPmHG2HV/uOHfumA0lD5lqpqyrGJ3oll2q4f7nnj2', '盼盼', '史盼盼', '/admin/adminlte/dist/img/user2-160x160.jpg', 'panda@qq.com', '', '', '', '孜孜不倦，不紧不慢', 'm24t7MCM24pMQnYj7sjKtzmL6vPJeRYv9wlfPh9VuqE5Wb7WZEPDRszDt7Rl', '2018-04-16 23:49:09', '2018-04-16 23:49:09', NULL);
 INSERT INTO `wg_admins` VALUES (5, 'xiuqing', '$2y$10$ZbXRoqHcHOv14BlvBP83Oe.RZmfUW7870alIdzRRTqwkiZgw.y.jW', '秀卿', '秀卿', '', 'xiuqing@qq.com', '12312421241', '', '', '', NULL, '2018-06-05 07:02:56', '2018-06-05 07:02:56', NULL);
-INSERT INTO `wg_admins` VALUES (6, 'yanqinsc2', '$2y$10$.s0O.hD1F/LfCpeDS8Sve.k.8I.T3vq50pV2DBVYOzMRV8kSanyLG', '小石2', 'erwwrw', '', 'cqyxvip@sina.com', '12312421241', '', '', '', NULL, '2018-06-05 08:09:51', '2018-06-05 08:09:51', NULL);
+INSERT INTO `wg_admins` VALUES (6, 'yanqinsc2', '$2y$10$hipe3dXnOMqEjPmHG2HV/uOHfumA0lD5lqpqyrGJ3oll2q4f7nnj2', '风云', '风雨', 'http://weiguang/admin/adminlte/dist/img/user2-160x160.jpg', 'yanqinsc8@qq.com', '12312421241', '', '', '千金散尽还复来', NULL, '2018-06-05 08:09:51', '2018-06-06 20:46:18', NULL);
 
 -- ----------------------------
 -- Table structure for wg_articles
@@ -117,7 +117,7 @@ CREATE TABLE `wg_articles`  (
 -- ----------------------------
 -- Records of wg_articles
 -- ----------------------------
-INSERT INTO `wg_articles` VALUES (26, '春天里', '1', 'http://f.hiphotos.baidu.com/image/pic/item/c9fcc3cec3fdfc03777b0d1ad83f8794a4c22615.jpg', '春天里', '春天里春天里春天里春天里春天里春天里春天里', 3, 4, NULL, NULL, NULL, 0, 0, '2018-05-28 08:07:58', NULL, NULL);
+INSERT INTO `wg_articles` VALUES (26, '春天里', '1', 'http://f.hiphotos.baidu.com/image/pic/item/c9fcc3cec3fdfc03777b0d1ad83f8794a4c22615.jpg', '春天里', '春天里春天里春天里春天里春天里春天里春天里', 3, 4, NULL, NULL, NULL, 1, 6, '2018-05-28 08:07:58', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for wg_assigned_roles
@@ -138,6 +138,7 @@ CREATE TABLE `wg_assigned_roles`  (
 -- Records of wg_assigned_roles
 -- ----------------------------
 INSERT INTO `wg_assigned_roles` VALUES (1, 1, 'App\\Model\\Admin', NULL);
+INSERT INTO `wg_assigned_roles` VALUES (1, 6, 'App\\Model\\Admin', NULL);
 
 -- ----------------------------
 -- Table structure for wg_categories
@@ -251,7 +252,6 @@ CREATE TABLE `wg_permissions`  (
 -- Records of wg_permissions
 -- ----------------------------
 INSERT INTO `wg_permissions` VALUES (11, 1, 'roles', 0, NULL);
-INSERT INTO `wg_permissions` VALUES (6, 1, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (7, 1, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (3, 1, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (4, 1, 'roles', 0, NULL);
@@ -267,6 +267,11 @@ INSERT INTO `wg_permissions` VALUES (14, 1, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (15, 1, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (16, 1, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (17, 1, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (10, 2, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (11, 2, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (12, 2, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (13, 2, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (6, 1, 'roles', 0, NULL);
 
 -- ----------------------------
 -- Table structure for wg_roles
@@ -290,7 +295,7 @@ CREATE TABLE `wg_roles`  (
 -- ----------------------------
 INSERT INTO `wg_roles` VALUES (1, 'admin', '管理员', NULL, NULL, '2018-04-22 11:45:48', '2018-05-08 21:00:41');
 INSERT INTO `wg_roles` VALUES (2, 'teacher', '教师', NULL, NULL, '2018-04-22 11:53:32', '2018-05-08 20:52:47');
-INSERT INTO `wg_roles` VALUES (3, 'student', '学生', NULL, NULL, '2018-05-08 09:35:38', '2018-05-08 09:35:38');
+INSERT INTO `wg_roles` VALUES (3, 'editor', '编辑', NULL, NULL, '2018-05-08 09:35:38', '2018-05-08 09:35:38');
 
 -- ----------------------------
 -- Table structure for wg_school
@@ -321,7 +326,8 @@ CREATE TABLE `wg_sessions`  (
 -- ----------------------------
 -- Records of wg_sessions
 -- ----------------------------
-INSERT INTO `wg_sessions` VALUES ('hhA1gS1Et3MIX966qHWYNMt7Lxj7V2DIM9p8OlCa', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoibjJ5UmZGOUJZelFPTXY3MlV3MXhuN29kejdGWThRY0NsTEQ3NHE2MiI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM1OiJodHRwOi8vd2VpZ3VhbmcvcGFuZWwvYWRtaW5zLzYvZWRpdCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1528158298);
+INSERT INTO `wg_sessions` VALUES ('5s1kqIqqXBY58Cz6uOGdUqrp4GoH655Pu0wu6YPW', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiSnNvVUJSZFh2TndhR0dTSG1CNHN4TlQ2OWdpbTBkWXhudUVtc1ZpcCI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI2OiJodHRwOi8vd2VpZ3VhbmcvYXJ0aWNsZS8yNiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Njt9', 1528294203);
+INSERT INTO `wg_sessions` VALUES ('Jh1kX5ufehKJo2bqZPuh25Z0CMgMSGNTK53FyM93', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiSnNvVUJSZFh2TndhR0dTSG1CNHN4TlQ2OWdpbTBkWXhudUVtc1ZpcCI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI4OiJodHRwOi8vd2VpZ3VhbmcvcGFuZWwvYWRtaW5zIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1528288837);
 
 -- ----------------------------
 -- Table structure for wg_students
