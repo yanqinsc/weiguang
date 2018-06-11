@@ -35,6 +35,7 @@ Route::prefix('panel')->namespace('admin')->middleware('auth:admin')->group(func
     Route::resource('article', 'ArticleController');
     Route::resource('role', 'RoleController');
     Route::resource('admins', 'UserController');
+    Route::resource('menu', 'MenuController');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -6,7 +6,7 @@
     <div class="box-body">
         <div class="button-bar">
             <a class="btn btn-app bg-olive" href="{{ route('ability.create') }}">
-                <i class="fa fa-plus"></i>添加权限
+                <i class="fa fa-plus"></i>添加
             </a>
         </div>
         <div class="dataTables_wrapper form-inline dt-bootstrap">
@@ -16,19 +16,10 @@
                            aria-describedby="abilities">
                         <thead>
                         <tr role="row">
-                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending"
-                                style="width: 197px;">ID
-                            </th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-label="Browser: activate to sort column ascending" style="width: 242px;">名称
-                            </th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-label="Platform(s): activate to sort column ascending" style="width: 216px;">标识
-                            </th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-label="Engine version: activate to sort column ascending" style="width: 169px;">管理
-                            </th>
+                            <th>ID</th>
+                            <th>名称</th>
+                            <th>标识</th>
+                            <th>管理</th>
                         </thead>
                         <tbody>
                         @foreach($abilities as $ability)

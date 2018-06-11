@@ -17,7 +17,12 @@ class HomeController extends Controller
 
         $role = $assignedRoles->where('entity_id', $authUser->id)->first();
 
-        $items = $menu->orderBy('order', 'desc')->where('role_id', $role->role_id)->get()->toArray();
+        $items = $menu->leftJoin('menus_roles', 'menu_id', 'id')
+            ->orderBy('order', 'desc')
+            ->where('role_id' , $role->role_id)
+            ->whereNull('disable')
+            ->get()
+            ->toArray();
 
         $menu = [];
         // 获取一级菜单
@@ -36,7 +41,6 @@ class HomeController extends Controller
             }
         }
 
-//        dd($menu);
         return view('admin.layouts.base', [
             'title' => '控制台',
             'menu' => $menu,

@@ -5,7 +5,7 @@
     <form class="box box-info create" method="post" action="{{ route('role.store') }}">
         {{ csrf_field() }}
         <div class="box-header with-border">
-            <h3 class="box-title">添加权限</h3>
+            <h3 class="box-title">添加角色</h3>
         </div>
         <div class="box-body">
             <div class="input-group">

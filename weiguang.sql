@@ -11,7 +11,7 @@
  Target Server Version : 100214
  File Encoding         : 65001
 
- Date: 06/06/2018 22:20:45
+ Date: 11/06/2018 20:03:32
 */
 
 SET NAMES utf8mb4;
@@ -34,7 +34,7 @@ CREATE TABLE `wg_abilities`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `abilities_name_unique`(`name`) USING BTREE,
   INDEX `abilities_scope_index`(`scope`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of wg_abilities
@@ -56,6 +56,10 @@ INSERT INTO `wg_abilities` VALUES (14, 'admin-list', '管理员列表', NULL, NU
 INSERT INTO `wg_abilities` VALUES (15, 'admin-create', '管理员添加', NULL, NULL, 0, NULL, '2018-05-07 23:27:09', '2018-06-04 21:54:10');
 INSERT INTO `wg_abilities` VALUES (16, 'admin-edit', '管理员编辑', NULL, NULL, 0, NULL, '2018-05-07 23:27:09', NULL);
 INSERT INTO `wg_abilities` VALUES (17, 'admin-forbiden', '管理员禁用', NULL, NULL, 0, NULL, '2018-05-07 23:27:09', '2018-06-05 06:11:40');
+INSERT INTO `wg_abilities` VALUES (18, 'menu-list', '菜单管理', NULL, NULL, 0, NULL, '2018-06-10 18:51:17', '2018-06-10 18:51:17');
+INSERT INTO `wg_abilities` VALUES (19, 'menu-create', '菜单添加', NULL, NULL, 0, NULL, '2018-06-10 18:51:39', '2018-06-10 18:51:39');
+INSERT INTO `wg_abilities` VALUES (20, 'menu-edit', '菜单编辑', NULL, NULL, 0, NULL, '2018-06-10 18:53:44', '2018-06-10 18:53:44');
+INSERT INTO `wg_abilities` VALUES (21, 'menu-destroy', '菜单删除', NULL, NULL, 0, NULL, '2018-06-10 18:53:59', '2018-06-10 18:53:59');
 
 -- ----------------------------
 -- Table structure for wg_admins
@@ -177,30 +181,54 @@ CREATE TABLE `wg_class`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `wg_menus`;
 CREATE TABLE `wg_menus`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `pid` int(11) NOT NULL,
-  `role_id` int(11) NOT NULL,
-  `order` int(11) NULL DEFAULT NULL,
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `pid` int(11) UNSIGNED NOT NULL,
+  `order` int(11) UNSIGNED NULL DEFAULT NULL,
   `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `icon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `route_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `disable` char(0) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '禁用',
+  `disable` char(0) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '禁用‘’',
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0),
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `menu_name_unique`(`title`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of wg_menus
 -- ----------------------------
-INSERT INTO `wg_menus` VALUES (1, 0, 1, 0, '权限管理', 'fa-lock', '#', NULL, '2018-04-30 08:54:32', '2018-06-04 08:09:07');
-INSERT INTO `wg_menus` VALUES (2, 1, 1, 99, '权限', 'fa-key', 'ability.index', NULL, '2018-04-30 08:55:27', '2018-06-04 08:08:47');
-INSERT INTO `wg_menus` VALUES (3, 1, 1, 98, '角色', 'fa-group', 'role.index', NULL, '2018-05-03 21:03:43', '2018-06-04 08:08:52');
-INSERT INTO `wg_menus` VALUES (4, 0, 1, 99, '内容管理', 'fa-files-o', '#', NULL, '2018-05-05 14:12:29', '2018-06-04 08:10:03');
-INSERT INTO `wg_menus` VALUES (5, 4, 1, 99, '文章', 'fa-file-text', 'article.index', NULL, '2018-05-05 14:15:26', '2018-06-04 21:12:01');
-INSERT INTO `wg_menus` VALUES (6, 1, 1, 97, '管理员', 'fa-user', 'admins.index', NULL, '2018-06-04 08:03:31', '2018-06-04 22:13:09');
-INSERT INTO `wg_menus` VALUES (7, 4, 1, 98, '评论', ' fa-comments', 'ability.index', NULL, '2018-06-04 08:13:24', '2018-06-04 08:15:24');
+INSERT INTO `wg_menus` VALUES (1, 0, 0, '权限管理', 'fa-lock', '#', NULL, '2018-04-30 08:54:32', '2018-06-10 22:29:22');
+INSERT INTO `wg_menus` VALUES (2, 1, 99, '权限', 'fa-key', 'ability.index', NULL, '2018-04-30 08:55:27', '2018-06-04 08:08:47');
+INSERT INTO `wg_menus` VALUES (3, 1, 98, '角色', 'fa-group', 'role.index', NULL, '2018-05-03 21:03:43', '2018-06-04 08:08:52');
+INSERT INTO `wg_menus` VALUES (4, 0, 1, '内容管理', 'fa-files-o', '#', NULL, '2018-05-05 14:12:29', '2018-06-10 19:03:17');
+INSERT INTO `wg_menus` VALUES (5, 4, 99, '文章', 'fa-file-text', 'article.index', NULL, '2018-05-05 14:15:26', '2018-06-04 21:12:01');
+INSERT INTO `wg_menus` VALUES (6, 1, 96, '管理员', 'fa-user', 'admins.index', NULL, '2018-06-04 08:03:31', '2018-06-10 19:03:45');
+INSERT INTO `wg_menus` VALUES (7, 4, 98, '评论', ' fa-comments', 'ability.index', NULL, '2018-06-04 08:13:24', '2018-06-04 08:15:24');
+INSERT INTO `wg_menus` VALUES (8, 1, 97, '菜单', ' fa-th-large', 'menu.index', NULL, '2018-06-10 19:00:52', '2018-06-10 19:03:48');
+INSERT INTO `wg_menus` VALUES (9, 0, 2, '会员管理', 'fa-user', 'admins_index', '', '2018-06-10 22:03:03', '2018-06-10 22:42:09');
+
+-- ----------------------------
+-- Table structure for wg_menus_roles
+-- ----------------------------
+DROP TABLE IF EXISTS `wg_menus_roles`;
+CREATE TABLE `wg_menus_roles`  (
+  `menu_id` int(6) NOT NULL,
+  `role_id` int(11) NULL DEFAULT NULL,
+  UNIQUE INDEX `menus_roles_unique`(`menu_id`, `role_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of wg_menus_roles
+-- ----------------------------
+INSERT INTO `wg_menus_roles` VALUES (1, 1);
+INSERT INTO `wg_menus_roles` VALUES (2, 1);
+INSERT INTO `wg_menus_roles` VALUES (3, 1);
+INSERT INTO `wg_menus_roles` VALUES (4, 1);
+INSERT INTO `wg_menus_roles` VALUES (5, 1);
+INSERT INTO `wg_menus_roles` VALUES (6, 1);
+INSERT INTO `wg_menus_roles` VALUES (7, 1);
+INSERT INTO `wg_menus_roles` VALUES (8, 1);
+INSERT INTO `wg_menus_roles` VALUES (9, 1);
 
 -- ----------------------------
 -- Table structure for wg_migrations
@@ -272,6 +300,10 @@ INSERT INTO `wg_permissions` VALUES (11, 2, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (12, 2, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (13, 2, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (6, 1, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (19, 1, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (20, 1, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (21, 1, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (18, 1, 'roles', 0, NULL);
 
 -- ----------------------------
 -- Table structure for wg_roles
@@ -326,21 +358,7 @@ CREATE TABLE `wg_sessions`  (
 -- ----------------------------
 -- Records of wg_sessions
 -- ----------------------------
-INSERT INTO `wg_sessions` VALUES ('5s1kqIqqXBY58Cz6uOGdUqrp4GoH655Pu0wu6YPW', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiSnNvVUJSZFh2TndhR0dTSG1CNHN4TlQ2OWdpbTBkWXhudUVtc1ZpcCI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI2OiJodHRwOi8vd2VpZ3VhbmcvYXJ0aWNsZS8yNiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Njt9', 1528294203);
-INSERT INTO `wg_sessions` VALUES ('Jh1kX5ufehKJo2bqZPuh25Z0CMgMSGNTK53FyM93', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiSnNvVUJSZFh2TndhR0dTSG1CNHN4TlQ2OWdpbTBkWXhudUVtc1ZpcCI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI4OiJodHRwOi8vd2VpZ3VhbmcvcGFuZWwvYWRtaW5zIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1528288837);
-
--- ----------------------------
--- Table structure for wg_students
--- ----------------------------
-DROP TABLE IF EXISTS `wg_students`;
-CREATE TABLE `wg_students`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `uid` int(10) UNSIGNED NOT NULL,
-  `class_id` int(11) UNSIGNED NOT NULL DEFAULT 0,
-  `school_id` smallint(5) UNSIGNED NOT NULL DEFAULT 0,
-  `intro` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+INSERT INTO `wg_sessions` VALUES ('ATkxHYggUYqsuAJkGAVM3klyPYeffJDgLYFgohFq', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiYkkzY0hSWGlWYURFV05aeDFBNEFISVFUZHpSd1I1U1ZiRXE4UTZVRiI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI2OiJodHRwOi8vd2VpZ3VhbmcvcGFuZWwvbWVudSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1528641742);
 
 -- ----------------------------
 -- Table structure for wg_teachers
