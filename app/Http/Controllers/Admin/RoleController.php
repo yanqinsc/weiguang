@@ -215,6 +215,7 @@ class RoleController extends Controller
         $menu = [];
         // 归纳菜单
         foreach ($items as $key => &$item) {
+            $item['checked'] = false;
             foreach ($roleItems as $val) {
                 if ($item['id'] == $val['menu_id']) {
                     $item['checked'] = true;
