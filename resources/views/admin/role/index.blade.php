@@ -43,6 +43,8 @@
                                        title="删除" class="a-remove"><i class="fa fa-trash"></i></a>
                                     <a href="{{ route('role.permissions', ['name' => $role->name]) }}" title="配置权限"><i
                                                 class="fa fa-cogs"></i></a>
+                                    <a href="{{ route('role.menu', ['id' => $role->id]) }}" title="配置菜单"><i
+                                                class="fa fa-list-alt"></i></a>
                                 </td>
                             </tr>
                         @endforeach

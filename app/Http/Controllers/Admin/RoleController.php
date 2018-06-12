@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 
+use App\Model\Menu;
+use App\Model\MenuRole;
 use Bouncer;
 use App\Model\WgAbility;
 use App\Model\Permissions;
@@ -201,5 +203,52 @@ class RoleController extends Controller
             }
         }
         Bouncer::refresh();
+    }
+
+    public function menu($id)
+    {
+        $role_id = (int)$id;
+        $role = Role::find($role_id);
+        $items = Menu::get()->toArray();
+        $roleItems = MenuRole::where('role_id', $role_id)->get();
+
+        $menu = [];
+        // 归纳菜单
+        foreach ($items as $key => &$item) {
+            foreach ($roleItems as $val) {
+                if ($item['id'] == $val['menu_id']) {
+                    $item['checked'] = true;
+                }
+            }
+
+            if ($item['pid'] === 0) {
+                $menu[$item['id']] = $item;
+            } else {
+                $menu[$item['pid']]['sub_menu'][] = $item;
+            }
+        }
+
+        return view('admin.role.menu', [
+            'menu' => $menu,
+            'role_id' => $role_id,
+            'title' => '菜单设置-' . $role->title
+        ]);
+    }
+
+    public function setMenu(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = [
+                'menu_id' => $request->menu_id,
+                'role_id' => $request->role_id
+            ];
+            if ($request->allow === 'true') {
+                if (!MenuRole::where($data)->exists()) {
+                    MenuRole::insert($data);
+                }
+            } else {
+                MenuRole::where($data)->delete();
+            }
+        }
     }
 }

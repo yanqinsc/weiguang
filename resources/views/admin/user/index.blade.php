@@ -23,6 +23,7 @@
                             <th>地址</th>
                             <th>电话</th>
                             <th>座右铭</th>
+                            <th>角色</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                 aria-label="Engine version: activate to sort column ascending" style="width: 169px;">管理
                             </th>
@@ -37,6 +38,7 @@
                                 <td>{{ $user->address }}</td>
                                 <td>{{ $user->phone }}</td>
                                 <td>{{ $user->motto }}</td>
+                                <td>{{ $user->role }}</td>
                                 <td>
                                     <a href="{{ route('admins.edit', ['id' => $user->id]) }}" title="编辑">
                                         <i class="fa fa-edit"></i>

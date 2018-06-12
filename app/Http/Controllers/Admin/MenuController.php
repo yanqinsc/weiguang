@@ -20,19 +20,12 @@ class MenuController extends Controller
     public function index(Menu $menu)
     {
         $items = $menu->get()->toArray();
-
         $menu = [];
-        // 获取一级菜单
+
+        // 归纳菜单
         foreach ($items as $key => $item) {
             if ($item['pid'] === 0) {
                 $menu[$item['id']] = $item;
-            }
-        }
-
-        // 归纳二级菜单
-        foreach ($items as $key => $item) {
-            if ($item['pid'] === 0) {
-                continue;
             } else {
                 $menu[$item['pid']]['sub_menu'][] = $item;
             }
@@ -119,7 +112,7 @@ class MenuController extends Controller
 
     public function destroy($id)
     {
-        $result = Menu::where('id', (int)$id)->update(['disable' => '']);
+        $result = Menu::where('id', (int)$id)->delete();
 
         if ($result) {
             return redirect()->back();

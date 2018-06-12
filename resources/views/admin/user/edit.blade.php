@@ -56,7 +56,7 @@
         <br>
         <div class="input-group">
             <span class="input-group-addon">角色</span>
-            <input name="role" type="text" class="form-control">
+            <input name="role" type="text" class="form-control" placeholder="{{ $user->role }}" >
         </div>
     </div>
     <p class="color-red show-error">@if($errors->any()) {{ $errors->first() }} @endif</p>

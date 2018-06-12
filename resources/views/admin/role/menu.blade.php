@@ -4,11 +4,6 @@
 <body>
 <div class="box box-info list">
     <div class="box-body">
-        <div class="button-bar">
-            <a class="btn btn-app bg-olive" href="{{ route('menu.create') }}">
-                <i class="fa fa-plus"></i>添加
-            </a>
-        </div>
         <div class="dataTables_wrapper form-inline dt-bootstrap">
             <div class="row">
                 <div class="col-sm-12">
@@ -16,50 +11,28 @@
                            aria-describedby="abilities">
                         <thead>
                         <tr role="row">
-                            <th>ID</th>
-                            <th>PID</th>
+                            <th>选择</th>
                             <th>名称</th>
                             <th>图标</th>
                             <th>路由</th>
-                            <th>管理</th>
                         </thead>
                         <tbody>
                         @foreach($menu as $key => $item)
                             <tr role="row" class="success">
-                                <td>{{ $item['id'] }}</td>
-                                <td>{{ $item['pid'] }}</td>
+                                <td><input id="menu-{{ $item['id'] }}" type="checkbox" value="{{ $item['id'] }}"
+                                           @if(!empty($item['checked'])) checked @endif></td>
                                 <td>{{ $item['title'] }}</td>
                                 <td><i class="fa {{ $item['icon'] }}"></i></td>
                                 <td>{{ $item['route_name'] }}</td>
-                                <td>
-                                    <a href="{{ route('menu.edit', ['id' => $item['id']]) }}" title="编辑">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    <a href="javascript:void(0) "
-                                       data-url="{{ route('menu.destroy', ['id' => $item['id']]) }}"
-                                       title="删除" class="a-remove">
-                                        <i class="fa fa-ban"></i>
-                                    </a>
-                                </td>
                             </tr>
                             @if(!empty($item['sub_menu']))
                                 @foreach($item['sub_menu'] as $key => $val)
                                     <tr role="row" class="{{ $key % 2 != 0 ? "odd" : "even"}}">
-                                        <td>{{ $val['id'] }}</td>
-                                        <td>{{ $val['pid'] }}</td>
+                                        <td><input id="menu-{{ $val['id'] }}" type="checkbox" value="{{ $val['id'] }}"
+                                                   @if(!empty($item['checked'])) checked @endif></td>
                                         <td>{{ $val['title'] }}</td>
                                         <td><i class="fa {{ $val['icon'] }}"></i></td>
                                         <td>{{ $val['route_name'] }}</td>
-                                        <td>
-                                            <a href="{{ route('menu.edit', ['id' => $val['id']]) }}" title="编辑">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
-                                            <a href="javascript:void(0) "
-                                               data-url="{{ route('menu.destroy', ['id' => $val['id']]) }}"
-                                               title="删除" class="a-remove">
-                                                <i class="fa fa-ban"></i>
-                                            </a>
-                                        </td>
                                     </tr>
                                 @endforeach
                             @endif
@@ -86,5 +59,17 @@
     </div>
 </form>
 @include('admin.layouts.footer')
+<script type="text/javascript">
+    $(':checkbox').change(function () {
+        let url = '{{ route('role.set_menu') }}';
+        let data = {
+            _token: '{{ csrf_token() }}',
+            role_id: '{{ $role_id }}',
+            menu_id: $(this).val(),
+            allow: !!$(this).is(':checked')
+        };
+        $.post(url, data);
+    });
+</script>
 </body>
 </html>

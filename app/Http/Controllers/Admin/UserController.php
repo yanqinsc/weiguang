@@ -19,9 +19,15 @@ class UserController extends Controller
 
     public function index(Admin $admin)
     {
-        $users = $admin->get();
+        $users = Admin::select(
+            'admins.id', 'admins.name', 'roles.name as role', 'nickname',
+            'real_name', 'email', 'phone', 'address', 'avatar', 'motto'
+        )
+            ->leftJoin('assigned_roles', 'entity_id', 'id')
+            ->leftJoin('roles', 'role_id', 'roles.id')
+            ->get();
 
-        return view('admin.user.index', [
+         return view('admin.user.index', [
             'users' => $users,
             'title' => '管理员'
         ]);
@@ -73,7 +79,13 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $user = Admin::find($id);
+        $user = Admin::select(
+            'admins.id', 'admins.name', 'roles.name as role', 'nickname',
+            'real_name', 'email', 'phone', 'address', 'avatar', 'motto'
+        )
+            ->leftJoin('assigned_roles', 'entity_id', 'id')
+            ->leftJoin('roles', 'role_id', 'roles.id')
+            ->find($id);
 
         if (!$user) {
             return redirect()->back()->withErrors('用户不存在，请重试。');

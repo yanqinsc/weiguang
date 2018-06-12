@@ -30,7 +30,9 @@ Route::prefix('panel')->namespace('admin')->middleware('auth:admin')->group(func
     Route::get('index', 'HomeController@home')->name('home.index');
     Route::get('/', 'HomeController@index')->name('home');
     Route::post('role/authorize', 'RoleController@roleAuthorize')->name('role.authorize');
+    Route::post('role/setMenu', 'RoleController@setMenu')->name('role.set_menu');
     Route::get('role/permissions/{role}', 'RoleController@permissions')->name('role.permissions');
+    Route::get('role/menu/{id}', 'RoleController@menu')->name('role.menu');
     Route::resource('ability', 'AbilityController');
     Route::resource('article', 'ArticleController');
     Route::resource('role', 'RoleController');

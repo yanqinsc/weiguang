@@ -20,7 +20,6 @@ class HomeController extends Controller
         $items = $menu->leftJoin('menus_roles', 'menu_id', 'id')
             ->orderBy('order', 'desc')
             ->where('role_id' , $role->role_id)
-            ->whereNull('disable')
             ->get()
             ->toArray();
 
