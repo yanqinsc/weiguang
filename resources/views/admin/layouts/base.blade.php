@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 @include('admin.layouts.header')
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" style="overflow: hidden;">
 <div class="wrapper">
     <header class="main-header">
         <a href="{{ url('/') }}" class="logo">

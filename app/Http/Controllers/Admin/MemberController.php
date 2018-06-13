@@ -19,7 +19,7 @@ class MemberController extends Controller
 
     public function index()
     {
-        $users = User::paginate(6);
+        $users = User::paginate(20);
 
         return view('admin.member.index', [
             'users' => $users,
