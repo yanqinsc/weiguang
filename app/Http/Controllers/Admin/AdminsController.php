@@ -3,33 +3,39 @@
 namespace App\Http\Controllers\Admin;
 
 use Bouncer;
-use App\Model\User;
+use App\Model\Admin;
 use Illuminate\Http\Request;
 use Silber\Bouncer\Database\Role;
 
-class MemberController extends Controller
+class AdminsController extends Controller
 {
     public function __construct()
     {
-//        $this->middleware('can:admin-list');
-//        $this->middleware('can:admin-create')->only(['create', 'store']);
-//        $this->middleware('can:admin-edit')->only(['edit', 'update']);
-//        $this->middleware('can:admin-forbiden')->only('destroy');
+        $this->middleware('can:admin-list');
+        $this->middleware('can:admin-create')->only(['create', 'store']);
+        $this->middleware('can:admin-edit')->only(['edit', 'update']);
+        $this->middleware('can:admin-forbiden')->only('destroy');
     }
 
     public function index()
     {
-        $users = User::paginate(20);
+        $users = Admin::select(
+            'admins.id', 'admins.name', 'roles.name as role', 'nickname',
+            'real_name', 'email', 'phone', 'address', 'avatar', 'motto'
+        )
+            ->leftJoin('assigned_roles', 'entity_id', 'id')
+            ->leftJoin('roles', 'role_id', 'roles.id')
+            ->get();
 
-        return view('admin.member.index', [
+         return view('admin.admins.index', [
             'users' => $users,
-            'title' => '学生'
+            'title' => '管理员'
         ]);
     }
 
     public function create()
     {
-        return view('admin.member.create', [
+        return view('admin.admins.create', [
             'title' => '添加管理员'
         ]);
     }
@@ -85,7 +91,7 @@ class MemberController extends Controller
             return redirect()->back()->withErrors('用户不存在，请重试。');
         }
 
-        return view('admin.member.edit', [
+        return view('admin.admins.edit', [
             'title' => '编辑管理员信息',
             'user' => $user,
             'id' => $id

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Bouncer;
-use App\Model\Admin;
+use App\Model\User;
 use Illuminate\Http\Request;
 use Silber\Bouncer\Database\Role;
 
@@ -11,25 +11,19 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('can:admin-list');
-        $this->middleware('can:admin-create')->only(['create', 'store']);
-        $this->middleware('can:admin-edit')->only(['edit', 'update']);
-        $this->middleware('can:admin-forbiden')->only('destroy');
+//        $this->middleware('can:admin-list');
+//        $this->middleware('can:admin-create')->only(['create', 'store']);
+//        $this->middleware('can:admin-edit')->only(['edit', 'update']);
+//        $this->middleware('can:admin-forbiden')->only('destroy');
     }
 
-    public function index(Admin $admin)
+    public function index()
     {
-        $users = Admin::select(
-            'admins.id', 'admins.name', 'roles.name as role', 'nickname',
-            'real_name', 'email', 'phone', 'address', 'avatar', 'motto'
-        )
-            ->leftJoin('assigned_roles', 'entity_id', 'id')
-            ->leftJoin('roles', 'role_id', 'roles.id')
-            ->get();
+        $users = User::paginate(20);
 
-         return view('admin.user.index', [
+        return view('admin.user.index', [
             'users' => $users,
-            'title' => '管理员'
+            'title' => '学生'
         ]);
     }
 

@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : MariaDB
+ Source Server         : Localhost
  Source Server Type    : MySQL
- Source Server Version : 50721
+ Source Server Version : 50719
  Source Host           : localhost:3306
  Source Schema         : weiguang
 
  Target Server Type    : MySQL
- Target Server Version : 50721
+ Target Server Version : 50719
  File Encoding         : 65001
 
- Date: 13/06/2018 07:41:47
+ Date: 13/06/2018 17:49:55
 */
 
 SET NAMES utf8mb4;
@@ -207,8 +207,8 @@ INSERT INTO `wg_menus` VALUES (5, 4, 99, '文章', 'fa-file-text', 'article.inde
 INSERT INTO `wg_menus` VALUES (6, 1, 96, '管理员', 'fa-user', 'admins.index', '2018-06-04 08:03:31', '2018-06-10 19:03:45', NULL);
 INSERT INTO `wg_menus` VALUES (7, 4, 98, '评论', ' fa-comments', 'ability.index', '2018-06-04 08:13:24', '2018-06-04 08:15:24', NULL);
 INSERT INTO `wg_menus` VALUES (8, 1, 97, '菜单', ' fa-th-large', 'menu.index', '2018-06-10 19:00:52', '2018-06-10 19:03:48', NULL);
-INSERT INTO `wg_menus` VALUES (9, 0, 2, '会员管理', 'fa-user', '#', '2018-06-10 22:03:03', '2018-06-12 20:46:31', NULL);
-INSERT INTO `wg_menus` VALUES (10, 9, 99, '学生', 'fa-user', 'member.index', '2018-06-12 20:47:24', '2018-06-12 20:47:24', NULL);
+INSERT INTO `wg_menus` VALUES (9, 0, 2, '用户管理', 'fa-users', '#', '2018-06-10 22:03:03', '2018-06-13 16:39:17', NULL);
+INSERT INTO `wg_menus` VALUES (10, 9, 99, '用户列表', 'fa-user', 'user.index', '2018-06-12 20:47:24', '2018-06-13 16:52:30', NULL);
 
 -- ----------------------------
 -- Table structure for wg_menus_roles
