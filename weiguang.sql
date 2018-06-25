@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : MaraDB
+ Source Server         : Localhost
  Source Server Type    : MySQL
- Source Server Version : 100214
+ Source Server Version : 50719
  Source Host           : localhost:3306
  Source Schema         : weiguang
 
  Target Server Type    : MySQL
- Target Server Version : 100214
+ Target Server Version : 50719
  File Encoding         : 65001
 
- Date: 25/06/2018 08:26:12
+ Date: 25/06/2018 10:44:50
 */
 
 SET NAMES utf8mb4;
@@ -34,7 +34,7 @@ CREATE TABLE `wg_abilities`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `abilities_name_unique`(`name`) USING BTREE,
   INDEX `abilities_scope_index`(`scope`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 32 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of wg_abilities
@@ -67,6 +67,9 @@ INSERT INTO `wg_abilities` VALUES (25, 'user-forbiden', '用户禁用', NULL, NU
 INSERT INTO `wg_abilities` VALUES (26, 'school-list', '学校管理', NULL, NULL, 0, NULL, '2018-06-24 09:46:51', '2018-06-24 09:46:51');
 INSERT INTO `wg_abilities` VALUES (27, 'school-create', '学校创建', NULL, NULL, 0, NULL, '2018-06-24 09:47:13', '2018-06-24 09:47:13');
 INSERT INTO `wg_abilities` VALUES (28, 'school-edit', '学校编辑', NULL, NULL, 0, NULL, '2018-06-24 09:47:35', '2018-06-24 09:47:35');
+INSERT INTO `wg_abilities` VALUES (29, 'class-list', '班级列表', NULL, NULL, 0, NULL, '2018-06-25 10:42:46', '2018-06-25 10:42:46');
+INSERT INTO `wg_abilities` VALUES (30, 'class-create', '班级创建', NULL, NULL, 0, NULL, '2018-06-25 10:43:28', '2018-06-25 10:43:28');
+INSERT INTO `wg_abilities` VALUES (31, 'class-edit', '班级编辑', NULL, NULL, 0, NULL, '2018-06-25 10:43:51', '2018-06-25 10:43:51');
 
 -- ----------------------------
 -- Table structure for wg_admins
@@ -335,6 +338,9 @@ INSERT INTO `wg_permissions` VALUES (23, 1, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (26, 1, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (28, 1, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (27, 1, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (29, 1, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (30, 1, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (31, 1, 'roles', 0, NULL);
 
 -- ----------------------------
 -- Table structure for wg_roles

@@ -13,10 +13,9 @@ class ClassController extends Controller
 
     public function __construct()
     {
-//        $this->middleware('can:user-list');
-//        $this->middleware('can:user-create')->only(['create', 'store']);
-//        $this->middleware('can:user-edit')->only(['edit', 'update']);
-//        $this->middleware('can:user-forbiden')->only('destroy');
+        $this->middleware('can:class-list');
+        $this->middleware('can:class-create')->only(['create', 'store']);
+        $this->middleware('can:class-edit')->only(['edit', 'update']);
     }
 
     public function index()
@@ -24,14 +23,12 @@ class ClassController extends Controller
         $classes = Classes::select('classes.id', 'grade', 'short_name', 'class', 'type')
             ->join('schools', 'schools.id', '=', 'classes.school_id')
             ->paginate(10);
-
-        foreach ($classes as $class) {
-            $class->grade = $this->getGradeName($class->grade, $class->type);
-        }
+        $getGradeName =  $this->getGradeNameFunction();
 
         return view('admin.class.index', [
             'classes' => $classes,
-            'title' => '班级列表'
+            'title' => '班级列表',
+            'getGradeName' => $getGradeName
         ]);
     }
 
@@ -75,8 +72,6 @@ class ClassController extends Controller
             ->join('schools', 'schools.id', '=', 'classes.school_id')
             ->where('classes.id', (int)$id)
             ->first();
-        $class->grade = $this->getGradeName($class->grade, $class->type);
-
 
         if (!$class) {
             return redirect()->back()->withErrors('用户不存在，请重试。');

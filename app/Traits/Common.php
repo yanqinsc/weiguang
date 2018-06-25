@@ -19,7 +19,7 @@ trait Common
     {
         return function ($year, $type) {
             if (date('Y') > $year) {
-                return $year . '届';
+                return $type == 1 ? '初' : '高' . $year . '届';
             }
 
             $gradeName = config('app.grade_name');

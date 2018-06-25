@@ -27,7 +27,7 @@
                         @foreach($classes as $class)
                             <tr role="row" class="{{ $class->id % 2 != 0 ? "odd" : "even"}}">
                                 <td>{{ $class->short_name }}</td>
-                                <td>{{ $class->grade }}</td>
+                                <td>{{ $getGradeName($class->grade, $class->type) }}</td>
                                 <td>{{ $class->class }}</td>
                                 <td>
                                     <a href="{{ route('class.edit', ['id' => $class->id]) }}" title="编辑">
