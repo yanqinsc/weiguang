@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Model\Menu;
-use App\Model\Permissions;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+
 
 class MenuController extends Controller
 {

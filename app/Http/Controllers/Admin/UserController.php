@@ -4,33 +4,40 @@ namespace App\Http\Controllers\Admin;
 
 use Bouncer;
 use App\Model\User;
+use App\Traits\Common;
 use Illuminate\Http\Request;
-use Silber\Bouncer\Database\Role;
 
 class UserController extends Controller
 {
+    use Common;
+
     public function __construct()
     {
-//        $this->middleware('can:admin-list');
-//        $this->middleware('can:admin-create')->only(['create', 'store']);
-//        $this->middleware('can:admin-edit')->only(['edit', 'update']);
-//        $this->middleware('can:admin-forbiden')->only('destroy');
+        $this->middleware('can:user-list');
+        $this->middleware('can:user-create')->only(['create', 'store']);
+        $this->middleware('can:user-edit')->only(['edit', 'update']);
+        $this->middleware('can:user-forbiden')->only('destroy');
     }
 
     public function index()
     {
-        $users = User::paginate(20);
+        $users = User::select('users.id', 'users.name', 'nickname', 'real_name', 'class_id', 'email', 'avatar', 'users.address', 'motto', 'short_name', 'grade', 'class', 'classes.type as class_type')
+            ->leftJoin('classes', 'class_id', '=', 'classes.id')
+            ->leftJoin('schools', 'classes.school_id', '=', 'schools.id')
+            ->paginate(20);
 
+        $getGradeName = $this->getGradeNameFunction();
         return view('admin.user.index', [
             'users' => $users,
-            'title' => '学生'
+            'title' => '用户列表',
+            'getGradeName' => $getGradeName
         ]);
     }
 
     public function create()
     {
         return view('admin.user.create', [
-            'title' => '添加管理员'
+            'title' => '添加用户'
         ]);
     }
 
@@ -45,25 +52,23 @@ class UserController extends Controller
             ],
             'password' => [
                 'required',
-                'max:150',
-                'regex:"^[0-9a-z]{6,16}$"'
+                'max:50',
             ],
             'email' => 'required|email|unique:admins',
-            'nickname' => 'required|max:50|unique:admins',
             'real_name' => 'required|max:20',
             'phone' => 'regex:"^[0-9]{11,15}$"'
         ]);
 
-        Admin::create([
+        User::insert([
             'name' => $request->name,
             'password' => bcrypt($request->password),
-            'nickname' => $request->nickname,
+            'nickname' => 'wg' . str_random(8),
             'real_name' => $request->real_name,
             'email' => $request->email,
             'phone' => $request->phone
         ]);
 
-        return redirect(route('admins.index'));
+        return redirect(route('user.index'));
     }
 
     public function show($id)
@@ -73,20 +78,13 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $user = Admin::select(
-            'admins.id', 'admins.name', 'roles.name as role', 'nickname',
-            'real_name', 'email', 'phone', 'address', 'avatar', 'motto'
-        )
-            ->leftJoin('assigned_roles', 'entity_id', 'id')
-            ->leftJoin('roles', 'role_id', 'roles.id')
-            ->find($id);
-
+        $user = User::find($id);
         if (!$user) {
             return redirect()->back()->withErrors('用户不存在，请重试。');
         }
 
         return view('admin.user.edit', [
-            'title' => '编辑管理员信息',
+            'title' => '编辑用户信息',
             'user' => $user,
             'id' => $id
         ]);
@@ -118,22 +116,15 @@ class UserController extends Controller
             'phone' => $request->phone,
             'avatar' => $request->avatar,
             'address' => $request->address,
-            'motto' => $request->motto
+            'motto' => $request->motto,
+            'qq' => $request->qq
+
         ]);
 
-        $user = Admin::where(['id' => (int)$id])->first();
-        $result = $user->update($data);
-
-        if ($request->role) {
-            if (Role::where('name', $request->role)->exists()) {
-                Bouncer::assign($request->role)->to($user);
-            } else {
-                return redirect()->back()->withErrors('角色名错误。');
-            }
-        }
+        $result = User::where(['id' => (int)$id])->update($data);
 
         if ($result) {
-            return redirect(route('admins.index'));
+            return redirect(route('user.index'));
         } else {
             return redirect()->back()->withErrors('更新失败，请重试。');
         }
@@ -141,7 +132,7 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        Admin::where('id', (int)$id)->delete();
+        User::where('id', (int)$id)->delete();
         return redirect()->back();
     }
 }

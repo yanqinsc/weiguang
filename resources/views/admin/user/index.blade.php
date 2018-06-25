@@ -5,7 +5,7 @@
 <div class="box box-info list">
     <div class="box-body">
         <div class="button-bar">
-            <a class="btn btn-app bg-olive" href="{{ route('admins.create') }}">
+            <a class="btn btn-app bg-olive" href="{{ route('user.create') }}">
                 <i class="fa fa-plus"></i>添加
             </a>
         </div>
@@ -19,11 +19,13 @@
                             <th>账号</th>
                             <th>昵称</th>
                             <th>真实姓名</th>
+                            <th>学校</th>
+                            <th>班级</th>
                             <th>Email</th>
                             <th>地址</th>
                             <th>电话</th>
-                            <th>座右铭</th>
-                            <th>角色</th>
+                            <th>格言</th>
+                            <th>头像</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                 aria-label="Engine version: activate to sort column ascending" style="width: 169px;">管理
                             </th>
@@ -34,17 +36,19 @@
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->nickname }}</td>
                                 <td>{{ $user->real_name }}</td>
+                                <td>{{ $user->short_name }}</td>
+                                <td>@if($user->class_id) {{ $getGradeName($user->grade, $user->class_type) . $user->class . '班' }} @endif</td>
                                 <td>{{ $user->email }}</td>
-                                <td>{{ $user->address }}</td>
+                                <td>{{ mb_substr($user->address, 0, 8) }} @if(mb_strlen($user->address) > 8) ... @endif</td>
                                 <td>{{ $user->phone }}</td>
-                                <td>{{ $user->motto }}</td>
-                                <td>{{ $user->role }}</td>
+                                <td>{{ mb_substr($user->motto, 0, 8) }} @if(mb_strlen($user->motto) > 8) ... @endif</td>
+                                <td><img width="25" height="23" src="{{ $user->avatar }}" alt=""></td>
                                 <td>
-                                    <a href="{{ route('admins.edit', ['id' => $user->id]) }}" title="编辑">
+                                    <a href="{{ route('user.edit', ['id' => $user->id]) }}" title="编辑">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     <a href="javascript:void(0) "
-                                       data-url="{{ route('admins.destroy', ['id' => $user->id]) }}"
+                                       data-url="{{ route('user.destroy', ['id' => $user->id]) }}"
                                        title="删除" class="a-remove">
                                         <i class="fa fa-ban"></i>
                                     </a>

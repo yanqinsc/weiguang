@@ -2,7 +2,7 @@
 <html lang="en">
 @include('admin.layouts.header')
 <body>
-<form class="box box-info create" method="post" action="{{ route('admins.update', ['id' => $id]) }}">
+<form class="box box-info create" method="post" action="{{ route('user.update', ['id' => $id]) }}">
     {{ csrf_field() }}
     {{ method_field('PUT') }}
     <div class="box-header with-border">
@@ -15,13 +15,18 @@
         </div>
         <br>
         <div class="input-group">
-            <span class="input-group-addon">昵称</span>
-            <input name="nickname" type="text" class="form-control" placeholder="{{ $user->nickname }}">
+            <span class="input-group-addon">密码</span>
+            <input name="password" type="password" class="form-control">
         </div>
         <br>
         <div class="input-group">
             <span class="input-group-addon">姓名</span>
             <input name="real_name" type="text" class="form-control" placeholder="{{ $user->real_name }}">
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon">昵称</span>
+            <input name="nickname" type="text" class="form-control" placeholder="{{ $user->nickname }}">
         </div>
         <br>
         <div class="input-group">
@@ -35,8 +40,13 @@
         </div>
         <br>
         <div class="input-group">
+            <span class="input-group-addon">QQ</span>
+            <input name="qq" type="text" class="form-control" placeholder="{{ $user->qq }}" >
+        </div>
+        <br>
+        <div class="input-group">
             <span class="input-group-addon">地址</span>
-            <input name="phone" type="text" class="form-control" placeholder="{{ $user->address }}" >
+            <input name="address" type="text" class="form-control" placeholder="{{ $user->address }}" >
         </div>
         <br>
         <div class="input-group">
@@ -45,18 +55,8 @@
         </div>
         <br>
         <div class="input-group">
-            <span class="input-group-addon">座右铭</span>
-            <input name="motto" type="text" class="form-control" placeholder="{{ $user->motto }}" >
-        </div>
-        <br>
-        <div class="input-group">
-            <span class="input-group-addon">密码</span>
-            <input name="password" type="password" class="form-control">
-        </div>
-        <br>
-        <div class="input-group">
-            <span class="input-group-addon">角色</span>
-            <input name="role" type="text" class="form-control" placeholder="{{ $user->role }}" >
+            <span class="input-group-addon">格言</span>
+            <input name="avatar" type="text" class="form-control" placeholder="{{ $user->motto }}" >
         </div>
     </div>
     <p class="color-red show-error">@if($errors->any()) {{ $errors->first() }} @endif</p>

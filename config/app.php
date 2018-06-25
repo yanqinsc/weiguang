@@ -139,6 +139,9 @@ return [
 
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
+    'grade_max' => date('Y') + 3,
+    'grade_name' => ['高三', '高二', '高一', '九年级', '八年级', '七年级'],
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers

@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : Localhost
+ Source Server         : MaraDB
  Source Server Type    : MySQL
- Source Server Version : 50719
+ Source Server Version : 100214
  Source Host           : localhost:3306
  Source Schema         : weiguang
 
  Target Server Type    : MySQL
- Target Server Version : 50719
+ Target Server Version : 100214
  File Encoding         : 65001
 
- Date: 13/06/2018 17:49:55
+ Date: 25/06/2018 08:26:12
 */
 
 SET NAMES utf8mb4;
@@ -34,7 +34,7 @@ CREATE TABLE `wg_abilities`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `abilities_name_unique`(`name`) USING BTREE,
   INDEX `abilities_scope_index`(`scope`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of wg_abilities
@@ -60,6 +60,13 @@ INSERT INTO `wg_abilities` VALUES (18, 'menu-list', '菜单管理', NULL, NULL, 
 INSERT INTO `wg_abilities` VALUES (19, 'menu-create', '菜单添加', NULL, NULL, 0, NULL, '2018-06-10 18:51:39', '2018-06-10 18:51:39');
 INSERT INTO `wg_abilities` VALUES (20, 'menu-edit', '菜单编辑', NULL, NULL, 0, NULL, '2018-06-10 18:53:44', '2018-06-10 18:53:44');
 INSERT INTO `wg_abilities` VALUES (21, 'menu-destroy', '菜单删除', NULL, NULL, 0, NULL, '2018-06-10 18:53:59', '2018-06-10 18:53:59');
+INSERT INTO `wg_abilities` VALUES (22, 'user-list', '用户管理', NULL, NULL, 0, NULL, '2018-06-23 21:22:57', '2018-06-23 21:22:57');
+INSERT INTO `wg_abilities` VALUES (23, 'user-create', '用户添加', NULL, NULL, 0, NULL, '2018-06-23 21:23:28', '2018-06-23 21:23:28');
+INSERT INTO `wg_abilities` VALUES (24, 'user-edit', '用户编辑', NULL, NULL, 0, NULL, '2018-06-23 21:24:18', '2018-06-23 21:24:18');
+INSERT INTO `wg_abilities` VALUES (25, 'user-forbiden', '用户禁用', NULL, NULL, 0, NULL, '2018-06-23 21:24:53', '2018-06-23 21:24:53');
+INSERT INTO `wg_abilities` VALUES (26, 'school-list', '学校管理', NULL, NULL, 0, NULL, '2018-06-24 09:46:51', '2018-06-24 09:46:51');
+INSERT INTO `wg_abilities` VALUES (27, 'school-create', '学校创建', NULL, NULL, 0, NULL, '2018-06-24 09:47:13', '2018-06-24 09:47:13');
+INSERT INTO `wg_abilities` VALUES (28, 'school-edit', '学校编辑', NULL, NULL, 0, NULL, '2018-06-24 09:47:35', '2018-06-24 09:47:35');
 
 -- ----------------------------
 -- Table structure for wg_admins
@@ -166,17 +173,23 @@ CREATE TABLE `wg_categories`  (
 INSERT INTO `wg_categories` VALUES (1, 0, '佳作共赏', 'appreciate', '1', '学生优秀作文分享');
 
 -- ----------------------------
--- Table structure for wg_class
+-- Table structure for wg_classes
 -- ----------------------------
-DROP TABLE IF EXISTS `wg_class`;
-CREATE TABLE `wg_class`  (
+DROP TABLE IF EXISTS `wg_classes`;
+CREATE TABLE `wg_classes`  (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `grade` year NOT NULL,
   `class` tinyint(3) UNSIGNED NOT NULL,
   `school_id` smallint(5) UNSIGNED NOT NULL,
-  `yuwen_teacher_id` int(10) UNSIGNED NOT NULL COMMENT '语文老师的用户ID',
+  `type` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1' COMMENT '1|初中 2|高中',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Fixed;
+) ENGINE = MyISAM AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Fixed;
+
+-- ----------------------------
+-- Records of wg_classes
+-- ----------------------------
+INSERT INTO `wg_classes` VALUES (1, 2020, 1, 1, '1');
+INSERT INTO `wg_classes` VALUES (2, 2006, 24, 2, '2');
 
 -- ----------------------------
 -- Table structure for wg_menus
@@ -194,7 +207,7 @@ CREATE TABLE `wg_menus`  (
   `deleted_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `menu_name_unique`(`title`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of wg_menus
@@ -209,6 +222,8 @@ INSERT INTO `wg_menus` VALUES (7, 4, 98, '评论', ' fa-comments', 'ability.inde
 INSERT INTO `wg_menus` VALUES (8, 1, 97, '菜单', ' fa-th-large', 'menu.index', '2018-06-10 19:00:52', '2018-06-10 19:03:48', NULL);
 INSERT INTO `wg_menus` VALUES (9, 0, 2, '用户管理', 'fa-users', '#', '2018-06-10 22:03:03', '2018-06-13 16:39:17', NULL);
 INSERT INTO `wg_menus` VALUES (10, 9, 99, '用户列表', 'fa-user', 'user.index', '2018-06-12 20:47:24', '2018-06-13 16:52:30', NULL);
+INSERT INTO `wg_menus` VALUES (11, 9, 99, '学校管理', 'fa-university', 'school.index', '2018-06-23 21:58:48', '2018-06-24 09:41:17', NULL);
+INSERT INTO `wg_menus` VALUES (12, 9, 2, '班级管理', 'fa-graduation-cap', 'class.index', '2018-06-24 09:39:52', '2018-06-24 10:01:30', NULL);
 
 -- ----------------------------
 -- Table structure for wg_menus_roles
@@ -236,6 +251,8 @@ INSERT INTO `wg_menus_roles` VALUES (7, 2);
 INSERT INTO `wg_menus_roles` VALUES (8, 1);
 INSERT INTO `wg_menus_roles` VALUES (9, 1);
 INSERT INTO `wg_menus_roles` VALUES (10, 1);
+INSERT INTO `wg_menus_roles` VALUES (11, 1);
+INSERT INTO `wg_menus_roles` VALUES (12, 1);
 
 -- ----------------------------
 -- Table structure for wg_migrations
@@ -311,6 +328,13 @@ INSERT INTO `wg_permissions` VALUES (19, 1, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (20, 1, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (21, 1, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (18, 1, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (22, 1, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (24, 1, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (25, 1, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (23, 1, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (26, 1, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (28, 1, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (27, 1, 'roles', 0, NULL);
 
 -- ----------------------------
 -- Table structure for wg_roles
@@ -337,16 +361,24 @@ INSERT INTO `wg_roles` VALUES (2, 'teacher', '教师', NULL, NULL, '2018-04-22 1
 INSERT INTO `wg_roles` VALUES (3, 'editor', '编辑', NULL, NULL, '2018-05-08 09:35:38', '2018-05-08 09:35:38');
 
 -- ----------------------------
--- Table structure for wg_school
+-- Table structure for wg_schools
 -- ----------------------------
-DROP TABLE IF EXISTS `wg_school`;
-CREATE TABLE `wg_school`  (
-  `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `short_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '学校简称',
+DROP TABLE IF EXISTS `wg_schools`;
+CREATE TABLE `wg_schools`  (
+  `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `short_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '学校简称',
   `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of wg_schools
+-- ----------------------------
+INSERT INTO `wg_schools` VALUES (1, '成都嘉祥外国语学校（达州校区）', '嘉祥达州', '达州通川区');
+INSERT INTO `wg_schools` VALUES (2, '营山高级中学', '营山中学', '四川省营山县');
+INSERT INTO `wg_schools` VALUES (3, '成都第七高级中学', '成都七中', '四川成都');
+INSERT INTO `wg_schools` VALUES (4, '重庆第一中学', '重庆一中', '重庆市沙坪坝区');
 
 -- ----------------------------
 -- Table structure for wg_sessions
@@ -365,7 +397,7 @@ CREATE TABLE `wg_sessions`  (
 -- ----------------------------
 -- Records of wg_sessions
 -- ----------------------------
-INSERT INTO `wg_sessions` VALUES ('ATkxHYggUYqsuAJkGAVM3klyPYeffJDgLYFgohFq', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiYkkzY0hSWGlWYURFV05aeDFBNEFISVFUZHpSd1I1U1ZiRXE4UTZVRiI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI2OiJodHRwOi8vd2VpZ3VhbmcvcGFuZWwvbWVudSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1528641742);
+INSERT INTO `wg_sessions` VALUES ('1y5s6sBMg1AUak8ViqpLFesIMN5OoWowQjruM7XF', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoidk9wSWt3cHAwTWdvd2w1dk9DU1N1eDRQS3ZBbTJ5ZmNvdFJ0ZlhVcyI7czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI2OiJodHRwOi8vd2VpZ3VhbmcvcGFuZWwvdXNlciI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1529886336);
 
 -- ----------------------------
 -- Table structure for wg_teachers
@@ -393,11 +425,11 @@ CREATE TABLE `wg_users`  (
   `real_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '真实姓名',
   `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '用户头像',
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tel` char(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '电话号码',
+  `phone` char(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '电话号码',
   `qq` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `score` int(11) NOT NULL DEFAULT 0,
-  `type` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1' COMMENT '类型 0|管理员 1|学生 2|教师',
+  `class_id` int(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '所属班级',
+  `type` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1' COMMENT '类型 1|普通 2|班长',
   `motto` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '座右铭',
   `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `created_at` timestamp(0) NULL DEFAULT NULL,
@@ -406,12 +438,12 @@ CREATE TABLE `wg_users`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_name_unique`(`name`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 49 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 50 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of wg_users
 -- ----------------------------
-INSERT INTO `wg_users` VALUES (1, 'yanqinsc', '$2y$10$hipe3dXnOMqEjPmHG2HV/uOHfumA0lD5lqpqyrGJ3oll2q4f7nnj2', '小石', '晏勤', '/admin/adminlte/dist/img/user2-160x160.jpg', 'yanqinsc@qq.com', '', '', '', 0, '0', '孜孜不倦，不紧不慢', 'Kpx0Fl4i1B8jcdEkHWCNBEkkqtvbYq9KiiimTpXVcq7LGX6m8NdZPtXhfWKB', '2018-04-16 23:49:09', '2018-04-16 23:49:09', NULL);
+INSERT INTO `wg_users` VALUES (1, 'yanqinsc', '$2y$10$hipe3dXnOMqEjPmHG2HV/uOHfumA0lD5lqpqyrGJ3oll2q4f7nnj2', '小石', '晏勤', '/admin/adminlte/dist/img/user2-160x160.jpg', 'yanqinsc@qq.com', '', '', '李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦', 2, '0', '孜孜不倦，不紧不慢', 'Kpx0Fl4i1B8jcdEkHWCNBEkkqtvbYq9KiiimTpXVcq7LGX6m8NdZPtXhfWKB', '2018-04-16 23:49:09', '2018-06-23 21:10:24', NULL);
 INSERT INTO `wg_users` VALUES (2, 'uDrZQkQ8C2', '$2y$10$VzS1muVIa/ccSN4xZ.zPZ.yRHwAau9bLEKj6x.hL8os2fMuH4gon.', 'HeGSb', 'flK5a', '', 'RHHqtMy8Pv@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
 INSERT INTO `wg_users` VALUES (3, 'hrqz0srhqs', '$2y$10$E3vTR6Q1KmTBosWT143.zuYXp40G06dTzADOt/En4dRpWajbkuOrC', 'UVypl', 'Lqxra', '', 'yvQipiD49A@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
 INSERT INTO `wg_users` VALUES (4, 'iK8ELQlKg1', '$2y$10$Xtkx5ziztdM0Q.ulCUc7luyWaujbinPRyIKhNheYRCPxdyLt4dq/y', '8xnOd', 'SaJqm', '', 'yqLRdGYxCr@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
@@ -458,6 +490,7 @@ INSERT INTO `wg_users` VALUES (44, 'tqPb13bOD9', '$2y$10$qaFWVb7ABtA84UhCNtdvduX
 INSERT INTO `wg_users` VALUES (45, '5rkVBRLvxl', '$2y$10$R7fhnHKwWz8CnlWDP26zPudjAaIeigkafCrXTaUBGzd.yQhC7mxLa', 'foxVZ', 'rrD2m', '', 'VzSbmld4DM@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
 INSERT INTO `wg_users` VALUES (46, 'K8jdHfk4rM', '$2y$10$f4L1UsO2xUBnXbvZrIsdb.XpTxQVwaZpAYGvTF02zEII5QbW7zkIq', 'ljHAS', 'TorMN', '', '5LxWJT25Pl@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
 INSERT INTO `wg_users` VALUES (47, 'HnSATRQhdX', '$2y$10$weJmzrNbwatPTKidsnQn3OApFnn3mWPFhdAYS0EeSZgNyfeF53kX2', 'Y2xjG', 'bCJsX', '', 'pUqh6Nru74@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (48, 'SuaoR64YVe', '$2y$10$dqWkr5OUtY.X8efpEFMW1ue5z14lyp.7Q7v.BIF6.UqaKIO.6cczy', 'FUIJe', 't1TQ2', '', 'NkFW6azXBq@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (48, 'SuaoR64YVe', '$2y$10$dqWkr5OUtY.X8efpEFMW1ue5z14lyp.7Q7v.BIF6.UqaKIO.6cczy', 'FUIJe', 't1TQ2', '', 'NkFW6azXBq@gmail.com', '', '', '', 0, '1', '', NULL, NULL, '2018-06-23 21:20:46', '2018-06-23 21:20:46');
+INSERT INTO `wg_users` VALUES (49, 'litstone', '$2y$10$j6RCcVg0NJy1qWxLG1MIguElxx1RJ5zhILn.0RB1q/R2l13nOG0O.', 'wgQ3Gr3LtA', '小石', '', 'litstone@qq.com', '15709896572', '', '', 0, '1', '', NULL, NULL, '2018-06-23 21:19:48', NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

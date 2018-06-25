@@ -2,7 +2,7 @@
 <html lang="en">
 @include('admin.layouts.header')
 <body>
-<form class="box box-info create" method="post" action="{{ route('admins.store') }}">
+<form class="box box-info create" method="post" action="{{ route('user.store') }}">
     {{ csrf_field() }}
     <div class="box-header with-border">
         <h3 class="box-title">{{ $title }}</h3>
@@ -15,12 +15,7 @@
         <br>
         <div class="input-group">
             <span class="input-group-addon">密码</span>
-            <input name="password" type="password" class="form-control" placeholder="只能是英文、数字组合，必填">
-        </div>
-        <br>
-        <div class="input-group">
-            <span class="input-group-addon">昵称</span>
-            <input name="nickname" type="text" class="form-control" placeholder="必填">
+            <input name="password" type="password" class="form-control" placeholder="必填" maxlength="50">
         </div>
         <br>
         <div class="input-group">

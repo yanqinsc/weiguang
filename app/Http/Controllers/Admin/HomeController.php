@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Model\Admin;
 use App\Model\AssignedRoles;
 use Bouncer;
 use App\Model\Menu;
