@@ -6,7 +6,7 @@
     <form method="post" action="{{ route('article.store') }}" class="box box-info article-edit">
         {{ csrf_field() }}
         <div class="box-header with-border">
-            <h3 class="box-title">添加文章</h3>
+            <h3 class="box-title">写文章</h3>
         </div>
         <div class="box-body">
             <input name="title" class="form-control" type="text" placeholder="在此处填写文章标题">
