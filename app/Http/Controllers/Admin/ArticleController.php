@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Model\Article;
+use App\Model\Category;
+use App\Model\Classes;
+use App\Model\School;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -39,8 +42,12 @@ class ArticleController extends Controller
      */
     public function create()
     {
+        $categories = Category::getAll();
+        $schools = School::all();
         return view('admin.article.create', [
-            'title' => '添加文章'
+            'title' => '添加文章',
+            'categories' => $categories,
+            'schools' => $schools
         ]);
     }
 

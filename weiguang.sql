@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : Localhost
+ Source Server         : MaraDB
  Source Server Type    : MySQL
- Source Server Version : 50719
+ Source Server Version : 100214
  Source Host           : localhost:3306
  Source Schema         : weiguang
 
  Target Server Type    : MySQL
- Target Server Version : 50719
+ Target Server Version : 100214
  File Encoding         : 65001
 
- Date: 25/06/2018 10:44:50
+ Date: 26/06/2018 08:22:29
 */
 
 SET NAMES utf8mb4;
@@ -111,7 +111,8 @@ DROP TABLE IF EXISTS `wg_articles`;
 CREATE TABLE `wg_articles`  (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
-  `author_id` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
+  `key_words` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
+  `author_id` int(11) NOT NULL,
   `thumb` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '缩略图',
   `excerpt` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '文章摘要',
   `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -131,7 +132,7 @@ CREATE TABLE `wg_articles`  (
 -- ----------------------------
 -- Records of wg_articles
 -- ----------------------------
-INSERT INTO `wg_articles` VALUES (26, '春天里', '1', 'http://f.hiphotos.baidu.com/image/pic/item/c9fcc3cec3fdfc03777b0d1ad83f8794a4c22615.jpg', '春天里', '春天里春天里春天里春天里春天里春天里春天里', 3, 4, NULL, NULL, NULL, 1, 6, '2018-05-28 08:07:58', NULL, NULL);
+INSERT INTO `wg_articles` VALUES (26, '春天里', '', 1, 'http://f.hiphotos.baidu.com/image/pic/item/c9fcc3cec3fdfc03777b0d1ad83f8794a4c22615.jpg', '春天里', '春天里春天里春天里春天里春天里春天里春天里', 3, 4, NULL, NULL, NULL, 1, 6, '2018-05-28 08:07:58', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for wg_assigned_roles
@@ -403,7 +404,7 @@ CREATE TABLE `wg_sessions`  (
 -- ----------------------------
 -- Records of wg_sessions
 -- ----------------------------
-INSERT INTO `wg_sessions` VALUES ('1y5s6sBMg1AUak8ViqpLFesIMN5OoWowQjruM7XF', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoidk9wSWt3cHAwTWdvd2w1dk9DU1N1eDRQS3ZBbTJ5ZmNvdFJ0ZlhVcyI7czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI2OiJodHRwOi8vd2VpZ3VhbmcvcGFuZWwvdXNlciI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1529886336);
+INSERT INTO `wg_sessions` VALUES ('z5WrwquWSg6tL4bSo3cWVKNzmnHqNg1mFZRQniTj', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiME51bTR4Y29MUTB1c3g3OGE3ZE5qSDVTWFBtdzI0d0JVWTRkN1NqQiI7czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM2OiJodHRwOi8vd2VpZ3VhbmcvcGFuZWwvYXJ0aWNsZS9jcmVhdGUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1529936471);
 
 -- ----------------------------
 -- Table structure for wg_teachers

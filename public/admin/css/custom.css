@@ -110,3 +110,11 @@ ul {
     }
 }
 
+.article-edit {
+    width: 70%;
+    margin:2% auto 0 auto;
+}
+
+.right-gap {
+    margin-right: 1em;
+}
