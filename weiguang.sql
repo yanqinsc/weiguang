@@ -11,7 +11,7 @@
  Target Server Version : 100214
  File Encoding         : 65001
 
- Date: 26/06/2018 08:22:29
+ Date: 03/07/2018 08:23:13
 */
 
 SET NAMES utf8mb4;
@@ -404,7 +404,8 @@ CREATE TABLE `wg_sessions`  (
 -- ----------------------------
 -- Records of wg_sessions
 -- ----------------------------
-INSERT INTO `wg_sessions` VALUES ('z5WrwquWSg6tL4bSo3cWVKNzmnHqNg1mFZRQniTj', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiME51bTR4Y29MUTB1c3g3OGE3ZE5qSDVTWFBtdzI0d0JVWTRkN1NqQiI7czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM2OiJodHRwOi8vd2VpZ3VhbmcvcGFuZWwvYXJ0aWNsZS9jcmVhdGUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1529936471);
+INSERT INTO `wg_sessions` VALUES ('p81hRzYuitZKivtTtytfbJP9zVlfinFtN3JhDDEE', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiWE5KT1M0TXpCWGdqSU12ZUN3MHRsM0cwUklJRUpsSHRzY1FTbFk5VSI7czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM2OiJodHRwOi8vd2VpZ3VhbmcvcGFuZWwvYXJ0aWNsZS9jcmVhdGUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1530577297);
+INSERT INTO `wg_sessions` VALUES ('PC2BUaySKP3J4psJhGYjnvAW98jRpBxEEst7wUq8', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiRHNBb25Gb3JvcnVDb1d3eTl3QUp4TlI4ZU1nTTdvV0o4WXoyREtvTCI7czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM2OiJodHRwOi8vd2VpZ3VhbmcvcGFuZWwvYXJ0aWNsZS9jcmVhdGUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1530193327);
 
 -- ----------------------------
 -- Table structure for wg_teachers
