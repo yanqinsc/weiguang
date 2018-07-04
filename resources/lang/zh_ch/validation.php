@@ -147,6 +147,7 @@ return [
         'available' => '可用的',
         'size' => '大小',
         'nickname' => '昵称',
-        'role' => '角色'
+        'role' => '角色',
+        'category_id' => '分类不存在'
     ],
 ];

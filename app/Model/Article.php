@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Article extends Model
 {
     use SoftDeletes;
+    protected $fillable = ['title', 'key_words', 'author', 'author_id', 'from', 'thumb', 'excerpt', 'content', 'is_hot', 'is_top', 'category_id', 'publisher_id'];
+
+
     /**
      * 查找某个分类下的所有文章
      * @param $category_id
@@ -19,7 +22,7 @@ class Article extends Model
         if ($category_id === 0) {
             // 首页展示所有分类最新文章
             return self::leftJoin('categories as c', 'category_id', '=', 'c.id')
-                ->select('articles.id', 'title', 'comment_count', 'thumb', 'author_id', 'excerpt', 'view_count', 'created_at', 'c.name as category')
+                ->select('articles.id', 'title', 'comment_count', 'thumb', 'author', 'author_id', 'excerpt', 'view_count', 'created_at', 'c.name as category')
                 ->orderBy('articles.id', 'desc')
                 ->paginate($paginate_number);
         } else {
@@ -41,7 +44,7 @@ class Article extends Model
     {
         return self::leftJoin('categories as c', 'category_id', '=', 'c.id')
             ->where('articles.id', '=', $id)
-            ->select('articles.id', 'title', 'thumb', 'author_id', 'excerpt', 'view_count', 'comment_count', 'content', 'created_at', 'c.slug', 'c.name as category')
+            ->select('articles.id', 'title', 'thumb', 'author', 'author_id', 'excerpt', 'view_count', 'comment_count', 'content', 'created_at', 'c.slug', 'c.name as category')
             ->first();
     }
 

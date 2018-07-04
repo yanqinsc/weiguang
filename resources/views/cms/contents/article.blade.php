@@ -10,14 +10,14 @@
                 <h1>{{$article->title}}</h1>
                 <p>
                     作者：<i>{{$article->author}}</i>&nbsp;&nbsp;&nbsp;&nbsp;
-                    发表于：{{$article->add_time}}&nbsp;&nbsp;&nbsp;&nbsp;
-                    已有 <i>{{$article->views}}</i> 人阅读此文&nbsp;&nbsp;&nbsp;&nbsp;
-                    评论：<i>{{$article->comments}}</i> 条
+                    发表于：{{$article->created_at}}&nbsp;&nbsp;&nbsp;&nbsp;
+                    已有 <i>{{$article->view_count}}</i> 人阅读此文&nbsp;&nbsp;&nbsp;&nbsp;
+                    评论：<i>{{$article->comment_count}}</i> 条
                 </p>
             </div>
         </div>
         <div class="article-body">
-            {{$article->body}}
+            {!! $article->content !!}
         </div>
     </div>
 @endsection

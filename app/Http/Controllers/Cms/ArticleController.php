@@ -17,6 +17,11 @@ class ArticleController extends Controller
     {
         $article = Article::getArticle($id);
 
+        if (empty(session('view_count'))) {
+            session(['view_count' => '1']);
+            Article::where('id', $id)->update(['view_count' => $article['view_count'] + 1]);
+        }
+
         return view('cms.contents.article', [
             'article' => $article,
             'current_controller' => 'article'

@@ -11,7 +11,7 @@
  Target Server Version : 100214
  File Encoding         : 65001
 
- Date: 03/07/2018 08:23:13
+ Date: 04/07/2018 08:33:42
 */
 
 SET NAMES utf8mb4;
@@ -112,27 +112,28 @@ CREATE TABLE `wg_articles`  (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
   `key_words` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
-  `author_id` int(11) NOT NULL,
+  `author` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '作者',
+  `author_id` int(11) NOT NULL DEFAULT 0 COMMENT '用户ID',
+  `from` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '作者单位',
   `thumb` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '缩略图',
-  `excerpt` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '文章摘要',
+  `excerpt` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '文章摘要',
   `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `view_count` int(10) UNSIGNED NOT NULL,
-  `comment_count` int(10) UNSIGNED NOT NULL,
-  `is_top` char(0) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '是否置顶  NULL|否',
-  `is_hot` char(0) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '是否热门文章  NULL|否',
-  `is_new` char(0) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '是否最新文章 NULL|否',
+  `view_count` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `comment_count` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `is_top` char(0) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '是否置顶  NULL|否',
+  `is_hot` char(0) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '是否热门文章  NULL|否',
   `category_id` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
   `publisher_id` int(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '编辑ID',
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   `deleted_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 27 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 36 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of wg_articles
 -- ----------------------------
-INSERT INTO `wg_articles` VALUES (26, '春天里', '', 1, 'http://f.hiphotos.baidu.com/image/pic/item/c9fcc3cec3fdfc03777b0d1ad83f8794a4c22615.jpg', '春天里', '春天里春天里春天里春天里春天里春天里春天里', 3, 4, NULL, NULL, NULL, 1, 6, '2018-05-28 08:07:58', NULL, NULL);
+INSERT INTO `wg_articles` VALUES (35, '一生独一', '一生独一', '卢焱', 0, '', 'http://b.hiphotos.baidu.com/image/pic/item/0ff41bd5ad6eddc4f8daa30935dbb6fd52663306.jpg', '一生独一', '<p>我说我不会写诗我只是</p><p>在诗里刻画了你的影子</p><p>每到阳春的三月你穿着</p><p>随风起舞的花布裙子</p><p>予美的定义我只是想用</p><p>你的名字来造句来写词</p><p>告诉你这世上无二的诗</p><p>讲你是我独一的故事</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一点一滴一份情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一滴一情怀</p><p>予美的定义我只是想用</p><p>你的名字来造句来写词</p><p>告诉你这世上无二的诗</p><p>讲你是我独一的故事</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一点一滴一份情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一滴一情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一点一滴一份情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一滴一情怀</p><p>你是我一生最重要的事</p><p><br/></p>', 1, 0, '', '', 1, 1, '2018-07-04 00:14:06', '2018-07-04 01:17:43', NULL);
 
 -- ----------------------------
 -- Table structure for wg_assigned_roles
@@ -255,8 +256,6 @@ INSERT INTO `wg_menus_roles` VALUES (7, 2);
 INSERT INTO `wg_menus_roles` VALUES (8, 1);
 INSERT INTO `wg_menus_roles` VALUES (9, 1);
 INSERT INTO `wg_menus_roles` VALUES (10, 1);
-INSERT INTO `wg_menus_roles` VALUES (11, 1);
-INSERT INTO `wg_menus_roles` VALUES (12, 1);
 
 -- ----------------------------
 -- Table structure for wg_migrations
@@ -404,8 +403,7 @@ CREATE TABLE `wg_sessions`  (
 -- ----------------------------
 -- Records of wg_sessions
 -- ----------------------------
-INSERT INTO `wg_sessions` VALUES ('p81hRzYuitZKivtTtytfbJP9zVlfinFtN3JhDDEE', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiWE5KT1M0TXpCWGdqSU12ZUN3MHRsM0cwUklJRUpsSHRzY1FTbFk5VSI7czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM2OiJodHRwOi8vd2VpZ3VhbmcvcGFuZWwvYXJ0aWNsZS9jcmVhdGUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1530577297);
-INSERT INTO `wg_sessions` VALUES ('PC2BUaySKP3J4psJhGYjnvAW98jRpBxEEst7wUq8', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiRHNBb25Gb3JvcnVDb1d3eTl3QUp4TlI4ZU1nTTdvV0o4WXoyREtvTCI7czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM2OiJodHRwOi8vd2VpZ3VhbmcvcGFuZWwvYXJ0aWNsZS9jcmVhdGUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1530193327);
+INSERT INTO `wg_sessions` VALUES ('TMGnnLiQMAueNfPR0PwNydhFgsEQR2v5fNApIL2t', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiWWo5b2lEZ0JKb3lqRXJPT0NMNmVmdlZsMjBSSmFvTUVOSEFkRDRIdyI7czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI2OiJodHRwOi8vd2VpZ3VhbmcvYXJ0aWNsZS8zNSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoiYWJjIjtzOjM6IjEyMyI7czoxMDoidmlld19jb3VudCI7czoxOiIxIjt9', 1530638267);
 
 -- ----------------------------
 -- Table structure for wg_teachers
