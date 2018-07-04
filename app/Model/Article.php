@@ -10,7 +10,6 @@ class Article extends Model
     use SoftDeletes;
     protected $fillable = ['title', 'key_words', 'author', 'author_id', 'from', 'thumb', 'excerpt', 'content', 'is_hot', 'is_top', 'category_id', 'publisher_id'];
 
-
     /**
      * 查找某个分类下的所有文章
      * @param $category_id
@@ -19,20 +18,16 @@ class Article extends Model
      */
     public static function getListByCategory($category_id, $paginate_number)
     {
-        if ($category_id === 0) {
-            // 首页展示所有分类最新文章
-            return self::leftJoin('categories as c', 'category_id', '=', 'c.id')
-                ->select('articles.id', 'title', 'comment_count', 'thumb', 'author', 'author_id', 'excerpt', 'view_count', 'created_at', 'c.name as category')
-                ->orderBy('articles.id', 'desc')
-                ->paginate($paginate_number);
-        } else {
-            // 展示其它分类文章
-            return self::leftJoin('categories as c', 'category_id', '=', 'c.id')
-                ->select('articles.id', 'title', 'comment_count', 'thumb', 'author_id', 'excerpt', 'view_count', 'created_at', 'c.name as category')
-                ->where('category_id', '=', $category_id)
-                ->orderBy('articles.id', 'desc')
-                ->paginate($paginate_number);
+        $builder = self::leftJoin('categories as c', 'category_id', '=', 'c.id')
+            ->select('articles.id', 'title', 'comment_count', 'thumb', 'author', 'author_id', 'excerpt', 'view_count', 'created_at', 'c.name as category')
+            ->orderBy('articles.id', 'desc');
+
+        // 展示其它分类文章
+        if ($category_id !== 0) {
+            $builder->where('category_id', '=', $category_id);
         }
+
+        return $builder->paginate($paginate_number);
     }
 
     /**

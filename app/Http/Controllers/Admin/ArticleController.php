@@ -4,9 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Model\Article;
 use App\Model\Category;
-use App\Model\Classes;
-use App\Model\School;
-use App\Model\User;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -15,17 +12,17 @@ class ArticleController extends Controller
     {
         $number = (int)$request->number ?: 10;
         $query = Article::leftJoin('categories as c', 'category_id', '=', 'c.id')
-            ->leftJoin('users as u', 'author_id', '=', 'u.id')
             ->leftJoin('admins as a', 'publisher_id', '=', 'a.id')
-            ->select('articles.id', 'title', 'author', 'comment_count', 'a.name as author', 'u.name as publisher', 'excerpt', 'view_count',
+            ->select('articles.id', 'title', 'author', 'comment_count', 'author', 'a.name as publisher', 'excerpt', 'view_count',
                 'articles.created_at', 'c.id as category_id', 'c.name as category')
             ->orderBy('articles.id', 'desc');
 
-        $request->category_id && $query->where('c.id', $request->category_id);
-        $articles = $query->paginate($number);
+        if ($request->category_id) {
+            $query->where('c.id', $request->category_id);
+        }
 
         return view('admin.article.index', [
-            'articles' => $articles,
+            'articles' => $query->paginate($number),
             'paginate_number' => $number,
             'title' => '文章管理'
         ]);
@@ -34,12 +31,9 @@ class ArticleController extends Controller
     public function create()
     {
         $categories = Category::getAll();
-        $schools = School::all();
-
         return view('admin.article.create', [
             'title' => '添加文章',
-            'categories' => $categories,
-            'schools' => $schools
+            'categories' => $categories
         ]);
     }
 
@@ -50,7 +44,8 @@ class ArticleController extends Controller
             'category_id' => 'exists:users,id',
             'author' => 'required',
             'article_content' => 'required',
-            'username' => 'nullable|alpha_num'
+            'username' => 'nullable|alpha_num',
+            'author_id' => 'nullable|integer'
         ]);
 
         $data = [
@@ -59,20 +54,15 @@ class ArticleController extends Controller
             'author' => $request->author,
             'content' => $request->article_content,
             'publisher_id' => $request->user()->id,
-
             'from' => $request->from,
             'thumb' => $request->thumb,
             'excerpt' => $request->excerpt,
-            'key_words' => $request->key_words
+            'key_words' => $request->key_words,
+            'author_id' => $request->author_id
         ];
         $data = array_filter($data);
         $data['is_top'] = $request->top ? '' : null;
         $data['is_hot'] = $request->hot ? '' : null;
-
-        if (isset($request->username)) {
-            $user = User::where('name', $request->username)->first();
-            $data['author_id'] = $user->id;
-        }
 
         Article::create($data);
         return redirect(route('article.index'));
@@ -85,16 +75,48 @@ class ArticleController extends Controller
 
     public function edit($id)
     {
-        //
+        $categories = Category::getAll();
+        $article = Article::find($id);
+
+        return view('admin.article.edit', [
+            'title' => '编辑文章',
+            'categories' => $categories,
+            'article' => $article
+        ]);
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'category_id' => 'nullable|exists:users,id',
+            'username' => 'nullable|alpha_num',
+            'article_content' => 'required',
+            'author_id' => 'nullable|integer'
+        ]);
+
+        $data = [
+            'title' => $request->title,
+            'category_id' => $request->category_id,
+            'author' => $request->author,
+            'content' => $request->article_content,
+            'publisher_id' => $request->user()->id,
+            'from' => $request->from,
+            'thumb' => $request->thumb,
+            'excerpt' => $request->excerpt,
+            'key_words' => $request->key_words,
+            'author_id' => $request->author_id
+        ];
+        $data = array_filter($data);
+        $data['is_top'] = $request->top ? '' : null;
+        $data['is_hot'] = $request->hot ? '' : null;
+
+        Article::where('id', $id)->update($data);
+        return redirect(route('article.index'));
     }
 
     public function destroy($id)
     {
-        //
+        Article::where('id', (int)$id)->delete();
+        return redirect()->back();
     }
 }

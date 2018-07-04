@@ -15,4 +15,6 @@ $(function () {
 
     $('#current-title', window.parent.document).html($('#title').val());
     $('#current-title-right', window.parent.document).html($('#title').val());
+
+    $('.top-box').css('height', window.screen.height/1.5  + 'px');
 });

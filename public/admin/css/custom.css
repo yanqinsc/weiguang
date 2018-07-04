@@ -127,3 +127,12 @@ ul {
 .right-15 {
     margin-right: 15px;
 }
+
+.top-box {
+    position: relative;
+    overflow: auto;
+}
+
+form {
+    position: relative;
+}

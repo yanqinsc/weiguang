@@ -32,7 +32,9 @@
     font-weight: 600;
 }
 
-#title-text p {
+#title-text p span {
+    display: inline-block;
+    margin-right: 16px;
     font-size: 14px;
     color: #666;
 }

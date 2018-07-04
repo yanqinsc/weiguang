@@ -16,36 +16,15 @@
                            aria-describedby="abilities">
                         <thead>
                         <tr role="row">
-                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending"
-                                style="width: 197px;">ID
-                            </th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-label="Browser: activate to sort column ascending" style="width: 242px;">标题
-                            </th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-label="Platform(s): activate to sort column ascending" style="width: 216px;">作者
-                            </th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-label="Engine version: activate to sort column ascending" style="width: 169px;">发布者
-                            </th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-label="Browser: activate to sort column ascending" style="width: 242px;">分类
-                            </th>
-
-
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-label="Engine version: activate to sort column ascending" style="width: 169px;">评论
-                            </th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-label="Engine version: activate to sort column ascending" style="width: 169px;">阅读
-                            </th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                 aria-label="Engine version: activate to sort column ascending" style="width: 169px;">发布时间
-                            </th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-label="Engine version: activate to sort column ascending" style="width: 169px;">管理
-                            </th>
+                            <th>ID</th>
+                            <th>标题</th>
+                            <th>作者</th>
+                            <th>发布者</th>
+                            <th>分类</th>
+                            <th>评论</th>
+                            <th>阅读</th>
+                            <th>发布时间</th>
+                            <th>管理</th>
                         </thead>
                         <tbody>
                         @foreach($articles as $key => $article)
@@ -60,11 +39,11 @@
                                 <td>{{ $article->created_at }}</td>
 
                                 <td>
-                                    <a href="" title="编辑">
+                                    <a href="{{ route('article.edit', ['id' => $article->id]) }}" title="编辑">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     <a href="javascript:void(0) "
-                                       data-url=""
+                                       data-url="{{ route('article.destroy', ['id' => $article->id]) }}"
                                        title="删除" class="a-remove">
                                         <i class="fa fa-trash"></i>
                                     </a>
@@ -83,7 +62,7 @@
     {{ csrf_field() }}
     <div>
         <div>
-            执行该操作后，该权限将被永久删除，所有拥有该权限的用户都将受到影响，确定删除？
+            执行该操作后，该文章将被删除，确定删除？
         </div>
         <br>
         <div class="timeline-footer">
