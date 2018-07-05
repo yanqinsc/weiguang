@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Model\Article;
 use App\Model\Category;
+use App\Model\User;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -41,11 +42,10 @@ class ArticleController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'category_id' => 'exists:users,id',
+            'category_id' => 'required|exists:categories,id',
             'author' => 'required',
             'article_content' => 'required',
-            'username' => 'nullable|alpha_num',
-            'author_id' => 'nullable|integer'
+            'username' => 'nullable|exists:users,name'
         ]);
 
         $data = [
@@ -57,12 +57,16 @@ class ArticleController extends Controller
             'from' => $request->from,
             'thumb' => $request->thumb,
             'excerpt' => $request->excerpt,
-            'key_words' => $request->key_words,
-            'author_id' => $request->author_id
+            'key_words' => $request->key_words
         ];
+
         $data = array_filter($data);
         $data['is_top'] = $request->top ? '' : null;
         $data['is_hot'] = $request->hot ? '' : null;
+
+        if (!empty($request->username)) {
+            $data['author_id'] = User::where('name', $request->username)->first()->id;
+        }
 
         Article::create($data);
         return redirect(route('article.index'));
@@ -78,20 +82,25 @@ class ArticleController extends Controller
         $categories = Category::getAll();
         $article = Article::find($id);
 
-        return view('admin.article.edit', [
+        $data = [
             'title' => '编辑文章',
             'categories' => $categories,
             'article' => $article
-        ]);
+        ];
+
+        if ($article->author_id) {
+            $data['username'] = User::find($article->author_id)->name;
+        }
+
+        return view('admin.article.edit', $data);
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
-            'category_id' => 'nullable|exists:users,id',
-            'username' => 'nullable|alpha_num',
+            'category_id' => 'nullable|exists:categories,id',
             'article_content' => 'required',
-            'author_id' => 'nullable|integer'
+            'username' => 'nullable|exists:users,name'
         ]);
 
         $data = [
@@ -106,9 +115,14 @@ class ArticleController extends Controller
             'key_words' => $request->key_words,
             'author_id' => $request->author_id
         ];
+
         $data = array_filter($data);
         $data['is_top'] = $request->top ? '' : null;
         $data['is_hot'] = $request->hot ? '' : null;
+
+        if (!empty($request->username)) {
+            $data['author_id'] = User::where('name', $request->username)->first()->id;
+        }
 
         Article::where('id', $id)->update($data);
         return redirect(route('article.index'));

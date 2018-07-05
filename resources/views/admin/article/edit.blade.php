@@ -47,7 +47,7 @@
                         <input name="from" class="form-control" type="text" placeholder="{{ $article->from }}">
                     </div>
                     <div class="col-md-3">
-                        <input name="author_id" class="form-control" type="text" placeholder="{{ $article->author_id }}">
+                        <input name="username" class="form-control" type="text" placeholder="{{ isset($username) ? $username : null }}">
                     </div>
                 </div>
                 <br>

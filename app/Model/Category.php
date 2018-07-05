@@ -8,9 +8,11 @@ class Category extends Model
 {
     public $timestamps = false;
 
+    protected $fillable = ['name', 'slug', 'is_nav', 'desc'];
+
     public static function getAll()
     {
-        return self::where('is_nav', '=', '1')->get();
+        return self::whereNotNull('is_nav')->get();
     }
 
     public static function getInfoBySlug($slug, array $field = [])

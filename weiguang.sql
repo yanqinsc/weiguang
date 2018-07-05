@@ -11,7 +11,7 @@
  Target Server Version : 100214
  File Encoding         : 65001
 
- Date: 05/07/2018 00:44:14
+ Date: 05/07/2018 23:30:14
 */
 
 SET NAMES utf8mb4;
@@ -34,7 +34,7 @@ CREATE TABLE `wg_abilities`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `abilities_name_unique`(`name`) USING BTREE,
   INDEX `abilities_scope_index`(`scope`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 32 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 36 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of wg_abilities
@@ -70,6 +70,10 @@ INSERT INTO `wg_abilities` VALUES (28, 'school-edit', '学校编辑', NULL, NULL
 INSERT INTO `wg_abilities` VALUES (29, 'class-list', '班级列表', NULL, NULL, 0, NULL, '2018-06-25 10:42:46', '2018-06-25 10:42:46');
 INSERT INTO `wg_abilities` VALUES (30, 'class-create', '班级创建', NULL, NULL, 0, NULL, '2018-06-25 10:43:28', '2018-06-25 10:43:28');
 INSERT INTO `wg_abilities` VALUES (31, 'class-edit', '班级编辑', NULL, NULL, 0, NULL, '2018-06-25 10:43:51', '2018-06-25 10:43:51');
+INSERT INTO `wg_abilities` VALUES (32, 'category-list', '分类管理', NULL, NULL, 0, NULL, '2018-07-05 22:28:03', '2018-07-05 22:28:48');
+INSERT INTO `wg_abilities` VALUES (33, 'category-create', '分类创建', NULL, NULL, 0, NULL, '2018-07-05 22:28:40', '2018-07-05 22:29:34');
+INSERT INTO `wg_abilities` VALUES (34, 'category-edit', '分类编辑', NULL, NULL, 0, NULL, '2018-07-05 22:29:21', '2018-07-05 22:29:21');
+INSERT INTO `wg_abilities` VALUES (35, 'category-destroy', '分类删除', NULL, NULL, 0, NULL, '2018-07-05 22:29:57', '2018-07-05 22:30:07');
 
 -- ----------------------------
 -- Table structure for wg_admins
@@ -124,16 +128,18 @@ CREATE TABLE `wg_articles`  (
   `is_hot` char(0) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '是否热门文章  NULL|否',
   `category_id` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
   `publisher_id` int(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '编辑ID',
+  `type` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '1' COMMENT '0|草稿 1|已发表',
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   `deleted_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 36 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 37 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of wg_articles
 -- ----------------------------
-INSERT INTO `wg_articles` VALUES (35, '一生独一', '一生独一', '卢焱', 0, '营山中学', 'http://b.hiphotos.baidu.com/image/pic/item/0ff41bd5ad6eddc4f8daa30935dbb6fd52663306.jpg', '一生独一', '<p>我说我不会写诗我只是</p><p>在诗里刻画了你的影子</p><p>每到阳春的三月你穿着</p><p>随风起舞的花布裙子</p><p>予美的定义我只是想用</p><p>你的名字来造句来写词</p><p>告诉你这世上无二的诗</p><p>讲你是我独一的故事</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一点一滴一份情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一滴一情怀</p><p>予美的定义我只是想用</p><p>你的名字来造句来写词</p><p>告诉你这世上无二的诗</p><p>讲你是我独一的故事</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一点一滴一份情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一滴一情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一点一滴一份情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一滴一情怀</p><p>你是我一生最重要的事……</p><p><br/></p>', 3, 0, '', '', 1, 1, '2018-07-04 00:14:06', '2018-07-05 00:43:32', NULL);
+INSERT INTO `wg_articles` VALUES (35, '一生独一', '一生独一', '卢焱', 1, '营山中学', 'https://abc.2008php.com/2014_Website_appreciate/2014-04-25/20140425021147.jpg', '一生独一', '<p>我说我不会写诗我只是</p><p>在诗里刻画了你的影子</p><p>每到阳春的三月你穿着</p><p>随风起舞的花布裙子</p><p>予美的定义我只是想用</p><p>你的名字来造句来写词</p><p>告诉你这世上无二的诗</p><p>讲你是我独一的故事</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一点一滴一份情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一滴一情怀</p><p>予美的定义我只是想用</p><p>你的名字来造句来写词</p><p>告诉你这世上无二的诗</p><p>讲你是我独一的故事</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一点一滴一份情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一滴一情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一点一滴一份情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一滴一情怀</p><p>你是我一生最重要的事……</p><p><br/></p>', 3, 0, '', '', 1, 1, '1', '2018-07-04 00:14:06', '2018-07-05 22:24:15', NULL);
+INSERT INTO `wg_articles` VALUES (36, '往后余生', '往后余生', '马良', 1, '营山中学', 'https://abc.2008php.com/2014_Website_appreciate/2014-04-25/20140425021147.jpg', '往后余生', '<p>在没风的地方找太阳</p><p>在你冷的地方做暖阳</p><p>人事纷纷</p><p>你总太天真</p><p>往后的余生</p><p>我只要你</p><p>往后余生</p><p>风雪是你</p><p>平淡是你</p><p>清贫也是你</p><p>荣华是你</p><p>心底温柔是你</p><p>目光所致</p><p>也是你</p><p>想带你去看晴空万里</p><p>想大声告诉你我为你着迷</p><p>往事匆匆</p><p>你总会被感动</p><p>往后的余生</p><p>我只要你</p><p>往后余生</p><p>冬雪是你</p><p>春华是你</p><p>夏雨也是你</p><p>秋黄是你</p><p>四季冷暖是你</p><p>目光所致</p><p>也是你</p><p>往后余生</p><p>风雪是你</p><p>平淡是你</p><p>清贫也是你</p><p>荣华是你</p><p>心底温柔是你</p><p>目光所致</p><p>也是你</p>', 1, 0, '', '', 12, 1, '1', '2018-07-05 21:30:11', '2018-07-05 23:05:35', NULL);
 
 -- ----------------------------
 -- Table structure for wg_assigned_roles
@@ -164,18 +170,21 @@ INSERT INTO `wg_assigned_roles` VALUES (2, 5, 'App\\Model\\Admin', NULL);
 DROP TABLE IF EXISTS `wg_categories`;
 CREATE TABLE `wg_categories`  (
   `id` int(3) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `pid` int(11) NULL DEFAULT NULL,
+  `pid` int(11) NOT NULL DEFAULT 0,
   `name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '分类名称',
   `slug` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '简称',
-  `is_nav` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0' COMMENT '是否作为导航栏频道',
+  `is_nav` char(0) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '是否作为导航栏频道',
   `desc` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '分类详情',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `name_unique`(`name`) USING BTREE,
+  UNIQUE INDEX `slug_unique`(`slug`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of wg_categories
 -- ----------------------------
-INSERT INTO `wg_categories` VALUES (1, 0, '佳作共赏', 'appreciate', '1', '学生优秀作文分享');
+INSERT INTO `wg_categories` VALUES (1, 0, '佳作共赏', 'appreciate', '', '学生优秀作文分享');
+INSERT INTO `wg_categories` VALUES (12, 0, '歌词欣赏', 'lyrics', '', '歌词欣赏');
 
 -- ----------------------------
 -- Table structure for wg_classes
@@ -212,23 +221,24 @@ CREATE TABLE `wg_menus`  (
   `deleted_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `menu_name_unique`(`title`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of wg_menus
 -- ----------------------------
-INSERT INTO `wg_menus` VALUES (1, 0, 0, '权限管理', 'fa-lock', '#', '2018-04-30 08:54:32', '2018-06-10 22:29:22', NULL);
+INSERT INTO `wg_menus` VALUES (1, 0, 0, '权限管理', 'fa-lock', '#', '2018-04-30 08:54:32', '2018-07-05 23:23:28', NULL);
 INSERT INTO `wg_menus` VALUES (2, 1, 99, '权限', 'fa-key', 'ability.index', '2018-04-30 08:55:27', '2018-06-04 08:08:47', NULL);
 INSERT INTO `wg_menus` VALUES (3, 1, 98, '角色', 'fa-group', 'role.index', '2018-05-03 21:03:43', '2018-06-04 08:08:52', NULL);
 INSERT INTO `wg_menus` VALUES (4, 0, 1, '内容管理', 'fa-files-o', '#', '2018-05-05 14:12:29', '2018-06-10 19:03:17', NULL);
 INSERT INTO `wg_menus` VALUES (5, 4, 99, '文章', 'fa-file-text', 'article.index', '2018-05-05 14:15:26', '2018-06-04 21:12:01', NULL);
 INSERT INTO `wg_menus` VALUES (6, 1, 96, '管理员', 'fa-user', 'admins.index', '2018-06-04 08:03:31', '2018-06-10 19:03:45', NULL);
-INSERT INTO `wg_menus` VALUES (7, 4, 98, '评论', ' fa-comments', 'ability.index', '2018-06-04 08:13:24', '2018-06-04 08:15:24', NULL);
+INSERT INTO `wg_menus` VALUES (7, 4, 97, '评论', ' fa-comments', 'ability.index', '2018-06-04 08:13:24', '2018-07-05 22:30:53', NULL);
 INSERT INTO `wg_menus` VALUES (8, 1, 97, '菜单', ' fa-th-large', 'menu.index', '2018-06-10 19:00:52', '2018-06-10 19:03:48', NULL);
 INSERT INTO `wg_menus` VALUES (9, 0, 2, '用户管理', 'fa-users', '#', '2018-06-10 22:03:03', '2018-06-13 16:39:17', NULL);
 INSERT INTO `wg_menus` VALUES (10, 9, 99, '用户列表', 'fa-user', 'user.index', '2018-06-12 20:47:24', '2018-06-13 16:52:30', NULL);
 INSERT INTO `wg_menus` VALUES (11, 9, 99, '学校管理', 'fa-university', 'school.index', '2018-06-23 21:58:48', '2018-06-24 09:41:17', NULL);
-INSERT INTO `wg_menus` VALUES (12, 9, 2, '班级管理', 'fa-graduation-cap', 'class.index', '2018-06-24 09:39:52', '2018-06-24 10:01:30', NULL);
+INSERT INTO `wg_menus` VALUES (12, 9, 2, '班级管理', 'fa-graduation-cap', 'class.index', '2018-06-24 09:39:52', '2018-07-05 23:23:23', NULL);
+INSERT INTO `wg_menus` VALUES (13, 4, 97, '分类', 'fa-paper-plane', 'category.index', '2018-07-05 22:33:15', '2018-07-05 22:36:49', NULL);
 
 -- ----------------------------
 -- Table structure for wg_menus_roles
@@ -256,6 +266,7 @@ INSERT INTO `wg_menus_roles` VALUES (7, 2);
 INSERT INTO `wg_menus_roles` VALUES (8, 1);
 INSERT INTO `wg_menus_roles` VALUES (9, 1);
 INSERT INTO `wg_menus_roles` VALUES (10, 1);
+INSERT INTO `wg_menus_roles` VALUES (13, 1);
 
 -- ----------------------------
 -- Table structure for wg_migrations
@@ -341,6 +352,10 @@ INSERT INTO `wg_permissions` VALUES (27, 1, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (29, 1, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (30, 1, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (31, 1, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (32, 1, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (33, 1, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (34, 1, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (35, 1, 'roles', 0, NULL);
 
 -- ----------------------------
 -- Table structure for wg_roles
@@ -403,7 +418,7 @@ CREATE TABLE `wg_sessions`  (
 -- ----------------------------
 -- Records of wg_sessions
 -- ----------------------------
-INSERT INTO `wg_sessions` VALUES ('PXo9ugpBlaI4qtOUeDTThmLQ0edNHIflCsAKZQ9P', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiNlMwZDlpazNyQzQ1a2xXSGxQcE53bFdTMUhBNHhQbXpUaFBjUG1keiI7czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI5OiJodHRwOi8vd2VpZ3VhbmcvcGFuZWwvYXJ0aWNsZSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MTA6InZpZXdfY291bnQiO3M6MToiMSI7fQ==', 1530722626);
+INSERT INTO `wg_sessions` VALUES ('yRrWQx1qx1RrP05lSCYCpayjrMIiftXVIE4Q9BsD', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiMzdDTlU5eWo2SVg4cm5DTW9YbXJKT2UyMFRGWkdSZHgyVmVwY0YzeSI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMwOiJodHRwOi8vd2VpZ3VhbmcvcGFuZWwvY2F0ZWdvcnkiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1530804557);
 
 -- ----------------------------
 -- Table structure for wg_teachers

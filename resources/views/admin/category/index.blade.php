@@ -5,8 +5,8 @@
 <div class="box box-info list">
     <div class="box-body">
         <div class="button-bar">
-            <a id="create-article" class="btn btn-app bg-olive" href="{{ route('article.create') }}">
-                <i class="fa fa-plus"></i>添加文章
+            <a class="btn btn-app bg-olive" href="{{ route('category.create') }}">
+                <i class="fa fa-plus"></i>添加
             </a>
         </div>
         <div class="dataTables_wrapper form-inline dt-bootstrap">
@@ -17,33 +17,26 @@
                         <thead>
                         <tr role="row">
                             <th>ID</th>
-                            <th>标题</th>
-                            <th>作者</th>
-                            <th>发布者</th>
-                            <th>分类</th>
-                            <th>评论</th>
-                            <th>阅读</th>
-                            <th>发布时间</th>
+                            <th>名称</th>
+                            <th>标识</th>
+                            <th>导航栏</th>
+                            <th>描述</th>
                             <th>管理</th>
                         </thead>
                         <tbody>
-                        @foreach($articles as $key => $article)
+                        @foreach($categories as $key => $item)
                             <tr role="row" class="{{ $key % 2 != 0 ? "odd" : "even"}}">
-                                <td class="sorting_1">{{ $article->id }}</td>
-                                <td>{{ $article->title }}</td>
-                                <td>{{ $article->author }}</td>
-                                <td>{{ $article->publisher }}</td>
-                                <td>{{ $article->category }}</td>
-                                <td>{{ $article->comment_count }}</td>
-                                <td>{{ $article->view_count }}</td>
-                                <td>{{ $article->created_at }}</td>
-
+                                <td>{{ $item->id }}</td>
+                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->slug }}</td>
+                                <td>{{ $item->is_nav === null ? '否' : '是' }}</td>
+                                <td>{{ $item->desc }}</td>
                                 <td>
-                                    <a href="{{ route('article.edit', ['id' => $article->id]) }}" title="编辑">
+                                    <a href="{{ route('category.edit', ['id' => $item->id]) }}" title="编辑">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     <a href="javascript:void(0) "
-                                       data-url="{{ route('article.destroy', ['id' => $article->id]) }}"
+                                       data-url="{{ route('category.destroy', ['id' => $item->id]) }}"
                                        title="删除" class="a-remove">
                                         <i class="fa fa-trash"></i>
                                     </a>
@@ -62,7 +55,7 @@
     {{ csrf_field() }}
     <div>
         <div>
-            执行该操作后，该文章将被删除，确定删除？
+            执行该操作后，该权限将被永久删除，所有拥有该权限的用户都将受到影响，确定删除？
         </div>
         <br>
         <div class="timeline-footer">
@@ -72,13 +65,5 @@
     </div>
 </form>
 @include('admin.layouts.footer')
-<script>
-    $(function () {
-        //选择创建文章则设置cookie， 以便在创建文章前检查cookie清空以前本地保存的内容
-        $("#create-article").click(function () {
-            $.cookie('create_article', true);
-        });
-    });
-</script>
 </body>
 </html>

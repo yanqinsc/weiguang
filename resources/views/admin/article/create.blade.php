@@ -39,10 +39,10 @@
                         <input name="author" class="form-control" type="text" placeholder="作者姓名（必填）">
                     </div>
                     <div class="col-md-3">
-                        <input name="from" class="form-control" type="text" placeholder="作者单位：XX中学八年级1班">
+                        <input name="from" class="form-control" type="text" placeholder="作者单位：XX中学八年级3班">
                     </div>
                     <div class="col-md-3">
-                        <input name="author_id" class="form-control" type="text" placeholder="用户ID">
+                        <input name="username" class="form-control" type="text" placeholder="用户账号">
                     </div>
                 </div>
                 <br>
@@ -72,34 +72,31 @@
                                 //此处为支持laravel5 csrf ,根据实际情况修改,目的就是设置 _token 值.
                                 ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');
                             });
-                            // 本地保存内容
-                            /*
-                            setTimeout(function () {
-                                ue.execCommand('drafts');
-                            }, 500);
-                            */
                         </script>
                     </div>
                 </div>
                 <br>
                 <p class="color-red show-error left">@if($errors->any()) {{ $errors->first() }} @endif</p>
                 <div class="box-footer">
-                    <button type="button" value="3" class="btn btn-primary right-gap">预览</button>
-                    <button type="button" value="2" class="btn btn-success right-gap">存草稿</button>
-                    <button type="button" value="1" class="btn btn-danger">发表文章</button>
+
+                    <button type="submit" value="2" class="btn btn-success right-gap">存草稿</button>
+                    <button type="submit" value="1" class="btn btn-danger">发表文章</button>
                 </div>
             </div>
         </form>
     </div>
     @include('admin.layouts.footer')
 <script>
-    var actions = [
-        '{{ route('article.store') }}'
-    ];
-
-    $("button").click(function () {
-        $("#create-article").attr('action', actions[$(this).val()-1]).submit();
-    });
+    // 本地保存内容
+    if ($.cookie('create_article')) {
+        //新创建文章清空以前本地保存的内容
+        $.removeCookie('create_article');
+        ue.execCommand('clearlocaldata');
+    } else {
+        setTimeout(function () {
+            ue.execCommand('drafts');
+        }, 500);
+    }
 </script>
 </body>
 </html>
