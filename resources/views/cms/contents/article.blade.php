@@ -22,5 +22,111 @@
         <div class="article-body">
             {!! $article->content !!}
         </div>
+        <div class="article-comments">
+            <hr>
+            <div class="col-md-12 bottom-20"><b>评论:</b></div>
+            <ul>
+                <li>
+                    <div class="comment-info">
+                        <img src="http://yuwen.litlight.cn/admin/adminlte/dist/img/user2-160x160.jpg" alt="avatar">
+                        <div class="user-info">
+                            <b>盼盼</b><br>
+                            <i>2018-07-06 09:23</i>
+                        </div>
+                    </div>
+                    <div class="comment-body">
+                        这是第一条评论这这是第一条评论这是第一条评论这是第
+                        一条评论这是第一条评论这是第一条评论这是第一条评论这是第一条
+                        评论这是第一条评论这是第一条评论这是第一条评论这是第一条评论这是第一
+                        条评论这是第一条评论是第一条评论这是第一条评论这是第一条评论这是第一条评论这是第一条评论
+                        这是第一条评论这是第一条评论这是第一条评论这是第一条评论这是第一条评论
+                        这是第一条评论这是第一条评论这是第一条评论这是第一条评论这是第一条评论
+                        这是第一条评论这是第一条评论这是第一条评论这是第一条评论
+                    </div>
+                    <div class="btn-replay">
+                        <i>回复</i>
+                    </div>
+                </li>
+                <li>
+                    <div class="comment-info">
+                        <img src="http://yuwen.litlight.cn/admin/adminlte/dist/img/user2-160x160.jpg" alt="avatar">
+                        <div class="user-info">
+                            <b>盼盼</b><br>
+                            <i>2018-07-06 09:23</i>
+                        </div>
+                    </div>
+                    <div class="comment-body">
+                        这是第一条评论这这是第一条评论这是第一条评论这是第
+                    </div>
+                    <div class="btn-replay">
+                        <i>回复</i>
+                    </div>
+                </li>
+                <li>
+                    <div class="comment-info">
+                        <img src="http://yuwen.litlight.cn/admin/adminlte/dist/img/user2-160x160.jpg" alt="avatar">
+                        <div class="user-info">
+                            <b>盼盼</b><br>
+                            <i>2018-07-06 09:23</i>
+                        </div>
+                    </div>
+                    <div class="comment-body">
+                        这是第一条评论这这是第一条评论这是第一条评论这是第
+                    </div>
+                    <div class="btn-replay">
+                        <i>回复</i>
+                    </div>
+                </li>
+                <li>
+                    <div class="comment-info">
+                        <img src="http://yuwen.litlight.cn/admin/adminlte/dist/img/user2-160x160.jpg" alt="avatar">
+                        <div class="user-info">
+                            <b>盼盼</b><br>
+                            <i>2018-07-06 09:23</i>
+                        </div>
+                    </div>
+                    <div class="comment-body">
+                        这是第一条评论这是第一条评论这是第一条评论这是第一条评论
+                    </div>
+                    <div class="btn-replay">
+                        <i>回复</i>
+                    </div>
+                </li>
+                <li>
+                    <div class="comment-info">
+                        <img src="http://yuwen.litlight.cn/admin/adminlte/dist/img/user2-160x160.jpg" alt="avatar">
+                        <div class="user-info">
+                            <b>盼盼</b><br>
+                            <i>2018-07-06 09:23</i>
+                        </div>
+                    </div>
+                    <div class="comment-body">
+                        这是第一条评论这这是第一条评论这是第一条评论这是第
+                    </div>
+                    <div class="btn-replay">
+                        <i>回复</i>
+                    </div>
+                </li>
+                <li>
+                    <div class="comment-info">
+                        <img src="http://yuwen.litlight.cn/admin/adminlte/dist/img/user2-160x160.jpg" alt="avatar">
+                        <div class="user-info">
+                            <b>盼盼</b><br>
+                            <i>2018-07-06 09:23</i>
+                        </div>
+                    </div>
+                    <div class="comment-body">
+                        这是第一条评论这这是第一条评论这是第一条评论这是第
+                    </div>
+                    <div class="btn-replay">
+                        <i>回复</i>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="comment-relay">
+            <hr>
+        </div>
     </div>
 @endsection
