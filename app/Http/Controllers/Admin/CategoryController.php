@@ -39,12 +39,14 @@ class CategoryController extends Controller
             'is_nav' => 'required|between:0, 1|integer'
         ]);
 
-        Category::create([
+        $data = array_filter([
             'name' => $request->name,
             'slug' => $request->slug,
-            'is_nav' => $request->is_nav ? '' : null,
             'desc' => $request->desc
         ]);
+        $data['is_nav'] = $request->is_nav == 1 ? '' : null;
+
+        Category::create($data);
 
         return redirect(route('category.index'));
     }

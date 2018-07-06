@@ -148,6 +148,7 @@ return [
         'size' => '大小',
         'nickname' => '昵称',
         'role' => '角色',
-        'category_id' => '分类不存在'
+        'category_id' => '分类不存在',
+        'comment' => '评论内容'
     ],
 ];

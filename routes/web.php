@@ -15,15 +15,16 @@ Route::namespace('Cms')->group(function () {
     Route::get('/', 'ContentsController@index')->name('index');
     Route::get('/contents/{category}', 'ContentsController@index')->name('contents');
     Route::get('/article/{id}', 'ArticleController@index')->name('article');
+    Route::post('/article/createComment', 'ArticleController@createComment')->name('comment.create');
 });
 
 Auth::routes();
 
 // 后台用户认证
 Route::prefix('admin')->group(function () {
-    Route::get('login', 'Admin\Auth\LoginController@showLoginForm')->name('admin_login');
+    Route::get('login', 'Admin\Auth\LoginController@showLoginForm')->name('admin.login');
     Route::post('login', 'Admin\Auth\LoginController@login');
-    Route::post('logout', 'Admin\Auth\LoginController@logout')->name('admin_logout');
+    Route::post('logout', 'Admin\Auth\LoginController@logout')->name('admin.logout');
 });
 
 Route::prefix('panel')->namespace('admin')->middleware('auth:admin')->group(function () {

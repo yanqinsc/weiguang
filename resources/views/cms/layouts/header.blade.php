@@ -15,6 +15,7 @@
     @if($current_controller == 'article')
 <link rel="stylesheet" href="{{ asset('cms/css/article.css') }}">
     @endif
+    <script src="{{ asset('common/js/jquery.min.js') }}"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">

@@ -19,6 +19,6 @@ trait AuthenticatesLogout
         $request->session()->forget($this->guard()->getName());
         $request->session()->regenerate();
 
-        return $request->getRequestUri() == '/logout' ? redirect('/') : redirect(route('admin_login'));
+        return $request->getRequestUri() == '/logout' ? redirect('/') : redirect(route('admin.login'));
     }
 }

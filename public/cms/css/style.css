@@ -52,7 +52,7 @@ footer p {
 
 @media screen and (min-width: 1200px) {
     .nav-item {
-        margin-left: 50px;
+        margin-left: 1em;
     }
 
     .container {
@@ -60,7 +60,7 @@ footer p {
     }
 
     #search {
-        margin-right: 20%;
+        margin-right: 8%;
     }
 }
 
@@ -76,4 +76,10 @@ footer p {
 
 .bottom-20 {
     margin-bottom: 20px;
+}
+
+.show-error {
+    width: 100%;
+    text-align: center;
+    color: #ff0000;
 }

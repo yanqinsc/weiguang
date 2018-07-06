@@ -62,7 +62,7 @@ class Handler extends ExceptionHandler
             if (strpos($request->getRequestUri(), 'panel') === false) {
                 $res = redirect()->guest(route('login'));
             } else {
-                $res =  redirect()->guest(route('admin_login'));
+                $res =  redirect()->guest(route('admin.login'));
             }
         }
 

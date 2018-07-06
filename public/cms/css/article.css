@@ -28,7 +28,8 @@
 
 
 .article-comments,
-.article-comments ul li,
+.item-li,
+.item-li-dashed,
 .comment-info,
 .comment-info img ,
 .user-info,
@@ -41,7 +42,8 @@
 }
 
 .article-comments,
-.article-comments ul li,
+.item-li,
+.item-li-dashed,
 .comment-info img ,
 .comment-body,
 .comment-replay,
@@ -51,13 +53,24 @@
     width: 100%;
 }
 
+.article-comments {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #d3d3d3;
+    padding-bottom: 30px;
+}
+
 .article-comments ul {
     position: relative;
     list-style-type: none;
 }
 
-.article-comments ul li {
-    border-top: 2px solid #99dd00;
+.item-li {
+    border-top: 3px solid #99dd00;
+    padding: 10px;
+}
+
+.item-li-dashed {
+    border-top: 1px dashed #ec9573;
     padding: 10px;
 }
 
@@ -124,4 +137,8 @@ comment-replay {
     margin-left: 30px;
     margin-top: 30px;
     height: 90%;
+}
+
+#replay-text {
+    width: 100%;
 }

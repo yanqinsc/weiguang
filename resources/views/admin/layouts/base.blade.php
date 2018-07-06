@@ -39,7 +39,7 @@
                                                      document.getElementById('logout-form').submit();">
                                         退出
                                     </a>
-                                    <form id="logout-form" action="{{ route('admin_logout') }}" method="post" style="display: none;">
+                                    <form id="logout-form" action="{{ route('admin.logout') }}" method="post" style="display: none;">
                                         {{ csrf_field() }}
                                     </form>
                                 </div>
