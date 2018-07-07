@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : Localhost
+ Source Server         : MariaDB
  Source Server Type    : MySQL
- Source Server Version : 50719
+ Source Server Version : 50721
  Source Host           : localhost:3306
  Source Schema         : weiguang
 
  Target Server Type    : MySQL
- Target Server Version : 50719
+ Target Server Version : 50721
  File Encoding         : 65001
 
- Date: 06/07/2018 17:37:01
+ Date: 07/07/2018 16:43:45
 */
 
 SET NAMES utf8mb4;
@@ -221,7 +221,7 @@ CREATE TABLE `wg_comments`  (
   `reviewed` char(0) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '已审核 null|否',
   `created_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of wg_comments
@@ -239,6 +239,9 @@ INSERT INTO `wg_comments` VALUES (11, 36, 1, 0, '这首歌不错，我很喜欢�
 INSERT INTO `wg_comments` VALUES (12, 36, 1, 0, '这首歌不错，我很喜欢。', '', '2018-07-06 16:11:27');
 INSERT INTO `wg_comments` VALUES (13, 36, 1, 0, '这首歌不错，我很喜欢。', '', '2018-07-06 16:13:09');
 INSERT INTO `wg_comments` VALUES (14, 36, 2, 2, '@晏勤  这个想法不错', '', '2018-07-06 17:36:15');
+INSERT INTO `wg_comments` VALUES (15, 36, 1, 14, '@武当  那当然了，很棒是吧', '', '2018-07-07 16:17:01');
+INSERT INTO `wg_comments` VALUES (16, 36, 1, 14, '@武当  那当然了，很棒是吧', '', '2018-07-07 16:17:01');
+INSERT INTO `wg_comments` VALUES (17, 36, 1, 14, '@武当  补充一句，哈哈哈哈', '', '2018-07-07 16:18:57');
 
 -- ----------------------------
 -- Table structure for wg_menus

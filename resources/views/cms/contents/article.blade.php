@@ -1,6 +1,11 @@
 @extends('cms.layouts.base')
 
 @section('content')
+    <style>
+        textarea {
+            padding: 10px;
+        }
+    </style>
     <div id="article">
     <span class="position">当前位置：
         <a href="{{ env('APP_URL') }}">首页</a> >
@@ -14,8 +19,8 @@
                 <p>
                     <span>作者：<i>{{ $article->author }}</i></span>
                     <span>发表于：<i>{{ substr($article->created_at, 0, 10) }}</i></span>
-                    <span>已有 <i>{{ $article->view_count }}</i> 人阅读此文</span>
-                    <span>评论：<i>{{ $article->comment_count }}</i> 条</span>
+                    <span>阅读(<i>{{ $article->view_count }}</i>)</span>
+                    <span>评论(<i>{{ $article->comment_count }}</i>)</span>
                 </p>
             </div>
         </div>
@@ -72,11 +77,6 @@
         </div>
         @endif
 
-        <style>
-            textarea {
-                padding: 10px;
-            }
-        </style>
         <form class="comment-relay" action="{{ route('comment.create') }}" method="post">
             {{ csrf_field() }}
             <textarea name="comment" id="replay-text" rows="5" maxlength="120" placeholder="评论须少于120字。"></textarea>
@@ -84,7 +84,7 @@
             <input type="hidden" name="aid" value="{{ $article->id }}">
             <br>
             @guest
-            <a href="">登录</a>后才能发表评论！<br>
+            <a href="{{ route('login') }}" id="login">登录</a>后才能发表评论！<br>
             @endguest
             @if($errors->any())
             <p class="show-error" id="commentError"> {{ $errors->first() }} </p>
@@ -94,6 +94,9 @@
     </div>
     <script>
         $(function () {
+            if ($("#login").length === 1) {
+                $("#replay-text").attr('disabled', true);
+            }
 
             if ($("#commentError").length) {
                 window.location.href = '#comment';

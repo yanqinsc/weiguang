@@ -12,11 +12,21 @@ class ArticleController extends Controller
     public function index(Request $request, $id)
     {
         $article = Article::getArticle($id);
-        $comments = Comment::join('users', 'comments.uid', 'users.id')
+        $data = Comment::join('users', 'comments.uid', 'users.id')
             ->select('comments.id', 'pid', 'uid', 'name', 'real_name', 'content', 'comments.created_at', 'avatar')
-            ->where('aid', $id)
+            ->where(['aid' => $id])
             ->whereNotNull('reviewed')
             ->get();
+
+        $comments = [];
+        foreach ($data as $comment) {
+            if ($comment->pid === 0) {
+                $comments[$comment->id] = $comment;
+            } else {
+
+            }
+
+        }
 
         $response = response()->view('cms.contents.article', [
             'article' => $article,
