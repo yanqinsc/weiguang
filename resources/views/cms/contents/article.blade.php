@@ -103,9 +103,12 @@
                 let pid = $(this).attr('data-comment-id'),
                     name = $(this).attr('data-name');
                 $("input[name=pid]").val(pid);
+            @guest
+            @else
                 if (name !== '{{ Auth::user()->name }}' && name !== '{{ Auth::user()->real_name }}') {
                     $("#replay-text").html('@' + name + '  ');
                 }
+            @endguest
                 window.location.href = '#comment';
             });
         });
