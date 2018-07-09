@@ -33,14 +33,35 @@
             </li>
             @foreach( $categories as $item)
             <li class="nav-item">
-                <a class="nav-link" id="{{$item->abbreviation}}"
+                <a class="nav-link" id="{{$item->slug}}"
                    href="{{ route('contents', ['category' => $item->slug]) }}">{{ $item->name }}</a>
             </li>
             @endforeach
         </ul>
-        <form class="form-inline my-2 my-lg-0" id="search">
-            <input class="form-control mr-sm-2" type="search" placeholder="请输入关键词" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
-        </form>
+        <ul class="nav navbar-nav navbar-right">
+            @guest
+                <li><a class="nav-link" href="{{ route('login') }}">登录</a></li>
+                <li><a class="nav-link" href="{{ route('register') }}">注册</a></li>
+            @else
+                    <li>
+                        <a href="home" class="nav-link">
+                            {{ mb_substr(Auth::user()->nickname ?: Auth::user()->name, 0, 4) }}同学
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('logout') }}" class="nav-link"
+                           onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                            注销
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
+
+
+
+            @endguest
+        </ul>
     </div>
 </nav>
