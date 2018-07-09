@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Cms;
 
 use App\Model\Article;
 use App\Model\Category;
+use App\Model\Config;
 use Illuminate\Support\Facades\View;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -14,13 +15,28 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    protected $dbConfig;
+
     public function __construct()
     {
+        $this->dbConfig = $this->getConfigFromDatabase();
         // Cms部件所有识图共享变量
         View::share([
             'categories' => Category::getAll(),
             'hot_articles' => Article::getHotList()
         ]);
+    }
+
+    protected function getConfigFromDatabase()
+    {
+        $result = [];
+        $configs = Config::all();
+
+        foreach ($configs as $config) {
+            $result[$config->key] = $config->value;
+        }
+
+        return (object)$result;
     }
 
 }

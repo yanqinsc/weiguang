@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : MariaDB
+ Source Server         : MaraDB
  Source Server Type    : MySQL
- Source Server Version : 50721
+ Source Server Version : 100214
  Source Host           : localhost:3306
  Source Schema         : weiguang
 
  Target Server Type    : MySQL
- Target Server Version : 50721
+ Target Server Version : 100214
  File Encoding         : 65001
 
- Date: 07/07/2018 16:43:45
+ Date: 09/07/2018 08:24:27
 */
 
 SET NAMES utf8mb4;
@@ -34,7 +34,7 @@ CREATE TABLE `wg_abilities`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `abilities_name_unique`(`name`) USING BTREE,
   INDEX `abilities_scope_index`(`scope`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 36 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 39 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of wg_abilities
@@ -74,6 +74,9 @@ INSERT INTO `wg_abilities` VALUES (32, 'category-list', '分类管理', NULL, NU
 INSERT INTO `wg_abilities` VALUES (33, 'category-create', '分类创建', NULL, NULL, 0, NULL, '2018-07-05 22:28:40', '2018-07-05 22:29:34');
 INSERT INTO `wg_abilities` VALUES (34, 'category-edit', '分类编辑', NULL, NULL, 0, NULL, '2018-07-05 22:29:21', '2018-07-05 22:29:21');
 INSERT INTO `wg_abilities` VALUES (35, 'category-destroy', '分类删除', NULL, NULL, 0, NULL, '2018-07-05 22:29:57', '2018-07-05 22:30:07');
+INSERT INTO `wg_abilities` VALUES (36, 'comment-list', '评论管理', NULL, NULL, 0, NULL, '2018-07-08 11:15:21', '2018-07-08 11:15:21');
+INSERT INTO `wg_abilities` VALUES (37, 'comment-review', '评论审核', NULL, NULL, 0, NULL, '2018-07-08 11:15:42', '2018-07-08 11:15:42');
+INSERT INTO `wg_abilities` VALUES (38, 'comment-destroy', '评论删除', NULL, NULL, 0, NULL, '2018-07-08 11:16:05', '2018-07-08 11:16:05');
 
 -- ----------------------------
 -- Table structure for wg_admins
@@ -105,7 +108,7 @@ CREATE TABLE `wg_admins`  (
 -- ----------------------------
 INSERT INTO `wg_admins` VALUES (1, 'yanqinsc', '$2y$10$hipe3dXnOMqEjPmHG2HV/uOHfumA0lD5lqpqyrGJ3oll2q4f7nnj2', '小石', '晏勤', '/admin/adminlte/dist/img/user2-160x160.jpg', 'yanqinsc@qq.com', '', '', '', '孜孜不倦，不紧不慢', 'pRDHrbs7FiZ3OgbIPcGQpbW3gRfZ1XEXYYubdfyoxrCyIHJlakrks63BF2u3', '2018-04-16 23:49:09', '2018-04-16 23:49:09', NULL);
 INSERT INTO `wg_admins` VALUES (4, 'panda', '$2y$10$hipe3dXnOMqEjPmHG2HV/uOHfumA0lD5lqpqyrGJ3oll2q4f7nnj2', '盼盼', '史盼盼', '/admin/adminlte/dist/img/user2-160x160.jpg', 'panda@qq.com', '', '', '', '孜孜不倦，不紧不慢', 'm24t7MCM24pMQnYj7sjKtzmL6vPJeRYv9wlfPh9VuqE5Wb7WZEPDRszDt7Rl', '2018-04-16 23:49:09', '2018-04-16 23:49:09', NULL);
-INSERT INTO `wg_admins` VALUES (5, 'xiuqing', '$2y$10$ZbXRoqHcHOv14BlvBP83Oe.RZmfUW7870alIdzRRTqwkiZgw.y.jW', '秀卿', '秀卿', '', 'xiuqing@qq.com', '12312421241', '', '', '', NULL, '2018-06-05 07:02:56', '2018-06-05 07:02:56', NULL);
+INSERT INTO `wg_admins` VALUES (5, 'xiuqing', '$2y$10$ZbXRoqHcHOv14BlvBP83Oe.RZmfUW7870alIdzRRTqwkiZgw.y.jW', '秀卿', '秀卿', '', 'xiuqing@qq.com', '12312421241', '', '', '', NULL, '2018-06-05 07:02:56', '2018-07-08 13:59:55', '2018-07-08 13:59:55');
 INSERT INTO `wg_admins` VALUES (6, 'yanqinsc2', '$2y$10$hipe3dXnOMqEjPmHG2HV/uOHfumA0lD5lqpqyrGJ3oll2q4f7nnj2', '风云', '风雨', 'http://weiguang/admin/adminlte/dist/img/user2-160x160.jpg', 'yanqinsc8@qq.com', '12312421241', '', '', '千金散尽还复来', NULL, '2018-06-05 08:09:51', '2018-06-06 20:46:18', NULL);
 
 -- ----------------------------
@@ -138,7 +141,7 @@ CREATE TABLE `wg_articles`  (
 -- ----------------------------
 -- Records of wg_articles
 -- ----------------------------
-INSERT INTO `wg_articles` VALUES (35, '一生独一', '一生独一', '卢焱', 1, '营山中学', 'https://abc.2008php.com/2014_Website_appreciate/2014-04-25/20140425021147.jpg', '一生独一', '<p>我说我不会写诗我只是</p><p>在诗里刻画了你的影子</p><p>每到阳春的三月你穿着</p><p>随风起舞的花布裙子</p><p>予美的定义我只是想用</p><p>你的名字来造句来写词</p><p>告诉你这世上无二的诗</p><p>讲你是我独一的故事</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一点一滴一份情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一滴一情怀</p><p>予美的定义我只是想用</p><p>你的名字来造句来写词</p><p>告诉你这世上无二的诗</p><p>讲你是我独一的故事</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一点一滴一份情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一滴一情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一点一滴一份情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一滴一情怀</p><p>你是我一生最重要的事……</p><p><br/></p>', 3, 0, '', '', 1, 1, '1', '2018-07-04 00:14:06', '2018-07-05 22:24:15', NULL);
+INSERT INTO `wg_articles` VALUES (35, '一生独一', '一生独一', '卢焱', 1, '营山中学', 'https://abc.2008php.com/2014_Website_appreciate/2014-04-25/20140425021147.jpg', '一生独一', '<p>我说我不会写诗我只是</p><p>在诗里刻画了你的影子</p><p>每到阳春的三月你穿着</p><p>随风起舞的花布裙子</p><p>予美的定义我只是想用</p><p>你的名字来造句来写词</p><p>告诉你这世上无二的诗</p><p>讲你是我独一的故事</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一点一滴一份情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一滴一情怀</p><p>予美的定义我只是想用</p><p>你的名字来造句来写词</p><p>告诉你这世上无二的诗</p><p>讲你是我独一的故事</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一点一滴一份情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一滴一情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一点一滴一份情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一滴一情怀</p><p>你是我一生最重要的事……</p><p><br/></p>', 3, 3, '', '', 1, 1, '1', '2018-07-04 00:14:06', '2018-07-05 22:24:15', NULL);
 INSERT INTO `wg_articles` VALUES (36, '往后余生', '往后余生', '马良', 1, '营山中学', 'https://abc.2008php.com/2014_Website_appreciate/2014-04-25/20140425021147.jpg', '往后余生', '<p>在没风的地方找太阳</p><p>在你冷的地方做暖阳</p><p>人事纷纷</p><p>你总太天真</p><p>往后的余生</p><p>我只要你</p><p>往后余生</p><p>风雪是你</p><p>平淡是你</p><p>清贫也是你</p><p>荣华是你</p><p>心底温柔是你</p><p>目光所致</p><p>也是你</p><p>想带你去看晴空万里</p><p>想大声告诉你我为你着迷</p><p>往事匆匆</p><p>你总会被感动</p><p>往后的余生</p><p>我只要你</p><p>往后余生</p><p>冬雪是你</p><p>春华是你</p><p>夏雨也是你</p><p>秋黄是你</p><p>四季冷暖是你</p><p>目光所致</p><p>也是你</p><p>往后余生</p><p>风雪是你</p><p>平淡是你</p><p>清贫也是你</p><p>荣华是你</p><p>心底温柔是你</p><p>目光所致</p><p>也是你</p>', 3, 0, '', '', 12, 1, '1', '2018-07-05 21:30:11', '2018-07-06 09:55:10', NULL);
 
 -- ----------------------------
@@ -213,15 +216,15 @@ INSERT INTO `wg_classes` VALUES (2, 2006, 24, 2, '2');
 -- ----------------------------
 DROP TABLE IF EXISTS `wg_comments`;
 CREATE TABLE `wg_comments`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `aid` int(11) NOT NULL COMMENT '文章ID',
-  `uid` int(11) NOT NULL COMMENT '用户ID',
-  `pid` int(11) NOT NULL DEFAULT 0 COMMENT '父ID',
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `aid` int(11) UNSIGNED NOT NULL COMMENT '文章ID',
+  `uid` int(11) UNSIGNED NOT NULL COMMENT '用户ID',
+  `pid` int(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '父ID',
   `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '评论内容',
   `reviewed` char(0) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '已审核 null|否',
   `created_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 27 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of wg_comments
@@ -229,19 +232,29 @@ CREATE TABLE `wg_comments`  (
 INSERT INTO `wg_comments` VALUES (3, 36, 1, 0, '这首歌不错，我很喜欢。', '', '2018-07-06 16:06:17');
 INSERT INTO `wg_comments` VALUES (2, 36, 1, 0, '这首歌不错，我很喜欢。', '', '2018-07-06 16:05:25');
 INSERT INTO `wg_comments` VALUES (4, 36, 1, 0, '这首歌不错，我很喜欢。', '', '2018-07-06 16:06:19');
-INSERT INTO `wg_comments` VALUES (5, 36, 1, 0, '这首歌不错，我很喜欢。', '', '2018-07-06 16:06:22');
-INSERT INTO `wg_comments` VALUES (6, 36, 1, 0, '这首歌不错，我很喜欢。', '', '2018-07-06 16:06:25');
-INSERT INTO `wg_comments` VALUES (7, 36, 1, 0, '这首歌不错，我很喜欢。', '', '2018-07-06 16:06:27');
-INSERT INTO `wg_comments` VALUES (8, 36, 1, 0, '这首歌不错，我很喜欢。', '', '2018-07-06 16:06:29');
-INSERT INTO `wg_comments` VALUES (9, 36, 1, 0, '这首歌不错，我很喜欢。', '', '2018-07-06 16:06:31');
-INSERT INTO `wg_comments` VALUES (10, 36, 1, 0, '这首歌不错，我很喜欢。', '', '2018-07-06 16:06:33');
-INSERT INTO `wg_comments` VALUES (11, 36, 1, 0, '这首歌不错，我很喜欢。', '', '2018-07-06 16:06:35');
-INSERT INTO `wg_comments` VALUES (12, 36, 1, 0, '这首歌不错，我很喜欢。', '', '2018-07-06 16:11:27');
+INSERT INTO `wg_comments` VALUES (26, 36, 1, 19, '@武当  排序我觉得默认排序就行了吧。', '', '2018-07-08 14:23:42');
 INSERT INTO `wg_comments` VALUES (13, 36, 1, 0, '这首歌不错，我很喜欢。', '', '2018-07-06 16:13:09');
 INSERT INTO `wg_comments` VALUES (14, 36, 2, 2, '@晏勤  这个想法不错', '', '2018-07-06 17:36:15');
 INSERT INTO `wg_comments` VALUES (15, 36, 1, 14, '@武当  那当然了，很棒是吧', '', '2018-07-07 16:17:01');
-INSERT INTO `wg_comments` VALUES (16, 36, 1, 14, '@武当  那当然了，很棒是吧', '', '2018-07-07 16:17:01');
 INSERT INTO `wg_comments` VALUES (17, 36, 1, 14, '@武当  补充一句，哈哈哈哈', '', '2018-07-07 16:18:57');
+INSERT INTO `wg_comments` VALUES (19, 36, 2, 0, '这个应该如何排序才好', '', '2018-07-07 19:18:51');
+INSERT INTO `wg_comments` VALUES (22, 36, 1, 0, '@武当  想带你去看晴空万里', '', '2018-07-08 00:38:50');
+INSERT INTO `wg_comments` VALUES (23, 35, 1, 0, '想起羽泉的一生有你。', '', '2018-07-08 00:59:15');
+INSERT INTO `wg_comments` VALUES (24, 35, 1, 0, '这是第二条评论', '', '2018-07-08 01:02:20');
+
+-- ----------------------------
+-- Table structure for wg_configs
+-- ----------------------------
+DROP TABLE IF EXISTS `wg_configs`;
+CREATE TABLE `wg_configs`  (
+  `key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT 'key',
+  `value` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT ''
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of wg_configs
+-- ----------------------------
+INSERT INTO `wg_configs` VALUES ('comment_review', 'off');
 
 -- ----------------------------
 -- Table structure for wg_menus
@@ -270,13 +283,13 @@ INSERT INTO `wg_menus` VALUES (3, 1, 98, '角色', 'fa-group', 'role.index', '20
 INSERT INTO `wg_menus` VALUES (4, 0, 1, '内容管理', 'fa-files-o', '#', '2018-05-05 14:12:29', '2018-06-10 19:03:17', NULL);
 INSERT INTO `wg_menus` VALUES (5, 4, 99, '文章', 'fa-file-text', 'article.index', '2018-05-05 14:15:26', '2018-06-04 21:12:01', NULL);
 INSERT INTO `wg_menus` VALUES (6, 1, 96, '管理员', 'fa-user', 'admins.index', '2018-06-04 08:03:31', '2018-06-10 19:03:45', NULL);
-INSERT INTO `wg_menus` VALUES (7, 4, 97, '评论', ' fa-comments', 'ability.index', '2018-06-04 08:13:24', '2018-07-05 22:30:53', NULL);
+INSERT INTO `wg_menus` VALUES (7, 4, 97, '评论', ' fa-comments', 'comment.index', '2018-06-04 08:13:24', '2018-07-08 13:59:37', NULL);
 INSERT INTO `wg_menus` VALUES (8, 1, 97, '菜单', ' fa-th-large', 'menu.index', '2018-06-10 19:00:52', '2018-06-10 19:03:48', NULL);
 INSERT INTO `wg_menus` VALUES (9, 0, 2, '用户管理', 'fa-users', '#', '2018-06-10 22:03:03', '2018-06-13 16:39:17', NULL);
 INSERT INTO `wg_menus` VALUES (10, 9, 99, '用户列表', 'fa-user', 'user.index', '2018-06-12 20:47:24', '2018-06-13 16:52:30', NULL);
 INSERT INTO `wg_menus` VALUES (11, 9, 99, '学校管理', 'fa-university', 'school.index', '2018-06-23 21:58:48', '2018-06-24 09:41:17', NULL);
 INSERT INTO `wg_menus` VALUES (12, 9, 2, '班级管理', 'fa-graduation-cap', 'class.index', '2018-06-24 09:39:52', '2018-07-05 23:23:23', NULL);
-INSERT INTO `wg_menus` VALUES (13, 4, 97, '分类', 'fa-paper-plane', 'category.index', '2018-07-05 22:33:15', '2018-07-05 22:36:49', NULL);
+INSERT INTO `wg_menus` VALUES (13, 4, 98, '分类', 'fa-paper-plane', 'category.index', '2018-07-05 22:33:15', '2018-07-08 13:59:29', NULL);
 
 -- ----------------------------
 -- Table structure for wg_menus_roles
@@ -335,6 +348,11 @@ CREATE TABLE `wg_password_resets`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   INDEX `password_resets_email_index`(`email`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of wg_password_resets
+-- ----------------------------
+INSERT INTO `wg_password_resets` VALUES ('yanqinsc@qq.com', '$2y$10$oGqLY99a6GLaOc4btxAR1uGIRcKvX/LjaX3NCDjdsIwrUfVym2dLe', '2018-07-09 00:08:59');
 
 -- ----------------------------
 -- Table structure for wg_permissions
@@ -456,7 +474,8 @@ CREATE TABLE `wg_sessions`  (
 -- ----------------------------
 -- Records of wg_sessions
 -- ----------------------------
-INSERT INTO `wg_sessions` VALUES ('yRrWQx1qx1RrP05lSCYCpayjrMIiftXVIE4Q9BsD', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiMzdDTlU5eWo2SVg4cm5DTW9YbXJKT2UyMFRGWkdSZHgyVmVwY0YzeSI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMwOiJodHRwOi8vd2VpZ3VhbmcvcGFuZWwvY2F0ZWdvcnkiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1530804557);
+INSERT INTO `wg_sessions` VALUES ('IJaksY36Yq2MNsBbtioNyQ4FHCLQOuobO0kIQP7E', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiS1ZPZXlHbHJlbzRNYkgzdnFqb0dtUzZiVnlmTWxmbkp5QVNsbG1wbSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly93ZWlndWFuZy9wYXNzd29yZC9yZXNldCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1531065729);
+INSERT INTO `wg_sessions` VALUES ('lyNzqvYd1gIK5KQLc6M9pLLgwy7vi4yBxiIbtNUo', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiS1ZPZXlHbHJlbzRNYkgzdnFqb0dtUzZiVnlmTWxmbkp5QVNsbG1wbSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjA6Imh0dHA6Ly93ZWlndWFuZy9ob21lIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1531058385);
 
 -- ----------------------------
 -- Table structure for wg_teachers
@@ -488,7 +507,6 @@ CREATE TABLE `wg_users`  (
   `qq` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `class_id` int(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '所属班级',
-  `type` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1' COMMENT '类型 1|普通 2|班长',
   `motto` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '座右铭',
   `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `created_at` timestamp(0) NULL DEFAULT NULL,
@@ -502,54 +520,63 @@ CREATE TABLE `wg_users`  (
 -- ----------------------------
 -- Records of wg_users
 -- ----------------------------
-INSERT INTO `wg_users` VALUES (1, 'yanqinsc', '$2y$10$hipe3dXnOMqEjPmHG2HV/uOHfumA0lD5lqpqyrGJ3oll2q4f7nnj2', '小石', '晏勤', '/admin/adminlte/dist/img/user2-160x160.jpg', 'yanqinsc@qq.com', '', '', '李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦', 2, '0', '孜孜不倦，不紧不慢', 'OQmjfq224JcicHfR3u3gwpytZYkjmfefSIRTWdpkVZ5MEbhzfQHokCGzb5rv', '2018-04-16 23:49:09', '2018-06-23 21:10:24', NULL);
-INSERT INTO `wg_users` VALUES (2, 'uDrZQkQ8C2', '$2y$10$hipe3dXnOMqEjPmHG2HV/uOHfumA0lD5lqpqyrGJ3oll2q4f7nnj2', 'HeGSb', '武当', '', 'RHHqtMy8Pv@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (3, 'hrqz0srhqs', '$2y$10$E3vTR6Q1KmTBosWT143.zuYXp40G06dTzADOt/En4dRpWajbkuOrC', 'UVypl', 'Lqxra', '', 'yvQipiD49A@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (4, 'iK8ELQlKg1', '$2y$10$Xtkx5ziztdM0Q.ulCUc7luyWaujbinPRyIKhNheYRCPxdyLt4dq/y', '8xnOd', 'SaJqm', '', 'yqLRdGYxCr@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (5, 'ornPJrp6ed', '$2y$10$cJGd3ch0jTuLNtrQXW4GfO0tbgpkjtSlHigvuZmhcx1PxvoScrO1i', 'w11rM', 'CYOn5', '', 'flcIsa1avs@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (6, 'kzMdapmz1N', '$2y$10$qGMhw3m5Dj/KcaunajApzeZMGaSRl0sA.X0hszBYO3OG2acm5HHYS', 'TynvP', 'CyckN', '', 'tWkMvk5bBr@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (7, '6Pl0QCxAN3', '$2y$10$Cm3657TG8Ppjan.gdd4qfOVHw7GMb7ao81MQKFqrZmGWA.hp84y7O', 'k1Hfl', 'yw5pE', '', 'ZT0B2EfEdN@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (8, 'GjWOakdTca', '$2y$10$QyHFIzyFT04JtzFYn6yWeeJ/ZWaB./JinbgHW4WlNI3No1Z.NL7mK', 'cH5uB', 'KFHOy', '', 'q6FhboaCRe@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (9, 'CaaDwZXzZp', '$2y$10$mLeCGyhjlY0U7erFA2RqLu9Xp3RkKTATydKZqEk.lN08DFcafB3b6', '80aOs', 'FOnu9', '', 'jrfw6mr0vD@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (10, 'LWvKUh0tJ5', '$2y$10$EUFUPX/w1odGCRdW4kBLAecKcqmNgj9JYZ8885P4oyW6yrQlJu8C.', 'DRai3', 'N0Vpg', '', 'wHSfGnY0hz@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (11, 'OtRC9jszIw', '$2y$10$xImBazzS11Z6ms.7VRhSVeofBmq32luD6caSDBOie1cxfR4SrMmvG', 'rXBTI', 'muXPb', '', 'tTqMP6pc4B@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (12, 'm3bL70QNOy', '$2y$10$c2vRNjF3pVbSCELphP0AZurCWFpGRX63Miaf03L2Ij2kl.JxIaOEC', '1df6N', 'jDKOB', '', 'ZC0yknCQxL@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (13, '57ZqwoUnpD', '$2y$10$caVvyrxs8gKFdiOIoUIDB.CeazzpAWUDt2.uvyuGvrVH3YIKN4Fl2', 'QA4k2', '75mmG', '', 'ztq6t4zoLQ@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (14, '6BeQUk2wso', '$2y$10$VzwZWwLrSm3g0QwAO3X0aepcdLYZM2DBk3IhD9hXtX1Qvbqud1FxG', 'moE3f', 'REJz4', '', 'EkPP1Ae4NI@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (15, 'NhiPzcZTBt', '$2y$10$H5p4eHFLUMgRHYjpH0PzbuIS1A1/O2Rr/qlY.QQd7Xt2opPnZ6rqq', 'mqZx2', 'IbS1r', '', 'sggstlq7MF@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (16, '9zGmVbSbWA', '$2y$10$CMwTe/LY1aWsSbCmBqdgz.Z2QqWKtMbmi.QufgAlJQGUXpil.TS0W', 'v5yas', 'szij7', '', '3SsUxrNlMP@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (17, 'jRSuDz29hJ', '$2y$10$8zg5XHqFDxNYFC2WTXcYzuvwWUCVuigmmNzlLqdhMWvQlxrX7ySpu', 'jyGCY', 'yEy5T', '', 'v7px8H79xJ@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (18, 'AFrdr18ncy', '$2y$10$kF3Lil/py3MlIbZWlWSS2.rHTrzwrO.fDuWjbZjCvYLh07rZSmgWS', 'Q6pw7', 'hJ6uM', '', 'nAJV9tEUC3@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (19, 'XAolrgtT0I', '$2y$10$Fg31ZBa6T3TlZhSQU0B9/uTBZNPiaOhY.jRTvgzD0ECMTKWpi5Usq', 'SYQ0w', '8oQiw', '', 'nVICfUKLYP@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (20, 'mz9vmLMszu', '$2y$10$xZE0.3veiXmKboA0T.uZqOifkTmDfmGjT2DATvACsQGfV.Dx88dTe', 'sLcFO', 'TQ4aS', '', '7OkATGBIUI@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (21, 'G0DeRdTB5B', '$2y$10$tg494Sy70YnMQkOFD0yjLelyU10hFGk9YRF2FU1ZH4sNxZfV/cpnq', 'Wlynz', '3ATtB', '', '1pu8qu9ysx@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (22, 'BLpqvvfnIn', '$2y$10$8fw3SvyVL3C4SSk8DgbBCObARVsI9wO95l5AOWkqQlVhypaGCZ5Xi', '83s29', 'xjJKY', '', 'EsjzzeDQ5N@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (23, '6MkOmScDdK', '$2y$10$RmOhZNpgKarbndkwTJPf/up5fpYJQnpBJ9XpAf18D5jVBqH1tg96u', 'slNRi', 'ALApY', '', 'xoW1qVfUPs@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (24, 'pMM71cFX2U', '$2y$10$Dq2cO1oumteKE7lCiMU/gO5Xq.uqpI3/E8WeeiFMAkNOIEzwK/8.O', 'l7DHP', 'Z9a7b', '', 'yzyJ8EvfHQ@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (25, '7Ra5q56j8P', '$2y$10$0OFtK.cr7SEzQ7Ubn6NlHeKvfXF61xHf1W420k/LShhdjn4r0lMKm', '7AsTd', 'i5NDW', '', 'Ym6Ve53lZb@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (26, 'LQ26tdYryl', '$2y$10$NlPvPHkj1v7atZOptILgQudm26Ll3FsEhzSWQ3yfChvXZPdRz9P1G', 'oOlf5', 'vAihw', '', 'T5e51ZC8iZ@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (27, '0QDWAMjepF', '$2y$10$ffEV/6sRc4vVHZWSu7E4BeIRpEEXL1UcqA3s7mPOp0rJZeiPBiQAW', 'ZuKDb', 'ynI8A', '', 'lrPEqJYPUC@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (28, '8R2yiKAX6I', '$2y$10$VeLNK2kdFDd5UV5WzNjPROvf1O/1nDGrqd5bq0XroD.PdelEVoyAy', 'Y4KyH', 'OFhGg', '', 'cSfYchAF3p@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (29, 'Zh5MDpoL5f', '$2y$10$BADrYO47wMpn5WLHyeStXevH2b5kqMM3EcSAANdJC59.WVY8ARnFm', '0F6TZ', 'wYKX9', '', 'ww7ZzAirzT@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (30, 'qaQDndpsjZ', '$2y$10$RGLvOnIL8hI75RNofLKhluLVzwtVL3FJzyWG1sYlLNw/kOZfak1Cq', 'QSi2v', '3oqV9', '', 'lD0miBZnlO@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (31, '9k7WyFphgk', '$2y$10$FIhjSo9CaxfY2I6AXwRlcuzZ470PJfdkLE7a60dXBi/8u/SFY7SOS', 'kVTEc', 'S7pFP', '', '2YXls5WWkg@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (32, 'CIFVliZPvW', '$2y$10$of.3SCBz178qPBmW5eZJdehgu2KaP3mCiithLwdPFnG/m8tALJ.yC', '2WcPg', 'RQgyK', '', 'LgNUpgjzsF@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (33, 'R7Ak5XCxOS', '$2y$10$ggL1lnaTiBeegMzmTVHJMu05/bSNDe3mBx27FitzjGQlSzuFGgv02', 'l2ZFT', 'BuAkD', '', 'xpmFDtxQNG@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (34, 'MtEhiKSXXq', '$2y$10$HU1W4HrXEPDmf6DchGPSb.aWUFTg8w1LBsM/pmGDopPBIbndEAIVy', 'QJQ08', 'wj4Rl', '', '2XImysmwRm@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (35, 'gzAcGsICIH', '$2y$10$OjX6JBcPRJ8DEb.lA3kjmeOBbblGBLenVxCpDVB8yX1RWe8muQ9Ri', 'wMPbz', 'NL7SD', '', 'RxZVQABCQ2@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (36, 'k5yjE5gQ5r', '$2y$10$jdrw2DD9Mj6NCGYTDYw6iuECclqHouTLc6WnF2hAyTMprXI2ddxwG', 'xl8Ap', 'L82t0', '', '2oQ0GOpTBg@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (37, 'UenAsbTzx5', '$2y$10$OBl0uM6vryRyRuwCU11v9OPq4PaO5CocxDayFxlbE1/mMEpJE95fq', 'iJu2E', 'UsAjs', '', 'Id3ZsgJUjt@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (38, 'sqRVNOdnA9', '$2y$10$vhve87fdi3k9ErXtv9KA1OpE.rxtul/oJnBQ7.BClD6Y5IpoeVMkq', 'PqkQM', '26yBi', '', 'CxQ0IQklRn@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (39, '0eioawfSUx', '$2y$10$q8xSIzveQforYbforN00de9s2aeOe.Fimn.kSa73xNtNXvuqj9Sxe', 'Dh2II', '2wtMn', '', 'pZr4gFM4h2@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (40, 'i480jahoH1', '$2y$10$hZDAf5S25wJOCLkJNUPgduip7.Bm4j2qa70M9Xob5AwuOgQLxgspu', 'wQ40z', 'tqpGV', '', 'tYaIIYB3ed@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (41, 'f9fQ55I8H6', '$2y$10$0VhFJiJDG7XlAlitqIjI7.uJeVBoRiI/4jLvnevs6MSlRwpfDCZ3K', 'tEdkg', 'NhF7r', '', '81Z9Z5K5Q4@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (42, '4TBvTa2f3h', '$2y$10$YV5QrJs0Kp5dI.NkA343e.CF4dfBOg1cfT9dDBX8mYh6/c.doaFkO', 'Mx7lG', 'D02s9', '', 'jCVjW1zORl@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (43, 'ya7mhcuvOv', '$2y$10$P65jeY8gTBKOUFh58nkiW.0cVQjtf6cXEj9vSQBEm5TkaR61z7oyi', 'BrllS', 'i9eMJ', '', 'bLmil0qCeK@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (44, 'tqPb13bOD9', '$2y$10$qaFWVb7ABtA84UhCNtdvduXrM/IdykZTx7UYfbY.dojKxh7SRdv6.', '6cq4Y', 'gs2nG', '', 'KuE3hrEayl@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (45, '5rkVBRLvxl', '$2y$10$R7fhnHKwWz8CnlWDP26zPudjAaIeigkafCrXTaUBGzd.yQhC7mxLa', 'foxVZ', 'rrD2m', '', 'VzSbmld4DM@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (46, 'K8jdHfk4rM', '$2y$10$f4L1UsO2xUBnXbvZrIsdb.XpTxQVwaZpAYGvTF02zEII5QbW7zkIq', 'ljHAS', 'TorMN', '', '5LxWJT25Pl@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (47, 'HnSATRQhdX', '$2y$10$weJmzrNbwatPTKidsnQn3OApFnn3mWPFhdAYS0EeSZgNyfeF53kX2', 'Y2xjG', 'bCJsX', '', 'pUqh6Nru74@gmail.com', '', '', '', 0, '1', '', NULL, NULL, NULL, NULL);
-INSERT INTO `wg_users` VALUES (48, 'SuaoR64YVe', '$2y$10$dqWkr5OUtY.X8efpEFMW1ue5z14lyp.7Q7v.BIF6.UqaKIO.6cczy', 'FUIJe', 't1TQ2', '', 'NkFW6azXBq@gmail.com', '', '', '', 0, '1', '', NULL, NULL, '2018-06-23 21:20:46', '2018-06-23 21:20:46');
-INSERT INTO `wg_users` VALUES (49, 'litstone', '$2y$10$j6RCcVg0NJy1qWxLG1MIguElxx1RJ5zhILn.0RB1q/R2l13nOG0O.', 'wgQ3Gr3LtA', '小石', '', 'litstone@qq.com', '15709896572', '', '', 0, '1', '', NULL, NULL, '2018-06-23 21:19:48', NULL);
+INSERT INTO `wg_users` VALUES (1, 'yanqinsc', '$2y$10$XPajQE62fsQhWOMscqDWBes1qSOwZFiTTZx/GVwWuouGvSzN.hJhS', '小石', '小石', '/admin/adminlte/dist/img/user2-160x160.jpg', 'yanqinsc@qq.com', '', '', '李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦', 2, '孜孜不倦，不紧不慢', 'tXtqoI0Zef9RNA3mAA5ZymEOFIrrg8UTFVbqkaFHTO9bQT7JvQ4SS7SZ6w7N', '2018-04-16 23:49:09', '2018-07-08 21:50:32', NULL);
+INSERT INTO `wg_users` VALUES (2, 'uDrZQkQ8C2', '$2y$10$hipe3dXnOMqEjPmHG2HV/uOHfumA0lD5lqpqyrGJ3oll2q4f7nnj2', 'HeGSb', '武当', '', 'RHHqtMy8Pv@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (3, 'hrqz0srhqs', '$2y$10$E3vTR6Q1KmTBosWT143.zuYXp40G06dTzADOt/En4dRpWajbkuOrC', 'UVypl', 'Lqxra', '', 'yvQipiD49A@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (4, 'iK8ELQlKg1', '$2y$10$Xtkx5ziztdM0Q.ulCUc7luyWaujbinPRyIKhNheYRCPxdyLt4dq/y', '8xnOd', 'SaJqm', '', 'yqLRdGYxCr@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (5, 'ornPJrp6ed', '$2y$10$cJGd3ch0jTuLNtrQXW4GfO0tbgpkjtSlHigvuZmhcx1PxvoScrO1i', 'w11rM', 'CYOn5', '', 'flcIsa1avs@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (6, 'kzMdapmz1N', '$2y$10$qGMhw3m5Dj/KcaunajApzeZMGaSRl0sA.X0hszBYO3OG2acm5HHYS', 'TynvP', 'CyckN', '', 'tWkMvk5bBr@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (7, '6Pl0QCxAN3', '$2y$10$Cm3657TG8Ppjan.gdd4qfOVHw7GMb7ao81MQKFqrZmGWA.hp84y7O', 'k1Hfl', 'yw5pE', '', 'ZT0B2EfEdN@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (8, 'GjWOakdTca', '$2y$10$QyHFIzyFT04JtzFYn6yWeeJ/ZWaB./JinbgHW4WlNI3No1Z.NL7mK', 'cH5uB', 'KFHOy', '', 'q6FhboaCRe@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (9, 'CaaDwZXzZp', '$2y$10$mLeCGyhjlY0U7erFA2RqLu9Xp3RkKTATydKZqEk.lN08DFcafB3b6', '80aOs', 'FOnu9', '', 'jrfw6mr0vD@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (10, 'LWvKUh0tJ5', '$2y$10$EUFUPX/w1odGCRdW4kBLAecKcqmNgj9JYZ8885P4oyW6yrQlJu8C.', 'DRai3', 'N0Vpg', '', 'wHSfGnY0hz@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (11, 'OtRC9jszIw', '$2y$10$xImBazzS11Z6ms.7VRhSVeofBmq32luD6caSDBOie1cxfR4SrMmvG', 'rXBTI', 'muXPb', '', 'tTqMP6pc4B@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (12, 'm3bL70QNOy', '$2y$10$c2vRNjF3pVbSCELphP0AZurCWFpGRX63Miaf03L2Ij2kl.JxIaOEC', '1df6N', 'jDKOB', '', 'ZC0yknCQxL@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (13, '57ZqwoUnpD', '$2y$10$caVvyrxs8gKFdiOIoUIDB.CeazzpAWUDt2.uvyuGvrVH3YIKN4Fl2', 'QA4k2', '75mmG', '', 'ztq6t4zoLQ@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (14, '6BeQUk2wso', '$2y$10$VzwZWwLrSm3g0QwAO3X0aepcdLYZM2DBk3IhD9hXtX1Qvbqud1FxG', 'moE3f', 'REJz4', '', 'EkPP1Ae4NI@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (15, 'NhiPzcZTBt', '$2y$10$H5p4eHFLUMgRHYjpH0PzbuIS1A1/O2Rr/qlY.QQd7Xt2opPnZ6rqq', 'mqZx2', 'IbS1r', '', 'sggstlq7MF@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (16, '9zGmVbSbWA', '$2y$10$CMwTe/LY1aWsSbCmBqdgz.Z2QqWKtMbmi.QufgAlJQGUXpil.TS0W', 'v5yas', 'szij7', '', '3SsUxrNlMP@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (17, 'jRSuDz29hJ', '$2y$10$8zg5XHqFDxNYFC2WTXcYzuvwWUCVuigmmNzlLqdhMWvQlxrX7ySpu', 'jyGCY', 'yEy5T', '', 'v7px8H79xJ@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (18, 'AFrdr18ncy', '$2y$10$kF3Lil/py3MlIbZWlWSS2.rHTrzwrO.fDuWjbZjCvYLh07rZSmgWS', 'Q6pw7', 'hJ6uM', '', 'nAJV9tEUC3@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (19, 'XAolrgtT0I', '$2y$10$Fg31ZBa6T3TlZhSQU0B9/uTBZNPiaOhY.jRTvgzD0ECMTKWpi5Usq', 'SYQ0w', '8oQiw', '', 'nVICfUKLYP@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (20, 'mz9vmLMszu', '$2y$10$xZE0.3veiXmKboA0T.uZqOifkTmDfmGjT2DATvACsQGfV.Dx88dTe', 'sLcFO', 'TQ4aS', '', '7OkATGBIUI@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (21, 'G0DeRdTB5B', '$2y$10$tg494Sy70YnMQkOFD0yjLelyU10hFGk9YRF2FU1ZH4sNxZfV/cpnq', 'Wlynz', '3ATtB', '', '1pu8qu9ysx@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (22, 'BLpqvvfnIn', '$2y$10$8fw3SvyVL3C4SSk8DgbBCObARVsI9wO95l5AOWkqQlVhypaGCZ5Xi', '83s29', 'xjJKY', '', 'EsjzzeDQ5N@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (23, '6MkOmScDdK', '$2y$10$RmOhZNpgKarbndkwTJPf/up5fpYJQnpBJ9XpAf18D5jVBqH1tg96u', 'slNRi', 'ALApY', '', 'xoW1qVfUPs@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (24, 'pMM71cFX2U', '$2y$10$Dq2cO1oumteKE7lCiMU/gO5Xq.uqpI3/E8WeeiFMAkNOIEzwK/8.O', 'l7DHP', 'Z9a7b', '', 'yzyJ8EvfHQ@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (25, '7Ra5q56j8P', '$2y$10$0OFtK.cr7SEzQ7Ubn6NlHeKvfXF61xHf1W420k/LShhdjn4r0lMKm', '7AsTd', 'i5NDW', '', 'Ym6Ve53lZb@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (26, 'LQ26tdYryl', '$2y$10$NlPvPHkj1v7atZOptILgQudm26Ll3FsEhzSWQ3yfChvXZPdRz9P1G', 'oOlf5', 'vAihw', '', 'T5e51ZC8iZ@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (27, '0QDWAMjepF', '$2y$10$ffEV/6sRc4vVHZWSu7E4BeIRpEEXL1UcqA3s7mPOp0rJZeiPBiQAW', 'ZuKDb', 'ynI8A', '', 'lrPEqJYPUC@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (28, '8R2yiKAX6I', '$2y$10$VeLNK2kdFDd5UV5WzNjPROvf1O/1nDGrqd5bq0XroD.PdelEVoyAy', 'Y4KyH', 'OFhGg', '', 'cSfYchAF3p@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (29, 'Zh5MDpoL5f', '$2y$10$BADrYO47wMpn5WLHyeStXevH2b5kqMM3EcSAANdJC59.WVY8ARnFm', '0F6TZ', 'wYKX9', '', 'ww7ZzAirzT@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (30, 'qaQDndpsjZ', '$2y$10$RGLvOnIL8hI75RNofLKhluLVzwtVL3FJzyWG1sYlLNw/kOZfak1Cq', 'QSi2v', '3oqV9', '', 'lD0miBZnlO@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (31, '9k7WyFphgk', '$2y$10$FIhjSo9CaxfY2I6AXwRlcuzZ470PJfdkLE7a60dXBi/8u/SFY7SOS', 'kVTEc', 'S7pFP', '', '2YXls5WWkg@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (32, 'CIFVliZPvW', '$2y$10$of.3SCBz178qPBmW5eZJdehgu2KaP3mCiithLwdPFnG/m8tALJ.yC', '2WcPg', 'RQgyK', '', 'LgNUpgjzsF@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (33, 'R7Ak5XCxOS', '$2y$10$ggL1lnaTiBeegMzmTVHJMu05/bSNDe3mBx27FitzjGQlSzuFGgv02', 'l2ZFT', 'BuAkD', '', 'xpmFDtxQNG@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (34, 'MtEhiKSXXq', '$2y$10$HU1W4HrXEPDmf6DchGPSb.aWUFTg8w1LBsM/pmGDopPBIbndEAIVy', 'QJQ08', 'wj4Rl', '', '2XImysmwRm@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (35, 'gzAcGsICIH', '$2y$10$OjX6JBcPRJ8DEb.lA3kjmeOBbblGBLenVxCpDVB8yX1RWe8muQ9Ri', 'wMPbz', 'NL7SD', '', 'RxZVQABCQ2@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (36, 'k5yjE5gQ5r', '$2y$10$jdrw2DD9Mj6NCGYTDYw6iuECclqHouTLc6WnF2hAyTMprXI2ddxwG', 'xl8Ap', 'L82t0', '', '2oQ0GOpTBg@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (37, 'UenAsbTzx5', '$2y$10$OBl0uM6vryRyRuwCU11v9OPq4PaO5CocxDayFxlbE1/mMEpJE95fq', 'iJu2E', 'UsAjs', '', 'Id3ZsgJUjt@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (38, 'sqRVNOdnA9', '$2y$10$vhve87fdi3k9ErXtv9KA1OpE.rxtul/oJnBQ7.BClD6Y5IpoeVMkq', 'PqkQM', '26yBi', '', 'CxQ0IQklRn@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (39, '0eioawfSUx', '$2y$10$q8xSIzveQforYbforN00de9s2aeOe.Fimn.kSa73xNtNXvuqj9Sxe', 'Dh2II', '2wtMn', '', 'pZr4gFM4h2@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (40, 'i480jahoH1', '$2y$10$hZDAf5S25wJOCLkJNUPgduip7.Bm4j2qa70M9Xob5AwuOgQLxgspu', 'wQ40z', 'tqpGV', '', 'tYaIIYB3ed@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (41, 'f9fQ55I8H6', '$2y$10$0VhFJiJDG7XlAlitqIjI7.uJeVBoRiI/4jLvnevs6MSlRwpfDCZ3K', 'tEdkg', 'NhF7r', '', '81Z9Z5K5Q4@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (42, '4TBvTa2f3h', '$2y$10$YV5QrJs0Kp5dI.NkA343e.CF4dfBOg1cfT9dDBX8mYh6/c.doaFkO', 'Mx7lG', 'D02s9', '', 'jCVjW1zORl@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (43, 'ya7mhcuvOv', '$2y$10$P65jeY8gTBKOUFh58nkiW.0cVQjtf6cXEj9vSQBEm5TkaR61z7oyi', 'BrllS', 'i9eMJ', '', 'bLmil0qCeK@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (44, 'tqPb13bOD9', '$2y$10$qaFWVb7ABtA84UhCNtdvduXrM/IdykZTx7UYfbY.dojKxh7SRdv6.', '6cq4Y', 'gs2nG', '', 'KuE3hrEayl@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (45, '5rkVBRLvxl', '$2y$10$R7fhnHKwWz8CnlWDP26zPudjAaIeigkafCrXTaUBGzd.yQhC7mxLa', 'foxVZ', 'rrD2m', '', 'VzSbmld4DM@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (46, 'K8jdHfk4rM', '$2y$10$f4L1UsO2xUBnXbvZrIsdb.XpTxQVwaZpAYGvTF02zEII5QbW7zkIq', 'ljHAS', 'TorMN', '', '5LxWJT25Pl@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (47, 'HnSATRQhdX', '$2y$10$weJmzrNbwatPTKidsnQn3OApFnn3mWPFhdAYS0EeSZgNyfeF53kX2', 'Y2xjG', 'bCJsX', '', 'pUqh6Nru74@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `wg_users` VALUES (48, 'SuaoR64YVe', '$2y$10$dqWkr5OUtY.X8efpEFMW1ue5z14lyp.7Q7v.BIF6.UqaKIO.6cczy', 'FUIJe', 't1TQ2', '', 'NkFW6azXBq@gmail.com', '', '', '', 0, '', NULL, NULL, '2018-06-23 21:20:46', '2018-06-23 21:20:46');
+INSERT INTO `wg_users` VALUES (49, 'litstone', '$2y$10$j6RCcVg0NJy1qWxLG1MIguElxx1RJ5zhILn.0RB1q/R2l13nOG0O.', 'wgQ3Gr3LtA', '小石', '', 'litstone@qq.com', '15709896572', '', '', 0, '', NULL, NULL, '2018-06-23 21:19:48', NULL);
+
+-- ----------------------------
+-- Triggers structure for table wg_comments
+-- ----------------------------
+DROP TRIGGER IF EXISTS `update_article_comment_count`;
+delimiter ;;
+CREATE TRIGGER `update_article_comment_count` AFTER INSERT ON `wg_comments` FOR EACH ROW UPDATE wg_articles SET comment_count=(SELECT COUNT(*) FROM wg_comments WHERE id=new.aid) WHERE id=new.aid
+;;
+delimiter ;
 
 SET FOREIGN_KEY_CHECKS = 1;

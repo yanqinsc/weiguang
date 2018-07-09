@@ -35,40 +35,35 @@
                 @foreach($comments as $comment)
                 <li  class="item-li">
                     <div class="comment-info">
-                        <img src="{{ $comment->avatar }}" alt="avatar">
+                        <img src="{{ $comment['avatar'] }}" alt="头像">
                         <div class="user-info">
-                            <b>{{ $comment->real_name ?: $comment->name }}</b><br>
-                            <i>{{ substr($comment->created_at, 0, 16) }}</i>
+                            <b>{{ $comment['nickname'] ?: $comment['name'] }}</b><br>
+                            <i>{{ substr($comment['created_at'], 0, 16) }}</i>
                         </div>
                     </div>
-                    <div class="comment-body">{{ $comment->content }}</div>
+                    <div class="comment-body">{{ $comment['content'] }}</div>
                     <div class="btn-replay">
                         <a href="javascript:void(0)">
-                            <i class="re-replay" data-name="{{ $comment->real_name ?: $comment->name }}" data-comment-id="{{ $comment->id }}">回复</i>
+                            <i class="re-replay" data-uid="$comment['uid']" data-name="{{ $comment['nickname'] ?: $comment['name'] }}" data-comment-id="{{ $comment['id'] }}">回复</i>
                         </a>
                     </div>
-                    @if(isset($comment->replies))
+                    @if(isset($comment['replies']))
                     <ul class="sub-items">
+                        @foreach($comment['replies'] as $reply)
                         <li class="item-li-dashed">
                             <div class="comment-info">
-                                <img src="/admin/adminlte/dist/img/user2-160x160.jpg" alt="avatar">
+                                <img src="{{ $reply['avatar'] }}" alt="头像">
                                 <div class="user-info">
-                                    <b>李白</b><br>
-                                    <i>2018-07-06 09:23</i>
+                                    <b>{{ $reply['nickname'] ?: $reply['name'] }}</b><br>
+                                    <i>{{ substr($reply['created_at'], 0, 16) }}</i>
                                 </div>
                             </div>
-                            <div class="comment-body border-left-orange">
-                                这是第一条评论这这是第一条评论这是第一条评论这是第
-                                一条评论这是第一条评论这是第一条评论这是第一条评论这是第一条
-                                评论这是第一条评论这是第一条评论这是第一条评论这是第一条评论这是第一
-                                条评论这是第一条评论是第一条评论这是第一条评论这是第一条评论这是第一条评论这是第一条评论
-                                这是第一条评论这是第一条评论这是第一条评论这是第一条评论这是第一条评论
-                                这是第一条评论这是第一条评论这是第一条评论这是第一条评论这是第一条评论
-                            </div>
+                            <div class="comment-body border-left-orange">{{ $reply['content'] }}</div>
                             <div class="btn-replay">
-                                <a href="javascript:void(0)"><i>回复</i></a>
+                                <a href="javascript:void(0)"><i class="re-replay" data-name="{{ $reply['nickname'] ?: $reply['name'] }}" data-comment-id="{{ $reply['id'] }}">回复</i></a>
                             </div>
                         </li>
+                        @endforeach
                     </ul>
                     @endif
                 </li>
@@ -79,7 +74,7 @@
 
         <form class="comment-relay" action="{{ route('comment.create') }}" method="post">
             {{ csrf_field() }}
-            <textarea name="comment" id="replay-text" rows="5" maxlength="120" placeholder="评论须少于120字。"></textarea>
+            <textarea name="comment" id="replay-text" rows="5" maxlength="120" placeholder="内容不超过120字。"></textarea>
             <input type="hidden" name="pid" value="0">
             <input type="hidden" name="aid" value="{{ $article->id }}">
             <br>
@@ -89,7 +84,8 @@
             @if($errors->any())
             <p class="show-error" id="commentError"> {{ $errors->first() }} </p>
             @endif
-            <button class="btn btn-success" id="comment">发表评论</button>
+            <br>
+            <button class="btn btn-primary" id="comment">发表评论</button>
         </form>
     </div>
     <script>
@@ -105,6 +101,7 @@
             $(".re-replay").click(function () {
                 let pid = $(this).attr('data-comment-id'),
                     name = $(this).attr('data-name');
+
                 $("input[name=pid]").val(pid);
             @guest
             @else

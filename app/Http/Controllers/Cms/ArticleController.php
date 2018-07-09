@@ -12,21 +12,16 @@ class ArticleController extends Controller
     public function index(Request $request, $id)
     {
         $article = Article::getArticle($id);
-        $data = Comment::join('users', 'comments.uid', 'users.id')
-            ->select('comments.id', 'pid', 'uid', 'name', 'real_name', 'content', 'comments.created_at', 'avatar')
+        $comments = Comment::join('users', 'comments.uid', 'users.id')
+            ->select('comments.id', 'pid', 'uid', 'name', 'nickname', 'content', 'comments.created_at', 'avatar')
             ->where(['aid' => $id])
+            ->orderBy('comments.id', 'asc')
             ->whereNotNull('reviewed')
-            ->get();
+            ->get()
+            ->toArray();
 
-        $comments = [];
-        foreach ($data as $comment) {
-            if ($comment->pid === 0) {
-                $comments[$comment->id] = $comment;
-            } else {
 
-            }
-
-        }
+        $comments = $this->arrangeComments($comments);
 
         $response = response()->view('cms.contents.article', [
             'article' => $article,
@@ -55,6 +50,7 @@ class ArticleController extends Controller
         }
 
         $request->validate($rule);
+
         $data = [
             'pid' => $request->pid,
             'content' => $request->comment,
@@ -62,7 +58,39 @@ class ArticleController extends Controller
             'uid' => Auth::user()->id,
             'created_at' => date('Y-m-d H:i:s')
         ];
+
+
+        if ($this->dbConfig->comment_review == 'off') {
+            $data['reviewed'] = '';
+        }
+
         Comment::insert($data);
-        return redirect()->back()->withErrors('请等候管理员审核！');
+        $response = redirect()->back();
+        return $this->dbConfig->comment_review == 'off' ? $response :
+            $response->withErrors('请等候管理员审核！');
+    }
+
+    private function arrangeComments($comments) {
+        $data = [];
+        $temp = [];
+        $getTopId = function ($pid, $temp) use (&$getTopId) {
+            if ($temp[$pid]['pid'] === 0) {
+                $topId =  $temp[$pid]['id'];
+            } else {
+                $topId = $getTopId($temp[$pid]['pid'], $temp);
+            }
+            return $topId;
+        };
+
+        foreach ($comments as $comment) {
+            $temp[$comment['id']] = $comment;
+            if ($comment['pid'] === 0) {
+                $data[$comment['id']] = $comment;
+            } else {
+                $data[$getTopId($comment['pid'], $temp)]['replies'][] = $comment;
+            }
+        }
+
+        return $data;
     }
 }

@@ -34,6 +34,10 @@ Route::prefix('panel')->namespace('admin')->middleware('auth:admin')->group(func
     Route::post('role/setMenu', 'RoleController@setMenu')->name('role.set_menu');
     Route::get('role/permissions/{role}', 'RoleController@permissions')->name('role.permissions');
     Route::get('role/menu/{id}', 'RoleController@menu')->name('role.menu');
+    Route::get('comments', 'CommentController@index')->name('comment.index');
+    Route::delete('comment/{id}', 'CommentController@destroy')->name('comment.destroy');
+    Route::post('commentReview/{id}', 'CommentController@destroy')->name('comment.review');
+
     Route::resource('ability', 'AbilityController');
     Route::resource('article', 'ArticleController');
     Route::resource('role', 'RoleController');

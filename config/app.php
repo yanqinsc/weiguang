@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'name_ch' => '微光',
+    'name_ch' => env('APP_NAME', '微光'),
 
 
     /*

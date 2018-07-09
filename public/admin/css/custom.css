@@ -70,7 +70,7 @@ ul {
     width: 88%;
 }
 
-#form-destroy {
+#form-review, #form-destroy {
     display: none;
     width: 300px;
     height: 150px;
