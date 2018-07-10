@@ -84,7 +84,7 @@ return [
     ],
     'string' => ':attribute 必须是一个字符串。',
     'timezone' => ':attribute 必须是一个合法的时区值。',
-    'unique' => ':attribute 已经存在。',
+    'unique' => ':attribute 已经存在或已注册。',
     'uploaded' => ':attribute 上传失败。',
     'url' => ':attribute 格式不正确。',
 

@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Model\RegisterCode;
+
 use App\Model\User;
+use App\Model\RegisterCode;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Cms\Controller;
+use Illuminate\Support\Facades\Validator;
+use App\Mail\RegisterCode as SendRegisterCode;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -40,12 +43,13 @@ class RegisterController extends Controller
     {
         parent::__construct();
         $this->middleware('guest');
+        $this->middleware('throttle:1,1')->only(['mailRegisterCode']);
     }
 
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -61,7 +65,7 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \App\Model\User
      */
     protected function create(array $data)
@@ -80,11 +84,15 @@ class RegisterController extends Controller
                 'email' => 'required|string|email|max:255|unique:users'
             ]);
 
+            $code = rand(100000, 999999);
+
             RegisterCode::insert([
                 'email' => $request->email,
-                'code' => rand(100000, 999999),
+                'code' => $code,
                 'created_at' => date('Y-m-d H:i:s')
             ]);
+
+            Mail::to($request->email)->send(new SendRegisterCode($code));
 
             return ['code' => 200, 'msg' => 'success'];
         }

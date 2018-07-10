@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : Localhost
+ Source Server         : MaraDB
  Source Server Type    : MySQL
- Source Server Version : 50719
+ Source Server Version : 100214
  Source Host           : localhost:3306
  Source Schema         : weiguang
 
  Target Server Type    : MySQL
- Target Server Version : 50719
+ Target Server Version : 100214
  File Encoding         : 65001
 
- Date: 10/07/2018 19:08:59
+ Date: 11/07/2018 00:15:45
 */
 
 SET NAMES utf8mb4;
@@ -426,6 +426,18 @@ CREATE TABLE `wg_register_codes`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of wg_register_codes
+-- ----------------------------
+INSERT INTO `wg_register_codes` VALUES ('yanqinsc@126.com', '995009', '2018-07-10 23:07:08');
+INSERT INTO `wg_register_codes` VALUES ('yanqinsc@126.com', '919869', '2018-07-10 23:13:45');
+INSERT INTO `wg_register_codes` VALUES ('yanqinsc@126.com', '149278', '2018-07-10 23:17:27');
+INSERT INTO `wg_register_codes` VALUES ('yanqinsc@126.com', '528726', '2018-07-10 23:20:04');
+INSERT INTO `wg_register_codes` VALUES ('yanqinsc@126.com', '280483', '2018-07-10 23:21:55');
+INSERT INTO `wg_register_codes` VALUES ('yanqinsc@126.com', '746347', '2018-07-10 23:34:19');
+INSERT INTO `wg_register_codes` VALUES ('yanqinsc@126.com', '186324', '2018-07-10 23:41:30');
+INSERT INTO `wg_register_codes` VALUES ('yanqinsc@126.com', '207714', '2018-07-10 23:51:13');
+
+-- ----------------------------
 -- Table structure for wg_roles
 -- ----------------------------
 DROP TABLE IF EXISTS `wg_roles`;
@@ -486,8 +498,8 @@ CREATE TABLE `wg_sessions`  (
 -- ----------------------------
 -- Records of wg_sessions
 -- ----------------------------
-INSERT INTO `wg_sessions` VALUES ('IJaksY36Yq2MNsBbtioNyQ4FHCLQOuobO0kIQP7E', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiS1ZPZXlHbHJlbzRNYkgzdnFqb0dtUzZiVnlmTWxmbkp5QVNsbG1wbSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly93ZWlndWFuZy9wYXNzd29yZC9yZXNldCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1531065729);
-INSERT INTO `wg_sessions` VALUES ('lyNzqvYd1gIK5KQLc6M9pLLgwy7vi4yBxiIbtNUo', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiS1ZPZXlHbHJlbzRNYkgzdnFqb0dtUzZiVnlmTWxmbkp5QVNsbG1wbSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjA6Imh0dHA6Ly93ZWlndWFuZy9ob21lIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1531058385);
+INSERT INTO `wg_sessions` VALUES ('aLDp9MgH5jFvN9IoioFGGBHqRacoupP6wOGEs9RV', 50, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiV08yVDFhN1lHY2RvczZqRTVBZkRiSlJ6R3h0SjloNm9xRjlZSnlDeSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjA6Imh0dHA6Ly93ZWlndWFuZy9ob21lIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NTA7fQ==', 1531239276);
+INSERT INTO `wg_sessions` VALUES ('t7GgiWzLZLXKROZfGgonTqutxX5jtYKw3qWCcz8c', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiZFFoNFA5YzU0SEp6MlJBd0xhV0NDQWh5RDNWbWgwMDdyUTZoeEZhVyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjQ6Imh0dHA6Ly93ZWlndWFuZy9yZWdpc3RlciI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1531235022);
 
 -- ----------------------------
 -- Table structure for wg_teachers
@@ -511,8 +523,8 @@ CREATE TABLE `wg_users`  (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nickname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `real_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '真实姓名',
+  `nickname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `real_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '真实姓名',
   `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '用户头像',
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` char(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '电话号码',
@@ -527,7 +539,7 @@ CREATE TABLE `wg_users`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_name_unique`(`name`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 50 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 51 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of wg_users
@@ -581,6 +593,7 @@ INSERT INTO `wg_users` VALUES (46, 'K8jdHfk4rM', '$2y$10$f4L1UsO2xUBnXbvZrIsdb.X
 INSERT INTO `wg_users` VALUES (47, 'HnSATRQhdX', '$2y$10$weJmzrNbwatPTKidsnQn3OApFnn3mWPFhdAYS0EeSZgNyfeF53kX2', 'Y2xjG', 'bCJsX', '', 'pUqh6Nru74@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
 INSERT INTO `wg_users` VALUES (48, 'SuaoR64YVe', '$2y$10$dqWkr5OUtY.X8efpEFMW1ue5z14lyp.7Q7v.BIF6.UqaKIO.6cczy', 'FUIJe', 't1TQ2', '', 'NkFW6azXBq@gmail.com', '', '', '', 0, '', NULL, NULL, '2018-06-23 21:20:46', '2018-06-23 21:20:46');
 INSERT INTO `wg_users` VALUES (49, 'litstone', '$2y$10$j6RCcVg0NJy1qWxLG1MIguElxx1RJ5zhILn.0RB1q/R2l13nOG0O.', 'wgQ3Gr3LtA', '小石', '', 'litstone@qq.com', '15709896572', '', '', 0, '', NULL, NULL, '2018-06-23 21:19:48', NULL);
+INSERT INTO `wg_users` VALUES (50, 'panda', '$2y$10$Q/Ugv.iQ/KBItGsbE2aSTuXSv0a3pXiiXCZjM70uQHOQ24IJQ5ifu', '', '', '', 'yanqinsc@126.com', '', '', '', 0, '', NULL, '2018-07-11 00:14:36', '2018-07-11 00:14:36', NULL);
 
 -- ----------------------------
 -- Triggers structure for table wg_comments
