@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Model\RegisterCode;
 use App\Model\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Http\Controllers\Cms\Controller;
 
 class RegisterController extends Controller
 {
@@ -35,6 +38,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
+        parent::__construct();
         $this->middleware('guest');
     }
 
@@ -50,6 +54,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'code' => 'required|alpha_num|max:8'
         ]);
     }
 
@@ -66,5 +71,22 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password'])
         ]);
+    }
+
+    public function mailRegisterCode(Request $request)
+    {
+        if ($request->ajax()) {
+            $request->validate([
+                'email' => 'required|string|email|max:255|unique:users'
+            ]);
+
+            RegisterCode::insert([
+                'email' => $request->email,
+                'code' => rand(100000, 999999),
+                'created_at' => date('Y-m-d H:i:s')
+            ]);
+
+            return ['code' => 200, 'msg' => 'success'];
+        }
     }
 }

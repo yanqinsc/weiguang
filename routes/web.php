@@ -18,7 +18,9 @@ Route::namespace('Cms')->group(function () {
     Route::post('/article/createComment', 'ArticleController@createComment')->name('comment.create');
 });
 
+Route::post('getRegisterCode', 'Auth\RegisterController@mailRegisterCode')->name('getRegisterCode');
 Auth::routes();
+
 
 // 后台用户认证
 Route::prefix('admin')->group(function () {

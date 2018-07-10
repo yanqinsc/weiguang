@@ -92,3 +92,14 @@ footer p {
     text-align: center;
     color: #ff0000;
 }
+
+.form-font {
+    font-family: Raleway, sans-serif !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    color: #636b6f !important;
+}
+
+.panel {
+    margin-top: 7%;
+}

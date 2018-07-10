@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-
+use Bouncer;
 use App\Model\Menu;
 use App\Model\MenuRole;
-use Bouncer;
 use App\Model\WgAbility;
 use App\Model\Permissions;
 use App\Model\AssignedRoles;

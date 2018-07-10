@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : MaraDB
+ Source Server         : Localhost
  Source Server Type    : MySQL
- Source Server Version : 100214
+ Source Server Version : 50719
  Source Host           : localhost:3306
  Source Schema         : weiguang
 
  Target Server Type    : MySQL
- Target Server Version : 100214
+ Target Server Version : 50719
  File Encoding         : 65001
 
- Date: 09/07/2018 08:24:27
+ Date: 10/07/2018 19:08:59
 */
 
 SET NAMES utf8mb4;
@@ -141,7 +141,7 @@ CREATE TABLE `wg_articles`  (
 -- ----------------------------
 -- Records of wg_articles
 -- ----------------------------
-INSERT INTO `wg_articles` VALUES (35, '一生独一', '一生独一', '卢焱', 1, '营山中学', 'https://abc.2008php.com/2014_Website_appreciate/2014-04-25/20140425021147.jpg', '一生独一', '<p>我说我不会写诗我只是</p><p>在诗里刻画了你的影子</p><p>每到阳春的三月你穿着</p><p>随风起舞的花布裙子</p><p>予美的定义我只是想用</p><p>你的名字来造句来写词</p><p>告诉你这世上无二的诗</p><p>讲你是我独一的故事</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一点一滴一份情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一滴一情怀</p><p>予美的定义我只是想用</p><p>你的名字来造句来写词</p><p>告诉你这世上无二的诗</p><p>讲你是我独一的故事</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一点一滴一份情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一滴一情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一点一滴一份情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一滴一情怀</p><p>你是我一生最重要的事……</p><p><br/></p>', 3, 3, '', '', 1, 1, '1', '2018-07-04 00:14:06', '2018-07-05 22:24:15', NULL);
+INSERT INTO `wg_articles` VALUES (35, '一生独一', '一生独一', '卢焱', 1, '营山中学', 'https://abc.2008php.com/2014_Website_appreciate/2014-04-25/20140425021147.jpg', '一生独一', '<p>我说我不会写诗我只是</p><p>在诗里刻画了你的影子</p><p>每到阳春的三月你穿着</p><p>随风起舞的花布裙子</p><p>予美的定义我只是想用</p><p>你的名字来造句来写词</p><p>告诉你这世上无二的诗</p><p>讲你是我独一的故事</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一点一滴一份情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一滴一情怀</p><p>予美的定义我只是想用</p><p>你的名字来造句来写词</p><p>告诉你这世上无二的诗</p><p>讲你是我独一的故事</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一点一滴一份情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一滴一情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一点一滴一份情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一滴一情怀</p><p>你是我一生最重要的事……</p><p><br/></p>', 3, 0, '', '', 1, 1, '1', '2018-07-04 00:14:06', '2018-07-05 22:24:15', NULL);
 INSERT INTO `wg_articles` VALUES (36, '往后余生', '往后余生', '马良', 1, '营山中学', 'https://abc.2008php.com/2014_Website_appreciate/2014-04-25/20140425021147.jpg', '往后余生', '<p>在没风的地方找太阳</p><p>在你冷的地方做暖阳</p><p>人事纷纷</p><p>你总太天真</p><p>往后的余生</p><p>我只要你</p><p>往后余生</p><p>风雪是你</p><p>平淡是你</p><p>清贫也是你</p><p>荣华是你</p><p>心底温柔是你</p><p>目光所致</p><p>也是你</p><p>想带你去看晴空万里</p><p>想大声告诉你我为你着迷</p><p>往事匆匆</p><p>你总会被感动</p><p>往后的余生</p><p>我只要你</p><p>往后余生</p><p>冬雪是你</p><p>春华是你</p><p>夏雨也是你</p><p>秋黄是你</p><p>四季冷暖是你</p><p>目光所致</p><p>也是你</p><p>往后余生</p><p>风雪是你</p><p>平淡是你</p><p>清贫也是你</p><p>荣华是你</p><p>心底温柔是你</p><p>目光所致</p><p>也是你</p>', 3, 0, '', '', 12, 1, '1', '2018-07-05 21:30:11', '2018-07-06 09:55:10', NULL);
 
 -- ----------------------------
@@ -224,7 +224,7 @@ CREATE TABLE `wg_comments`  (
   `reviewed` char(0) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '已审核 null|否',
   `created_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 27 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 28 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of wg_comments
@@ -241,6 +241,7 @@ INSERT INTO `wg_comments` VALUES (19, 36, 2, 0, '这个应该如何排序才好'
 INSERT INTO `wg_comments` VALUES (22, 36, 1, 0, '@武当  想带你去看晴空万里', '', '2018-07-08 00:38:50');
 INSERT INTO `wg_comments` VALUES (23, 35, 1, 0, '想起羽泉的一生有你。', '', '2018-07-08 00:59:15');
 INSERT INTO `wg_comments` VALUES (24, 35, 1, 0, '这是第二条评论', '', '2018-07-08 01:02:20');
+INSERT INTO `wg_comments` VALUES (27, 35, 1, 0, '这是第4条评论', '', '2018-07-09 10:55:50');
 
 -- ----------------------------
 -- Table structure for wg_configs
@@ -352,7 +353,7 @@ CREATE TABLE `wg_password_resets`  (
 -- ----------------------------
 -- Records of wg_password_resets
 -- ----------------------------
-INSERT INTO `wg_password_resets` VALUES ('yanqinsc@qq.com', '$2y$10$oGqLY99a6GLaOc4btxAR1uGIRcKvX/LjaX3NCDjdsIwrUfVym2dLe', '2018-07-09 00:08:59');
+INSERT INTO `wg_password_resets` VALUES ('yanqinsc@qq.com', '$2y$10$CgNf2O4Khp5fx4gaCDCCbepaERGzQQ5DGRPIDDg5slV6d9jJpg8Ia', '2018-07-09 17:40:30');
 
 -- ----------------------------
 -- Table structure for wg_permissions
@@ -412,6 +413,17 @@ INSERT INTO `wg_permissions` VALUES (32, 1, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (33, 1, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (34, 1, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (35, 1, 'roles', 0, NULL);
+
+-- ----------------------------
+-- Table structure for wg_register_codes
+-- ----------------------------
+DROP TABLE IF EXISTS `wg_register_codes`;
+CREATE TABLE `wg_register_codes`  (
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `code` char(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp(0) NULL DEFAULT NULL,
+  INDEX `password_resets_email_index`(`email`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for wg_roles
@@ -520,7 +532,7 @@ CREATE TABLE `wg_users`  (
 -- ----------------------------
 -- Records of wg_users
 -- ----------------------------
-INSERT INTO `wg_users` VALUES (1, 'yanqinsc', '$2y$10$XPajQE62fsQhWOMscqDWBes1qSOwZFiTTZx/GVwWuouGvSzN.hJhS', '小石', '小石', '/admin/adminlte/dist/img/user2-160x160.jpg', 'yanqinsc@qq.com', '', '', '李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦', 2, '孜孜不倦，不紧不慢', 'tXtqoI0Zef9RNA3mAA5ZymEOFIrrg8UTFVbqkaFHTO9bQT7JvQ4SS7SZ6w7N', '2018-04-16 23:49:09', '2018-07-08 21:50:32', NULL);
+INSERT INTO `wg_users` VALUES (1, 'yanqinsc', '$2y$10$XPajQE62fsQhWOMscqDWBes1qSOwZFiTTZx/GVwWuouGvSzN.hJhS', '小石', '小石', '/admin/adminlte/dist/img/user2-160x160.jpg', 'yanqinsc@qq.com', '', '', '李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦', 2, '孜孜不倦，不紧不慢', 'ueMc2hshp1kVgoeK2mja0szZx44Cb5Jqq0bauyQ2sjuQYvwSLAPKi9WsrYyA', '2018-04-16 23:49:09', '2018-07-08 21:50:32', NULL);
 INSERT INTO `wg_users` VALUES (2, 'uDrZQkQ8C2', '$2y$10$hipe3dXnOMqEjPmHG2HV/uOHfumA0lD5lqpqyrGJ3oll2q4f7nnj2', 'HeGSb', '武当', '', 'RHHqtMy8Pv@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
 INSERT INTO `wg_users` VALUES (3, 'hrqz0srhqs', '$2y$10$E3vTR6Q1KmTBosWT143.zuYXp40G06dTzADOt/En4dRpWajbkuOrC', 'UVypl', 'Lqxra', '', 'yvQipiD49A@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
 INSERT INTO `wg_users` VALUES (4, 'iK8ELQlKg1', '$2y$10$Xtkx5ziztdM0Q.ulCUc7luyWaujbinPRyIKhNheYRCPxdyLt4dq/y', '8xnOd', 'SaJqm', '', 'yqLRdGYxCr@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
@@ -576,6 +588,7 @@ INSERT INTO `wg_users` VALUES (49, 'litstone', '$2y$10$j6RCcVg0NJy1qWxLG1MIguElx
 DROP TRIGGER IF EXISTS `update_article_comment_count`;
 delimiter ;;
 CREATE TRIGGER `update_article_comment_count` AFTER INSERT ON `wg_comments` FOR EACH ROW UPDATE wg_articles SET comment_count=(SELECT COUNT(*) FROM wg_comments WHERE id=new.aid) WHERE id=new.aid
+;
 ;;
 delimiter ;
 
