@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Model\AssignedRoles;
 use Bouncer;
 use App\Model\Menu;
+use App\Model\AssignedRoles;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller

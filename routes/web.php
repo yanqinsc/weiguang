@@ -11,6 +11,7 @@
 |
 */
 
+// CMS
 Route::namespace('Cms')->group(function () {
     Route::get('/', 'ContentsController@index')->name('index');
     Route::get('/contents/{category}', 'ContentsController@index')->name('contents');
@@ -18,9 +19,14 @@ Route::namespace('Cms')->group(function () {
     Route::post('/article/createComment', 'ArticleController@createComment')->name('comment.create');
 });
 
+// Auth
 Route::post('getRegisterCode', 'Auth\RegisterController@mailRegisterCode')->name('getRegisterCode');
 Auth::routes();
 
+// 会员中心
+Route::prefix('member')->namespace('member')->middleware('auth')->group(function () {
+    Route::get('index', 'HomeController@home')->name('member.index');
+});
 
 // 后台用户认证
 Route::prefix('admin')->group(function () {
@@ -29,6 +35,7 @@ Route::prefix('admin')->group(function () {
     Route::post('logout', 'Admin\Auth\LoginController@logout')->name('admin.logout');
 });
 
+// 后台管理系统
 Route::prefix('panel')->namespace('admin')->middleware('auth:admin')->group(function () {
     Route::get('index', 'HomeController@home')->name('home.index');
     Route::get('/', 'HomeController@index')->name('home');

@@ -25,14 +25,13 @@
             @else
                     <li>
                         <a href="home" class="nav-link">
-                            {{ mb_substr(Auth::user()->nickname ?: Auth::user()->name, 0, 4) }}同学
-                        </a>
+                            {{ mb_substr(Auth::user()->nickname ?: Auth::user()->name, 0, 6) }}同学</a>
                     </li>
                     <li>
                         <a href="{{ route('logout') }}" class="nav-link"
                            onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
-                            注销
+                            退出
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}

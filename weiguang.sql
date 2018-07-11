@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : MaraDB
+ Source Server         : Localhost
  Source Server Type    : MySQL
- Source Server Version : 100214
+ Source Server Version : 50719
  Source Host           : localhost:3306
  Source Schema         : weiguang
 
  Target Server Type    : MySQL
- Target Server Version : 100214
+ Target Server Version : 50719
  File Encoding         : 65001
 
- Date: 11/07/2018 00:15:45
+ Date: 11/07/2018 17:36:10
 */
 
 SET NAMES utf8mb4;
