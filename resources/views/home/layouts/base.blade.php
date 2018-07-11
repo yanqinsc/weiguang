@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-@include('member.layouts.header')
+@include('home.layouts.header')
 <body class="hold-transition skin-blue sidebar-mini" style="overflow: hidden;">
 <div class="wrapper">
     <header class="main-header">
@@ -31,7 +31,7 @@
                             </li>
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">主页</a>
+                                    <a href="/" class="btn btn-default btn-flat">主页</a>
                                 </div>
                                 <div class="pull-right">
                                     <a href="javascript:void(0)" class="btn btn-default btn-flat"
@@ -39,7 +39,7 @@
                                                      document.getElementById('logout-form').submit();">
                                         退出
                                     </a>
-                                    <form id="logout-form" action="{{ route('admin.logout') }}" method="post" style="display: none;">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="post" style="display: none;">
                                         {{ csrf_field() }}
                                     </form>
                                 </div>
@@ -73,8 +73,8 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="/" target="sub_page"><i class="fa list"></i>基本资料</a></li>
-                        <li><a href="#" target="sub_page"><i class="fa list"></i>修改密码</a></li>
+                        <li><a href="{{ route('home.info') }}" target="sub_page"><i class="fa list"></i>基本资料</a></li>
+                        <li><a href="/" target="sub_page"><i class="fa list"></i>修改密码</a></li>
                     </ul>
                 </li>
 
@@ -85,14 +85,14 @@
         <section class="content-header">
             <h1>
                 <span id="current-title">{{ $title }}</span>
-                <small>{{ $user->motto }}</small>
+                <small></small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="/panel"><i class="fa fa-dashboard"></i> 控制台</a></li>
-                <li class="active" id="current-title-right">个人中心</li>
+                <li class="active" id="current-title-right">首页</li>
             </ol>
         </section>
-        <iframe name="sub_page" id="sub_page" frameborder="0" scrolling="no" src="{{ route('home.index') }}"></iframe>
+        <iframe name="sub_page" id="sub_page" frameborder="0" scrolling="no" src="{{ route('home.overview') }}"></iframe>
     </div>
     <footer class="main-footer">
         <div class="pull-left hidden-xs">

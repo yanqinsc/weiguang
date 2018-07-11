@@ -24,8 +24,8 @@
                 <li><a class="nav-link" href="{{ route('register') }}">注册</a></li>
             @else
                     <li>
-                        <a href="home" class="nav-link">
-                            {{ mb_substr(Auth::user()->nickname ?: Auth::user()->name, 0, 6) }}同学</a>
+                        <a href="home" class="nav-link" style="color: #99dd00;">
+                            {{ mb_substr(Auth::user()->nickname ?: Auth::user()->name, 0, 6) }}</a><span></span>
                     </li>
                     <li>
                         <a href="{{ route('logout') }}" class="nav-link"

@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : Localhost
+ Source Server         : MaraDB
  Source Server Type    : MySQL
- Source Server Version : 50719
+ Source Server Version : 100214
  Source Host           : localhost:3306
  Source Schema         : weiguang
 
  Target Server Type    : MySQL
- Target Server Version : 50719
+ Target Server Version : 100214
  File Encoding         : 65001
 
- Date: 11/07/2018 17:36:10
+ Date: 12/07/2018 05:30:53
 */
 
 SET NAMES utf8mb4;
@@ -106,7 +106,7 @@ CREATE TABLE `wg_admins`  (
 -- ----------------------------
 -- Records of wg_admins
 -- ----------------------------
-INSERT INTO `wg_admins` VALUES (1, 'yanqinsc', '$2y$10$hipe3dXnOMqEjPmHG2HV/uOHfumA0lD5lqpqyrGJ3oll2q4f7nnj2', '小石', '晏勤', '/admin/adminlte/dist/img/user2-160x160.jpg', 'yanqinsc@qq.com', '', '', '', '孜孜不倦，不紧不慢', 'pRDHrbs7FiZ3OgbIPcGQpbW3gRfZ1XEXYYubdfyoxrCyIHJlakrks63BF2u3', '2018-04-16 23:49:09', '2018-04-16 23:49:09', NULL);
+INSERT INTO `wg_admins` VALUES (1, 'yanqinsc', '$2y$10$hipe3dXnOMqEjPmHG2HV/uOHfumA0lD5lqpqyrGJ3oll2q4f7nnj2', '小石', '晏勤', '/admin/adminlte/dist/img/user2-160x160.jpg', 'yanqinsc@qq.com', '', '', '', '孜孜不倦，不紧不慢', 'KNhSFxR1Meqorzhirk11iPkHCV46s3gbQCdWmamTx260OwYlK0rYvNHpwm26', '2018-04-16 23:49:09', '2018-04-16 23:49:09', NULL);
 INSERT INTO `wg_admins` VALUES (4, 'panda', '$2y$10$hipe3dXnOMqEjPmHG2HV/uOHfumA0lD5lqpqyrGJ3oll2q4f7nnj2', '盼盼', '史盼盼', '/admin/adminlte/dist/img/user2-160x160.jpg', 'panda@qq.com', '', '', '', '孜孜不倦，不紧不慢', 'm24t7MCM24pMQnYj7sjKtzmL6vPJeRYv9wlfPh9VuqE5Wb7WZEPDRszDt7Rl', '2018-04-16 23:49:09', '2018-04-16 23:49:09', NULL);
 INSERT INTO `wg_admins` VALUES (5, 'xiuqing', '$2y$10$ZbXRoqHcHOv14BlvBP83Oe.RZmfUW7870alIdzRRTqwkiZgw.y.jW', '秀卿', '秀卿', '', 'xiuqing@qq.com', '12312421241', '', '', '', NULL, '2018-06-05 07:02:56', '2018-07-08 13:59:55', '2018-07-08 13:59:55');
 INSERT INTO `wg_admins` VALUES (6, 'yanqinsc2', '$2y$10$hipe3dXnOMqEjPmHG2HV/uOHfumA0lD5lqpqyrGJ3oll2q4f7nnj2', '风云', '风雨', 'http://weiguang/admin/adminlte/dist/img/user2-160x160.jpg', 'yanqinsc8@qq.com', '12312421241', '', '', '千金散尽还复来', NULL, '2018-06-05 08:09:51', '2018-06-06 20:46:18', NULL);
@@ -498,8 +498,7 @@ CREATE TABLE `wg_sessions`  (
 -- ----------------------------
 -- Records of wg_sessions
 -- ----------------------------
-INSERT INTO `wg_sessions` VALUES ('aLDp9MgH5jFvN9IoioFGGBHqRacoupP6wOGEs9RV', 50, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiV08yVDFhN1lHY2RvczZqRTVBZkRiSlJ6R3h0SjloNm9xRjlZSnlDeSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjA6Imh0dHA6Ly93ZWlndWFuZy9ob21lIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NTA7fQ==', 1531239276);
-INSERT INTO `wg_sessions` VALUES ('t7GgiWzLZLXKROZfGgonTqutxX5jtYKw3qWCcz8c', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiZFFoNFA5YzU0SEp6MlJBd0xhV0NDQWh5RDNWbWgwMDdyUTZoeEZhVyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjQ6Imh0dHA6Ly93ZWlndWFuZy9yZWdpc3RlciI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1531235022);
+INSERT INTO `wg_sessions` VALUES ('Tnlzd1P8pV5yPiq8tXw2vG4ZzrSJHNIoPETVaADR', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiU1lzb2pTdVZ2cExFS3VwdVZkbXpTUFhUTUZBY1pTS3pPdXBLT3ZQeiI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI1OiJodHRwOi8vd2VpZ3VhbmcvaG9tZS9pbmZvIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1531344600);
 
 -- ----------------------------
 -- Table structure for wg_teachers
@@ -544,7 +543,7 @@ CREATE TABLE `wg_users`  (
 -- ----------------------------
 -- Records of wg_users
 -- ----------------------------
-INSERT INTO `wg_users` VALUES (1, 'yanqinsc', '$2y$10$XPajQE62fsQhWOMscqDWBes1qSOwZFiTTZx/GVwWuouGvSzN.hJhS', '小石', '小石', '/admin/adminlte/dist/img/user2-160x160.jpg', 'yanqinsc@qq.com', '', '', '李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦', 2, '孜孜不倦，不紧不慢', 'ueMc2hshp1kVgoeK2mja0szZx44Cb5Jqq0bauyQ2sjuQYvwSLAPKi9WsrYyA', '2018-04-16 23:49:09', '2018-07-08 21:50:32', NULL);
+INSERT INTO `wg_users` VALUES (1, 'yanqinsc', '$2y$10$XPajQE62fsQhWOMscqDWBes1qSOwZFiTTZx/GVwWuouGvSzN.hJhS', '小石', '小石', '/admin/adminlte/dist/img/user2-160x160.jpg', 'yanqinsc@qq.com', '', '', '李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱', 2, '孜孜不倦，不紧不慢', 'zof1I340kJ4Us2jN0ptnVud8eR8Dv8oJw2vAjjTdcWymSlCPpxICo9nBfFXX', '2018-04-16 23:49:09', '2018-07-08 21:50:32', NULL);
 INSERT INTO `wg_users` VALUES (2, 'uDrZQkQ8C2', '$2y$10$hipe3dXnOMqEjPmHG2HV/uOHfumA0lD5lqpqyrGJ3oll2q4f7nnj2', 'HeGSb', '武当', '', 'RHHqtMy8Pv@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
 INSERT INTO `wg_users` VALUES (3, 'hrqz0srhqs', '$2y$10$E3vTR6Q1KmTBosWT143.zuYXp40G06dTzADOt/En4dRpWajbkuOrC', 'UVypl', 'Lqxra', '', 'yvQipiD49A@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
 INSERT INTO `wg_users` VALUES (4, 'iK8ELQlKg1', '$2y$10$Xtkx5ziztdM0Q.ulCUc7luyWaujbinPRyIKhNheYRCPxdyLt4dq/y', '8xnOd', 'SaJqm', '', 'yqLRdGYxCr@gmail.com', '', '', '', 0, '', NULL, NULL, NULL, NULL);
@@ -594,15 +593,5 @@ INSERT INTO `wg_users` VALUES (47, 'HnSATRQhdX', '$2y$10$weJmzrNbwatPTKidsnQn3OA
 INSERT INTO `wg_users` VALUES (48, 'SuaoR64YVe', '$2y$10$dqWkr5OUtY.X8efpEFMW1ue5z14lyp.7Q7v.BIF6.UqaKIO.6cczy', 'FUIJe', 't1TQ2', '', 'NkFW6azXBq@gmail.com', '', '', '', 0, '', NULL, NULL, '2018-06-23 21:20:46', '2018-06-23 21:20:46');
 INSERT INTO `wg_users` VALUES (49, 'litstone', '$2y$10$j6RCcVg0NJy1qWxLG1MIguElxx1RJ5zhILn.0RB1q/R2l13nOG0O.', 'wgQ3Gr3LtA', '小石', '', 'litstone@qq.com', '15709896572', '', '', 0, '', NULL, NULL, '2018-06-23 21:19:48', NULL);
 INSERT INTO `wg_users` VALUES (50, 'panda', '$2y$10$Q/Ugv.iQ/KBItGsbE2aSTuXSv0a3pXiiXCZjM70uQHOQ24IJQ5ifu', '', '', '', 'yanqinsc@126.com', '', '', '', 0, '', NULL, '2018-07-11 00:14:36', '2018-07-11 00:14:36', NULL);
-
--- ----------------------------
--- Triggers structure for table wg_comments
--- ----------------------------
-DROP TRIGGER IF EXISTS `update_article_comment_count`;
-delimiter ;;
-CREATE TRIGGER `update_article_comment_count` AFTER INSERT ON `wg_comments` FOR EACH ROW UPDATE wg_articles SET comment_count=(SELECT COUNT(*) FROM wg_comments WHERE id=new.aid) WHERE id=new.aid
-;
-;;
-delimiter ;
 
 SET FOREIGN_KEY_CHECKS = 1;

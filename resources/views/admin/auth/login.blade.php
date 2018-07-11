@@ -62,4 +62,11 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(function () {
+        if (top.location !== self.location) {
+            top.location = self.location;
+        }
+    });
+</script>
 @endsection

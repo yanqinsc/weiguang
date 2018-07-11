@@ -67,4 +67,11 @@
     </div>
 </div>
 <div style="height: 200px; width: 100%"></div>
+<script type="text/javascript">
+    $(function () {
+        if (top.location !== self.location) {
+            top.location = self.location;
+        }
+    });
+</script>
 @endsection

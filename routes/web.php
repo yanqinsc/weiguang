@@ -24,8 +24,10 @@ Route::post('getRegisterCode', 'Auth\RegisterController@mailRegisterCode')->name
 Auth::routes();
 
 // 会员中心
-Route::prefix('member')->namespace('member')->middleware('auth')->group(function () {
-    Route::get('index', 'HomeController@home')->name('member.index');
+Route::prefix('home')->namespace('home')->middleware('auth')->group(function () {
+    Route::get('/', 'HomeController@base')->name('home.base');
+    Route::get('/overview', 'HomeController@overview')->name('home.overview');
+    Route::get('/info', 'HomeController@info')->name('home.info');
 });
 
 // 后台用户认证
@@ -57,5 +59,3 @@ Route::prefix('panel')->namespace('admin')->middleware('auth:admin')->group(func
     Route::resource('class', 'ClassController');
     Route::resource('category', 'CategoryController');
 });
-
-Route::get('/home', 'HomeController@index')->name('home');

@@ -9,10 +9,10 @@
                 <div class="small-box bg-yellow">
                     <div class="inner">
                         <h3>0</h3>
-                        <p>新增用户</p>
+                        <p>我的文章</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-person-add"></i>
+                        <i class="fa fa-file-text"></i>
                     </div>
                     <a href="#" class="small-box-footer">查看更多 <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
@@ -21,10 +21,10 @@
                 <div class="small-box bg-green">
                     <div class="inner">
                         <h3>0</h3>
-                        <p>新增文章</p>
+                        <p>我的评论</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
+                        <i class="fa fa-comments"></i>
                     </div>
                     <a href="#" class="small-box-footer">查看更多 <i class="fa fa-arrow-circle-right"></i></a>
                 </div>

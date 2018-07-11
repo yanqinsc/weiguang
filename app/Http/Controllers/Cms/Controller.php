@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Cms;
 
+use App\Model\Config;
 use App\Model\Article;
 use App\Model\Category;
-use App\Model\Config;
 use Illuminate\Support\Facades\View;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
