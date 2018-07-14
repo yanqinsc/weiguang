@@ -15,7 +15,10 @@ body {
 }
 
 .navbar-brand img {
-    padding-left: 5em;
+    width: 136px;
+    height: 119px;
+    margin-top: 15px;
+    margin-left: 7em;
 }
 
 .navbar-collapse {

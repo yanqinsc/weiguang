@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Cms;
 use App\Model\Comment;
 use App\Model\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
@@ -64,7 +65,12 @@ class ArticleController extends Controller
             $data['reviewed'] = '';
         }
 
-        Comment::insert($data);
+        DB::transaction(function () use ($data) {
+            Comment::insert($data);
+            $comments = Comment::select(DB::raw('count(*) as count'))->where('aid', $data['aid'])->first();
+            Article::where('id', $data['aid'])->update(['comment_count'=>$comments->count]);
+        });
+
         $response = redirect()->back();
         return $this->dbConfig->comment_review == 'off' ? $response :
             $response->withErrors('请等候管理员审核！');

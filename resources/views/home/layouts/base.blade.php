@@ -2,11 +2,20 @@
 <html>
 @include('home.layouts.header')
 <body class="hold-transition skin-blue sidebar-mini" style="overflow: hidden;">
+<style>
+    .logo-lg img {
+        margin-left: -38px;
+        width: 44px;
+    }
+</style>
 <div class="wrapper">
     <header class="main-header">
         <a href="{{ url('/') }}" class="logo">
             <span class="logo-mini"><b>W</b>G</span>
-            <span class="logo-lg">{{ config('app.name_ch') }}</span>
+            <span class="logo-lg">
+                <img src="{{ asset('cms/images/logo_min.png') }}" alt="微光">
+                {{ config('app.name_ch') }}
+            </span>
         </a>
         <nav class="navbar navbar-static-top">
             <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
@@ -52,29 +61,44 @@
     </header>
     <aside class="main-sidebar">
         <section class="sidebar">
-            <div class="user-panel">
-                <div class="pull-left image">
-                    <img src="{{ $user->avatar }}" class="img-circle" alt="User Image">
-                </div>
-                <div class="pull-left info">
-                    <a href="#"></a>
-                    <p>{{ $user->real_name }}</p>
-                </div>
-            </div>
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">导航栏</li>
-
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-list"></i>
+                        <i class="fa fa-user"></i>
                         <span>会员中心</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{ route('home.info') }}" target="sub_page"><i class="fa list"></i>基本资料</a></li>
-                        <li><a href="/" target="sub_page"><i class="fa list"></i>修改密码</a></li>
+                        <li><a href="{{ route('home.user.info') }}" target="sub_page"><i class="fa fa-list"></i>基本资料</a></li>
+                        <li><a href="{{ route('home.user.changePassword') }}" target="sub_page"><i class="fa fa-lock"></i>修改密码</a></li>
+                    </ul>
+                </li>
+
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-files-o"></i>
+                        <span>我的文章</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{ route('home.article.index') }}" target="sub_page"><i class="fa fa-list"></i>文章列表</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-files-o"></i>
+                        <span>我的评论</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{ route('home.comment.index') }}" target="sub_page"><i class="fa fa-list"></i>评论列表</a></li>
                     </ul>
                 </li>
 

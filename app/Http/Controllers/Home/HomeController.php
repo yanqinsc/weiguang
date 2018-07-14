@@ -22,20 +22,4 @@ class HomeController extends Controller
             'title' => '概览'
         ]);
     }
-
-    public function info()
-    {
-        return view('home.info', [
-            'title' => '基本资料',
-            'info' => Auth::user()
-        ]);
-    }
-
-    public function updateInfo($request)
-    {
-        if ($request->ajax()) {
-            $data =$request->all();
-            return $data;
-        }
-    }
 }

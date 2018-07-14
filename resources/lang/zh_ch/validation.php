@@ -149,6 +149,8 @@ return [
         'nickname' => '昵称',
         'role' => '角色',
         'category_id' => '分类不存在',
-        'comment' => '评论内容'
+        'comment' => '评论内容',
+        'new_password' => '新密码',
+        'value' => '值'
     ],
 ];

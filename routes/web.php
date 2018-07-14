@@ -26,8 +26,14 @@ Auth::routes();
 // 会员中心
 Route::prefix('home')->namespace('home')->middleware('auth')->group(function () {
     Route::get('/', 'HomeController@base')->name('home.base');
-    Route::get('/overview', 'HomeController@overview')->name('home.overview');
-    Route::get('/info', 'HomeController@info')->name('home.info');
+    Route::get('overview', 'HomeController@overview')->name('home.overview');
+    Route::get('info', 'UserController@index')->name('home.user.info');
+    Route::post('update', 'UserController@update')->name('home.user.update');
+    Route::post('changeAvatar', 'UserController@changeAvatar')->name('home.user.changeAvatar');
+    Route::get('changePassword', 'UserController@changePassword')->name('home.user.changePassword');
+    Route::post('changePassword', 'UserController@updatePassword')->name('home.user.updatePassword');
+    Route::get('articles', 'ArticleController@index')->name('home.article.index');
+    Route::get('comment', 'CommentController@index')->name('home.comment.index');
 });
 
 // 后台用户认证
