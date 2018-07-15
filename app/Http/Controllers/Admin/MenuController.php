@@ -61,7 +61,7 @@ class MenuController extends Controller
             'route_name' => $request->route_name
         ]);
 
-        return redirect(route('ability.index'));
+        return redirect(route('menu.index'));
     }
 
     public function show($id)

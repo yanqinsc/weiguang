@@ -14,7 +14,7 @@ class ArticleController extends Controller
     {
         $article = Article::getArticle($id);
         $comments = Comment::join('users', 'comments.uid', 'users.id')
-            ->select('comments.id', 'pid', 'uid', 'name', 'nickname', 'content', 'comments.created_at', 'avatar')
+            ->select('comments.id', 'pid', 'uid', 'name', 'content', 'comments.created_at', 'avatar')
             ->where(['aid' => $id])
             ->orderBy('comments.id', 'asc')
             ->whereNotNull('reviewed')
@@ -61,7 +61,7 @@ class ArticleController extends Controller
         ];
 
 
-        if ($this->dbConfig->comment_review == 'off') {
+        if (config('app.article_reviewed')) {
             $data['reviewed'] = '';
         }
 
@@ -72,8 +72,8 @@ class ArticleController extends Controller
         });
 
         $response = redirect()->back();
-        return $this->dbConfig->comment_review == 'off' ? $response :
-            $response->withErrors('请等候管理员审核！');
+        return config('app.article_reviewed') ? $response :
+            $response->withErrors('评论成功，管理员审核正在审核，请稍后查看！');
     }
 
     private function arrangeComments($comments) {

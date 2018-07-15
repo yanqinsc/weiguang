@@ -1,15 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Home;
+namespace App\Http\Controllers\Admin;
 
-use App\Model\User;
+use App\Model\Admin;
 use App\Traits\Common;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Admin\Controller;
 
-
-class UserController extends Controller
+class AdminController extends Controller
 {
     use Common {
         Common::changeAvatar as uploadAvatar;
@@ -17,7 +15,7 @@ class UserController extends Controller
 
     public function index()
     {
-        return view('home.user.info', [
+        return view('admin.admin.info', [
             'title' => '基本资料',
             'info' => Auth::user()
         ]);
@@ -42,14 +40,14 @@ class UserController extends Controller
             }
 
             $data = [$request->key => $request->value];
-            User::where('id', Auth::user()->id)->update($data);
+            Admin::where('id', Auth::user()->id)->update($data);
             return ['status' => 200, 'name'=>$request->key, 'val' => $request->value];
         }
     }
 
     public function changePassword()
     {
-        return view('home.user.change_password', [
+        return view('admin.admin.change_password', [
             'title' => '修改密码'
         ]);
     }
@@ -58,10 +56,10 @@ class UserController extends Controller
     {
         $request->validate(['new_password' => 'required|confirmed']);
         $new_password = bcrypt($request->new_password);
-        $check = Auth::guard()->attempt(['name' => Auth::user()->name, 'password' => $request->password]);
+        $check = Auth::guard('admin')->attempt(['name' => Auth::user()->name, 'password' => $request->password]);
 
         if ($check) {
-            User::where('id', Auth::user()->id)->update(['password'=> $new_password]);
+            Admin::where('id', Auth::user()->id)->update(['password'=> $new_password]);
             return redirect()->back()->with('message','修改成功!');
         } else {
             return redirect()->back()->withErrors('原密码错误');
@@ -72,9 +70,8 @@ class UserController extends Controller
     {
         if ($reqquest->ajax()) {
             $base64Image = $reqquest->imgData;
-            $path = "uploads/avatars/users/";
-            return $this->uploadAvatar($base64Image, $path);
-
+            $path = "uploads/avatars/admins/";
+            return $this->uploadAvatar($base64Image, $path, 2);
         } else {
             return ['status' => 502, 'message' => '图片类型错误。'];
         }

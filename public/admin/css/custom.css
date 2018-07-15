@@ -136,3 +136,25 @@ ul {
 form {
     position: relative;
 }
+
+.form-font {
+    font-family: Raleway, sans-serif !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    color: #636b6f !important;
+}
+
+.skin-blue .main-header .navbar .nav>li>a:hover,
+.skin-blue .main-header .navbar .nav>li>a:active,
+.skin-blue .main-header .navbar .nav>li>a:focus,
+.skin-blue .main-header .navbar .nav .open>a,
+.skin-blue .main-header .navbar .nav .open>a:hover,
+.skin-blue .main-header .navbar .nav .open>a:focus
+{
+    height: 50px;
+}
+
+.logo-lg img {
+    margin-left: -38px;
+    width: 44px;
+}

@@ -33,34 +33,34 @@
             <div class="col-md-12 bottom-20"><b>评论:</b></div>
             <ul>
                 @foreach($comments as $comment)
-                <li  class="item-li">
+                <li  class="item-li" id="comment-{{ $comment['id'] }}">
                     <div class="comment-info">
-                        <img src="{{ $comment['avatar'] }}" alt="头像">
+                        <img src="{{ $comment['avatar'] ?: asset('/cms/images/avatar.png') }}" alt="头像">
                         <div class="user-info">
-                            <b>{{ $comment['nickname'] ?: $comment['name'] }}</b><br>
+                            <b>{{ $comment['name'] }}</b><br>
                             <i>{{ substr($comment['created_at'], 0, 16) }}</i>
                         </div>
                     </div>
                     <div class="comment-body">{{ $comment['content'] }}</div>
                     <div class="btn-replay">
                         <a href="javascript:void(0)">
-                            <i class="re-replay" data-uid="$comment['uid']" data-name="{{ $comment['nickname'] ?: $comment['name'] }}" data-comment-id="{{ $comment['id'] }}">回复</i>
+                            <i class="re-replay" data-uid="$comment['uid']" data-name="{{ $comment['name'] }}" data-comment-id="{{ $comment['id'] }}">回复</i>
                         </a>
                     </div>
                     @if(isset($comment['replies']))
                     <ul class="sub-items">
                         @foreach($comment['replies'] as $reply)
-                        <li class="item-li-dashed">
+                        <li class="item-li-dashed" id="comment-{{ $reply['id'] }}">
                             <div class="comment-info">
-                                <img src="{{ $reply['avatar'] }}" alt="头像">
+                                <img src="{{ $reply['avatar'] ?: asset('/cms/images/avatar.png') }}" alt="头像">
                                 <div class="user-info">
-                                    <b>{{ $reply['nickname'] ?: $reply['name'] }}</b><br>
+                                    <b>{{ $reply['name'] }}</b><br>
                                     <i>{{ substr($reply['created_at'], 0, 16) }}</i>
                                 </div>
                             </div>
                             <div class="comment-body border-left-orange">{{ $reply['content'] }}</div>
                             <div class="btn-replay">
-                                <a href="javascript:void(0)"><i class="re-replay" data-name="{{ $reply['nickname'] ?: $reply['name'] }}" data-comment-id="{{ $reply['id'] }}">回复</i></a>
+                                <a href="javascript:void(0)"><i class="re-replay" data-name="{{ $reply['name'] }}" data-comment-id="{{ $reply['id'] }}">回复</i></a>
                             </div>
                         </li>
                         @endforeach

@@ -15,6 +15,7 @@
                             <th>文章</th>
                             <th>内容</th>
                             <th>时间</th>
+                            <th>状态</th>
                             <th>操作</th>
                         </thead>
                         <tbody>
@@ -24,10 +25,13 @@
                                 <td>{{ $comment->title }}</td>
                                 <td>{{ $comment->content }}</td>
                                 <td>{{ $comment->created_at }}</td>
+                                <td>{{ $comment->reviewed === null ? '审核中' : '成功' }}</td>
                                 <td>
-                                    <a href="javascript:void(0) ">
+                                    @if($comment->reviewed !== null)
+                                    <a href="{{ route('article', ['id' => $comment->aid])}}#comment-{{ $comment->id }}"  target="_blank">
                                         <i class="fa fa-eye"></i>
                                     </a>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

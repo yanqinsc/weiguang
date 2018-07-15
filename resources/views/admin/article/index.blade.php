@@ -47,6 +47,9 @@
                                        title="删除" class="a-remove">
                                         <i class="fa fa-trash"></i>
                                     </a>
+                                    <a href="{{ route('article', ['id' => $article->id]) }}" title="查看" target="_blank">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach

@@ -33,7 +33,7 @@ Route::prefix('home')->namespace('home')->middleware('auth')->group(function () 
     Route::get('changePassword', 'UserController@changePassword')->name('home.user.changePassword');
     Route::post('changePassword', 'UserController@updatePassword')->name('home.user.updatePassword');
     Route::get('articles', 'ArticleController@index')->name('home.article.index');
-    Route::get('comment', 'CommentController@index')->name('home.comment.index');
+    Route::get('comments', 'CommentController@index')->name('home.comment.index');
 });
 
 // 后台用户认证
@@ -53,7 +53,13 @@ Route::prefix('panel')->namespace('admin')->middleware('auth:admin')->group(func
     Route::get('role/menu/{id}', 'RoleController@menu')->name('role.menu');
     Route::get('comments', 'CommentController@index')->name('comment.index');
     Route::delete('comment/{id}', 'CommentController@destroy')->name('comment.destroy');
-    Route::post('commentReview/{id}', 'CommentController@destroy')->name('comment.review');
+    Route::post('commentReview/{id}', 'CommentController@review')->name('comment.review');
+    // 管理员信息管理
+    Route::get('info', 'AdminController@index')->name('admin.info');
+    Route::post('update', 'AdminController@update')->name('admin.update');
+    Route::post('changeAvatar', 'AdminController@changeAvatar')->name('admin.changeAvatar');
+    Route::get('changePassword', 'AdminController@changePassword')->name('admin.changePassword');
+    Route::post('changePassword', 'AdminController@updatePassword')->name('admin.updatePassword');
 
     Route::resource('ability', 'AbilityController');
     Route::resource('article', 'ArticleController');

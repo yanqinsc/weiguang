@@ -3,9 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use Bouncer;
+use App\Model\User;
 use App\Model\Menu;
+use App\Model\Article;
+use App\Model\Comment;
 use App\Model\AssignedRoles;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+
 
 class HomeController extends Controller
 {
@@ -48,7 +53,13 @@ class HomeController extends Controller
 
     public function home()
     {
+        $users = User::select(DB::raw('count(*) as count'))->first();
+        $articles = Article::select(DB::raw('count(*) as count'))->first();
+        $comments = Comment::select(DB::raw('count(*) as count'))->first();
         return view('admin.home.index', [
+            'user_count' => $users->count,
+            'article_count' => $articles->count,
+            'comment_count' => $comments->count,
             'title' => '控制台'
         ]);
     }

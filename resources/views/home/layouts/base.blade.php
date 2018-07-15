@@ -2,12 +2,6 @@
 <html>
 @include('home.layouts.header')
 <body class="hold-transition skin-blue sidebar-mini" style="overflow: hidden;">
-<style>
-    .logo-lg img {
-        margin-left: -38px;
-        width: 44px;
-    }
-</style>
 <div class="wrapper">
     <header class="main-header">
         <a href="{{ url('/') }}" class="logo">
@@ -25,22 +19,22 @@
                 <ul class="nav navbar-nav">
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="{{ $user->avatar }}" class="user-image"
+                            <img src="{{ $user->avatar ?: asset('/cms/images/avatar.png') }}" class="user-image"
                                  alt="User Image">
                             <span class="hidden-xs">{{ $user->real_name }}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <li class="user-header">
-                                <img src="{{ $user->avatar }}" class="img-circle"
+                                <img src="{{ $user->avatar ?: asset('/cms/images/avatar.png') }}" class="img-circle"
                                      alt="User Image">
                                 <p>
-                                    {{ $user->real_name }}
+                                    {{ $user->nickname ?: $user->name }}
                                     <small>{{ $user->motto }}</small>
                                 </p>
                             </li>
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="/" class="btn btn-default btn-flat">主页</a>
+                                    <a href="/" class="btn btn-default btn-flat">首页</a>
                                 </div>
                                 <div class="pull-right">
                                     <a href="javascript:void(0)" class="btn btn-default btn-flat"
@@ -63,6 +57,15 @@
         <section class="sidebar">
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">导航栏</li>
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="{{ $user->avatar ?: asset('/cms/images/avatar.png')  }}" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <a href="#"></a>
+                        <p>{{ $user->nickname ?: $user->name }}</p>
+                    </div>
+                </div>
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-user"></i>
@@ -91,7 +94,7 @@
                 </li>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-files-o"></i>
+                        <i class="fa fa-comments"></i>
                         <span>我的评论</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>

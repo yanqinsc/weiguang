@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Extensions\AuthenticatesLogout;
 use App\Http\Controllers\Cms\Controller;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
 class LoginController extends Controller
 {
     /*

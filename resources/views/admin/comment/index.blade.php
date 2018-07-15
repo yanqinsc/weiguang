@@ -14,8 +14,9 @@
                             <th>ID</th>
                             <th>文章</th>
                             <th>用户</th>
-                            <th>内容</th>
+                            <th>评论内容</th>
                             <th>时间</th>
+                            <th>状态</th>
                             <th>管理</th>
                         </thead>
                         <tbody>
@@ -28,11 +29,11 @@
                                 <td>{{ $comment->created_at }}</td>
                                 <td>{{ $comment->reviewed === null ? '待审核' : '已审核'  }}</td>
                                 <td>
-                                    <a href="javascript:void(0) "
-                                       data-url="{{ route('comment.destroy', ['id' => $comment->id]) }}"
-                                       title="删除" class="a-remove">
-                                        <i class="fa fa-trash"></i>
+                                    @if($comment->reviewed !== null)
+                                    <a href="{{ route('article', ['id' => $comment->aid])}}#comment-{{ $comment->id }}" target="_blank">
+                                        <i class="fa fa-eye"></i>
                                     </a>
+                                    @endif
                                     @if($comment->reviewed === null)
                                     <a href="javascript:void(0) "
                                        data-url="{{ route('comment.review', ['id' => $comment->id]) }}"
@@ -40,6 +41,11 @@
                                         <i class="fa fa-check"></i>
                                     </a>
                                     @endif
+                                    <a href="javascript:void(0) "
+                                       data-url="{{ route('comment.destroy', ['id' => $comment->id]) }}"
+                                       title="删除" class="a-remove">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach

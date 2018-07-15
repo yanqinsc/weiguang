@@ -21,16 +21,13 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::select('users.id', 'users.name', 'nickname', 'real_name', 'class_id', 'email', 'avatar', 'users.address', 'motto', 'short_name', 'grade', 'class', 'classes.type as class_type')
-            ->leftJoin('classes', 'class_id', '=', 'classes.id')
-            ->leftJoin('schools', 'classes.school_id', '=', 'schools.id')
+        $users = User::select('users.id', 'users.name', 'nickname', 'real_name', 'team_id', 'email', 'avatar', 'users.address', 'motto')
+            ->leftJoin('teams', 'team_id', '=', 'teams.id')
             ->paginate(20);
 
-        $getGradeName = $this->getGradeNameFunction();
         return view('admin.user.index', [
             'users' => $users,
-            'title' => '用户列表',
-            'getGradeName' => $getGradeName
+            'title' => '用户列表'
         ]);
     }
 
@@ -55,7 +52,6 @@ class UserController extends Controller
                 'max:50',
             ],
             'email' => 'required|email|unique:admins',
-            'real_name' => 'required|max:20',
             'phone' => 'regex:"^[0-9]{11,15}$"'
         ]);
 
@@ -63,7 +59,6 @@ class UserController extends Controller
             'name' => $request->name,
             'password' => bcrypt($request->password),
             'nickname' => 'wg' . str_random(8),
-            'real_name' => $request->real_name,
             'email' => $request->email,
             'phone' => $request->phone
         ]);
@@ -93,15 +88,9 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'real_name' => 'max:20|nullable',
             'phone' => [
                 'nullable',
                 'regex:"^[0-9]{11,15}$"'
-            ],
-            'password' => [
-                'max:150',
-                'regex:"^[0-9a-z]{6,16}$"',
-                'nullable'
             ],
             'email' => 'email|unique:admins|nullable',
             'nickname' => 'max:50|unique:admins|nullable',
@@ -110,9 +99,7 @@ class UserController extends Controller
 
         $data = array_filter([
             'email' => $request->email,
-            'password' => $request->password,
             'nickname' => $request->nickname,
-            'real_name' => $request->real_name,
             'phone' => $request->phone,
             'avatar' => $request->avatar,
             'address' => $request->address,

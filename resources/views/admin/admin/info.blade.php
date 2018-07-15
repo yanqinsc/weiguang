@@ -86,6 +86,16 @@
                             </td>
                         </tr>
                         <tr role="row">
+                            <td><b>手机</b></td>
+                            <td>
+                                    <span>
+                                        <span id="info-phone">{{ $info->phone }}</span>
+                                        <a href="javascript:void(0)"><i data-name="phone" class="fa fa-pencil"></i></a>
+                                    </span>
+                                <input id="phone" type="text" name="phone" class="edit-input">
+                            </td>
+                        </tr>
+                        <tr role="row">
                             <td><b>QQ</b></td>
                             <td>
                                     <span>
@@ -300,7 +310,7 @@
             }).toDataURL('image/png');
 
             $.ajax({
-                url: '{{ route('home.user.changeAvatar') }}', // 要上传的地址
+                url: '{{ route('admin.changeAvatar') }}', // 要上传的地址
                 type: 'post',
                 data: {
                     'imgData': photo
@@ -311,6 +321,8 @@
                         // 为保证不载入缓存加个随机数
                         $('#avatar').attr('src', data.avatarUrl + '?t=' + Math.random());
                         $('#changeModal').modal('hide');
+                    } else {
+                        alert(data.message);
                     }
                 }
             });
@@ -336,7 +348,7 @@
             if ($(this).val()) {
                 // 提交修改信息
                 $.ajax({
-                    url: '{{ route('home.user.update') }}',
+                    url: '{{ route('admin.update') }}',
                     type: 'post',
                     data:
                         {

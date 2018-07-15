@@ -15,16 +15,6 @@
         </div>
         <br>
         <div class="input-group">
-            <span class="input-group-addon">密码</span>
-            <input name="password" type="password" class="form-control">
-        </div>
-        <br>
-        <div class="input-group">
-            <span class="input-group-addon">姓名</span>
-            <input name="real_name" type="text" class="form-control" placeholder="{{ $user->real_name }}">
-        </div>
-        <br>
-        <div class="input-group">
             <span class="input-group-addon">昵称</span>
             <input name="nickname" type="text" class="form-control" placeholder="{{ $user->nickname }}">
         </div>

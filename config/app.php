@@ -17,16 +17,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Application Name
+    | Application Chinese Name
     |--------------------------------------------------------------------------
     |
-    | This value is the name of your application. This value is used when the
+    | This value is the name of your application in chinese. This value is used when the
     | framework needs to place the application's name in a notification or
     | any other location as required by the application or its packages.
     |
     */
 
     'name_ch' => env('APP_NAME', '微光'),
+
+    'article_reviewed' => env('ARTICLE_REVIEWED', false),
 
 
     /*

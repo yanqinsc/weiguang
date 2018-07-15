@@ -6,7 +6,10 @@
     <header class="main-header">
         <a href="{{ url('/') }}" class="logo">
             <span class="logo-mini"><b>W</b>G</span>
-            <span class="logo-lg">{{ config('app.name_ch') }}</span>
+            <span class="logo-lg">
+                <img src="{{ asset('cms/images/logo_min.png') }}" alt="微光">
+                {{ config('app.name_ch') }}
+            </span>
         </a>
         <nav class="navbar navbar-static-top">
             <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
@@ -16,13 +19,13 @@
                 <ul class="nav navbar-nav">
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="{{ $user->avatar }}" class="user-image"
+                            <img src="{{ $user->avatar ?: asset('/cms/images/avatar.png') }}" class="user-image"
                                  alt="User Image">
-                            <span class="hidden-xs">{{ $user->real_name }}</span>
+                            <span class="hidden-xs">{{ $user->nickname ?: $user->name }}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <li class="user-header">
-                                <img src="{{ $user->avatar }}" class="img-circle"
+                                <img src="{{ $user->avatar ?: asset('/cms/images/avatar.png') }}" class="img-circle"
                                      alt="User Image">
                                 <p>
                                     {{ $user->real_name }}
@@ -54,11 +57,11 @@
         <section class="sidebar">
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="{{ $user->avatar }}" class="img-circle" alt="User Image">
+                    <img src="{{ $user->avatar ?: asset('/cms/images/avatar.png') }}" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
                     <a href="#"></a>
-                    <p>{{ $user->real_name }}</p>
+                    <p>{{ $user->nickname ?: $user->name }}</p>
                 </div>
             </div>
             <ul class="sidebar-menu" data-widget="tree">

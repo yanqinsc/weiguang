@@ -18,12 +18,9 @@
                         <tr role="row">
                             <th>账号</th>
                             <th>昵称</th>
-                            <th>真实姓名</th>
-                            <th>学校</th>
-                            <th>班级</th>
+                            <th>姓名</th>
                             <th>Email</th>
                             <th>地址</th>
-                            <th>电话</th>
                             <th>格言</th>
                             <th>头像</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
@@ -32,15 +29,12 @@
                         </thead>
                         <tbody>
                         @foreach($users as $user)
-                            <tr role="row" class="{{ $user->id % 2 != 0 ? "odd" : "even"}}">
+                            <tr role="row">
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->nickname }}</td>
                                 <td>{{ $user->real_name }}</td>
-                                <td>{{ $user->short_name }}</td>
-                                <td>@if($user->class_id) {{ $getGradeName($user->grade, $user->class_type) . $user->class . '班' }} @endif</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ mb_substr($user->address, 0, 8) }} @if(mb_strlen($user->address) > 8) ... @endif</td>
-                                <td>{{ $user->phone }}</td>
                                 <td>{{ mb_substr($user->motto, 0, 8) }} @if(mb_strlen($user->motto) > 8) ... @endif</td>
                                 <td><img width="25" height="23" src="{{ $user->avatar }}" alt=""></td>
                                 <td>

@@ -14,7 +14,7 @@ class CommentController extends Controller
         $number = (int)$request->number ?: 10;
         $comments = Comment::leftJoin('users as u', 'uid', '=', 'u.id')
             ->leftJoin('articles as a', 'aid', '=', 'a.id')
-            ->select('comments.id', 'a.title', 'comments.content', 'comments.created_at')
+            ->select('comments.id', 'a.title', 'comments.content', 'reviewed', 'comments.created_at', 'aid')
             ->where('comments.uid', Auth::user()->id)
             ->orderBy('comments.id', 'desc')
             ->paginate($number);

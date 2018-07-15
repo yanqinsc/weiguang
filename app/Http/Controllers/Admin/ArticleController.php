@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Model\User;
 use App\Model\Article;
 use App\Model\Category;
-use App\Model\User;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
