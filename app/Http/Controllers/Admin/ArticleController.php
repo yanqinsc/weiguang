@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Model\User;
 use App\Model\Article;
+use App\Traits\Common;
 use App\Model\Category;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
+    use Common;
+
     public function index(Request $request)
     {
         $number = (int)$request->number ?: 10;
@@ -55,7 +58,6 @@ class ArticleController extends Controller
             'content' => $request->article_content,
             'publisher_id' => $request->user()->id,
             'from' => $request->from,
-            'thumb' => $request->thumb,
             'excerpt' => $request->excerpt,
             'key_words' => $request->key_words
         ];
@@ -63,12 +65,22 @@ class ArticleController extends Controller
         $data = array_filter($data);
         $data['is_top'] = $request->top ? '' : null;
         $data['is_hot'] = $request->hot ? '' : null;
+        $data['is_original'] = $request->original ? '' : null;
 
         if (!empty($request->username)) {
             $data['author_id'] = User::where('name', $request->username)->first()->id;
         }
 
-        Article::create($data);
+        $article = Article::create($data);
+        $file_type = explode('.', $request->thumb)[1];
+        $path = '/uploads/thumb/' . $article->id . '.' . $file_type;
+        $thumb = public_path() . $path;
+
+        if (!file_exists($thumb)) {
+            rename(public_path() . '/uploads/thumb/tmp/' . $request->thumb, $thumb);
+        }
+
+        Article::where('id', $article->id)->update(['thumb' => asset($path)]);
         return redirect(route('article.index'));
     }
 
@@ -132,5 +144,23 @@ class ArticleController extends Controller
     {
         Article::where('id', (int)$id)->delete();
         return redirect()->back();
+    }
+
+    public function postThumb($type, Request $reqquest)
+    {
+        if ($reqquest->ajax()) {
+            $base64Image = $reqquest->imgData;
+            if ($type == 'create') {
+                $path = "uploads/thumb/tmp/";
+                $image_name = date('Ymdhis') . rand(1000, 9999);
+            } else {
+                $path = "uploads/thumb/";
+                $image_name = $reqquest->id;
+            }
+
+            return $this->postImage($base64Image, $path, $image_name);
+        } else {
+            return ['status' => 502, 'message' => '图片类型错误。'];
+        }
     }
 }

@@ -9,9 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    use Common {
-        Common::changeAvatar as uploadAvatar;
-    }
+    use Common;
 
     public function index()
     {
@@ -71,7 +69,8 @@ class AdminController extends Controller
         if ($reqquest->ajax()) {
             $base64Image = $reqquest->imgData;
             $path = "uploads/avatars/admins/";
-            return $this->uploadAvatar($base64Image, $path, 2);
+            $query = Admin::where('id', Auth::user()->id);
+            return $this->postImage($base64Image, $path, Auth::user()->id, $query);
         } else {
             return ['status' => 502, 'message' => '图片类型错误。'];
         }

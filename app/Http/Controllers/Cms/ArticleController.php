@@ -30,8 +30,9 @@ class ArticleController extends Controller
             'comments' => $comments
         ]);
 
-        if (empty($request->cookie('view_count'))) {
-            $cookie = cookie('view_count', 1, 24*3600);
+        $cookie_key = 'view_count_'.$id;
+        if (empty($request->cookie($cookie_key))) {
+            $cookie = cookie($cookie_key, 1, 4*3600);
             Article::where('id', $id)->update(['view_count' => $article['view_count'] + 1]);
             $response->cookie($cookie);
         }

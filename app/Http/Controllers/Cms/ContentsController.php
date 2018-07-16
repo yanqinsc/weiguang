@@ -11,6 +11,7 @@ class ContentsController extends Controller
     /**
      * 列表页
      * @param string $category
+     * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index($category = 'home', Request $request)
@@ -27,7 +28,7 @@ class ContentsController extends Controller
             $contents = Article::where('title', 'like', $key_words)
                 ->orWhere('author', 'like', $key_words)
                 ->orWhere('key_words', 'like', $key_words)
-                ->paginate(10);
+                ->paginate(5);
         } else {
             $contents = Article::getListByCategory($categoryInfo->id, 10);
         }
@@ -36,7 +37,9 @@ class ContentsController extends Controller
             'current_controller' => 'contents',
             'active_nav_item' => $category,
             'active_nav_name' => $categoryInfo->name,
-            'contents' => $contents
+            'contents' => $contents,
+            'key_words' => $request->key_words ?? null,
+            'search_count' => $contents->count() ?? null
         ]);
     }
 }

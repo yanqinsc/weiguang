@@ -4,7 +4,7 @@
 @include('UEditor::head')
 <body>
 <style>
-    #hot, #top, .top-2 {
+    #hot, #top, #original, .top-2 {
         float: left;
         display: block;
     }
@@ -12,6 +12,25 @@
     .top-2 {
         margin-top: -1px;
         margin-left: 2px;
+    }
+
+    .thumb {
+        width: 120px;
+        height: 90px;
+        border: 1px dashed #666;
+        cursor: pointer;
+    }
+
+    .thumb p {
+        font-size: 18px;
+        margin-left: 12px;
+        margin-top: 32px;
+    }
+
+    .thumb img {
+        display: none;
+        width: 118px;
+        height: 88px;
     }
 </style>
     <div class="top-box">
@@ -34,12 +53,18 @@
                     </div>
                 </div>
                 <br>
+                <div class="thumb" id="change-thumb" data-target="#changeModal" data-toggle="modal">
+                    <p id="thumb-upload-text">上传缩略图</p>
+                    <img id="uploaded-image" src="" alt="缩略图">
+                    <input id="file-name" name="thumb" type="hidden">
+                </div>
+                <br>
                 <div class="row">
                     <div class="col-md-2">
                         <input name="author" class="form-control" type="text" placeholder="作者姓名（必填）">
                     </div>
                     <div class="col-md-3">
-                        <input name="from" class="form-control" type="text" placeholder="作者单位：XX中学八年级3班">
+                        <input name="from" class="form-control" type="text" placeholder="单位：XX中学X年级X班">
                     </div>
                     <div class="col-md-3">
                         <input name="username" class="form-control" type="text" placeholder="用户账号">
@@ -48,16 +73,18 @@
                 <br>
                 <input name="key_words" class="form-control" type="text" placeholder="关键词">
                 <br>
-                <input name="thumb" class="form-control" type="text" placeholder="缩略图">
-                <br>
                 <textarea name="excerpt" class="form-control" rows="3" placeholder="内容摘要"></textarea>
                 <br>
-                <label for="" class="right-15">
+                <label for="top" class="right-15">
                     <input type="checkbox" id="top" name="top"> <span class="top-2">置顶</span>
                 </label>
-                <label for="">
+                <label for="hot" class="right-15">
                     <input type="checkbox" id="hot" name="hot"> <span  class="top-2">热点</span>
                 </label>
+                <label for="original">
+                    <input type="checkbox" id="original" name="original" checked> <span  class="top-2">原创</span>
+                </label>
+
                 <br>
                 <br>
                 <div class="row">
@@ -78,14 +105,17 @@
                 <br>
                 <p class="color-red show-error left">@if($errors->any()) {{ $errors->first() }} @endif</p>
                 <div class="box-footer">
-
-                    <button type="submit" value="2" class="btn btn-success right-gap">存草稿</button>
+                    {{--<button type="submit" value="2" class="btn btn-success right-gap">存草稿</button>--}}
                     <button type="submit" value="1" class="btn btn-danger">发表文章</button>
                 </div>
             </div>
         </form>
     </div>
+    <input type="hidden" id="post-url" value="{{ route('article.postThumb', ['type' => 'create']) }}">
+    <input type="hidden" id="post-id" value="0">
+    <script> let aspectRatio = 4/3; </script>
     @include('admin.layouts.footer')
+    @include('include.cropper')
 <script>
     // 本地保存内容
     if ($.cookie('create_article')) {
@@ -97,6 +127,25 @@
             ue.execCommand('drafts');
         }, 500);
     }
+
+    $(function () {
+        $("#change-thumb").click(function () {
+            let id = setInterval(function () {
+                let image = $("#uploaded-image");
+                let text = $("#thumb-upload-text");
+                if (image.attr('src') === '') {
+                    image.hide();
+                    text.show();
+                } else {
+                    text.hide();
+                    image.show();
+                    window.clearInterval(id);
+                }
+            }, 2000);
+        });
+    });
+    // 为ajax设置CSRF_TOKEN
+    $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
 </script>
 </body>
 </html>

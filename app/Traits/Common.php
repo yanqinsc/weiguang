@@ -8,20 +8,11 @@
 
 namespace App\Traits;
 
-use App\Model\User;
-use App\Model\Admin;
 use Illuminate\Support\Facades\Auth;
 
 trait Common
 {
-    /**
-     * 更改用户头像
-     * @param $base64Image
-     * @param $relative_path
-     * @param string $model
-     * @return array
-     */
-    private function changeAvatar($base64Image, $relative_path, $model = 1)
+    private function postImage($base64Image, $relative_path, $image_name, $query = null)
     {
         //匹配出图片的格式
         if (preg_match('/^(data:\s*image\/(\w+);base64,)/', $base64Image, $result)) {
@@ -32,7 +23,7 @@ trait Common
                 mkdir($path, 0777);
             }
 
-            $file_name = Auth::user()->id . ".{$type}";
+            $file_name = $image_name . ".{$type}";
             $new_file = $path . $file_name;
 
             if (file_exists($new_file)) {
@@ -41,11 +32,13 @@ trait Common
 
             if (file_put_contents($new_file, base64_decode(str_replace($result[1], '', $base64Image)))) {
                 $avatar_url = asset('/' . $relative_path . $file_name);
-                $result = $model == 1 ? User::where('id', Auth::user()->id)->update(['avatar' => $avatar_url])
-                    : Admin::where('id', Auth::user()->id)->update(['avatar' => $avatar_url]);
+                $result = true;
+                if ($query) {
+                    $result = $query->update(['avatar' => $avatar_url]);
+                }
 
-                return $result ? ['status' => 200, 'avatarUrl' => $avatar_url]
-                    : ['status' => 500, 'message' => '无法保存图片。'];
+                return $result ? ['status' => 200, 'avatarUrl' => $avatar_url, 'fileName' => $file_name]
+                    : ['status' => 500, 'message' => '图片上传成功，数据库保存地址错误。'];
             } else {
                 return ['status' => 501, 'message' => '无法保存图片。'];
             }

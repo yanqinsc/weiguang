@@ -58,4 +58,9 @@
     </div>
 </div>
 <input type="hidden" id="login-page" value="admin">
+<script>
+    if (top.location !== self.location) {
+        top.location = self.location;
+    }
+</script>
 @endsection

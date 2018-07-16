@@ -37,5 +37,13 @@
             {{ $contents->links() }}
         </nav>
     </div>
+    @if($key_words)
+    <div class="search-title">
+        <a id="comment-number"></a>
+        <div id="title-text">
+            <h5>搜索 <i>{{ $key_words }}</i> 共找到 <i>{{ $search_count }}</i> 个结果</h5>
+        </div>
+    </div>
+    @endif
     <input type="hidden" name="category" value="{{ $active_nav_item or 'home' }}">
 @endsection
