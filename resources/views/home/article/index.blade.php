@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-@include('admin.layouts.header')
+@include('home.layouts.header')
 <body>
 <div class="box box-info list">
     <div class="box-body">
@@ -47,6 +47,6 @@
         </div>
     </div>
 </div>
-@include('admin.layouts.footer')
+@include('home.layouts.footer')
 </body>
 </html>

@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-@include('admin.layouts.header')
+@include('home.layouts.header')
 <body>
 <style>
     .edit-input {
@@ -122,7 +122,7 @@
         </div>
     </div>
 </div>
-@include('admin.layouts.footer')
+@include('home.layouts.footer')
 
 <div id="change-avatar-box">
     <link href="{{ asset('common/css/cropper.min.css') }}" rel="stylesheet">

@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-@include('admin.layouts.header')
+@include('home.layouts.header')
 <body>
 <form class="box box-info create" method="post" action="{{ route('home.user.updatePassword') }}">
     {{ csrf_field() }}
@@ -29,6 +29,6 @@
         <button type="submit" class="btn btn-primary">提交</button>
     </div>
 </form>
-@include('admin.layouts.footer')
+@include('home.layouts.footer')
 </body>
 </html>

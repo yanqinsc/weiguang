@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Model\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CommentController extends Controller
 {
@@ -34,7 +35,14 @@ class CommentController extends Controller
 
     public function destroy($id)
     {
-        Comment::where('id', (int)$id)->delete();
+        $comment = Comment::find((int)$id);
+        if ($comment) {
+            DB::transction(function () use ($comment) {
+                Comment::where('id', $comment->id)->delete();
+                // 将已删除评论的所有子评论归属到其上级评论
+                Comment::where('pid', $comment->id)->update(['pid' => $comment->pid]);
+            });
+        }
         return redirect()->back();
     }
 }

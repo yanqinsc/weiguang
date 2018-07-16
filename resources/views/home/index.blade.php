@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-@include('admin.layouts.header')
+@include('home.layouts.header')
 <body>
     <section class="content">
         <div class="row">
@@ -31,5 +31,6 @@
             </div>
         </div>
     </section>
+    @include('home.layouts.footer')
 </body>
 </html>
