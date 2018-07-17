@@ -29,6 +29,8 @@ return [
     'name_ch' => env('APP_NAME', '微光'),
 
     'article_reviewed' => env('ARTICLE_REVIEWED', false),
+    'domain' => env('WEB_DOMAIN', 'litlight.cn'),
+    'icp' => env('WEB_ICP', '蜀ICP备17007435号-2'),
 
 
     /*

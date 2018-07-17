@@ -158,3 +158,31 @@ form {
     margin-left: -38px;
     width: 44px;
 }
+
+#hot, #top, #original, .top-2 {
+    float: left;
+    display: block;
+}
+
+.top-2 {
+    margin-top: -1px;
+    margin-left: 2px;
+}
+
+.thumb {
+    width: 120px;
+    height: 90px;
+    border: 1px dashed #666;
+    cursor: pointer;
+}
+
+.thumb p {
+    font-size: 18px;
+    margin-left: 12px;
+    margin-top: 32px;
+}
+
+.thumb img {
+    width: 118px;
+    height: 88px;
+}

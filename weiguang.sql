@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : MaraDB
+ Source Server         : Localhost
  Source Server Type    : MySQL
- Source Server Version : 100214
+ Source Server Version : 50719
  Source Host           : localhost:3306
  Source Schema         : weiguang
 
  Target Server Type    : MySQL
- Target Server Version : 100214
+ Target Server Version : 50719
  File Encoding         : 65001
 
- Date: 17/07/2018 01:58:08
+ Date: 17/07/2018 16:28:53
 */
 
 SET NAMES utf8mb4;
@@ -143,10 +143,8 @@ CREATE TABLE `wg_articles`  (
 -- Records of wg_articles
 -- ----------------------------
 INSERT INTO `wg_articles` VALUES (35, '一生独一', '一生独一', '卢焱', 1, '营山中学', 'https://abc.2008php.com/2014_Website_appreciate/2014-04-25/20140425021147.jpg', '一生独一', '<p>我说我不会写诗我只是</p><p>在诗里刻画了你的影子</p><p>每到阳春的三月你穿着</p><p>随风起舞的花布裙子</p><p>予美的定义我只是想用</p><p>你的名字来造句来写词</p><p>告诉你这世上无二的诗</p><p>讲你是我独一的故事</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一点一滴一份情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一滴一情怀</p><p>予美的定义我只是想用</p><p>你的名字来造句来写词</p><p>告诉你这世上无二的诗</p><p>讲你是我独一的故事</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一点一滴一份情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一滴一情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一点一滴一份情怀</p><p>一城烟雨一楼台</p><p>一花只为一树开</p><p>一颦一笑一知己</p><p>一点一滴一情怀</p><p>你是我一生最重要的事……</p><p><br/></p>', 45, 5, '', '', NULL, 1, 1, '1', '2018-07-04 00:14:06', '2018-07-15 21:50:31', NULL);
-INSERT INTO `wg_articles` VALUES (36, '往后余生', '往后余生', '马良', 1, '营山中学', 'https://abc.2008php.com/2014_Website_appreciate/2014-04-25/20140425021147.jpg', '往后余生', '<p>在没风的地方找太阳</p><p>在你冷的地方做暖阳</p><p>人事纷纷</p><p>你总太天真</p><p>往后的余生</p><p>我只要你</p><p>往后余生</p><p>风雪是你</p><p>平淡是你</p><p>清贫也是你</p><p>荣华是你</p><p>心底温柔是你</p><p>目光所致</p><p>也是你</p><p>想带你去看晴空万里</p><p>想大声告诉你我为你着迷</p><p>往事匆匆</p><p>你总会被感动</p><p>往后的余生</p><p>我只要你</p><p>往后余生</p><p>冬雪是你</p><p>春华是你</p><p>夏雨也是你</p><p>秋黄是你</p><p>四季冷暖是你</p><p>目光所致</p><p>也是你</p><p>往后余生</p><p>风雪是你</p><p>平淡是你</p><p>清贫也是你</p><p>荣华是你</p><p>心底温柔是你</p><p>目光所致</p><p>也是你</p>', 4, 17, '', '', NULL, 12, 1, '1', '2018-07-05 21:30:11', '2018-07-17 01:57:31', NULL);
-INSERT INTO `wg_articles` VALUES (37, '角色管理页', '光明', '小石', 1, '嘉祥中学', '201807170126232548.png', '嘉祥中学', '<p>嘉祥中学</p>', 0, 0, NULL, NULL, NULL, 1, 1, '1', '2018-07-17 01:37:36', '2018-07-17 01:44:42', '2018-07-17 01:44:42');
-INSERT INTO `wg_articles` VALUES (38, '无题', '锦瑟', '李商隐', 0, '嘉祥中学', 'http://weiguang/E:\\Dev\\php\\weiguang\\public/uploads/thumb/38.png', '锦瑟', '<p>锦瑟无端五十弦，一线一柱思华年</p>', 0, 1, NULL, NULL, NULL, 1, 1, '1', '2018-07-17 01:45:40', '2018-07-17 01:47:21', '2018-07-17 01:47:21');
-INSERT INTO `wg_articles` VALUES (39, '锦瑟', '光明', '歌词', 1, '嘉祥中学', 'http://weiguang/uploads/thumb/39.png', '$path', '<p>锦瑟无端五十弦<br/></p>', 38, 0, NULL, NULL, NULL, 1, 1, '1', '2018-07-17 01:48:11', '2018-07-17 01:57:18', NULL);
+INSERT INTO `wg_articles` VALUES (36, '往后余生', '往后余生', '马良', 1, '营山中学', 'http://weiguang/uploads/thumb/36.png', '往后余生', '<p>在没风的地方找太阳</p><p>在你冷的地方做暖阳</p><p>人事纷纷</p><p>你总太天真</p><p>往后的余生</p><p>我只要你</p><p>往后余生</p><p>风雪是你</p><p>平淡是你</p><p>清贫也是你</p><p>荣华是你</p><p>心底温柔是你</p><p>目光所致</p><p>也是你</p><p>想带你去看晴空万里</p><p>想大声告诉你我为你着迷</p><p>往事匆匆</p><p>你总会被感动</p><p>往后的余生</p><p>我只要你</p><p>往后余生</p><p>冬雪是你</p><p>春华是你</p><p>夏雨也是你</p><p>秋黄是你</p><p>四季冷暖是你</p><p>目光所致</p><p>也是你</p><p>往后余生</p><p>风雪是你</p><p>平淡是你</p><p>清贫也是你</p><p>荣华是你</p><p>心底温柔是你</p><p>目光所致</p><p>也是你</p>', 5, 17, NULL, NULL, '', 12, 1, '1', '2018-07-05 21:30:11', '2018-07-17 16:15:31', NULL);
+INSERT INTO `wg_articles` VALUES (39, '无题', '无题,李商隐,锦瑟,唐诗', '李商隐', 1, '嘉祥中学', 'http://weiguang/uploads/thumb/39.png', '锦瑟', '<p>锦瑟无端五十弦<br/></p><p>一线一柱思华年</p><p>庄生晓梦迷蝴蝶</p><p>望帝春心托杜鹃</p><p>沧海明月珠有泪</p><p>蓝田日暖玉生烟</p><p>此情可待成追忆</p><p>只是当时已惘然</p>', 39, 0, NULL, '', '', 1, 1, '1', '2018-07-17 01:48:11', '2018-07-17 14:51:41', NULL);
 
 -- ----------------------------
 -- Table structure for wg_assigned_roles
@@ -195,6 +193,25 @@ INSERT INTO `wg_categories` VALUES (12, 0, '歌词欣赏', 'lyrics', '', '歌词
 INSERT INTO `wg_categories` VALUES (14, 0, '阅读之路', 'readway', '', '');
 INSERT INTO `wg_categories` VALUES (15, 0, '习作存珍', 'zhouji', '', '');
 INSERT INTO `wg_categories` VALUES (16, 0, '关于我们', 'aboutus', '', '');
+
+-- ----------------------------
+-- Table structure for wg_classes
+-- ----------------------------
+DROP TABLE IF EXISTS `wg_classes`;
+CREATE TABLE `wg_classes`  (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `grade` year NOT NULL,
+  `class` tinyint(3) UNSIGNED NOT NULL,
+  `school_id` smallint(5) UNSIGNED NOT NULL,
+  `type` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1' COMMENT '1|初中 2|高中',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Fixed;
+
+-- ----------------------------
+-- Records of wg_classes
+-- ----------------------------
+INSERT INTO `wg_classes` VALUES (1, 2020, 1, 1, '1');
+INSERT INTO `wg_classes` VALUES (2, 2006, 24, 2, '2');
 
 -- ----------------------------
 -- Table structure for wg_comments
@@ -462,6 +479,26 @@ INSERT INTO `wg_roles` VALUES (2, 'teacher', '教师', NULL, NULL, '2018-04-22 1
 INSERT INTO `wg_roles` VALUES (3, 'editor', '编辑', NULL, NULL, '2018-05-08 09:35:38', '2018-05-08 09:35:38');
 
 -- ----------------------------
+-- Table structure for wg_schools
+-- ----------------------------
+DROP TABLE IF EXISTS `wg_schools`;
+CREATE TABLE `wg_schools`  (
+  `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `short_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '学校简称',
+  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of wg_schools
+-- ----------------------------
+INSERT INTO `wg_schools` VALUES (1, '成都嘉祥外国语学校（达州校区）', '嘉祥达州', '达州通川区');
+INSERT INTO `wg_schools` VALUES (2, '营山高级中学', '营山中学', '四川省营山县');
+INSERT INTO `wg_schools` VALUES (3, '成都第七高级中学', '成都七中', '四川成都');
+INSERT INTO `wg_schools` VALUES (4, '重庆第一中学', '重庆一中', '重庆市沙坪坝区');
+
+-- ----------------------------
 -- Table structure for wg_sessions
 -- ----------------------------
 DROP TABLE IF EXISTS `wg_sessions`;
@@ -482,6 +519,20 @@ INSERT INTO `wg_sessions` VALUES ('drgZcZtA2h1ij4hSRDDNdercsz01mRZNiy34p0dj', 1,
 INSERT INTO `wg_sessions` VALUES ('fPJEvK648PnjT6LOPjWxaYHpIN4agCVcgmuZ71SO', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiM3kydWtLb3BTY09weWVxbzJjUmg4WlZjZDZpQWFQZFAzMkNSN2NEVSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjk6Imh0dHA6Ly93ZWlndWFuZy9ob21lL292ZXJ2aWV3Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1531750118);
 INSERT INTO `wg_sessions` VALUES ('iGZyBB4bmTAS9wO0xfuVURANcXeZMEzDE5LSFNfC', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiM3kydWtLb3BTY09weWVxbzJjUmg4WlZjZDZpQWFQZFAzMkNSN2NEVSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjY6Imh0dHA6Ly93ZWlndWFuZy9hcnRpY2xlLzM2Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1531763855);
 INSERT INTO `wg_sessions` VALUES ('owNcUcVl0kqCmePwiVFsdHBBLXl0qHMnjMF9dvi6', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiM3kydWtLb3BTY09weWVxbzJjUmg4WlZjZDZpQWFQZFAzMkNSN2NEVSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjk6Imh0dHA6Ly93ZWlndWFuZy9ob21lL2NvbW1lbnRzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1531750143);
+
+-- ----------------------------
+-- Table structure for wg_teachers
+-- ----------------------------
+DROP TABLE IF EXISTS `wg_teachers`;
+CREATE TABLE `wg_teachers`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) NOT NULL DEFAULT 0,
+  `school_id` smallint(5) UNSIGNED NOT NULL DEFAULT 0,
+  `subject_id` tinyint(4) UNSIGNED NOT NULL DEFAULT 0 COMMENT '学科ID',
+  `intro` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  `type` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '1' COMMENT '1|初中 2|高中',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for wg_teams
@@ -524,7 +575,7 @@ CREATE TABLE `wg_users`  (
 -- ----------------------------
 -- Records of wg_users
 -- ----------------------------
-INSERT INTO `wg_users` VALUES (1, 'yanqinsc', '$2y$10$ixkdXV1gDmYppOW1Ni7FTuKGfYJmSu3P6c/IJCYoq43y3.HScn88S', '小石', '晏勤', 'http://weiguang/uploads/avatars/users/1.png', '', 'yanqinsc@qq.com', '2341321543', '李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱', 2, '孜孜不倦，不紧不慢', NULL, 'zOQekpL5lzwuoxHICdAp9wM4c0sHwm2MbZrrfDXwPGurXAvbOS4Jjaq9LMSh', '2018-04-16 23:49:09', '2018-07-16 23:46:51', NULL);
+INSERT INTO `wg_users` VALUES (1, 'yanqinsc', '$2y$10$ixkdXV1gDmYppOW1Ni7FTuKGfYJmSu3P6c/IJCYoq43y3.HScn88S', '小石', '晏勤', 'http://weiguang/uploads/avatars/users/1.png', '', 'yanqinsc@qq.com', '2341321543', '李家沱马王坪正街立丹大厦李家沱马王坪正街立丹大厦李家沱', 2, '孜孜不倦，不紧不慢', NULL, 'mwJnY3P3g7l15sSwO9ci9Qt4MAgntrbBegAPyGRhBPCeExiGxdhPlT35BGK0', '2018-04-16 23:49:09', '2018-07-16 23:46:51', NULL);
 INSERT INTO `wg_users` VALUES (2, 'uDrZQkQ8C2', '$2y$10$XPajQE62fsQhWOMscqDWBes1qSOwZFiTTZx/GVwWuouGvSzN.hJhS', 'HeGSb', '', '', '', 'RHHqtMy8Pv@gmail.com', '', '', 0, '', NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `wg_users` VALUES (3, 'hrqz0srhqs', '$2y$10$ixkdXV1gDmYppOW1Ni7FTuKGfYJmSu3P6c/IJCYoq43y3.HScn88S', 'UVypl', '', '', '', 'yvQipiD49A@gmail.com', '', '', 0, '', NULL, 'MOLLIwWbh2qd7BZHnAQzj8ZIxdgUUGRSOL4kv13zz9NTFa6sDrplkGQCTPnu', NULL, NULL, NULL);
 INSERT INTO `wg_users` VALUES (4, 'iK8ELQlKg1', '$2y$10$Xtkx5ziztdM0Q.ulCUc7luyWaujbinPRyIKhNheYRCPxdyLt4dq/y', '8xnOd', '', '', '', 'yqLRdGYxCr@gmail.com', '', '', 0, '', NULL, NULL, NULL, NULL, NULL);
