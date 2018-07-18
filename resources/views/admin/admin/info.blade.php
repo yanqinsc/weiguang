@@ -26,22 +26,6 @@
         border-radius: 35px;
         margin-bottom: 10px;
     }
-
-    #change-avatar {
-        text-align: center;
-        padding-bottom: 5px;
-        position: relative;
-        display: block;
-        width: 47px;
-        height: 20px;
-        border-radius: 10px;
-        margin-top: -35px;
-        margin-left: 9px;
-        color: #d3d3d3;
-        margin-bottom: 0;
-        background-color: rgba(0, 0, 0, .3);
-    }
-
 </style>
 <div class="box box-info list" style="width: 50%; margin-top: 50px;">
     <div class="box-body">
@@ -176,6 +160,10 @@
 
     // 为ajax设置CSRF_TOKEN
     $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
+
+    if (isMobile()) {
+        $("#change-avatar").hide();
+    }
 </script>
 </body>
 </html>

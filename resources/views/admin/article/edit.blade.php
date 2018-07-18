@@ -42,7 +42,6 @@
                          src=""
                     @endif}} alt="缩略图">
                 </div>
-                <br>
                 <div class="row">
                     <div class="col-md-2">
                         <input name="author" class="form-control" type="text" placeholder="{{ $article->author }}">
@@ -84,6 +83,7 @@
                             });
                         </script>
                     </div>
+                    <div class="col-md-12 color-red">上传图片大小不超过500k,如果上传图片错误请检查图片大小！</div>
                 </div>
                 <br>
                 <p class="color-red show-error left">@if($errors->any()) {{ $errors->first() }} @endif</p>
@@ -105,19 +105,25 @@
             $("#thumb-upload-text").show();
         }
 
+        if (isMobile()) {
+            $("#change-thumb").hide();
+        }
+
         $("#change-thumb").click(function () {
-            let id = setInterval(function () {
-                let image = $("#uploaded-image");
-                let text = $("#thumb-upload-text");
-                if (image.attr('src') === '') {
-                    image.hide();
-                    text.show();
-                } else {
-                    text.hide();
-                    image.show();
-                    window.clearInterval(id);
-                }
-            }, 2000);
+            $("#change-thumb").click(function () {
+                let id = setInterval(function () {
+                    let image = $("#uploaded-image");
+                    let text = $("#thumb-upload-text");
+                    if (image.attr('src') === '') {
+                        image.hide();
+                        text.show();
+                    } else {
+                        text.hide();
+                        image.show();
+                        window.clearInterval(id);
+                    }
+                }, 2000);
+            });
         });
     });
 </script>
