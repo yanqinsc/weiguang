@@ -8,7 +8,7 @@
             <span class="logo-mini"><b>W</b>G</span>
             <span class="logo-lg">
                 <img src="{{ asset('cms/images/logo_min.png') }}" alt="微光">
-                {{ config('app.name_ch') }}
+                {{ config('app.name') }}
             </span>
         </a>
         <nav class="navbar navbar-static-top">

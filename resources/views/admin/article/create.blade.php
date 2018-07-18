@@ -4,33 +4,8 @@
 @include('UEditor::head')
 <body>
 <style>
-    #hot, #top, #original, .top-2 {
-        float: left;
-        display: block;
-    }
-
-    .top-2 {
-        margin-top: -1px;
-        margin-left: 2px;
-    }
-
-    .thumb {
-        width: 120px;
-        height: 90px;
-        border: 1px dashed #666;
-        cursor: pointer;
-    }
-
-    .thumb p {
-        font-size: 18px;
-        margin-left: 12px;
-        margin-top: 32px;
-    }
-
     .thumb img {
         display: none;
-        width: 118px;
-        height: 88px;
     }
 </style>
     <div class="top-box">
@@ -84,7 +59,6 @@
                 <label for="original">
                     <input type="checkbox" id="original" name="original" checked> <span  class="top-2">原创</span>
                 </label>
-
                 <br>
                 <br>
                 <div class="row">
@@ -144,8 +118,6 @@
             }, 2000);
         });
     });
-    // 为ajax设置CSRF_TOKEN
-    $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
 </script>
 </body>
 </html>

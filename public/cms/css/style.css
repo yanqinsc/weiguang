@@ -79,6 +79,11 @@ footer p {
 @media screen and (max-width: 1200px) {
     .navbar-brand img {
         padding-left: 0.5em;
+        margin-left: 1em;
+    }
+
+    .navbar-collapse {
+        margin-top: -2.6em;
     }
 }
 
@@ -105,4 +110,10 @@ footer p {
 
 .panel {
     margin-top: 7%;
+}
+
+#nav-avatar {
+    width: 40px;
+    border-radius: 20px;
+    margin-top: -3px;
 }

@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 trait Common
 {
-    private function postImage($base64Image, $relative_path, $image_name, $query = null)
+    private function postImage($base64Image, $relative_path, $image_name, $query = null, $filed = 'avatar')
     {
         //匹配出图片的格式
         if (preg_match('/^(data:\s*image\/(\w+);base64,)/', $base64Image, $result)) {
@@ -34,7 +34,7 @@ trait Common
                 $avatar_url = asset('/' . $relative_path . $file_name);
                 $result = true;
                 if ($query) {
-                    $result = $query->update(['avatar' => $avatar_url]);
+                    $result = $query->update([$filed => $avatar_url]);
                 }
 
                 return $result ? ['status' => 200, 'avatarUrl' => $avatar_url, 'fileName' => $file_name]

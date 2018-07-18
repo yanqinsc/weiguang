@@ -24,7 +24,7 @@ Route::post('get/register/code', 'Auth\RegisterController@mailRegisterCode')->na
 Auth::routes();
 
 // 会员中心
-Route::prefix('home')->namespace('home')->middleware('auth')->group(function () {
+Route::prefix('home')->namespace('Home')->middleware('auth')->group(function () {
     Route::get('/', 'HomeController@base')->name('home.base');
     Route::get('overview', 'HomeController@overview')->name('home.overview');
     Route::get('info', 'UserController@index')->name('home.user.info');
@@ -44,7 +44,7 @@ Route::prefix('admin')->group(function () {
 });
 
 // 后台管理系统
-Route::prefix('panel')->namespace('admin')->middleware('auth:admin')->group(function () {
+Route::prefix('panel')->namespace('Admin')->middleware('auth:admin')->group(function () {
     Route::get('index', 'HomeController@home')->name('home.index');
     Route::get('/', 'HomeController@index')->name('home');
     Route::post('role/authorize', 'RoleController@roleAuthorize')->name('role.authorize');

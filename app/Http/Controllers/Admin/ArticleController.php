@@ -122,7 +122,6 @@ class ArticleController extends Controller
             'content' => $request->article_content,
             'publisher_id' => $request->user()->id,
             'from' => $request->from,
-            'thumb' => $request->thumb,
             'excerpt' => $request->excerpt,
             'key_words' => $request->key_words,
             'author_id' => $request->author_id
@@ -131,6 +130,7 @@ class ArticleController extends Controller
         $data = array_filter($data);
         $data['is_top'] = $request->top ? '' : null;
         $data['is_hot'] = $request->hot ? '' : null;
+        $data['is_original'] = $request->original ? '' : null;
 
         if (!empty($request->username)) {
             $data['author_id'] = User::where('name', $request->username)->first()->id;
@@ -149,16 +149,19 @@ class ArticleController extends Controller
     public function postThumb($type, Request $reqquest)
     {
         if ($reqquest->ajax()) {
+            $reqquest->validate(['id' => 'exists:articles,id']);
             $base64Image = $reqquest->imgData;
             if ($type == 'create') {
                 $path = "uploads/thumb/tmp/";
                 $image_name = date('Ymdhis') . rand(1000, 9999);
+                $query = null;
             } else {
                 $path = "uploads/thumb/";
                 $image_name = $reqquest->id;
+                $query = Article::where('id', $reqquest->id);
             }
 
-            return $this->postImage($base64Image, $path, $image_name);
+            return $this->postImage($base64Image, $path, $image_name, $query, 'thumb');
         } else {
             return ['status' => 502, 'message' => '图片类型错误。'];
         }

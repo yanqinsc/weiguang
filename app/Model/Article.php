@@ -39,7 +39,7 @@ class Article extends Model
     {
         return self::leftJoin('categories as c', 'category_id', '=', 'c.id')
             ->where('articles.id', '=', $id)
-            ->select('articles.id', 'title', 'thumb', 'author', 'author_id', 'excerpt', 'view_count', 'comment_count', 'content', 'created_at', 'c.slug', 'c.name as category')
+            ->select('articles.id', 'title', 'thumb', 'author', 'author_id', 'key_words', 'excerpt', 'view_count', 'comment_count', 'content', 'created_at', 'c.slug', 'c.name as category')
             ->first();
     }
 

@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="{{ asset('admin/adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/adminlte/bower_components/font-awesome/css/font-awesome.min.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/adminlte/bower_components/ionicons/css/ionicons.min.css') }}">
-<link rel="stylesheet" href="{{ asset('admin/adminlte/dist/css/adminLTE.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin/adminlte/dist/css/AdminLTE.min.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/adminlte/dist/css/skins/_all-skins.min.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/adminlte/plugins/iCheck/all.css') }}">

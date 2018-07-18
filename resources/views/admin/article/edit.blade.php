@@ -4,18 +4,12 @@
 @include('UEditor::head')
 <body>
 <style>
-    #hot, #top, .top-2 {
-        float: left;
-        display: block;
-    }
-
-    .top-2 {
-        margin-top: -1px;
-        margin-left: 2px;
-    }
-
     form {
         position: relative !important;
+    }
+
+    #thumb-upload-text {
+        display: none;
     }
 </style>
     <div class="top-box">
@@ -39,6 +33,16 @@
                     </div>
                 </div>
                 <br>
+                <div class="thumb" id="change-thumb" data-target="#changeModal" data-toggle="modal">
+                    <p id="thumb-upload-text">上传缩略图</p>
+                    <img id="uploaded-image"
+                     @if($article->thumb)
+                         src="{{ $article->thumb . '?t=' . rand(1000, 9999) }}"
+                        @else
+                         src=""
+                    @endif}} alt="缩略图">
+                </div>
+                <br>
                 <div class="row">
                     <div class="col-md-2">
                         <input name="author" class="form-control" type="text" placeholder="{{ $article->author }}">
@@ -51,17 +55,18 @@
                     </div>
                 </div>
                 <br>
-                <input name="key_words" class="form-control" type="text" placeholder="{{ $article->key_words }}">
+                <input name="key_words" class="form-control" type="text" value="{{ $article->key_words }}">
                 <br>
-                <input name="thumb" class="form-control" type="text" placeholder="{{ $article->thumb }}">
+                <textarea name="excerpt" class="form-control" rows="3">{{ $article->excerpt }}</textarea>
                 <br>
-                <textarea name="excerpt" class="form-control" rows="3" placeholder="{{ $article->excerpt }}"></textarea>
-                <br>
-                <label for="" class="right-15">
-                    <input type="checkbox" id="top" name="top" @if($article->is_top === '') checked @endif><span class="top-2">置顶</span>
+                <label for="top" class="right-15">
+                    <input type="checkbox" id="top" name="top"> <span class="top-2">置顶</span>
                 </label>
-                <label for="">
-                    <input type="checkbox" id="hot" name="hot" @if($article->is_hot === '') checked @endif><span  class="top-2">热点</span>
+                <label for="hot" class="right-15">
+                    <input type="checkbox" id="hot" name="hot"> <span  class="top-2">热点</span>
+                </label>
+                <label for="original">
+                    <input type="checkbox" id="original" name="original" checked> <span  class="top-2">原创</span>
                 </label>
                 <br>
                 <br>
@@ -77,12 +82,6 @@
                                 //此处为支持laravel5 csrf ,根据实际情况修改,目的就是设置 _token 值.
                                 ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');
                             });
-                            // 本地保存内容
-                            /*
-                            setTimeout(function () {
-                                ue.execCommand('drafts');
-                            }, 500);
-                            */
                         </script>
                     </div>
                 </div>
@@ -94,6 +93,33 @@
             </div>
         </form>
     </div>
-    @include('admin.layouts.footer')
+<input type="hidden" id="post-url" value="{{ route('article.postThumb', ['type' => 'edit']) }}">
+<input type="hidden" id="post-id" value="{{ $article->id }}">
+<script> let aspectRatio = 4/3; </script>
+@include('admin.layouts.footer')
+@include('include.cropper')
+<script>
+    $(function () {
+        if ($("#uploaded-image").attr('src') === '') {
+            $("#uploaded-image").hide();
+            $("#thumb-upload-text").show();
+        }
+
+        $("#change-thumb").click(function () {
+            let id = setInterval(function () {
+                let image = $("#uploaded-image");
+                let text = $("#thumb-upload-text");
+                if (image.attr('src') === '') {
+                    image.hide();
+                    text.show();
+                } else {
+                    text.hide();
+                    image.show();
+                    window.clearInterval(id);
+                }
+            }, 2000);
+        });
+    });
+</script>
 </body>
 </html>
