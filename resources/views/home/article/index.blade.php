@@ -22,24 +22,29 @@
                             <th>操作</th>
                         </thead>
                         <tbody>
-                        @foreach($articles as $key => $article)
-                            <tr role="row" class="{{ $key % 2 != 0 ? "odd" : "even"}}">
-                                <td class="sorting_1">{{ $key }}</td>
-                                <td>{{ $article->title }}</td>
-                                <td>{{ $article->author }}</td>
-                                <td>{{ $article->publisher }}</td>
-                                <td>{{ $article->category }}</td>
-                                <td>{{ $article->comment_count }}</td>
-                                <td>{{ $article->view_count }}</td>
-                                <td>{{ $article->created_at }}</td>
-
-                                <td>
-                                    <a href="{{ route('article', ['id' => $article->id]) }}" title="查看" target="_blank">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                </td>
+                        @if($articles->count())
+                            @foreach($articles as $key => $article)
+                                <tr role="row">
+                                    <td class="sorting_1">{{ $key }}</td>
+                                    <td>{{ $article->title }}</td>
+                                    <td>{{ $article->author }}</td>
+                                    <td>{{ $article->publisher }}</td>
+                                    <td>{{ $article->category }}</td>
+                                    <td>{{ $article->comment_count }}</td>
+                                    <td>{{ $article->view_count }}</td>
+                                    <td>{{ $article->created_at }}</td>
+                                    <td>
+                                        <a href="{{ route('article', ['id' => $article->id]) }}" title="查看" target="_blank">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr role="row">
+                                <td colspan="10" class="no-records"> 暂无文章，欢迎投稿至：post@litlight.cn</td>
                             </tr>
-                        @endforeach
+                        @endif
                         </tbody>
                     </table>
                 </div>

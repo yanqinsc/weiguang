@@ -49,7 +49,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div id="avatar-box">
-                        <img id="uploaded-image" src="{{ $info->avatar . "?t=" . rand(0, 999) }}" alt="">
+                        <img id="uploaded-image" src="{{ $info->avatar ? $info->avatar . "?t=" . rand(0, 999) : asset('cms/images/avatar.png') }}" alt="">
                         <a href="javascript:void(0)" id="change-avatar" data-target="#changeModal" data-toggle="modal">更换</a>
                     </div>
                     <table class="table table-bordered table-striped dataTable" role="grid"

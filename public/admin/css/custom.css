@@ -186,3 +186,8 @@ form {
     width: 118px;
     height: 88px;
 }
+
+.no-records {
+    color: #666;
+    text-align: center;
+}
