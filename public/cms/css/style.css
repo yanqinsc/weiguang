@@ -111,3 +111,9 @@ footer p {
 .panel {
     margin-top: 7%;
 }
+
+#nav-avatar {
+    width: 40px;
+    border-radius: 20px;
+    margin-top: -3px;
+}

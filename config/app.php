@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Weiguang'),
+    'name' => env('APP_NAME', '微光'),
 
     /*
     |--------------------------------------------------------------------------
@@ -26,11 +26,9 @@ return [
     |
     */
 
-    'name_ch' => env('APP_NAME', '微光'),
-
     'article_reviewed' => env('ARTICLE_REVIEWED', false),
-    'domain' => env('WEB_DOMAIN', 'litlight.cn'),
-    'icp' => env('WEB_ICP', '蜀ICP备17007435号-2'),
+    'domain' => env('APP_DOMAIN', 'localhost'),
+    'icp' => env('APP_ICP', 'xxxxxxxxx'),
 
 
     /*
@@ -143,9 +141,6 @@ return [
 
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
-    'grade_max' => date('Y') + 3,
-    'grade_name' => ['高三', '高二', '高一', '九年级', '八年级', '七年级'],
-
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
@@ -214,7 +209,6 @@ return [
     */
 
     'aliases' => [
-
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
@@ -249,7 +243,5 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Bouncer' => Silber\Bouncer\BouncerFacade::class,
-
     ],
-
 ];

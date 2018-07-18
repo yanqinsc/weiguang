@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ config('app.name_ch') }}-{{ $active_nav_name or $article->title }}</title>
+    <title>{{ config('app.name') }}-{{ $active_nav_name or $article->title }}</title>
     <meta charset="utf-8">
     @if($current_controller == 'contents')
         <meta name="keywords" content="微光语文,微光,语文,作文,文学,艺术,{{ $active_nav_name }}">

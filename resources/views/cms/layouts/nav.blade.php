@@ -24,7 +24,8 @@
                 <li><a class="nav-link" href="{{ route('register') }}">注册</a></li>
             @else
                     <li>
-                        <a href="{{ route('home.base') }}" class="nav-link" style="color: #99dd00;">
+                        <a href="{{ route('home.base') }}" class="nav-link" style="color: #99dd00; margin-top: -5px;">
+                            <img id="nav-avatar" src="{{ Auth::user()->avatar ?: asset('cms/images/avatar.png') }}">
                             {{ mb_substr(Auth::user()->nickname ?: Auth::user()->name, 0, 6) }}</a><span></span>
                     </li>
                     <li>
