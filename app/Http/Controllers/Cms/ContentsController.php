@@ -10,17 +10,17 @@ class ContentsController extends Controller
 {
     /**
      * 列表页
-     * @param string $category
+     * @param string $slug
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index($category = 'home', Request $request)
+    public function index($slug = 'home', Request $request)
     {
         // 读取文章信息
-        if ($category == 'home') {
-            $categoryInfo = (object)['id' => 0, 'name' => '首页'];
+        if ($slug == 'home') {
+            $category = (object)['id' => 0, 'name' => '首页', 'slug' => 'home', 'desc' => config('app.description')];
         } else {
-            $categoryInfo = Category::getInfoBySlug($category, ['id', 'name']);
+            $category = Category::getInfoBySlug($slug, ['id', 'name', 'slug', 'desc']);
         }
 
         if ($request->key_words) {
@@ -30,13 +30,13 @@ class ContentsController extends Controller
                 ->orWhere('key_words', 'like', $key_words)
                 ->paginate(5);
         } else {
-            $contents = Article::getListByCategory($categoryInfo->id, 10);
+            $contents = Article::getListByCategory($category->id, 10);
         }
 
         return view('cms.contents.index', [
             'current_controller' => 'contents',
-            'active_nav_item' => $category,
-            'active_nav_name' => $categoryInfo->name,
+            'active_nav_item' => $slug,
+            'category' => $category,
             'contents' => $contents,
             'key_words' => $request->key_words ?? null,
             'search_count' => $contents->count() ?? null

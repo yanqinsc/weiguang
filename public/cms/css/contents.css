@@ -122,7 +122,8 @@
     }
 
     .title-text {
-        margin-right: 4em;
+        margin-left: 2em;
+        float: left;
     }
 
     .title-text > .describe {

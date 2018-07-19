@@ -20,12 +20,10 @@
                 @endif
                 <div class="title-text">
                     <p class="title">
-                        <a href="{{ route('article', ['id' => $article->id]) }}">{{ $article->title }}
-                            (作者：{{ $article->author }})
-                        </a>
+                        <a href="{{ route('article', ['id' => $article->id]) }}">{{ $article->title }}</a>
                     </p>
                     <span>
-                        {{ substr($article->created_at, 0, 10) }} <i></i> {{ $article->category }} <i></i> 阅 {{ $article->view_count }}
+                         作者 {{ $article->author }} <i></i> {{ $article->category }} <i></i> 阅({{ $article->view_count }})
                     </span>
                     <p class="describe">
                         {{ $article->excerpt }}
