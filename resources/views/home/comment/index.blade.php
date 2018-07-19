@@ -19,22 +19,28 @@
                             <th>操作</th>
                         </thead>
                         <tbody>
-                        @foreach($comments as $key => $comment)
+                        @if($comments->count())
+                            @foreach($comments as $key => $comment)
+                                <tr role="row">
+                                    <td class="sorting_1">{{ $key }}</td>
+                                    <td>{{ $comment->title }}</td>
+                                    <td>{{ $comment->content }}</td>
+                                    <td>{{ $comment->created_at }}</td>
+                                    <td>{{ $comment->reviewed === null ? '审核中' : '成功' }}</td>
+                                    <td>
+                                        @if($comment->reviewed !== null)
+                                        <a href="{{ route('article', ['id' => $comment->aid])}}#comment-{{ $comment->id }}"  target="_blank">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else
                             <tr role="row">
-                                <td class="sorting_1">{{ $key }}</td>
-                                <td>{{ $comment->title }}</td>
-                                <td>{{ $comment->content }}</td>
-                                <td>{{ $comment->created_at }}</td>
-                                <td>{{ $comment->reviewed === null ? '审核中' : '成功' }}</td>
-                                <td>
-                                    @if($comment->reviewed !== null)
-                                    <a href="{{ route('article', ['id' => $comment->aid])}}#comment-{{ $comment->id }}"  target="_blank">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                    @endif
-                                </td>
+                                <td colspan="10" class="no-records">暂无评论，赶快加入我们的讨论吧！*^_^*</td>
                             </tr>
-                        @endforeach
+                        @endif
                         </tbody>
                     </table>
                     {{ $comments->links() }}

@@ -72,15 +72,18 @@ class ArticleController extends Controller
         }
 
         $article = Article::create($data);
-        $file_type = explode('.', $request->thumb)[1];
-        $path = '/uploads/thumb/' . $article->id . '.' . $file_type;
-        $thumb = public_path() . $path;
+        if ($request->thumb) {
+            $file_type = explode('.', $request->thumb)[1];
+            $path = '/uploads/thumb/' . $article->id . '.' . $file_type;
+            $thumb = public_path() . $path;
 
-        if (!file_exists($thumb)) {
-            rename(public_path() . '/uploads/thumb/tmp/' . $request->thumb, $thumb);
+            if (!file_exists($thumb)) {
+                rename(public_path() . '/uploads/thumb/tmp/' . $request->thumb, $thumb);
+            }
+
+            Article::where('id', $article->id)->update(['thumb' => asset($path)]);
         }
 
-        Article::where('id', $article->id)->update(['thumb' => asset($path)]);
         return redirect(route('article.index'));
     }
 
@@ -149,13 +152,13 @@ class ArticleController extends Controller
     public function postThumb($type, Request $reqquest)
     {
         if ($reqquest->ajax()) {
-            $reqquest->validate(['id' => 'exists:articles,id']);
             $base64Image = $reqquest->imgData;
             if ($type == 'create') {
                 $path = "uploads/thumb/tmp/";
                 $image_name = date('Ymdhis') . rand(1000, 9999);
                 $query = null;
             } else {
+                $reqquest->validate(['id' => 'exists:articles,id']);
                 $path = "uploads/thumb/";
                 $image_name = $reqquest->id;
                 $query = Article::where('id', $reqquest->id);

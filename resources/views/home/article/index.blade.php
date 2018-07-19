@@ -42,7 +42,7 @@
                             @endforeach
                         @else
                             <tr role="row">
-                                <td colspan="10" class="no-records"> 暂无文章，欢迎投稿至：post@litlight.cn</td>
+                                <td colspan="10" class="no-records"> 暂无文章，欢迎投稿至 post@litlight.cn</td>
                             </tr>
                         @endif
                         </tbody>

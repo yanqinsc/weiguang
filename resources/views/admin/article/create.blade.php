@@ -33,7 +33,6 @@
                     <img id="uploaded-image" src="" alt="缩略图">
                     <input id="file-name" name="thumb" type="hidden">
                 </div>
-                <br>
                 <div class="row">
                     <div class="col-md-2">
                         <input name="author" class="form-control" type="text" placeholder="作者姓名（必填）">
@@ -75,6 +74,7 @@
                             });
                         </script>
                     </div>
+                    <div class="col-md-12 color-red">上传图片大小不超过500k,如果上传图片错误请检查图片大小！</div>
                 </div>
                 <br>
                 <p class="color-red show-error left">@if($errors->any()) {{ $errors->first() }} @endif</p>
@@ -103,21 +103,27 @@
     }
 
     $(function () {
-        $("#change-thumb").click(function () {
-            let id = setInterval(function () {
-                let image = $("#uploaded-image");
-                let text = $("#thumb-upload-text");
-                if (image.attr('src') === '') {
-                    image.hide();
-                    text.show();
-                } else {
-                    text.hide();
-                    image.show();
-                    window.clearInterval(id);
-                }
-            }, 2000);
-        });
+        if (isMobile()) {
+            $("#change-thumb").hide();
+        } else {
+            $("#change-thumb").click(function () {
+                let id = setInterval(function () {
+                    let image = $("#uploaded-image");
+                    let text = $("#thumb-upload-text");
+                    if (image.attr('src') === '') {
+                        image.hide();
+                        text.show();
+                    } else {
+                        text.hide();
+                        image.show();
+                        window.clearInterval(id);
+                    }
+                }, 2000);
+            });
+        }
     });
+
+
 </script>
 </body>
 </html>
