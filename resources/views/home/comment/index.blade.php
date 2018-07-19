@@ -16,7 +16,7 @@
                             <th>内容</th>
                             <th class="mobile-hide">时间</th>
                             <th class="mobile-hide">状态</th>
-                            <th>操作</th>
+                            <th>查看</th>
                         </thead>
                         <tbody>
                         @if($comments->count())

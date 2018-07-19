@@ -27,7 +27,7 @@
         margin-bottom: 10px;
     }
 </style>
-<div class="box box-info list" style="width: 50%; margin-top: 50px;">
+<div class="box box-info list">
     <div class="box-body">
         <div class="dataTables_wrapper form-inline dt-bootstrap">
             <div class="row">
