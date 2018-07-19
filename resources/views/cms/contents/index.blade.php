@@ -19,11 +19,13 @@
                     <img src="{{ $article->thumb }}" alt="{{ $article->title }}" class="title-picture">
                 @endif
                 <div class="title-text">
-                    <p class="title">
-                        <a href="{{ route('article', ['id' => $article->id]) }}">{{ $article->title }}</a>
+                    <p class="title" title="{{ $article->title }}">
+                        <a id="article-title" href="{{ route('article', ['id' => $article->id]) }}">
+                            {{ $article->title }}
+                        </a>
                     </p>
                     <span>
-                         作者 {{ $article->author }} <i></i> {{ $article->category }} <i></i> 阅({{ $article->view_count }})
+                         {{ $article->author }} <i></i> {{ $article->category }} <i></i> 阅({{ $article->view_count }})
                     </span>
                     <p class="describe">
                         {{ $article->excerpt }}

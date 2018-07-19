@@ -6,10 +6,6 @@ body {
     border-bottom: 1px solid lightgrey;
 }
 
-.navbar {
-    height: 110px;
-}
-
 .navbar-nav {
     padding-left: 20px;
 }
@@ -63,6 +59,10 @@ footer p {
 }
 
 @media screen and (min-width: 1200px) {
+    .navbar {
+        height: 110px;
+    }
+
     .nav-item {
         margin-left: 1em;
     }
@@ -82,8 +82,8 @@ footer p {
         margin-left: 1em;
     }
 
-    .navbar-collapse {
-        margin-top: -2.6em;
+    .mobile-hide {
+        display: none !important;
     }
 }
 

@@ -14,7 +14,7 @@
         <meta name="author" content="{{ $article->author }}"/>
         <link rel="stylesheet" href="{{ asset('cms/css/article.css') }}">
     @endif
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="{{ asset('common/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('cms/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('cms/css/sidebar.css') }}">

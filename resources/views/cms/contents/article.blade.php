@@ -15,12 +15,14 @@
         <div class="article-title">
             <a id="comment-number">{{ $article->comments }}</a>
             <div id="title-text">
-                <h1>{{ $article->title }}</h1>
+                <h1 id="article-title" title="{{ $article->title }}">
+                    {{ $article->title }}
+                </h1>
                 <p>
                     <span>作者：<i>{{ $article->author }}</i></span>
                     <span>发表于：<i>{{ substr($article->created_at, 0, 10) }}</i></span>
                     <span>阅读(<i>{{ $article->view_count }}</i>)</span>
-                    <span>评论(<i>{{ $article->comment_count }}</i>)</span>
+                    <span class="mobile-hide">评论(<i>{{ $article->comment_count }}</i>)</span>
                 </p>
             </div>
         </div>

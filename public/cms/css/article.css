@@ -139,6 +139,10 @@ comment-replay {
     height: 90%;
 }
 
+.article-body img {
+    width: 80%;
+}
+
 #replay-text {
     width: 100%;
     margin-top: 50px;
