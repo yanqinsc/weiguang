@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Model\AssignedRoles;
 use Bouncer;
 use App\Model\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Silber\Bouncer\Database\Role;
 
 class AdminsController extends Controller
@@ -27,7 +29,7 @@ class AdminsController extends Controller
             ->leftJoin('roles', 'role_id', 'roles.id')
             ->get();
 
-         return view('admin.admins.index', [
+        return view('admin.admins.index', [
             'users' => $users,
             'title' => '管理员'
         ]);
@@ -47,7 +49,7 @@ class AdminsController extends Controller
                 'required',
                 'max:150',
                 'unique:admins',
-                'regex:"^[0-9a-z]{6,16}$"'
+                'regex:"^[0-9a-z]{5,16}$"'
             ],
             'password' => [
                 'required',
@@ -57,7 +59,7 @@ class AdminsController extends Controller
             'email' => 'required|email|unique:admins',
             'nickname' => 'required|max:50|unique:admins',
             'real_name' => 'required|max:20',
-            'phone' => 'regex:"^[0-9]{11,15}$"'
+            'phone' => 'nullable|regex:"^[0-9]{11,15}$"'
         ]);
 
         Admin::create([
@@ -132,7 +134,10 @@ class AdminsController extends Controller
 
         if ($request->role) {
             if (Role::where('name', $request->role)->exists()) {
-                Bouncer::assign($request->role)->to($user);
+                DB::transaction(function () use ($request, $user) {
+                    AssignedRoles::where(['entity_id' => $user->id])->delete();
+                    Bouncer::assign($request->role)->to($user);
+                });
             } else {
                 return redirect()->back()->withErrors('角色名错误。');
             }
