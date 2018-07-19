@@ -10,7 +10,7 @@ class CommentController extends Controller
 {
     public function index(Request $request)
     {
-        $number = (int)$request->number ?: 10;
+        $number = (int)$request->number ?: 20;
         $comments = Comment::leftJoin('users as u', 'uid', '=', 'u.id')
             ->leftJoin('articles as a', 'aid', '=', 'a.id')
             ->select('comments.id', 'reviewed', 'a.title', 'u.name', 'aid', 'comments.content', 'comments.created_at')

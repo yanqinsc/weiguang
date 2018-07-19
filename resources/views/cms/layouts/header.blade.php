@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ config('app.name') }}-{{ $active_nav_name or $article->title }}</title>
+    <title>{{ config('app.name') }}-{{ $category->name or $article->title }}</title>
     <meta charset="utf-8">
     @if($current_controller == 'contents')
-        <meta name="keywords" content="微光语文,微光,语文,作文,文学,艺术,{{ $active_nav_name }}">
-        <meta name="description" content="微光语文({{ config('app.domain') }}) {{ $active_nav_name }} 栏目">
+        <meta name="keywords" content="微光语文,微光,语文,作文,文学,艺术,{{ $category->name }}">
+        <meta name="description" content="{{ $category->desc }}">
         <link rel="stylesheet" href="{{ asset('cms/css/contents.css') }}">
     @elseif($current_controller == 'article')
         <meta name="keywords" content="{{ $article->key_words }}">

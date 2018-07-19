@@ -29,7 +29,7 @@ return [
     'article_reviewed' => env('ARTICLE_REVIEWED', false),
     'domain' => env('APP_DOMAIN', 'localhost'),
     'icp' => env('APP_ICP', 'xxxxxxxxx'),
-
+    'description' => env('APP_DESCRIPTION', 'description'),
 
     /*
     |--------------------------------------------------------------------------

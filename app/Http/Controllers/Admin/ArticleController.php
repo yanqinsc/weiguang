@@ -14,7 +14,7 @@ class ArticleController extends Controller
 
     public function index(Request $request)
     {
-        $number = (int)$request->number ?: 10;
+        $number = (int)$request->number ?: 15;
         $query = Article::leftJoin('categories as c', 'category_id', '=', 'c.id')
             ->leftJoin('admins as a', 'publisher_id', '=', 'a.id')
             ->select('articles.id', 'title', 'author', 'comment_count', 'author', 'a.name as publisher', 'excerpt', 'view_count',
