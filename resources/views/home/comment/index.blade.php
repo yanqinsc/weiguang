@@ -11,22 +11,22 @@
                            aria-describedby="abilities">
                         <thead>
                         <tr role="row">
-                            <th>ID</th>
-                            <th>文章</th>
+                            <th class="mobile-hide">ID</th>
+                            <th class="mobile-hide">文章</th>
                             <th>内容</th>
-                            <th>时间</th>
-                            <th>状态</th>
+                            <th class="mobile-hide">时间</th>
+                            <th class="mobile-hide">状态</th>
                             <th>操作</th>
                         </thead>
                         <tbody>
                         @if($comments->count())
                             @foreach($comments as $key => $comment)
                                 <tr role="row">
-                                    <td class="sorting_1">{{ $key }}</td>
-                                    <td>{{ $comment->title }}</td>
+                                    <td class="mobile-hide">{{ $key }}</td>
+                                    <td class="mobile-hide">{{ $comment->title }}</td>
                                     <td>{{ $comment->content }}</td>
-                                    <td>{{ $comment->created_at }}</td>
-                                    <td>{{ $comment->reviewed === null ? '审核中' : '成功' }}</td>
+                                    <td class="mobile-hide">{{ $comment->created_at }}</td>
+                                    <td class="mobile-hide">{{ $comment->reviewed === null ? '审核中' : '成功' }}</td>
                                     <td>
                                         @if($comment->reviewed !== null)
                                         <a href="{{ route('article', ['id' => $comment->aid])}}#comment-{{ $comment->id }}"  target="_blank">

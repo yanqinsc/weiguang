@@ -17,12 +17,12 @@
                         <thead>
                         <tr role="row">
                             <th>账号</th>
-                            <th>昵称</th>
+                            <th class="mobile-hide">昵称</th>
                             <th>真实姓名</th>
-                            <th>Email</th>
-                            <th>地址</th>
-                            <th>电话</th>
-                            <th>座右铭</th>
+                            <th class="mobile-hide">Email</th>
+                            <th class="mobile-hide">地址</th>
+                            <th class="mobile-hide">电话</th>
+                            <th class="mobile-hide">座右铭</th>
                             <th>角色</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                 aria-label="Engine version: activate to sort column ascending" style="width: 169px;">管理
@@ -32,12 +32,12 @@
                         @foreach($users as $user)
                             <tr role="row" class="{{ $user->id % 2 != 0 ? "odd" : "even"}}">
                                 <td>{{ $user->name }}</td>
-                                <td>{{ $user->nickname }}</td>
+                                <td class="mobile-hide">{{ $user->nickname }}</td>
                                 <td>{{ $user->real_name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ $user->address }}</td>
-                                <td>{{ $user->phone }}</td>
-                                <td>{{ $user->motto }}</td>
+                                <td class="mobile-hide">{{ $user->email }}</td>
+                                <td class="mobile-hide">{{ $user->address }}</td>
+                                <td class="mobile-hide">{{ $user->phone }}</td>
+                                <td class="mobile-hide">{{ $user->motto }}</td>
                                 <td>{{ $user->role }}</td>
                                 <td>
                                     <a href="{{ route('admins.edit', ['id' => $user->id]) }}" title="编辑">

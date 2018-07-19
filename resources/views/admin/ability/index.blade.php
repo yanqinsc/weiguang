@@ -16,17 +16,17 @@
                            aria-describedby="abilities">
                         <thead>
                         <tr role="row">
-                            <th>ID</th>
+                            <th class="mobile-hide">ID</th>
                             <th>名称</th>
-                            <th>标识</th>
+                            <th class="mobile-hide">标识</th>
                             <th>管理</th>
                         </thead>
                         <tbody>
                         @foreach($abilities as $ability)
-                            <tr role="row" class="{{ $ability->id % 2 != 0 ? "odd" : "even"}}">
-                                <td class="sorting_1">{{ $ability->id }}</td>
+                            <tr role="row">
+                                <td class="mobile-hide">{{ $ability->id }}</td>
                                 <td>{{ $ability->title }}</td>
-                                <td>{{ $ability->name }}</td>
+                                <td class="mobile-hide">{{ $ability->name }}</td>
                                 <td>
                                     <a href="{{ route('ability.edit', ['id' => $ability->id]) }}" title="编辑">
                                         <i class="fa fa-edit"></i>

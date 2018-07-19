@@ -1,7 +1,7 @@
 .list-item {
-    padding-top: 2em;
+    padding-top: 1em;
     font-size: 20px;
-    height: 11em;
+    height: 9em;
     border-bottom: 2px dashed #dee2e6;
     min-width: 500px;
 
@@ -119,11 +119,14 @@
 
     .list-item {
         font-size: 10px;
+        min-width: auto;
+        height: 8em;
     }
 
     .title-text {
         margin-left: 2em;
         float: left;
+        width: 64%;
     }
 
     .title-text > .describe {
@@ -136,5 +139,17 @@
 
     .title-picture i {
         margin-top: 5%;
+    }
+
+    .title-picture {
+        width: 24%;
+        height: 6em;
+    }
+}
+
+@media screen and (min-width: 784px) and (max-width: 1200px)  {
+    .title-picture {
+        width: 18%;
+        height: 6em;
     }
 }

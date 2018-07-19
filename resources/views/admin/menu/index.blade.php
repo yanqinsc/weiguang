@@ -16,21 +16,21 @@
                            aria-describedby="abilities">
                         <thead>
                         <tr role="row">
-                            <th>ID</th>
-                            <th>PID</th>
+                            <th class="mobile-hide">ID</th>
+                            <th class="mobile-hide">PID</th>
                             <th>名称</th>
-                            <th>图标</th>
-                            <th>路由</th>
+                            <th class="mobile-hide">图标</th>
+                            <th class="mobile-hide">路由</th>
                             <th>管理</th>
                         </thead>
                         <tbody>
                         @foreach($menu as $key => $item)
                             <tr role="row" class="success">
-                                <td>{{ $item['id'] }}</td>
-                                <td>{{ $item['pid'] }}</td>
+                                <td class="mobile-hide">{{ $item['id'] }}</td>
+                                <td class="mobile-hide">{{ $item['pid'] }}</td>
                                 <td>{{ $item['title'] }}</td>
-                                <td><i class="fa {{ $item['icon'] }}"></i></td>
-                                <td>{{ $item['route_name'] }}</td>
+                                <td class="mobile-hide"><i class="fa {{ $item['icon'] }}"></i></td>
+                                <td class="mobile-hide">{{ $item['route_name'] }}</td>
                                 <td>
                                     <a href="{{ route('menu.edit', ['id' => $item['id']]) }}" title="编辑">
                                         <i class="fa fa-edit"></i>
@@ -45,11 +45,11 @@
                             @if(!empty($item['sub_menu']))
                                 @foreach($item['sub_menu'] as $key => $val)
                                     <tr role="row" class="{{ $key % 2 != 0 ? "odd" : "even"}}">
-                                        <td>{{ $val['id'] }}</td>
-                                        <td>{{ $val['pid'] }}</td>
+                                        <td class="mobile-hide">{{ $val['id'] }}</td>
+                                        <td class="mobile-hide">{{ $val['pid'] }}</td>
                                         <td>{{ $val['title'] }}</td>
-                                        <td><i class="fa {{ $val['icon'] }}"></i></td>
-                                        <td>{{ $val['route_name'] }}</td>
+                                        <td class="mobile-hide"><i class="fa {{ $val['icon'] }}"></i></td>
+                                        <td class="mobile-hide">{{ $val['route_name'] }}</td>
                                         <td>
                                             <a href="{{ route('menu.edit', ['id' => $val['id']]) }}" title="编辑">
                                                 <i class="fa fa-edit"></i>

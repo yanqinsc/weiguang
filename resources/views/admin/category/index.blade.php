@@ -16,21 +16,21 @@
                            aria-describedby="abilities">
                         <thead>
                         <tr role="row">
-                            <th>ID</th>
+                            <th class="mobile-hide">ID</th>
                             <th>名称</th>
                             <th>标识</th>
-                            <th>导航栏</th>
-                            <th>描述</th>
+                            <th class="mobile-hide">导航栏</th>
+                            <th class="mobile-hide">描述</th>
                             <th>管理</th>
                         </thead>
                         <tbody>
                         @foreach($categories as $key => $item)
                             <tr role="row" class="{{ $key % 2 != 0 ? "odd" : "even"}}">
-                                <td>{{ $item->id }}</td>
+                                <td class="mobile-hide">{{ $item->id }}</td>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->slug }}</td>
-                                <td>{{ $item->is_nav === null ? '否' : '是' }}</td>
-                                <td>{{ $item->desc }}</td>
+                                <td class="mobile-hide">{{ $item->is_nav === null ? '否' : '是' }}</td>
+                                <td class="mobile-hide">{{ $item->desc }}</td>
                                 <td>
                                     <a href="{{ route('category.edit', ['id' => $item->id]) }}" title="编辑">
                                         <i class="fa fa-edit"></i>

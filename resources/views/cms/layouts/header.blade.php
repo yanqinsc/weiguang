@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{ asset('common/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('cms/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('cms/css/sidebar.css') }}">
+    <link rel="stylesheet" href="{{ asset('common/css/common.css') }}">
     <script src="{{ asset('common/js/jquery.min.js') }}"></script>
 </head>
 <body>

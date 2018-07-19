@@ -16,27 +16,27 @@
                            aria-describedby="abilities">
                         <thead>
                         <tr role="row">
-                            <th>ID</th>
+                            <th class="mobile-hide">ID</th>
                             <th>标题</th>
-                            <th>作者</th>
-                            <th>发布者</th>
+                            <th class="mobile-hide">作者</th>
+                            <th class="mobile-hide">发布者</th>
                             <th>分类</th>
-                            <th>评论</th>
-                            <th>阅读</th>
-                            <th>发布时间</th>
+                            <th class="mobile-hide">评论</th>
+                            <th class="mobile-hide">阅读</th>
+                            <th class="mobile-hide">发布时间</th>
                             <th>管理</th>
                         </thead>
                         <tbody>
                         @foreach($articles as $key => $article)
-                            <tr role="row" class="{{ $key % 2 != 0 ? "odd" : "even"}}">
-                                <td class="sorting_1">{{ $article->id }}</td>
+                            <tr role="row">
+                                <td class="mobile-hide">{{ $article->id }}</td>
                                 <td>{{ $article->title }}</td>
-                                <td>{{ $article->author }}</td>
-                                <td>{{ $article->publisher }}</td>
-                                <td>{{ $article->category }}</td>
-                                <td>{{ $article->comment_count }}</td>
-                                <td>{{ $article->view_count }}</td>
-                                <td>{{ $article->created_at }}</td>
+                                <td class="mobile-hide">{{ $article->author }}</td>
+                                <td class="mobile-hide">{{ $article->publisher }}</td>
+                                <td class="mobile-hide">{{ $article->category }}</td>
+                                <td class="mobile-hide">{{ $article->comment_count }}</td>
+                                <td class="mobile-hide">{{ $article->view_count }}</td>
+                                <td class="mobile-hide">{{ $article->created_at }}</td>
 
                                 <td>
                                     <a href="{{ route('article.edit', ['id' => $article->id]) }}" title="编辑">

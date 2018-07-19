@@ -16,24 +16,15 @@
                            aria-describedby="abilities">
                         <thead>
                         <tr role="row">
-                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending"
-                                style="width: 197px;">ID
-                            </th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-label="Browser: activate to sort column ascending" style="width: 242px;">标识
-                            </th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-label="Platform(s): activate to sort column ascending" style="width: 216px;">名称
-                            </th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-label="Engine version: activate to sort column ascending" style="width: 169px;">管理
-                            </th>
+                            <th class="mobile-hide">ID</th>
+                            <th>标识</th>
+                            <th>名称</th>
+                            <th>管理</th>
                         </thead>
                         <tbody>
                         @foreach($roles as $role)
-                            <tr role="row" class="{{ $role->id % 2 != 0 ? "odd" : "even"}}">
-                                <td class="sorting_1">{{ $role->id }}</td>
+                            <tr role="row">
+                                <td class="mobile-hide">{{ $role->id }}</td>
                                 <td>{{ $role->name }}</td>
                                 <td>{{ $role->title }}</td>
                                 <td>

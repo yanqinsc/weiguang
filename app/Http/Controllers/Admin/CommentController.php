@@ -8,6 +8,14 @@ use Illuminate\Support\Facades\DB;
 
 class CommentController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('can:comment-list');
+        $this->middleware('can:comment-review')->only(['review']);
+        $this->middleware('can:comment-destroy')->only('destroy');
+    }
+
     public function index(Request $request)
     {
         $number = (int)$request->number ?: 20;

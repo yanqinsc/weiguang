@@ -11,6 +11,11 @@ class AdminController extends Controller
 {
     use Common;
 
+    public function __construct()
+    {
+        $this->middleware('can:admin-center');
+    }
+
     public function index()
     {
         return view('admin.admin.info', [

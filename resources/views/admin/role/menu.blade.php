@@ -13,7 +13,7 @@
                         <tr role="row">
                             <th>选择</th>
                             <th>名称</th>
-                            <th>图标</th>
+                            <th class="mobile-hide">图标</th>
                             <th>路由</th>
                         </thead>
                         <tbody>
@@ -22,7 +22,7 @@
                                 <td><input id="menu-{{ $item['id'] }}" type="checkbox" value="{{ $item['id'] }}"
                                            @if($item['checked']) checked @endif></td>
                                 <td>{{ $item['title'] }}</td>
-                                <td><i class="fa {{ $item['icon'] }}"></i></td>
+                                <td class="mobile-hide"><i class="fa {{ $item['icon'] }}"></i></td>
                                 <td>{{ $item['route_name'] }}</td>
                             </tr>
                             @if(!empty($item['sub_menu']))
@@ -31,7 +31,7 @@
                                         <td><input id="menu-{{ $val['id'] }}" type="checkbox" value="{{ $val['id'] }}"
                                                    @if($val['checked']) checked @endif></td>
                                         <td>{{ $val['title'] }}</td>
-                                        <td><i class="fa {{ $val['icon'] }}"></i></td>
+                                        <td class="mobile-hide"><i class="fa {{ $val['icon'] }}"></i></td>
                                         <td>{{ $val['route_name'] }}</td>
                                     </tr>
                                 @endforeach

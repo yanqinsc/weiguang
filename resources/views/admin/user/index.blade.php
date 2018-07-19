@@ -18,11 +18,11 @@
                         <tr role="row">
                             <th>账号</th>
                             <th>昵称</th>
-                            <th>姓名</th>
-                            <th>Email</th>
-                            <th>地址</th>
-                            <th>格言</th>
-                            <th>头像</th>
+                            <th class="mobile-hide">姓名</th>
+                            <th class="mobile-hide">Email</th>
+                            <th class="mobile-hide">地址</th>
+                            <th class="mobile-hide">格言</th>
+                            <th class="mobile-hide">头像</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                 aria-label="Engine version: activate to sort column ascending" style="width: 169px;">管理
                             </th>
@@ -32,11 +32,11 @@
                             <tr role="row">
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->nickname }}</td>
-                                <td>{{ $user->real_name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ mb_substr($user->address, 0, 8) }} @if(mb_strlen($user->address) > 8) ... @endif</td>
-                                <td>{{ mb_substr($user->motto, 0, 8) }} @if(mb_strlen($user->motto) > 8) ... @endif</td>
-                                <td><img width="25" height="23" src="{{ $user->avatar }}" alt=""></td>
+                                <td class="mobile-hide">{{ $user->real_name }}</td>
+                                <td class="mobile-hide">{{ $user->email }}</td>
+                                <td class="mobile-hide">{{ mb_substr($user->address, 0, 8) }} @if(mb_strlen($user->address) > 8) ... @endif</td>
+                                <td class="mobile-hide">{{ mb_substr($user->motto, 0, 8) }} @if(mb_strlen($user->motto) > 8) ... @endif</td>
+                                <td class="mobile-hide"><img width="25" height="23" src="{{ $user->avatar }}" alt=""></td>
                                 <td>
                                     <a href="{{ route('user.edit', ['id' => $user->id]) }}" title="编辑">
                                         <i class="fa fa-edit"></i>

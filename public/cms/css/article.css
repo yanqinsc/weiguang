@@ -146,4 +146,5 @@ comment-replay {
 #replay-text {
     width: 100%;
     margin-top: 50px;
+    border: 1px solid #d3d3d3;
 }
