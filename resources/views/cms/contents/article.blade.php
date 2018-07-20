@@ -79,7 +79,6 @@
                 float: left;
                 position: relative;
                 width: 100%;
-                margin-top: 50px;
             }
 
             {!! $emojis->style !!}
