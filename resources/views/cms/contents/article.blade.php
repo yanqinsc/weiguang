@@ -79,6 +79,8 @@
                 float: left;
                 position: relative;
                 width: 100%;
+                border-top: 1px solid #d3d3d3;
+                padding-top: 30px;
             }
 
             {!! $emojis->style !!}
@@ -123,8 +125,12 @@
             @endguest
                 window.location.href = '#comment';
             });
+
+            if ($("#login").length !== 1) {
+                {!! $emojis->js !!}
+            }
         });
 
-        {!! $emojis->js !!}
+
     </script>
 @endsection

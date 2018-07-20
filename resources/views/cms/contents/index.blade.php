@@ -25,7 +25,10 @@
                         </a>
                     </p>
                     <span>
-                         {{ $article->author }} <i></i> {{ $article->category }} <i></i> 阅({{ $article->view_count }})
+                        <span class="right-20"><span class="mobile-hide">作者：{{ $article->from }} </span>{{ $article->author }}</span>
+                        <span class="right-20"><span class="mobile-hide">分类：</span>{{ $article->category }}</span>
+                        <span class="right-20">阅({{ $article->view_count }})</span>
+                        <span class="mobile-hide">评({{ $article->comment_count }})</span>
                     </span>
                     <p class="describe">
                         {{ $article->excerpt }}

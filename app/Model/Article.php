@@ -19,7 +19,7 @@ class Article extends Model
     public static function getListByCategory($category_id, $paginate_number)
     {
         $builder = self::leftJoin('categories as c', 'category_id', '=', 'c.id')
-            ->select('articles.id', 'title', 'comment_count', 'thumb', 'author', 'author_id', 'excerpt', 'view_count', 'created_at', 'c.name as category')
+            ->select('articles.id', 'title', 'from', 'comment_count', 'thumb', 'author', 'author_id', 'excerpt', 'view_count', 'created_at', 'c.name as category')
             ->orderBy('articles.id', 'desc');
 
         // 展示其它分类文章

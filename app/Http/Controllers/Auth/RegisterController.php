@@ -92,7 +92,7 @@ class RegisterController extends Controller
                 'created_at' => date('Y-m-d H:i:s')
             ]);
 
-            Mail::to($request->email)->send(new SendRegisterCode($code));
+            Mail::to($request->email)->queue(new SendRegisterCode($code));
 
             return ['code' => 200, 'msg' => 'success'];
         }
