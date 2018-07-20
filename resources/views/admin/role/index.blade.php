@@ -22,7 +22,8 @@
                             <th>管理</th>
                         </thead>
                         <tbody>
-                        @foreach($roles as $role)
+                        @if($roles->count())
+                            @foreach($roles as $role)
                             <tr role="row">
                                 <td class="mobile-hide">{{ $role->id }}</td>
                                 <td>{{ $role->name }}</td>
@@ -38,7 +39,10 @@
                                                 class="fa fa-list-alt"></i></a>
                                 </td>
                             </tr>
-                        @endforeach
+                            @endforeach
+                        @else
+                            <tr role="row"><td colspan="10">暂无记录</td></tr>
+                        @endif
                         </tbody>
                     </table>
                 </div>

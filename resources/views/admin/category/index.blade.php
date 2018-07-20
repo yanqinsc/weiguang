@@ -24,7 +24,8 @@
                             <th>管理</th>
                         </thead>
                         <tbody>
-                        @foreach($categories as $key => $item)
+                        @if($categories->count())
+                            @foreach($categories as $key => $item)
                             <tr role="row" class="{{ $key % 2 != 0 ? "odd" : "even"}}">
                                 <td class="mobile-hide">{{ $item->id }}</td>
                                 <td>{{ $item->name }}</td>
@@ -42,7 +43,10 @@
                                     </a>
                                 </td>
                             </tr>
-                        @endforeach
+                            @endforeach
+                        @else
+                            <tr role="row"><td colspan="10">暂无记录</td></tr>
+                        @endif
                         </tbody>
                     </table>
                 </div>

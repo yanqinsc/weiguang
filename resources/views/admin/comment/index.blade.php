@@ -20,7 +20,8 @@
                             <th>管理</th>
                         </thead>
                         <tbody>
-                        @foreach($comments as $key => $comment)
+                        @if($comments->count())
+                            @foreach($comments as $key => $comment)
                             <tr role="row" class="{{ $key % 2 != 0 ? "odd" : "even"}}">
                                 <td class="mobile-hide">{{ $comment->id }}</td>
                                 <td class="mobile-hide">{{ $comment->title }}</td>
@@ -48,7 +49,10 @@
                                     </a>
                                 </td>
                             </tr>
-                        @endforeach
+                            @endforeach
+                        @else
+                            <tr role="row"><td colspan="10">暂无记录</td></tr>
+                        @endif
                         </tbody>
                     </table>
                     {{ $comments->links() }}

@@ -27,7 +27,8 @@
                             <th>管理</th>
                         </thead>
                         <tbody>
-                        @foreach($articles as $key => $article)
+                        @if($articles->count())
+                            @foreach($articles as $key => $article)
                             <tr role="row">
                                 <td class="mobile-hide">{{ $article->id }}</td>
                                 <td>{{ $article->title }}</td>
@@ -52,7 +53,10 @@
                                     </a>
                                 </td>
                             </tr>
-                        @endforeach
+                            @endforeach
+                        @else
+                            <tr role="row"><td colspan="10">暂无记录</td></tr>
+                        @endif
                         </tbody>
                     </table>
                 </div>

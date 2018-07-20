@@ -46,4 +46,5 @@ trait Common
             return ['status' => 502, 'message' => '无法确定图片类型。'];
         }
     }
+
 }

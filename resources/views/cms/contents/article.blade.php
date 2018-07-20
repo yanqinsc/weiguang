@@ -74,6 +74,17 @@
         </div>
         @endif
 
+        <style>
+            .emojis {
+                float: left;
+                position: relative;
+                width: 100%;
+                margin-top: 50px;
+            }
+
+            {!! $emojis->style !!}
+        </style>
+        <div class="emojis">{!! $emojis->icons !!}</div>
         <form class="comment-relay" action="{{ route('comment.create') }}" method="post">
             {{ csrf_field() }}
             <textarea name="comment" id="replay-text" rows="5" maxlength="120" placeholder="内容不超过120字。"></textarea>
@@ -114,5 +125,7 @@
                 window.location.href = '#comment';
             });
         });
+
+        {!! $emojis->js !!}
     </script>
 @endsection

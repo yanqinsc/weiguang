@@ -28,7 +28,8 @@
                             </th>
                         </thead>
                         <tbody>
-                        @foreach($users as $user)
+                        @if($users->count())
+                            @foreach($users as $user)
                             <tr role="row">
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->nickname }}</td>
@@ -48,7 +49,10 @@
                                     </a>
                                 </td>
                             </tr>
-                        @endforeach
+                            @endforeach
+                        @else
+                            <tr role="row"><td colspan="10">暂无记录</td></tr>
+                        @endif
                         </tbody>
                     </table>
                     {{ $users->links() }}

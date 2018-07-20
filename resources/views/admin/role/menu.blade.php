@@ -17,26 +17,30 @@
                             <th>路由</th>
                         </thead>
                         <tbody>
-                        @foreach($menu as $key => $item)
-                            <tr role="row" class="success">
-                                <td><input id="menu-{{ $item['id'] }}" type="checkbox" value="{{ $item['id'] }}"
-                                           @if($item['checked']) checked @endif></td>
-                                <td>{{ $item['title'] }}</td>
-                                <td class="mobile-hide"><i class="fa {{ $item['icon'] }}"></i></td>
-                                <td>{{ $item['route_name'] }}</td>
-                            </tr>
-                            @if(!empty($item['sub_menu']))
-                                @foreach($item['sub_menu'] as $key => $val)
-                                    <tr role="row" class="{{ $key % 2 != 0 ? "odd" : "even"}}">
-                                        <td><input id="menu-{{ $val['id'] }}" type="checkbox" value="{{ $val['id'] }}"
-                                                   @if($val['checked']) checked @endif></td>
-                                        <td>{{ $val['title'] }}</td>
-                                        <td class="mobile-hide"><i class="fa {{ $val['icon'] }}"></i></td>
-                                        <td>{{ $val['route_name'] }}</td>
-                                    </tr>
-                                @endforeach
-                            @endif
-                        @endforeach
+                        @if($menu)
+                            @foreach($menu as $key => $item)
+                                <tr role="row" class="success">
+                                    <td><input id="menu-{{ $item['id'] }}" type="checkbox" value="{{ $item['id'] }}"
+                                               @if($item['checked']) checked @endif></td>
+                                    <td>{{ $item['title'] }}</td>
+                                    <td class="mobile-hide"><i class="fa {{ $item['icon'] }}"></i></td>
+                                    <td>{{ $item['route_name'] }}</td>
+                                </tr>
+                                @if(!empty($item['sub_menu']))
+                                    @foreach($item['sub_menu'] as $key => $val)
+                                        <tr role="row" class="{{ $key % 2 != 0 ? "odd" : "even"}}">
+                                            <td><input id="menu-{{ $val['id'] }}" type="checkbox" value="{{ $val['id'] }}"
+                                                       @if($val['checked']) checked @endif></td>
+                                            <td>{{ $val['title'] }}</td>
+                                            <td class="mobile-hide"><i class="fa {{ $val['icon'] }}"></i></td>
+                                            <td>{{ $val['route_name'] }}</td>
+                                        </tr>
+                                    @endforeach
+                                @endif
+                            @endforeach
+                        @else
+                            <tr role="row"><td colspan="10">暂无记录</td></tr>
+                        @endif
                         </tbody>
                     </table>
                 </div>

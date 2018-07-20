@@ -22,8 +22,8 @@
                             </th>
                         </thead>
                         <tbody>
-                        @foreach($abilities as $ability)
-                            <tr role="row" class="{{ $ability->id % 2 != 0 ? "odd" : "even"}}">
+                            @foreach($abilities as $ability)
+                            <tr role="row">
                                 <td>
                                     <input id="ability-{{ $ability->id }}" type="checkbox" value="{{ $ability->name }}"
                                            @if($ability->checked) checked @endif>
@@ -31,7 +31,7 @@
                                 <td>{{ $ability->title }}</td>
                                 <td>{{ $ability->name }}</td>
                             </tr>
-                        @endforeach
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

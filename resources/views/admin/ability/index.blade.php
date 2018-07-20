@@ -22,7 +22,8 @@
                             <th>管理</th>
                         </thead>
                         <tbody>
-                        @foreach($abilities as $ability)
+                        @if($abilities->count())
+                            @foreach($abilities as $ability)
                             <tr role="row">
                                 <td class="mobile-hide">{{ $ability->id }}</td>
                                 <td>{{ $ability->title }}</td>
@@ -38,7 +39,10 @@
                                     </a>
                                 </td>
                             </tr>
-                        @endforeach
+                            @endforeach
+                        @else
+                            <tr role="row"><td colspan="10">暂无记录</td></tr>
+                        @endif
                         </tbody>
                     </table>
                 </div>

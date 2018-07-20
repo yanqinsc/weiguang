@@ -29,7 +29,8 @@
                             </th>
                         </thead>
                         <tbody>
-                        @foreach($users as $user)
+                        @if($users->count())
+                            @foreach($users as $user)
                             <tr role="row" class="{{ $user->id % 2 != 0 ? "odd" : "even"}}">
                                 <td>{{ $user->name }}</td>
                                 <td class="mobile-hide">{{ $user->nickname }}</td>
@@ -50,7 +51,10 @@
                                     </a>
                                 </td>
                             </tr>
-                        @endforeach
+                            @endforeach
+                        @else
+                            <tr role="row"><td colspan="10">暂无记录</td></tr>
+                        @endif
                         </tbody>
                     </table>
                 </div>

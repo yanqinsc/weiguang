@@ -23,11 +23,13 @@ class ArticleController extends Controller
 
 
         $comments = $this->arrangeComments($comments);
+        $emojis = get_emojis(20, 'replay-text');
 
         $response = response()->view('cms.contents.article', [
             'article' => $article,
             'current_controller' => 'article',
-            'comments' => $comments
+            'comments' => $comments,
+            'emojis' => $emojis
         ]);
 
         $cookie_key = 'view_count_'.$id;
