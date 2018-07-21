@@ -151,6 +151,7 @@ return [
         'category_id' => '分类不存在',
         'comment' => '评论内容',
         'new_password' => '新密码',
-        'value' => '值'
+        'value' => '值',
+        'license' => '授权发布条款'
     ],
 ];

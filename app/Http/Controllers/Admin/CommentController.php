@@ -45,7 +45,7 @@ class CommentController extends Controller
     {
         $comment = Comment::find((int)$id);
         if ($comment) {
-            DB::transction(function () use ($comment) {
+            DB::transaction(function () use ($comment) {
                 Comment::where('id', $comment->id)->delete();
                 // 将已删除评论的所有子评论归属到其上级评论
                 Comment::where('pid', $comment->id)->update(['pid' => $comment->pid]);

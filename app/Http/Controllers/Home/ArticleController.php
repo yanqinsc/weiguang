@@ -26,4 +26,57 @@ class ArticleController extends Controller
             'title' => '我的文章'
         ]);
     }
+
+
+    public function post(Request $request)
+    {
+        return view('home.article.post', [
+            'title' => '我要投稿',
+        ]);
+    }
+
+    public function store(Request $request)
+    {
+
+        $request->validate([
+            'title' => 'required',
+            'author' => 'required',
+            'article_content' => 'required',
+            'key_words'  => 'required',
+            'excerpt'  => 'required',
+            'license' => 'required'
+        ]);
+
+        $data = [
+            'title' => $request->title,
+            'author' => $request->author,
+            'content' => $request->article_content,
+            'from' => $request->from,
+            'excerpt' => $request->excerpt,
+            'key_words' => $request->key_words,
+            'is_original' => '',
+            'type' => 0
+        ];
+
+        $data = array_filter($data);
+
+        if (!empty($request->username)) {
+            $data['author_id'] = User::where('name', $request->username)->first()->id;
+        }
+
+        $article = Article::create($data);
+        if ($request->thumb) {
+            $file_type = explode('.', $request->thumb)[1];
+            $path = '/uploads/thumb/' . $article->id . '.' . $file_type;
+            $thumb = public_path() . $path;
+
+            if (!file_exists($thumb)) {
+                rename(public_path() . '/uploads/thumb/tmp/' . $request->thumb, $thumb);
+            }
+
+            Article::where('id', $article->id)->update(['thumb' => asset($path)]);
+        }
+
+        return redirect(route('home.article.index'));
+    }
 }

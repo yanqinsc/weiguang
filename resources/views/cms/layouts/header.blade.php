@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ config('app.name') }}-{{ $category->name or $article->title }}</title>
-    <meta charset="utf-8">
+
     @if($current_controller == 'contents')
+        <title>{{ $category->name or $article->title }}_{{ config('app.name') }}</title>
         <meta name="keywords" content="微光语文,微光,语文,作文,文学,艺术,{{ $category->name }}">
         <meta name="description" content="{{ $category->desc }}">
         <link rel="stylesheet" href="{{ asset('cms/css/contents.css') }}">
     @elseif($current_controller == 'article')
+        <title>{{ $article->category . '_' . $article->title . '_' . $seo_words }}</title>
         <meta name="keywords" content="{{ $article->key_words }}">
         <meta name="description" content="{{ $article->excerpt }}">
         <meta name="author" content="{{ $article->author }}"/>

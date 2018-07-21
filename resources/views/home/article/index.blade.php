@@ -4,6 +4,11 @@
 <body>
 <div class="box box-info list">
     <div class="box-body">
+        <div class="button-bar">
+            <a id="create-article" class="btn btn-app bg-olive" href="{{ route('home.article.post') }}">
+                <i class="fa fa-paper-plane"></i>我要投稿
+            </a>
+        </div>
         <div class="dataTables_wrapper form-inline dt-bootstrap">
             <div class="row">
                 <div class="col-sm-12">
@@ -25,7 +30,7 @@
                         @if($articles->count())
                             @foreach($articles as $key => $article)
                                 <tr role="row">
-                                    <td class="mobile-hide">{{ $key }}</td>
+                                    <td class="mobile-hide">{{ $key + 1 }}</td>
                                     <td>{{ $article->title }}</td>
                                     <td class="mobile-hide">{{ $article->author }}</td>
                                     <td class="mobile-hide">{{ $article->publisher }}</td>
@@ -33,6 +38,7 @@
                                     <td class="mobile-hide">{{ $article->comment_count }}</td>
                                     <td class="mobile-hide">{{ $article->view_count }}</td>
                                     <td class="mobile-hide">{{ $article->created_at }}</td>
+                                    <td class="mobile-hide">{{ $article->type == 1 ? '已发表' : '审核中' }}</td>
                                     <td>
                                         <a href="{{ route('article', ['id' => $article->id]) }}" title="查看" target="_blank">
                                             <i class="fa fa-eye"></i>

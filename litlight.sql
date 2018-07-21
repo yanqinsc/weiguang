@@ -11,7 +11,7 @@
  Target Server Version : 100034
  File Encoding         : 65001
 
- Date: 20/07/2018 02:49:24
+ Date: 21/07/2018 10:55:53
 */
 
 SET NAMES utf8mb4;
@@ -107,8 +107,8 @@ CREATE TABLE `wg_admins`  (
 -- ----------------------------
 -- Records of wg_admins
 -- ----------------------------
-INSERT INTO `wg_admins` VALUES (1, 'yanqinsc', '$2y$10$9rEUdYPGBpiF1C/E242iPuKFdBtKbUgHQW9TyFys81iGGY31q3rwC', '小石', '晏勤', '', 'yanqinsc@qq.com', '15730192872', '498412563', '重庆马王坪正街17-7', '孜孜不倦，不紧不慢', 'xlPln90AIXMkV4NXUkKy8946sC69SmGojXpdLo676Q1Zc09aYjKQqeLHgW7W', '2018-04-16 23:49:09', '2018-07-18 17:23:04', NULL);
-INSERT INTO `wg_admins` VALUES (2, 'panda', '$2y$10$xaIMO0sN9E6JFyItCM.pcO/Ii0Y/E.nDbL1QOb68N3a9B88Z0yMYW', '盼盼', '史盼盼', 'https://litlight.cn/uploads/avatars/admins/2.png', '97503939@qq.com', NULL, '', '', '', NULL, '2018-07-20 02:36:40', '2018-07-20 02:44:51', NULL);
+INSERT INTO `wg_admins` VALUES (1, 'yanqinsc', '$2y$10$9rEUdYPGBpiF1C/E242iPuKFdBtKbUgHQW9TyFys81iGGY31q3rwC', '小石', '晏勤', '', 'yanqinsc@qq.com', '15730192872', '498412563', '重庆马王坪正街17-7', '孜孜不倦，不紧不慢', '5GbgOGDwqQgxaLlxr65fyrNunkcYeRQ6SVNovZPphO6S0p52mD0RmlUxkMTM', '2018-04-16 23:49:09', '2018-07-18 17:23:04', NULL);
+INSERT INTO `wg_admins` VALUES (2, 'panda', '$2y$10$xaIMO0sN9E6JFyItCM.pcO/Ii0Y/E.nDbL1QOb68N3a9B88Z0yMYW', '盼盼', '史盼盼', '', '97503939@qq.com', NULL, '', '', '', 'ZxmWv9Zzbuv2fznahsKsjKf1BC4Kyli9kkTWhmBbXMMrXhxbfBDUoqqnfOnv', '2018-07-20 02:36:40', '2018-07-20 02:44:51', NULL);
 
 -- ----------------------------
 -- Table structure for wg_articles
@@ -141,11 +141,9 @@ CREATE TABLE `wg_articles`  (
 -- ----------------------------
 -- Records of wg_articles
 -- ----------------------------
-INSERT INTO `wg_articles` VALUES (1, '无题', '锦瑟,李商隐,唐朝', '李商隐', 51, '唐朝8年级01班', 'https://litlight.cn/uploads/thumb/1.png', '锦瑟无端五十弦', '<p>锦瑟无端五十弦</p><p>一线一柱思华年</p><p>庄生晓梦迷蝴蝶</p><p>望帝春心托杜鹃</p><p>沧海月明珠有泪</p><p>蓝田日暖玉生烟</p><p>此情可待成追忆</p><p>只是当时已惘然</p>', 4, 0, NULL, NULL, '', 20, 1, '1', '2018-07-18 17:31:28', '2018-07-20 01:14:14', NULL);
-INSERT INTO `wg_articles` VALUES (2, '写给过去的岁月', '岁月,农民,生活', '小石', 51, '', 'https://litlight.cn/uploads/thumb/2.png', '写给过去的岁月', '<p>母亲把泡胀的种子</p><p>放在衣兜里 ­</p><p>夜里梦见满地新绿&nbsp;­<br/></p><p><br/></p>', 7, 1, NULL, NULL, '', 1, 1, '1', '2018-07-19 15:39:47', '2018-07-20 01:45:59', NULL);
-INSERT INTO `wg_articles` VALUES (3, '读《青铜葵花》', '青铜葵花，曹文轩，少儿文学', '盼盼', 0, '成都嘉祥外国语学院达州校区', 'https://litlight.cn/uploads/thumb/3.png', NULL, '<p><br/></p><p><img src=\"/uploads/ueditor/images/20180720/1532020683147719.jpeg\" title=\"1532020683147719.jpeg\"/></p><p><br/></p><p><img src=\"https://litlight.cn/uploads/ueditor/images/20180720/1532020683695990.jpeg\" title=\"1532020683695990.jpeg\"/></p><p><br/></p>', 1, 0, NULL, NULL, '', 2, 1, '1', '2018-07-20 01:18:59', '2018-07-20 01:33:41', NULL);
-INSERT INTO `wg_articles` VALUES (4, '与生书', '盼盼来信,学生,语文', '盼盼', 0, '成都嘉祥外国语学校（达州校区）', 'https://litlight.cn/uploads/thumb/4.png', NULL, '<p><img src=\"/uploads/ueditor/images/20180720/1532021154247301.jpeg\" title=\"1532021154247301.jpeg\" alt=\"微信图片_20180720012543.jpg\"/></p>', 1, 0, NULL, NULL, '', 3, 1, '1', '2018-07-20 01:26:04', '2018-07-20 01:33:50', NULL);
-INSERT INTO `wg_articles` VALUES (5, '往后余生', '马良，往后，余生歌词', '马良', 0, '', 'https://litlight.cn/uploads/thumb/5.png', '往后余生', '<p style=\"text-align: justify;\"><img src=\"/uploads/ueditor/images/20180720/1532022244260102.jpeg\" title=\"1532022244260102.jpeg\" alt=\"timg (3).jpg\"/></p><p>在没风的地方找太阳<br/></p><p>在你冷的地方做暖阳</p><p>人事纷纷</p><p>你总太天真</p><p>往后的余生</p><p>我只要你</p><p>往后余生</p><p>风雪是你</p><p>平淡是你</p><p>清贫也是你</p><p>荣华是你</p><p>心底温柔是你</p><p>目光所致</p><p>也是你</p><p>想带你去看晴空万里</p><p>想大声告诉你我为你着迷</p><p>往事匆匆</p><p>你总会被感动</p><p>往后的余生</p><p>我只要你</p><p>往后余生</p><p>冬雪是你</p><p>春华是你</p><p>夏雨也是你</p><p>秋黄是你</p><p>四季冷暖是你</p><p>目光所致</p><p>也是你</p><p>往后余生</p><p>风雪是你</p><p>平淡是你</p><p>清贫也是你</p><p>荣华是你</p><p>心底温柔是你</p><p>目光所致</p><p>也是你</p><p><br/></p>', 1, 0, NULL, NULL, '', 5, 1, '1', '2018-07-20 01:39:54', '2018-07-20 01:44:10', NULL);
+INSERT INTO `wg_articles` VALUES (1, '写给过去的岁月', '岁月,农民,生活', '小石', 51, '', 'https://litlight.cn/uploads/thumb/2.png', '一首小诗写给过去的那些岁月', '<p>母亲把泡胀的种子</p><p>放在衣兜里入睡</p><p>夜里梦见满地新绿&nbsp;­<br/></p><p><br/></p>', 9, 1, NULL, NULL, '', 1, 1, '1', '2009-02-17 21:12:47', '2018-07-20 20:05:13', NULL);
+INSERT INTO `wg_articles` VALUES (2, '读《青铜葵花》', '青铜葵花，曹文轩，少儿文学', '盼盼', 0, '成都嘉祥外国语学校', 'https://litlight.cn/uploads/thumb/3.png', '以往都说读一本书不应跳过作者的自序。而曹文轩的序言我倒以为真该读完小说后再读他的序言，方能真正懂他再说什么，方能被这序言打动。', '<p><br/></p><p><img src=\"/uploads/ueditor/images/20180720/1532020683147719.jpeg\" title=\"1532020683147719.jpeg\"/></p><p><br/></p><p><img src=\"https://litlight.cn/uploads/ueditor/images/20180720/1532020683695990.jpeg\" title=\"1532020683695990.jpeg\"/></p><p><br/></p>', 6, 0, NULL, NULL, '', 2, 1, '1', '2018-07-20 01:18:59', '2018-07-20 20:02:13', NULL);
+INSERT INTO `wg_articles` VALUES (3, '与生书', '盼盼来信,学生,语文', '盼盼', 0, '成都嘉祥外国语学校', 'https://litlight.cn/uploads/thumb/4.png', '又是一年将尽时。这时我总觉得应该有种仪式可以让我郑重地告别过去一年。我选择给你们写一封信，因为你们是我过去一年中生活的重心。', '<p><img src=\"/uploads/ueditor/images/20180720/1532021154247301.jpeg\" title=\"1532021154247301.jpeg\" alt=\"微信图片_20180720012543.jpg\"/></p>', 7, 1, NULL, NULL, '', 3, 1, '1', '2018-07-20 01:26:04', '2018-07-20 20:03:31', NULL);
 
 -- ----------------------------
 -- Table structure for wg_assigned_roles
@@ -190,8 +188,6 @@ CREATE TABLE `wg_categories`  (
 -- ----------------------------
 INSERT INTO `wg_categories` VALUES (1, 0, '周记欣赏', 'zj', '', '', 99);
 INSERT INTO `wg_categories` VALUES (2, 0, '阅读同行', 'read', '', '', 98);
-INSERT INTO `wg_categories` VALUES (4, 0, '影视评论', 'yp', NULL, '', 96);
-INSERT INTO `wg_categories` VALUES (5, 0, '歌词欣赏', 'gc', '', '', 95);
 INSERT INTO `wg_categories` VALUES (3, 0, '盼盼来信', 'letters', '', '', 97);
 
 -- ----------------------------
@@ -207,12 +203,28 @@ CREATE TABLE `wg_comments`  (
   `reviewed` char(0) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '已审核 null|否',
   `created_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 40 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 41 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of wg_comments
 -- ----------------------------
-INSERT INTO `wg_comments` VALUES (39, 2, 51, 0, '放衣兜里可以让种子更快发芽🤔', '', '2018-07-19 19:58:00');
+INSERT INTO `wg_comments` VALUES (39, 1, 51, 0, '放衣兜里可以让种子更快发芽🤔', '', '2018-07-19 19:58:00');
+INSERT INTO `wg_comments` VALUES (40, 3, 51, 0, 'Time flies,we are here.🙂', '', '2018-07-20 08:36:22');
+
+-- ----------------------------
+-- Table structure for wg_jobs
+-- ----------------------------
+DROP TABLE IF EXISTS `wg_jobs`;
+CREATE TABLE `wg_jobs`  (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `queue` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `attempts` tinyint(3) UNSIGNED NOT NULL,
+  `reserved_at` int(10) UNSIGNED NULL DEFAULT NULL,
+  `available_at` int(10) UNSIGNED NOT NULL,
+  `created_at` int(10) UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for wg_menus
@@ -288,8 +300,6 @@ INSERT INTO `wg_menus_roles` VALUES (9, 1);
 INSERT INTO `wg_menus_roles` VALUES (9, 3);
 INSERT INTO `wg_menus_roles` VALUES (10, 1);
 INSERT INTO `wg_menus_roles` VALUES (10, 3);
-INSERT INTO `wg_menus_roles` VALUES (11, 3);
-INSERT INTO `wg_menus_roles` VALUES (12, 3);
 INSERT INTO `wg_menus_roles` VALUES (13, 1);
 INSERT INTO `wg_menus_roles` VALUES (13, 3);
 INSERT INTO `wg_menus_roles` VALUES (14, 1);
@@ -446,6 +456,9 @@ CREATE TABLE `wg_register_codes`  (
 INSERT INTO `wg_register_codes` VALUES ('yanqinsc@qq.com', '133908', '2018-07-18 15:37:25');
 INSERT INTO `wg_register_codes` VALUES ('yanqinsc@qq.com', '236731', '2018-07-18 15:49:11');
 INSERT INTO `wg_register_codes` VALUES ('yanqinsc@qq.com', '551274', '2018-07-18 15:53:07');
+INSERT INTO `wg_register_codes` VALUES ('yanqinsc@hotmail.com', '331401', '2018-07-20 08:50:37');
+INSERT INTO `wg_register_codes` VALUES ('yanqinsc@qq.com', '198730', '2018-07-20 21:29:41');
+INSERT INTO `wg_register_codes` VALUES ('yanqinsc@qq.com', '369264', '2018-07-20 21:31:31');
 
 -- ----------------------------
 -- Table structure for wg_roles
@@ -488,7 +501,14 @@ CREATE TABLE `wg_sessions`  (
 -- ----------------------------
 -- Records of wg_sessions
 -- ----------------------------
-INSERT INTO `wg_sessions` VALUES ('XlLr6ekd0N1IITmJqBCaLnm45jaGyZetpDwmZbS9', NULL, '183.226.207.49', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiQmMxV1Q2VUk1dUR6ODNzQWhRQjB3NDd3Y3ZsSXNkeHVJNGd3WVhNYyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTk6Imh0dHBzOi8vbGl0bGlnaHQuY24iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1532026058);
+INSERT INTO `wg_sessions` VALUES ('6yM45LqFuz1DA3FgpdbbqOzqniovxsvmomO8ko7x', NULL, '120.92.11.152', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiVUtBa0JrRmpBQ1BWQnZFN2syQWNza0NlYTVUNXVESzB1TWJobjB0ZSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHBzOi8vbGl0bGlnaHQuY24vY29udGVudHMvaG9tZSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1532137799);
+INSERT INTO `wg_sessions` VALUES ('8l3GEWswjwIj6mXJkUYlTjEboknW6PQEPYtjeqNf', NULL, '183.226.20.219', 'Mozilla/5.0 (Linux; U; Android 7.1.2; zh-cn; Redmi 5 Plus Build/N2G47H) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/61.0.3163.128 Mobile Safari/537.36 XiaoMi/MiuiBrowser/9.8.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiWFNxVktUTU5QSXRiQ0QxQVJwM0hKQmdKRm5wWWJTVnY4QUNHNkJpZiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHBzOi8vbGl0bGlnaHQuY24vYWRtaW4vbG9naW4iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1532137945);
+INSERT INTO `wg_sessions` VALUES ('DZJu7VxE3qxUyq9Jn3mnRcMXS5oUC1FLxy6zDIMX', NULL, '106.11.227.87', 'Mozilla/5.0 (iPad; CPU OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiMWNBczFCeFBoaWhmQ3hoeUhRTlN3dndaUEZ3d0MwaWM2YVc3OEN1ZSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTk6Imh0dHBzOi8vbGl0bGlnaHQuY24iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1532137723);
+INSERT INTO `wg_sessions` VALUES ('flEzeR8MPnLlU0gGtFoHanRzCNj5hW7NgRejOQoi', 2, '183.226.20.219', 'Mozilla/5.0 (Linux; U; Android 7.1.2; zh-cn; Redmi 5 Plus Build/N2G47H) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/61.0.3163.128 Mobile Safari/537.36 XiaoMi/MiuiBrowser/9.8.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiWFNxVktUTU5QSXRiQ0QxQVJwM0hKQmdKRm5wWWJTVnY4QUNHNkJpZiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzI6Imh0dHBzOi8vbGl0bGlnaHQuY24vcGFuZWwvYWRtaW5zIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyO30=', 1532137936);
+INSERT INTO `wg_sessions` VALUES ('Fo3AIBEqfiQv087lNGez3iQfteil5h2xxJesPAVf', NULL, '183.226.20.219', 'Mozilla/5.0 (Linux; Android 7.1.2; Redmi 5 Plus Build/N2G47H; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.132 MQQBrowser/6.2 TBS/044112 Mobile Safari/537.36 MicroMessenger/6.7.1321(0x26070030) NetType/WIFI Language/zh_CN', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoidXlCbndzSmF2V2RHczl3TzFNa0FlV2NrY0hhSE40WTdTWWVjT24wMyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjk6Imh0dHBzOi8vbGl0bGlnaHQuY24vYXJ0aWNsZS8zIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1532137762);
+INSERT INTO `wg_sessions` VALUES ('imZ8GK8iGoF4kqEjf4NfXmf4UGK54thUS76cNGa0', NULL, '183.226.20.219', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoialRsUFNjcEs5ZEoyVE9JTU9tMjl0Qk5TQkR2RGhPOGFqbDJMcVBpSCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjU6Imh0dHBzOi8vbGl0bGlnaHQuY24vbG9naW4iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjM6InVybCI7YTowOnt9czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1532141271);
+INSERT INTO `wg_sessions` VALUES ('KK76s5MzbsI4wDLLlQfZRrCfbRe8SaEq65QkFLou', NULL, '139.162.116.133', 'Go-http-client/1.1', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiSnNxVDB4OEpnbnZIOHk0Q3phVDRPcElablRwSzI2ZEdRTFRyZzJNQiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjI6Imh0dHBzOi8vMzkuMTA4LjIzNi4yMzUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1532135203);
+INSERT INTO `wg_sessions` VALUES ('uCA09UxSQQJunBTqRW8gK8OAHFw1rvmECiOITc04', NULL, '123.125.71.84', 'Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiaUcweWl4TVBYY1ZjbXNaQm1yYm1GeXJBYXZ3UDdLWnV2bktxUkpRZiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTk6Imh0dHBzOi8vbGl0bGlnaHQuY24iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1532141149);
 
 -- ----------------------------
 -- Table structure for wg_teams
@@ -526,11 +546,12 @@ CREATE TABLE `wg_users`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_name_unique`(`name`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 52 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 55 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of wg_users
 -- ----------------------------
-INSERT INTO `wg_users` VALUES (51, 'yanqinsc', '$2y$10$2DfAQ6TRsurL3fiFmowAbe6NcJRqTDIYiSwu0Qa.OYUniWNACiLWe', '小石', '', '', '', 'yanqinsc@qq.com', '', '', 0, '孜孜不倦，不紧不慢', NULL, 'EsMyHDFBTARP6ArKZFt2HbiK5OA7uskRQbqOyjNrXerfdAakjYmCx1F4Zix7', '2018-07-18 15:54:22', '2018-07-18 17:18:53', NULL);
+INSERT INTO `wg_users` VALUES (51, 'yanqinsc', '$2y$10$2DfAQ6TRsurL3fiFmowAbe6NcJRqTDIYiSwu0Qa.OYUniWNACiLWe', '小石', '', 'https://litlight.cn/uploads/avatars/users/51.png', '', 'yanqinsc@qq1.com', '', '', 0, '孜孜不倦，不紧不慢', NULL, 'ma2TTW7XTUxlXeTU0cIUAXsFf5MyP8ppihDWV1QyyY89QPwXTGskpaVMxrw6', '2018-07-18 15:54:22', '2018-07-20 14:01:04', NULL);
+INSERT INTO `wg_users` VALUES (54, 'tony', '$2y$10$W7K3fHJMvpuDdBTqTKT0QutjHO.cPKTIUh7fhTGk6ya3G06Rd49du', '', '', '', '', 'yanqinsc@hotmail.com', '', '', 0, '', NULL, NULL, '2018-07-20 09:21:31', '2018-07-20 09:21:31', NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -34,6 +34,8 @@ Route::prefix('home')->namespace('Home')->middleware('auth')->group(function () 
     Route::post('change/password', 'UserController@updatePassword')->name('home.user.updatePassword');
     Route::get('articles', 'ArticleController@index')->name('home.article.index');
     Route::get('comments', 'CommentController@index')->name('home.comment.index');
+    Route::get('post', 'ArticleController@post')->name('home.article.post');
+    Route::post('post', 'ArticleController@store')->name('home.article.store');
 });
 
 // 后台用户认证

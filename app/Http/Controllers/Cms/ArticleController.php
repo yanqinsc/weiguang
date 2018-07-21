@@ -29,12 +29,13 @@ class ArticleController extends Controller
             'article' => $article,
             'current_controller' => 'article',
             'comments' => $comments,
-            'emojis' => $emojis
+            'emojis' => $emojis,
+            'seo_words' => str_replace(',', '_', $article->key_words)
         ]);
 
-        $cookie_key = 'view_count_'.$id;
+        $cookie_key = 'view_count_' . $id;
         if (empty($request->cookie($cookie_key))) {
-            $cookie = cookie($cookie_key, 1, 4*3600);
+            $cookie = cookie($cookie_key, 1, 4 * 3600);
             Article::where('id', $id)->update(['view_count' => $article['view_count'] + 1]);
             $response->cookie($cookie);
         }
@@ -71,7 +72,7 @@ class ArticleController extends Controller
         DB::transaction(function () use ($data) {
             Comment::insert($data);
             $comments = Comment::select(DB::raw('count(*) as count'))->where('aid', $data['aid'])->first();
-            Article::where('id', $data['aid'])->update(['comment_count'=>$comments->count]);
+            Article::where('id', $data['aid'])->update(['comment_count' => $comments->count]);
         });
 
         $response = redirect()->back();
@@ -79,12 +80,13 @@ class ArticleController extends Controller
             $response->withErrors('评论成功，管理员审核正在审核，请稍后查看！');
     }
 
-    private function arrangeComments($comments) {
+    private function arrangeComments($comments)
+    {
         $data = [];
         $temp = [];
         $getTopId = function ($pid, $temp) use (&$getTopId) {
             if ($temp[$pid]['pid'] === 0) {
-                $topId =  $temp[$pid]['id'];
+                $topId = $temp[$pid]['id'];
             } else {
                 $topId = $getTopId($temp[$pid]['pid'], $temp);
             }

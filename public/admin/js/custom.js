@@ -16,7 +16,14 @@ $(function () {
     $('#current-title', window.parent.document).html($('#title').val());
     $('#current-title-right', window.parent.document).html($('#title').val());
 
-    $('.top-box').css('height', window.screen.height/1.5  + 'px');
+    let topHeight = function() {
+        $('.top-box').css('height', $(window).height()*0.8  + 'px');
+    };
+
+    topHeight();
+    $(window).resize(function () {
+        topHeight();
+    });
 });
 
 function isWechat() {
