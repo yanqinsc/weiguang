@@ -155,7 +155,10 @@ class ArticleController extends Controller
 
     public function destroy($id)
     {
-        Article::where(['id' => $id, 'author_id' => Auth::user()->id])->forceDelete();
+        $article = Article::where(['id' => $id, 'author_id' => Auth::user()->id, 'type' => 2])->first();
+        // 删除对应的图片
+        unlink(public_path($article->thumb));
+        $article->forceDelete();
         return redirect()->back();
     }
 }
