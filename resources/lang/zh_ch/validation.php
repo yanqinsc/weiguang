@@ -152,6 +152,7 @@ return [
         'comment' => '评论内容',
         'new_password' => '新密码',
         'value' => '值',
-        'license' => '授权发布条款'
+        'article_license' => '授权发布条款',
+        'article_content' => '文章内容'
     ],
 ];

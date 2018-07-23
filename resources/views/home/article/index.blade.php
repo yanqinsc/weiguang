@@ -5,7 +5,7 @@
 <div class="box box-info list">
     <div class="box-body">
         <div class="button-bar">
-            <a id="create-article" class="btn btn-app bg-olive" href="{{ route('home.article.post') }}">
+            <a id="create-post" class="btn btn-app bg-olive" href="{{ route('home.article.post') }}">
                 <i class="fa fa-paper-plane"></i>我要投稿
             </a>
         </div>
@@ -24,7 +24,8 @@
                             <th class="mobile-hide">评论</th>
                             <th class="mobile-hide">阅读</th>
                             <th class="mobile-hide">发布时间</th>
-                            <th>操作</th>
+                            <th>状态</th>
+                            <th>查看</th>
                         </thead>
                         <tbody>
                         @if($articles->count())
@@ -40,9 +41,15 @@
                                     <td class="mobile-hide">{{ $article->created_at }}</td>
                                     <td class="mobile-hide">{{ $article->type == 1 ? '已发表' : '审核中' }}</td>
                                     <td>
+                                        @if($article->type == 1)
                                         <a href="{{ route('article', ['id' => $article->id]) }}" title="查看" target="_blank">
                                             <i class="fa fa-eye"></i>
                                         </a>
+                                        @else
+                                        <a href="{{ route('article', ['id' => $article->id]) }}" title="查看" target="_blank">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
@@ -59,5 +66,13 @@
     </div>
 </div>
 @include('home.layouts.footer')
+<script>
+    $(function () {
+        //选择创建文章则设置cookie， 以便在创建文章前检查cookie清空以前本地保存的内容
+        $("#create-post").click(function () {
+            $.cookie('create_post', true);
+        });
+    });
+</script>
 </body>
 </html>
