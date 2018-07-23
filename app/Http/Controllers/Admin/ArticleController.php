@@ -81,7 +81,7 @@ class ArticleController extends Controller
                 rename(public_path() . '/uploads/thumb/tmp/' . $request->thumb, $thumb);
             }
 
-            Article::where('id', $article->id)->update(['thumb' => asset($path)]);
+            Article::where('id', $article->id)->update(['thumb' => $path]);
         }
 
         return redirect(route('article.index'));

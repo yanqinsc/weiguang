@@ -40,7 +40,7 @@
                          src="{{ $article->thumb . '?t=' . rand(1000, 9999) }}"
                         @else
                          src=""
-                    @endif}} alt="缩略图">
+                    @endif alt="缩略图">
                 </div>
                 <div class="row">
                     <div class="col-md-2">
@@ -50,7 +50,7 @@
                         <input name="from" class="form-control" type="text" placeholder="{{ $article->from }}">
                     </div>
                     <div class="col-md-3">
-                        <input name="username" class="form-control" type="text" placeholder="{{ isset($username) ? $username : null }}">
+                        <input name="username" class="form-control" type="text" placeholder="{{ isset($username) ? $username : '用户账号' }}">
                     </div>
                 </div>
                 <br>

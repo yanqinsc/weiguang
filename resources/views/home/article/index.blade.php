@@ -46,8 +46,13 @@
                                             <i class="fa fa-eye"></i>
                                         </a>
                                         @else
-                                        <a href="{{ route('article', ['id' => $article->id]) }}" title="查看" target="_blank">
+                                        <a href="{{ route('home.article.edit', ['id' => $article->id]) }}" title="编辑稿件" target="sub_page">
                                             <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a href="javascript:void(0) "
+                                           data-url="{{ route('home.article.destroy', ['id' => $article->id]) }}"
+                                           title="删除" class="a-remove">
+                                            <i class="fa fa-trash"></i>
                                         </a>
                                         @endif
                                     </td>
@@ -66,6 +71,20 @@
     </div>
 </div>
 @include('home.layouts.footer')
+<form id="form-destroy" method="post">
+    {{ method_field('DELETE') }}
+    {{ csrf_field() }}
+    <div>
+        <div>
+            执行该操作后稿件将被永久删除不可恢复，确定删除？
+        </div>
+        <br>
+        <div class="timeline-footer">
+            <button type="submit" class="btn btn-danger">确定</button>
+            <button id="comfirm-cancel" type="button" class="btn btn-success">取消</button>
+        </div>
+    </div>
+</form>
 <script>
     $(function () {
         //选择创建文章则设置cookie， 以便在创建文章前检查cookie清空以前本地保存的内容

@@ -79,7 +79,7 @@
         </form>
     </div>
     {{--缩略图上传地址--}}
-    <input type="hidden" id="post-url" value="{{ route('home.article.postThumb') }}">
+    <input type="hidden" id="post-url" value="{{ route('home.article.postThumb', ['type' => 'create']) }}">
     {{--缩略图对应对象ID--}}
     <input type="hidden" id="post-id" value="0">
     <script> let aspectRatio = 4/3; </script>

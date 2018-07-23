@@ -36,9 +36,10 @@ Route::prefix('home')->namespace('Home')->middleware('auth')->group(function () 
     Route::get('comments', 'CommentController@index')->name('home.comment.index');
     Route::get('post', 'ArticleController@post')->name('home.article.post');
     Route::post('post', 'ArticleController@store')->name('home.article.store');
-    Route::post('article/post/thumb', 'ArticleController@postThumb')->name('home.article.postThumb');
+    Route::post('article/post/thumb/{type}', 'ArticleController@postThumb')->name('home.article.postThumb');
     Route::get('post/{id}/edit', 'ArticleController@edit')->name('home.article.edit');
-    Route::post('post/{id}/edit', 'ArticleController@update')->name('home.article.update');
+    Route::put('post/{id}/edit', 'ArticleController@update')->name('home.article.update');
+    Route::delete('post/{id}/destory', 'ArticleController@destroy')->name('home.article.destroy');
 
 });
 
