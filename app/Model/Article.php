@@ -27,6 +27,8 @@ class Article extends Model
             $builder->where('category_id', '=', $category_id);
         }
 
+        $builder->where('type', '=', 1);
+
         return $builder->paginate($paginate_number);
     }
 

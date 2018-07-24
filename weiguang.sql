@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : MaraDB
+ Source Server         : Localhost
  Source Server Type    : MySQL
- Source Server Version : 100214
+ Source Server Version : 50719
  Source Host           : localhost:3306
  Source Schema         : weiguang
 
  Target Server Type    : MySQL
- Target Server Version : 100214
+ Target Server Version : 50719
  File Encoding         : 65001
 
- Date: 23/07/2018 21:41:52
+ Date: 24/07/2018 17:54:39
 */
 
 SET NAMES utf8mb4;
@@ -125,19 +125,19 @@ CREATE TABLE `wg_articles`  (
   `is_original` char(0) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '是否原创 NULL|否',
   `category_id` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
   `publisher_id` int(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '编辑ID',
-  `type` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0' COMMENT '0|草稿 1|已发表 2|来稿',
+  `type` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0' COMMENT '1|已发表 2|来稿',
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   `deleted_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of wg_articles
 -- ----------------------------
-INSERT INTO `wg_articles` VALUES (1, '写给过去的岁月', '岁月,农民,生活', '小石', 51, '', '/uploads/thumb/2.png', '一首小诗写给过去的那些岁月', '<p>母亲把泡胀的种子</p><p>放在衣兜里</p><p>夜里梦见满地新绿&nbsp;­<br/></p><p><br/></p>', 11, 1, NULL, NULL, '', 1, 1, '1', '2009-02-17 21:12:47', '2018-07-23 02:40:30', NULL);
-INSERT INTO `wg_articles` VALUES (2, '读《青铜葵花》', '青铜葵花,曹文轩,少儿文学', '盼盼', 0, '成都嘉祥外国语学校', '/uploads/thumb/3.png', '以往都说读一本书不应跳过作者的自序。而曹文轩的序言我倒以为真该读完小说后再读他的序言，方能真正懂他再说什么，方能被这序言打动。', '<p><br/></p><p><img src=\"/uploads/ueditor/images/20180720/1532020683147719.jpeg\" title=\"1532020683147719.jpeg\"/></p><p><br/></p><p><img src=\"https://litlight.cn/uploads/ueditor/images/20180720/1532020683695990.jpeg\" title=\"1532020683695990.jpeg\"/></p><p><br/></p>', 8, 0, NULL, NULL, '', 2, 1, '1', '2018-01-07 01:18:59', '2018-07-23 02:40:30', NULL);
-INSERT INTO `wg_articles` VALUES (3, '与生书', '书信,学生,严氏家训,青铜葵花', '盼盼', 0, '成都嘉祥外国语学校', '/uploads/thumb/4.png', '又是一年将尽时。这时我总觉得应该有种仪式可以让我郑重地告别过去一年。我选择给你们写一封信，因为你们是我过去一年中生活的重心。', '<p><img src=\"/uploads/ueditor/images/20180720/1532021154247301.jpeg\" title=\"1532021154247301.jpeg\" alt=\"微信图片_20180720012543.jpg\"/></p>', 10, 1, NULL, NULL, '', 3, 1, '1', '2017-12-26 01:26:04', '2018-07-23 15:08:09', NULL);
+INSERT INTO `wg_articles` VALUES (1, '写给过去的岁月', '岁月,农民,生活', '小石', 51, '', '/uploads/thumb/2.png', '一首小诗写给过去的那些岁月', '<p>母亲把泡胀的种子</p><p>放在衣兜里</p><p>夜里梦见满地新绿&nbsp;­<br/></p><p><br/></p>', 14, 1, NULL, NULL, '', 1, 1, '1', '2009-02-17 21:12:47', '2018-07-24 17:52:28', NULL);
+INSERT INTO `wg_articles` VALUES (2, '读《青铜葵花》', '青铜葵花,曹文轩,少儿文学', '盼盼', 0, '成都嘉祥外国语学校', '/uploads/thumb/3.png', '以往都说读一本书不应跳过作者的自序。而曹文轩的序言我倒以为真该读完小说后再读他的序言，方能真正懂他再说什么，方能被这序言打动。', '<p><br/></p><p><img src=\"/uploads/ueditor/images/20180720/1532020683147719.jpeg\" title=\"1532020683147719.jpeg\"/></p><p><br/></p><p><img src=\"https://litlight.cn/uploads/ueditor/images/20180720/1532020683695990.jpeg\" title=\"1532020683695990.jpeg\"/></p><p><br/></p>', 10, 0, NULL, NULL, '', 2, 1, '1', '2018-01-07 01:18:59', '2018-07-24 17:52:51', NULL);
+INSERT INTO `wg_articles` VALUES (3, '与生书', '书信,学生,严氏家训,青铜葵花', '盼盼', 0, '成都嘉祥外国语学校', '/uploads/thumb/4.png', '又是一年将尽时。这时我总觉得应该有种仪式可以让我郑重地告别过去一年。我选择给你们写一封信，因为你们是我过去一年中生活的重心。', '<p><img src=\"/uploads/ueditor/images/20180720/1532021154247301.jpeg\" title=\"1532021154247301.jpeg\" alt=\"微信图片_20180720012543.jpg\"/></p>', 14, 1, NULL, NULL, '', 3, 1, '1', '2017-12-26 01:26:04', '2018-07-24 17:17:17', NULL);
 
 -- ----------------------------
 -- Table structure for wg_assigned_roles
@@ -237,7 +237,7 @@ CREATE TABLE `wg_menus`  (
   `deleted_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `menu_name_unique`(`title`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of wg_menus
@@ -256,6 +256,7 @@ INSERT INTO `wg_menus` VALUES (11, 4, 98, '分类', 'fa-paper-plane', 'category.
 INSERT INTO `wg_menus` VALUES (12, 0, 99, '个人中心', 'fa-user', '#', '2018-07-15 15:07:50', '2018-07-23 14:57:28', NULL);
 INSERT INTO `wg_menus` VALUES (13, 12, 99, '基本资料', 'fa-file', 'admin.info', '2018-07-15 15:13:25', '2018-07-23 15:05:15', NULL);
 INSERT INTO `wg_menus` VALUES (14, 12, 98, '修改密码', 'fa-lock', 'admin.changePassword', '2018-07-15 15:14:53', '2018-07-23 15:05:17', NULL);
+INSERT INTO `wg_menus` VALUES (17, 4, 96, '回收站', ' fa-recycle', 'article.recycle', '2018-07-24 12:35:00', '2018-07-24 12:51:15', NULL);
 
 -- ----------------------------
 -- Table structure for wg_menus_roles
@@ -301,6 +302,8 @@ INSERT INTO `wg_menus_roles` VALUES (13, 1);
 INSERT INTO `wg_menus_roles` VALUES (13, 3);
 INSERT INTO `wg_menus_roles` VALUES (14, 1);
 INSERT INTO `wg_menus_roles` VALUES (14, 3);
+INSERT INTO `wg_menus_roles` VALUES (17, 1);
+INSERT INTO `wg_menus_roles` VALUES (17, 3);
 
 -- ----------------------------
 -- Table structure for wg_migrations

@@ -45,6 +45,7 @@ class CategoryController extends Controller
             'desc' => $request->desc
         ]);
         $data['is_nav'] = $request->is_nav == 1 ? '' : null;
+        $data['allow_post'] = $request->allow_post == 1 ? '' : null;
 
         Category::create($data);
 
@@ -84,6 +85,7 @@ class CategoryController extends Controller
             'desc' => $request->desc
         ]);
         $data['is_nav'] = $request->is_nav == 1 ? '' : null;
+        $data['allow_post'] = $request->allow_post == 1 ? '' : null;
         $result = Category::where('id', $id)->update($data);
 
         if ($result) {

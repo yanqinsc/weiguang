@@ -4,11 +4,6 @@
 <body>
 <div class="box box-info list">
     <div class="box-body">
-        <div class="button-bar">
-            <a id="create-article" class="btn btn-app bg-olive" href="{{ route('article.create') }}">
-                <i class="fa fa-plus"></i>添加文章
-            </a>
-        </div>
         <div class="dataTables_wrapper form-inline dt-bootstrap">
             <div class="row">
                 <div class="col-sm-12">
@@ -19,11 +14,6 @@
                             <th class="mobile-hide">ID</th>
                             <th>标题</th>
                             <th class="mobile-hide">作者</th>
-                            <th class="mobile-hide">发布者</th>
-                            <th>分类</th>
-                            <th class="mobile-hide">评论</th>
-                            <th class="mobile-hide">阅读</th>
-                            <th class="mobile-hide">状态</th>
                             <th class="mobile-hide">发布时间</th>
                             <th>管理</th>
                         </thead>
@@ -34,24 +24,15 @@
                                 <td class="mobile-hide">{{ $article->id }}</td>
                                 <td>{{ $article->title }}</td>
                                 <td class="mobile-hide">{{ $article->author }}</td>
-                                <td class="mobile-hide">{{ $article->publisher }}</td>
-                                <td class="mobile-hide">{{ $article->category }}</td>
-                                <td class="mobile-hide">{{ $article->comment_count }}</td>
-                                <td class="mobile-hide">{{ $article->view_count }}</td>
-                                <td class="mobile-hide">{{ $article->type == 1 ? '已发表' : '待审核' }}</td>
                                 <td class="mobile-hide">{{ $article->created_at }}</td>
-
                                 <td>
-                                    <a href="{{ route('article.edit', ['id' => $article->id]) }}" title="编辑">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
                                     <a href="javascript:void(0) "
-                                       data-url="{{ route('article.destroy', ['id' => $article->id]) }}"
-                                       title="删除" class="a-remove">
+                                       data-url="{{ route('article.delete', ['id' => $article->id]) }}"
+                                       title="永久删除" class="a-remove">
                                         <i class="fa fa-trash"></i>
                                     </a>
-                                    <a href="{{ route('article', ['id' => $article->id]) }}" title="查看" target="_blank">
-                                        <i class="fa fa-eye"></i>
+                                    <a href="{{ route('article.restore', ['id' => $article->id]) }}" title="还原">
+                                        <i class="fa  fa-mail-reply "></i>
                                     </a>
                                 </td>
                             </tr>
@@ -71,7 +52,7 @@
     {{ csrf_field() }}
     <div>
         <div>
-            执行该操作后，该文章将被删除，确定删除？
+            执行该操作后，该文章将被永久删除不可恢复，确定删除？
         </div>
         <br>
         <div class="timeline-footer">

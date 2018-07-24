@@ -23,9 +23,11 @@ class ContentsController extends Controller
             $category = Category::getInfoBySlug($slug, ['id', 'name', 'slug', 'desc']);
         }
 
+        // 关键词检索
         if ($request->key_words) {
             $key_words = '%' . $request->key_words . '%';
             $contents = Article::where('title', 'like', $key_words)
+                ->where('type', '=', 1)
                 ->orWhere('author', 'like', $key_words)
                 ->orWhere('key_words', 'like', $key_words)
                 ->paginate(5);

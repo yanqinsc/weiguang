@@ -7,6 +7,7 @@ use App\Model\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 
 class ArticleController extends Controller
 {
@@ -33,9 +34,11 @@ class ArticleController extends Controller
             'seo_words' => str_replace(',', '_', $article->key_words)
         ]);
 
-        $cookie_key = 'view_count_' . $id;
-        if (empty($request->cookie($cookie_key))) {
-            $cookie = cookie($cookie_key, 1, 4 * 3600);
+        $view_counts = unserialize($request->cookie('view_count'));
+        if (!$view_counts || (is_array($view_counts) && !in_array($id, $view_counts))) {
+            $view_counts[] = $id;
+            $value = serialize($view_counts);
+            $cookie = Cookie::make('view_count', $value, 120);
             Article::where('id', $id)->update(['view_count' => $article['view_count'] + 1]);
             $response->cookie($cookie);
         }
@@ -55,7 +58,6 @@ class ArticleController extends Controller
         }
 
         $request->validate($rule);
-
         $data = [
             'pid' => $request->pid,
             'content' => $request->comment,
@@ -63,7 +65,6 @@ class ArticleController extends Controller
             'uid' => Auth::user()->id,
             'created_at' => date('Y-m-d H:i:s')
         ];
-
 
         if (config('app.article_reviewed')) {
             $data['reviewed'] = '';

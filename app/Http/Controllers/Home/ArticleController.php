@@ -157,7 +157,11 @@ class ArticleController extends Controller
     {
         $article = Article::where(['id' => $id, 'author_id' => Auth::user()->id, 'type' => 2])->first();
         // 删除对应的图片
-        unlink(public_path($article->thumb));
+        $thumb = public_path($article->thumb);
+        if (file_exists($thumb)) {
+            unlink($thumb);
+        }
+
         $article->forceDelete();
         return redirect()->back();
     }

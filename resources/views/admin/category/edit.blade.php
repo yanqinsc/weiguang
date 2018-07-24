@@ -28,6 +28,14 @@
         </div>
         <br>
         <div class="input-group">
+            <span class="input-group-addon">允许投稿</span>
+            <select name="allow_post" class="form-control" id="">
+                <option value="0">否</option>
+                <option value="1">是</option>
+            </select>
+        </div>
+        <br>
+        <div class="input-group">
             <span class="input-group-addon">描述</span>
             <input name="desc" type="text" class="form-control" maxlength="50" placeholder="{{ $category->desc }}">
         </div>

@@ -20,6 +20,7 @@
                             <th>名称</th>
                             <th>标识</th>
                             <th class="mobile-hide">导航栏</th>
+                            <th class="mobile-hide">可投稿</th>
                             <th class="mobile-hide">描述</th>
                             <th>管理</th>
                         </thead>
@@ -31,6 +32,7 @@
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->slug }}</td>
                                 <td class="mobile-hide">{{ $item->is_nav === null ? '否' : '是' }}</td>
+                                <td class="mobile-hide">{{ $item->allow_post === null ? '否' : '是' }}</td>
                                 <td class="mobile-hide">{{ $item->desc }}</td>
                                 <td>
                                     <a href="{{ route('category.edit', ['id' => $item->id]) }}" title="编辑">

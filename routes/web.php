@@ -62,6 +62,10 @@ Route::prefix('panel')->namespace('Admin')->middleware('auth:admin')->group(func
     Route::delete('comment/{id}', 'CommentController@destroy')->name('comment.destroy');
     Route::post('comment/review/{id}', 'CommentController@review')->name('comment.review');
     Route::post('article/post/thumb/{type}', 'ArticleController@postThumb')->name('article.postThumb');
+    Route::get('article/recycle', 'ArticleController@recycle')->name('article.recycle');
+    Route::get('article/{id}/restore', 'ArticleController@restore')->name('article.restore');
+    Route::delete('article/{id}/delete', 'ArticleController@delete')->name('article.delete');
+
     // 管理员信息管理
     Route::get('info', 'AdminController@index')->name('admin.info');
     Route::post('update', 'AdminController@update')->name('admin.update');

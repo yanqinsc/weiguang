@@ -17,8 +17,8 @@ class ArticleController extends Controller
         $number = (int)$request->number ?: 15;
         $query = Article::leftJoin('categories as c', 'category_id', '=', 'c.id')
             ->leftJoin('admins as a', 'publisher_id', '=', 'a.id')
-            ->select('articles.id', 'title', 'author', 'comment_count', 'author', 'a.name as publisher', 'excerpt', 'view_count',
-                'articles.created_at', 'c.id as category_id', 'c.name as category')
+            ->select('articles.id', 'title', 'author', 'comment_count', 'author', 'a.name as publisher', 'excerpt',
+                'view_count', 'articles.created_at', 'c.id as category_id', 'c.name as category', 'type')
             ->orderBy('articles.id', 'desc');
 
         if ($request->category_id) {
@@ -123,7 +123,6 @@ class ArticleController extends Controller
             'category_id' => $request->category_id,
             'author' => $request->author,
             'content' => $request->article_content,
-            'publisher_id' => $request->user()->id,
             'from' => $request->from,
             'excerpt' => $request->excerpt,
             'key_words' => $request->key_words,
@@ -135,11 +134,17 @@ class ArticleController extends Controller
         $data['is_hot'] = $request->hot ? '' : null;
         $data['is_original'] = $request->original ? '' : null;
 
-        if (!empty($request->username)) {
+        if ($request->username) {
             $data['author_id'] = User::where('name', $request->username)->first()->id;
         }
 
-        Article::where('id', $id)->update($data);
+        $article = Article::find($id);
+        if ($article->type == 2) {
+            $data['publisher_id'] = $request->user()->id;
+            $data['type'] = 1;
+        }
+
+        $article->update($data);
         return redirect(route('article.index'));
     }
 
@@ -168,5 +173,36 @@ class ArticleController extends Controller
         } else {
             return ['status' => 502, 'message' => '图片类型错误。'];
         }
+    }
+
+    public function recycle(Request $request)
+    {
+        $number = (int)$request->number ?: 15;
+        $query = Article::select('id','title','author','comment_count','author','excerpt','view_count','created_at')
+            ->onlyTrashed()
+            ->orderBy('id', 'desc');
+
+        return view('admin.article.recycle', [
+            'articles' => $query->paginate($number),
+            'paginate_number' => $number,
+            'title' => '回收站'
+        ]);
+    }
+
+    public function restore($id)
+    {
+        Article::withTrashed()->find($id)->restore();
+        return redirect()->back();
+    }
+
+    public function delete($id)
+    {
+        $article = Article::withTrashed()->find($id);
+        $thumb = public_path($article->thumb);
+        if (file_exists($thumb)) {
+            unlink($thumb);
+        }
+        $article->forceDelete();
+        return redirect()->back();
     }
 }

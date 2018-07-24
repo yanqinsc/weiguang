@@ -73,7 +73,7 @@
                 <p class="color-red show-error left">@if($errors->any()) {{ $errors->first() }} @endif</p>
                 <div class="box-footer">
                     {{--<button type="submit" value="2" class="btn btn-success right-gap">存草稿</button>--}}
-                    <button type="submit" value="1" class="btn btn-danger">发表文章</button>
+                    <button type="submit" value="1" class="btn btn-danger">投稿</button>
                 </div>
             </div>
         </form>
