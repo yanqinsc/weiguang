@@ -11,7 +11,7 @@
  Target Server Version : 50719
  File Encoding         : 65001
 
- Date: 24/07/2018 17:54:39
+ Date: 25/07/2018 17:40:28
 */
 
 SET NAMES utf8mb4;
@@ -135,9 +135,9 @@ CREATE TABLE `wg_articles`  (
 -- ----------------------------
 -- Records of wg_articles
 -- ----------------------------
-INSERT INTO `wg_articles` VALUES (1, '写给过去的岁月', '岁月,农民,生活', '小石', 51, '', '/uploads/thumb/2.png', '一首小诗写给过去的那些岁月', '<p>母亲把泡胀的种子</p><p>放在衣兜里</p><p>夜里梦见满地新绿&nbsp;­<br/></p><p><br/></p>', 14, 1, NULL, NULL, '', 1, 1, '1', '2009-02-17 21:12:47', '2018-07-24 17:52:28', NULL);
+INSERT INTO `wg_articles` VALUES (1, '写给过去的岁月', '岁月,农民,生活', '小石', 51, '', '/uploads/thumb/2.png', '一首小诗写给过去的那些岁月', '<p>母亲把泡胀的种子</p><p>放在衣兜里</p><p>夜里梦见满地新绿&nbsp;­<br/></p><p><br/></p>', 15, 1, NULL, NULL, '', 1, 1, '1', '2009-02-17 21:12:47', '2018-07-25 17:29:15', NULL);
 INSERT INTO `wg_articles` VALUES (2, '读《青铜葵花》', '青铜葵花,曹文轩,少儿文学', '盼盼', 0, '成都嘉祥外国语学校', '/uploads/thumb/3.png', '以往都说读一本书不应跳过作者的自序。而曹文轩的序言我倒以为真该读完小说后再读他的序言，方能真正懂他再说什么，方能被这序言打动。', '<p><br/></p><p><img src=\"/uploads/ueditor/images/20180720/1532020683147719.jpeg\" title=\"1532020683147719.jpeg\"/></p><p><br/></p><p><img src=\"https://litlight.cn/uploads/ueditor/images/20180720/1532020683695990.jpeg\" title=\"1532020683695990.jpeg\"/></p><p><br/></p>', 10, 0, NULL, NULL, '', 2, 1, '1', '2018-01-07 01:18:59', '2018-07-24 17:52:51', NULL);
-INSERT INTO `wg_articles` VALUES (3, '与生书', '书信,学生,严氏家训,青铜葵花', '盼盼', 0, '成都嘉祥外国语学校', '/uploads/thumb/4.png', '又是一年将尽时。这时我总觉得应该有种仪式可以让我郑重地告别过去一年。我选择给你们写一封信，因为你们是我过去一年中生活的重心。', '<p><img src=\"/uploads/ueditor/images/20180720/1532021154247301.jpeg\" title=\"1532021154247301.jpeg\" alt=\"微信图片_20180720012543.jpg\"/></p>', 14, 1, NULL, NULL, '', 3, 1, '1', '2017-12-26 01:26:04', '2018-07-24 17:17:17', NULL);
+INSERT INTO `wg_articles` VALUES (3, '与生书', '书信,学生,严氏家训,青铜葵花', '盼盼', 0, '成都嘉祥外国语学校', '/uploads/thumb/4.png', '又是一年将尽时。这时我总觉得应该有种仪式可以让我郑重地告别过去一年。我选择给你们写一封信，因为你们是我过去一年中生活的重心。', '<p><img src=\"/uploads/ueditor/images/20180720/1532021154247301.jpeg\" title=\"1532021154247301.jpeg\" alt=\"微信图片_20180720012543.jpg\"/></p>', 16, 1, NULL, NULL, '', 3, 1, '1', '2017-12-26 01:26:04', '2018-07-25 17:28:12', NULL);
 
 -- ----------------------------
 -- Table structure for wg_assigned_roles
@@ -204,7 +204,6 @@ CREATE TABLE `wg_comments`  (
 -- Records of wg_comments
 -- ----------------------------
 INSERT INTO `wg_comments` VALUES (39, 1, 51, 0, '放衣兜里可以让种子更快发芽🤔', '', '2018-07-19 19:58:00');
-INSERT INTO `wg_comments` VALUES (40, 3, 51, 0, 'Time flies,we are here.🙂', '', '2018-07-20 08:36:22');
 
 -- ----------------------------
 -- Table structure for wg_jobs
@@ -531,6 +530,6 @@ CREATE TABLE `wg_users`  (
 -- ----------------------------
 -- Records of wg_users
 -- ----------------------------
-INSERT INTO `wg_users` VALUES (51, 'yanqinsc', '$2y$10$2DfAQ6TRsurL3fiFmowAbe6NcJRqTDIYiSwu0Qa.OYUniWNACiLWe', '小石', '', 'https://litlight.cn/uploads/avatars/users/51.png', '', 'yanqinsc@qq.com', '', '', 0, '孜孜不倦，不紧不慢', NULL, 'ma2TTW7XTUxlXeTU0cIUAXsFf5MyP8ppihDWV1QyyY89QPwXTGskpaVMxrw6', '2018-07-18 15:54:22', '2018-07-20 14:01:04', NULL);
+INSERT INTO `wg_users` VALUES (51, 'yanqinsc', '$2y$10$2DfAQ6TRsurL3fiFmowAbe6NcJRqTDIYiSwu0Qa.OYUniWNACiLWe', '小石', '', 'https://litlight.cn/uploads/avatars/users/51.png', '', 'yanqinsc@qq.com', '', '', 0, '孜孜不倦，不紧不慢', NULL, 'VjMpH3VMea1J2oqZSewRIFqPJ2boELKDv1DqckHWeOtvOI2LJS8Di8NQGkPS', '2018-07-18 15:54:22', '2018-07-20 14:01:04', NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

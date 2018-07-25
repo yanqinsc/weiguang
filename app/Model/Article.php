@@ -62,11 +62,17 @@ class Article extends Model
     /**
      * 通过用户ID获取用户已发表文章
      * @param $uid
+     * @return mixed
      */
     public static function getListByUid($uid)
     {
-        self::select('id', 'title', 'author_id', 'thumb', 'excerpt')
+        return self::select('id', 'title', 'author_id', 'thumb', 'excerpt')
             ->where('publisher_id', '=', $uid)
             ->get();
+    }
+
+    public function articleHasComments()
+    {
+        return $this->hasMany('App\Model\Comment', 'aid', 'id');
     }
 }

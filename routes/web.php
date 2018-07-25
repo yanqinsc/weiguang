@@ -37,9 +37,9 @@ Route::prefix('home')->namespace('Home')->middleware('auth')->group(function () 
     Route::get('post', 'ArticleController@post')->name('home.article.post');
     Route::post('post', 'ArticleController@store')->name('home.article.store');
     Route::post('article/post/thumb/{type}', 'ArticleController@postThumb')->name('home.article.postThumb');
-    Route::get('post/{id}/edit', 'ArticleController@edit')->name('home.article.edit');
-    Route::put('post/{id}/edit', 'ArticleController@update')->name('home.article.update');
-    Route::delete('post/{id}/destory', 'ArticleController@destroy')->name('home.article.destroy');
+    Route::get('post/{id}/edit', 'ArticleController@edit')->where('id', '[0-9]+')->name('home.article.edit');
+    Route::put('post/{id}/edit', 'ArticleController@update')->where('id', '[0-9]+')->name('home.article.update');
+    Route::delete('post/{id}/destory', 'ArticleController@destroy')->where('id', '[0-9]+')->name('home.article.destroy');
 
 });
 
@@ -57,14 +57,14 @@ Route::prefix('panel')->namespace('Admin')->middleware('auth:admin')->group(func
     Route::post('role/authorize', 'RoleController@roleAuthorize')->name('role.authorize');
     Route::post('role/set/menu', 'RoleController@setMenu')->name('role.set_menu');
     Route::get('role/permissions/{role}', 'RoleController@permissions')->name('role.permissions');
-    Route::get('role/menu/{id}', 'RoleController@menu')->name('role.menu');
+    Route::get('role/menu/{id}', 'RoleController@menu')->where('id', '[0-9]+')->name('role.menu');
     Route::get('comments', 'CommentController@index')->name('comment.index');
-    Route::delete('comment/{id}', 'CommentController@destroy')->name('comment.destroy');
-    Route::post('comment/review/{id}', 'CommentController@review')->name('comment.review');
+    Route::delete('comment/{id}', 'CommentController@destroy')->where('id', '[0-9]+')->name('comment.destroy');
+    Route::post('comment/review/{id}', 'CommentController@review')->where('id', '[0-9]+')->name('comment.review');
     Route::post('article/post/thumb/{type}', 'ArticleController@postThumb')->name('article.postThumb');
     Route::get('article/recycle', 'ArticleController@recycle')->name('article.recycle');
-    Route::get('article/{id}/restore', 'ArticleController@restore')->name('article.restore');
-    Route::delete('article/{id}/delete', 'ArticleController@delete')->name('article.delete');
+    Route::get('article/{id}/restore', 'ArticleController@restore')->where('id', '[0-9]+')->name('article.restore');
+    Route::delete('article/{id}/delete', 'ArticleController@delete')->where('id', '[0-9]+')->name('article.delete');
 
     // 管理员信息管理
     Route::get('info', 'AdminController@index')->name('admin.info');

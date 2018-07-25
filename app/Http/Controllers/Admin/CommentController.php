@@ -37,13 +37,13 @@ class CommentController extends Controller
      */
     public function review($id)
     {
-        Comment::where('id', (int)$id)->update(['reviewed' => '']);
+        Comment::where('id', $id)->update(['reviewed' => '']);
         return redirect()->back();
     }
 
     public function destroy($id)
     {
-        $comment = Comment::find((int)$id);
+        $comment = Comment::find($id);
         if ($comment) {
             DB::transaction(function () use ($comment) {
                 Comment::where('id', $comment->id)->delete();
