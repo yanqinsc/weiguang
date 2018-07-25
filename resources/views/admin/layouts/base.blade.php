@@ -55,15 +55,6 @@
     </header>
     <aside class="main-sidebar">
         <section class="sidebar">
-            <div class="user-panel">
-                <div class="pull-left image">
-                    <img src="{{ $user->avatar ?: asset('/cms/images/avatar.png') }}" class="img-circle" alt="User Image">
-                </div>
-                <div class="pull-left info">
-                    <a href="#"></a>
-                    <p>{{ $user->nickname ?: $user->name }}</p>
-                </div>
-            </div>
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">导航栏</li>
                 @foreach($menu as $item)
@@ -91,7 +82,7 @@
         <section class="content-header">
             <h1>
                 <span id="current-title">{{ $title }}</span>
-                <small>{{ $user->motto }}</small>
+                <small></small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="/panel"><i class="fa fa-dashboard"></i> 控制台</a></li>
