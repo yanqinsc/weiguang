@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RedirectsUsers;
+use App\Model\RegisterCode;
 
 trait RegistersUsers
 {
@@ -35,7 +36,7 @@ trait RegistersUsers
             ->orderBy('created_at', 'desc')
             ->first();
 
-        if ($info->code != $request->code) {
+        if (!$info || $info->code != $request->code) {
             return redirect()->back()->withErrors(['code' => ['注册码错误或已过期。']]);
         }
 

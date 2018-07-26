@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : Localhost
+ Source Server         : lit
  Source Server Type    : MySQL
- Source Server Version : 50719
+ Source Server Version : 100034
  Source Host           : localhost:3306
- Source Schema         : weiguang
+ Source Schema         : litlight
 
  Target Server Type    : MySQL
- Target Server Version : 50719
+ Target Server Version : 100034
  File Encoding         : 65001
 
- Date: 23/07/2018 17:12:47
+ Date: 26/07/2018 17:24:16
 */
 
 SET NAMES utf8mb4;
@@ -34,7 +34,7 @@ CREATE TABLE `wg_abilities`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `abilities_name_unique`(`name`) USING BTREE,
   INDEX `abilities_scope_index`(`scope`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 40 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 43 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of wg_abilities
@@ -72,6 +72,30 @@ INSERT INTO `wg_abilities` VALUES (30, 'comment-list', '评论管理', NULL, NUL
 INSERT INTO `wg_abilities` VALUES (31, 'comment-review', '评论审核', NULL, NULL, 0, NULL, '2018-07-08 11:15:42', '2018-07-08 11:15:42');
 INSERT INTO `wg_abilities` VALUES (32, 'comment-destroy', '评论删除', NULL, NULL, 0, NULL, '2018-07-08 11:16:05', '2018-07-08 11:16:05');
 INSERT INTO `wg_abilities` VALUES (33, 'admin-center', '个人中心', NULL, NULL, 0, NULL, '2018-07-19 23:35:19', '2018-07-19 23:35:19');
+INSERT INTO `wg_abilities` VALUES (40, 'recycle-list', '回收站', NULL, NULL, 0, NULL, '2018-07-26 15:11:33', '2018-07-26 15:11:33');
+INSERT INTO `wg_abilities` VALUES (41, 'recycle-restore', '还原', NULL, NULL, 0, NULL, '2018-07-26 15:12:01', '2018-07-26 15:12:10');
+INSERT INTO `wg_abilities` VALUES (42, 'recycle-delete', '永久删除', NULL, NULL, 0, NULL, '2018-07-26 15:12:26', '2018-07-26 15:12:26');
+
+-- ----------------------------
+-- Table structure for wg_admin_logs
+-- ----------------------------
+DROP TABLE IF EXISTS `wg_admin_logs`;
+CREATE TABLE `wg_admin_logs`  (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `operate_at` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
+  `route` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '路由别名',
+  `action` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '操作名称',
+  `method` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '请求方法',
+  `parameters` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '请求参数',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of wg_admin_logs
+-- ----------------------------
+INSERT INTO `wg_admin_logs` VALUES (1, 'admin', '2018-07-26 17:18:13', 'admins.update', '编辑管理员', 'PUT', '{\"name\":\"yanqinsc\",\"nickname\":null,\"real_name\":null,\"email\":null,\"phone\":null,\"avatar\":null,\"motto\":null,\"password\":null,\"role\":\"admin\"}');
+INSERT INTO `wg_admin_logs` VALUES (2, 'yanqinsc', '2018-07-26 17:18:59', 'admin.updatePassword', '修改密码', 'POST', '{\"password\":\"panda1104\",\"new_password\":\"dwjsxwll@}2018\",\"new_password_confirmation\":\"dwjsxwll@}2018\"}');
 
 -- ----------------------------
 -- Table structure for wg_admins
@@ -96,13 +120,14 @@ CREATE TABLE `wg_admins`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_name_unique`(`name`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of wg_admins
 -- ----------------------------
-INSERT INTO `wg_admins` VALUES (1, 'yanqinsc', '$2y$10$9rEUdYPGBpiF1C/E242iPuKFdBtKbUgHQW9TyFys81iGGY31q3rwC', '小石', '晏勤', '', 'yanqinsc@qq.com', '15730192872', '498412563', '重庆马王坪正街17-7', '孜孜不倦，不紧不慢', 'NFepvuA28gc8XhrDxXQ7r0EwprB7yMaJuZ958sgNM9G73oRHrzZUAg9Hi0e6', '2018-04-16 23:49:09', '2018-07-18 17:23:04', NULL);
-INSERT INTO `wg_admins` VALUES (2, 'panda', '$2y$10$xaIMO0sN9E6JFyItCM.pcO/Ii0Y/E.nDbL1QOb68N3a9B88Z0yMYW', '盼盼', '史盼盼', '', '97503939@qq.com', NULL, '', '', '', 'ZxmWv9Zzbuv2fznahsKsjKf1BC4Kyli9kkTWhmBbXMMrXhxbfBDUoqqnfOnv', '2018-07-20 02:36:40', '2018-07-20 02:44:51', NULL);
+INSERT INTO `wg_admins` VALUES (1, 'admin', '$2y$10$xaIMO0sN9E6JFyItCM.pcO/Ii0Y/E.nDbL1QOb68N3a9B88Z0yMYW', '管理员', '管理员', '', 'system@litlight.cn', '', '', '', '孜孜不倦，不紧不慢', 'gl8uWcGRdF0Ffvw9JtGefwRHOOn8hkintLk4OjVanx6xNhZavaX89EbsRbBl', '2018-04-16 23:49:09', '2018-07-26 16:00:33', NULL);
+INSERT INTO `wg_admins` VALUES (2, 'panda', '$2y$10$xaIMO0sN9E6JFyItCM.pcO/Ii0Y/E.nDbL1QOb68N3a9B88Z0yMYW', '盼盼', '史盼盼', '', '97503939@qq.com', '', '', '', '', 'm5VP2G4hMhaGXKROJWrfWopZAWy8HzTHuvE96mbbgREpG2FEbkIpccybAf3r', '2018-07-20 02:36:40', '2018-07-20 02:44:51', NULL);
+INSERT INTO `wg_admins` VALUES (3, 'yanqinsc', '$2y$10$UOD.FQrB5.q0FdS.OJ8K2e.RbKopyxjcu/Cwjr.4ru3r2znwsDccG', '千山龙吟', '晏勤', '', 'yanqinsc@qq.com', '', '', '', '', NULL, NULL, '2018-07-26 17:19:00', NULL);
 
 -- ----------------------------
 -- Table structure for wg_articles
@@ -130,16 +155,13 @@ CREATE TABLE `wg_articles`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   `deleted_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of wg_articles
 -- ----------------------------
-INSERT INTO `wg_articles` VALUES (1, '写给过去的岁月', '岁月,农民,生活', '小石', 51, '', 'https://litlight.cn/uploads/thumb/2.png', '一首小诗写给过去的那些岁月', '<p>母亲把泡胀的种子</p><p>放在衣兜里</p><p>夜里梦见满地新绿&nbsp;­<br/></p><p><br/></p>', 11, 1, NULL, NULL, '', 1, 1, '1', '2009-02-17 21:12:47', '2018-07-23 02:40:30', NULL);
-INSERT INTO `wg_articles` VALUES (2, '读《青铜葵花》', '青铜葵花,曹文轩,少儿文学', '盼盼', 0, '成都嘉祥外国语学校', 'https://litlight.cn/uploads/thumb/3.png', '以往都说读一本书不应跳过作者的自序。而曹文轩的序言我倒以为真该读完小说后再读他的序言，方能真正懂他再说什么，方能被这序言打动。', '<p><br/></p><p><img src=\"/uploads/ueditor/images/20180720/1532020683147719.jpeg\" title=\"1532020683147719.jpeg\"/></p><p><br/></p><p><img src=\"https://litlight.cn/uploads/ueditor/images/20180720/1532020683695990.jpeg\" title=\"1532020683695990.jpeg\"/></p><p><br/></p>', 8, 0, NULL, NULL, '', 2, 1, '1', '2018-01-07 01:18:59', '2018-07-23 02:40:30', NULL);
-INSERT INTO `wg_articles` VALUES (3, '与生书', '书信,学生,严氏家训,青铜葵花', '盼盼', 0, '成都嘉祥外国语学校', 'https://litlight.cn/uploads/thumb/4.png', '又是一年将尽时。这时我总觉得应该有种仪式可以让我郑重地告别过去一年。我选择给你们写一封信，因为你们是我过去一年中生活的重心。', '<p><img src=\"/uploads/ueditor/images/20180720/1532021154247301.jpeg\" title=\"1532021154247301.jpeg\" alt=\"微信图片_20180720012543.jpg\"/></p>', 10, 1, NULL, NULL, '', 3, 1, '1', '2017-12-26 01:26:04', '2018-07-23 15:08:09', NULL);
-INSERT INTO `wg_articles` VALUES (9, '1111', '111', '111', 51, '111', '', '懂adfs', '<p><span style=\"color: rgb(51, 51, 51); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; background-color: rgb(255, 255, 255);\">上传图片大小不超过500k,如果上传图片错误请检查图片大小！</span><span style=\"color: rgb(51, 51, 51); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; background-color: rgb(255, 255, 255);\">上传图片大小不超过500k,如果上传图片错误请检查图片大小！</span></p>', 0, 0, NULL, NULL, NULL, 0, 0, '2', '2018-07-23 16:18:42', '2018-07-23 16:18:42', NULL);
-INSERT INTO `wg_articles` VALUES (10, '1111', '111', '111', 51, '111', '', '发森', '<p><span style=\"color: rgb(51, 51, 51); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; background-color: rgb(255, 255, 255);\">上传图片大小不超过500k,如果上传图片错误请检查图片大小！</span><span style=\"color: rgb(51, 51, 51); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; background-color: rgb(255, 255, 255);\">上传图片大小不超过500k,如果上传图片错误请检查图片大小！</span></p>', 0, 0, NULL, NULL, '', 1, 0, '2', '2018-07-23 16:43:42', '2018-07-23 16:43:42', NULL);
+INSERT INTO `wg_articles` VALUES (1, '读《青铜葵花》', '青铜葵花,曹文轩,少儿文学', '盼盼', 0, '成都嘉祥外国语学校', '/uploads/thumb/3.png', '以往都说读一本书不应跳过作者的自序。而曹文轩的序言我倒以为真该读完小说后再读他的序言，方能真正懂他再说什么，方能被这序言打动。', '<p><br/></p><p><img src=\"/uploads/ueditor/images/20180720/1532020683147719.jpeg\" title=\"1532020683147719.jpeg\"/></p><p><br/></p><p><img src=\"https://litlight.cn/uploads/ueditor/images/20180720/1532020683695990.jpeg\" title=\"1532020683695990.jpeg\"/></p><p><br/></p>', 12, 0, NULL, NULL, '', 1, 1, '1', '2018-01-07 01:18:59', '2018-07-26 17:05:57', NULL);
+INSERT INTO `wg_articles` VALUES (2, '与生书', '书信,学生,严氏家训,青铜葵花', '盼盼', 0, '成都嘉祥外国语学校', '/uploads/thumb/4.png', '又是一年将尽时。这时我总觉得应该有种仪式可以让我郑重地告别过去一年。我选择给你们写一封信，因为你们是我过去一年中生活的重心。', '<p><img src=\"/uploads/ueditor/images/20180720/1532021154247301.jpeg\" title=\"1532021154247301.jpeg\" alt=\"微信图片_20180720012543.jpg\"/></p>', 15, 0, NULL, NULL, '', 1, 1, '1', '2017-12-26 01:26:04', '2018-07-26 17:05:50', NULL);
 
 -- ----------------------------
 -- Table structure for wg_assigned_roles
@@ -159,8 +181,9 @@ CREATE TABLE `wg_assigned_roles`  (
 -- ----------------------------
 -- Records of wg_assigned_roles
 -- ----------------------------
-INSERT INTO `wg_assigned_roles` VALUES (3, 1, 'App\\Model\\Admin', NULL);
-INSERT INTO `wg_assigned_roles` VALUES (1, 2, 'App\\Model\\Admin', NULL);
+INSERT INTO `wg_assigned_roles` VALUES (2, 2, 'App\\Model\\Admin', NULL);
+INSERT INTO `wg_assigned_roles` VALUES (1, 1, 'App\\Model\\Admin', NULL);
+INSERT INTO `wg_assigned_roles` VALUES (1, 3, 'App\\Model\\Admin', NULL);
 
 -- ----------------------------
 -- Table structure for wg_categories
@@ -178,14 +201,12 @@ CREATE TABLE `wg_categories`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `name_unique`(`name`) USING BTREE,
   UNIQUE INDEX `slug_unique`(`slug`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of wg_categories
 -- ----------------------------
-INSERT INTO `wg_categories` VALUES (1, 0, '习作欣赏', 'practices', '', '', 99, '');
-INSERT INTO `wg_categories` VALUES (2, 0, '阅读同行', 'read', '', '', 98, NULL);
-INSERT INTO `wg_categories` VALUES (3, 0, '盼盼来信', 'letters', '', '', 97, NULL);
+INSERT INTO `wg_categories` VALUES (1, 0, '未分类', 'unknown', NULL, '暂未分类的文章', 0, NULL);
 
 -- ----------------------------
 -- Table structure for wg_comments
@@ -200,13 +221,7 @@ CREATE TABLE `wg_comments`  (
   `reviewed` char(0) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '已审核 null|否',
   `created_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 41 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of wg_comments
--- ----------------------------
-INSERT INTO `wg_comments` VALUES (39, 1, 51, 0, '放衣兜里可以让种子更快发芽🤔', '', '2018-07-19 19:58:00');
-INSERT INTO `wg_comments` VALUES (40, 3, 51, 0, 'Time flies,we are here.🙂', '', '2018-07-20 08:36:22');
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for wg_jobs
@@ -221,7 +236,7 @@ CREATE TABLE `wg_jobs`  (
   `available_at` int(10) UNSIGNED NOT NULL,
   `created_at` int(10) UNSIGNED NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for wg_menus
@@ -239,7 +254,7 @@ CREATE TABLE `wg_menus`  (
   `deleted_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `menu_name_unique`(`title`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of wg_menus
@@ -254,10 +269,11 @@ INSERT INTO `wg_menus` VALUES (7, 4, 97, '评论', ' fa-comments', 'comment.inde
 INSERT INTO `wg_menus` VALUES (8, 1, 97, '菜单', ' fa-th-large', 'menu.index', '2018-06-10 19:00:52', '2018-06-10 19:03:48', NULL);
 INSERT INTO `wg_menus` VALUES (9, 0, 2, '用户管理', 'fa-users', '#', '2018-06-10 22:03:03', '2018-06-13 16:39:17', NULL);
 INSERT INTO `wg_menus` VALUES (10, 9, 99, '用户列表', 'fa-user', 'user.index', '2018-06-12 20:47:24', '2018-06-13 16:52:30', NULL);
-INSERT INTO `wg_menus` VALUES (11, 4, 98, '分类', 'fa-paper-plane', 'category.index', '2018-07-05 22:33:15', '2018-07-23 14:57:25', NULL);
+INSERT INTO `wg_menus` VALUES (11, 4, 98, '分类', 'fa-paper-plane', 'category.index', '2018-07-05 22:33:15', '2018-07-26 16:15:24', NULL);
 INSERT INTO `wg_menus` VALUES (12, 0, 99, '个人中心', 'fa-user', '#', '2018-07-15 15:07:50', '2018-07-23 14:57:28', NULL);
 INSERT INTO `wg_menus` VALUES (13, 12, 99, '基本资料', 'fa-file', 'admin.info', '2018-07-15 15:13:25', '2018-07-23 15:05:15', NULL);
 INSERT INTO `wg_menus` VALUES (14, 12, 98, '修改密码', 'fa-lock', 'admin.changePassword', '2018-07-15 15:14:53', '2018-07-23 15:05:17', NULL);
+INSERT INTO `wg_menus` VALUES (15, 4, 96, '回收站', 'fa-recycle', 'article.recycle', '2018-07-26 15:08:21', '2018-07-26 17:22:01', NULL);
 
 -- ----------------------------
 -- Table structure for wg_menus_roles
@@ -292,17 +308,23 @@ INSERT INTO `wg_menus_roles` VALUES (7, 3);
 INSERT INTO `wg_menus_roles` VALUES (8, 1);
 INSERT INTO `wg_menus_roles` VALUES (8, 3);
 INSERT INTO `wg_menus_roles` VALUES (9, 1);
+INSERT INTO `wg_menus_roles` VALUES (9, 2);
 INSERT INTO `wg_menus_roles` VALUES (9, 3);
 INSERT INTO `wg_menus_roles` VALUES (10, 1);
+INSERT INTO `wg_menus_roles` VALUES (10, 2);
 INSERT INTO `wg_menus_roles` VALUES (10, 3);
 INSERT INTO `wg_menus_roles` VALUES (11, 1);
 INSERT INTO `wg_menus_roles` VALUES (11, 3);
 INSERT INTO `wg_menus_roles` VALUES (12, 1);
+INSERT INTO `wg_menus_roles` VALUES (12, 2);
 INSERT INTO `wg_menus_roles` VALUES (12, 3);
 INSERT INTO `wg_menus_roles` VALUES (13, 1);
+INSERT INTO `wg_menus_roles` VALUES (13, 2);
 INSERT INTO `wg_menus_roles` VALUES (13, 3);
 INSERT INTO `wg_menus_roles` VALUES (14, 1);
+INSERT INTO `wg_menus_roles` VALUES (14, 2);
 INSERT INTO `wg_menus_roles` VALUES (14, 3);
+INSERT INTO `wg_menus_roles` VALUES (15, 1);
 
 -- ----------------------------
 -- Table structure for wg_migrations
@@ -359,7 +381,6 @@ INSERT INTO `wg_permissions` VALUES (3, 1, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (4, 1, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (5, 1, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (8, 1, 'roles', 0, NULL);
-INSERT INTO `wg_permissions` VALUES (10, 1, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (12, 1, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (1, 1, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (9, 1, 'roles', 0, NULL);
@@ -424,6 +445,14 @@ INSERT INTO `wg_permissions` VALUES (28, 3, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (27, 3, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (26, 3, 'roles', 0, NULL);
 INSERT INTO `wg_permissions` VALUES (33, 2, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (22, 2, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (32, 2, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (31, 2, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (30, 2, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (10, 1, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (40, 1, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (41, 1, 'roles', 0, NULL);
+INSERT INTO `wg_permissions` VALUES (42, 1, 'roles', 0, NULL);
 
 -- ----------------------------
 -- Table structure for wg_register_codes
@@ -435,16 +464,6 @@ CREATE TABLE `wg_register_codes`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   INDEX `password_resets_email_index`(`email`(191)) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of wg_register_codes
--- ----------------------------
-INSERT INTO `wg_register_codes` VALUES ('yanqinsc@qq.com', '133908', '2018-07-18 15:37:25');
-INSERT INTO `wg_register_codes` VALUES ('yanqinsc@qq.com', '236731', '2018-07-18 15:49:11');
-INSERT INTO `wg_register_codes` VALUES ('yanqinsc@qq.com', '551274', '2018-07-18 15:53:07');
-INSERT INTO `wg_register_codes` VALUES ('yanqinsc@hotmail.com', '331401', '2018-07-20 08:50:37');
-INSERT INTO `wg_register_codes` VALUES ('yanqinsc@qq.com', '198730', '2018-07-20 21:29:41');
-INSERT INTO `wg_register_codes` VALUES ('yanqinsc@qq.com', '369264', '2018-07-20 21:31:31');
 
 -- ----------------------------
 -- Table structure for wg_roles
@@ -461,14 +480,13 @@ CREATE TABLE `wg_roles`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `roles_name_unique`(`name`, `scope`) USING BTREE,
   INDEX `roles_scope_index`(`scope`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of wg_roles
 -- ----------------------------
 INSERT INTO `wg_roles` VALUES (1, 'admin', '管理员', NULL, NULL, '2018-04-22 11:45:48', '2018-05-08 21:00:41');
 INSERT INTO `wg_roles` VALUES (2, 'editor', '编辑', NULL, NULL, '2018-05-08 09:35:38', '2018-05-08 09:35:38');
-INSERT INTO `wg_roles` VALUES (3, 'super', '超级管理员', NULL, NULL, '2018-07-20 02:05:48', '2018-07-20 02:05:48');
 
 -- ----------------------------
 -- Table structure for wg_sessions
@@ -487,38 +505,17 @@ CREATE TABLE `wg_sessions`  (
 -- ----------------------------
 -- Records of wg_sessions
 -- ----------------------------
-INSERT INTO `wg_sessions` VALUES ('1kC1gdV4LjRbDsZpIWbzinQuxcUGHjFZzbHx4DzU', NULL, '119.23.138.247', '', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoidHo5YU92OTBWOVM4VVNvMUtrd0duU1hHS2xWcmc0ajJMWmE1WXBkTyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTk6Imh0dHBzOi8vbGl0bGlnaHQuY24iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1532283794);
-INSERT INTO `wg_sessions` VALUES ('38yzvyPFr8iBYaWlfOBDreSEWivorgJveP3Yy23h', NULL, '220.181.108.110', 'Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiZDlCYU5yVTBoS0xBUUczczRLNzludEJCRm52cXB6cnVGZUZRTDlJVyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTk6Imh0dHBzOi8vbGl0bGlnaHQuY24iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1532306471);
-INSERT INTO `wg_sessions` VALUES ('6An72DoB9XeJD4WBsZ3KBnKRCqWndqYnBNemfrII', NULL, '140.205.205.25', 'Scrapy/1.5.0 (+https://scrapy.org)', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiMzZGdGtpWGd2c0w5ZmsyNnN3Z0xqUnRDSHhYM3RCczdaVjBBRFhCdyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHBzOi8vbGl0bGlnaHQuY24vY29udGVudHMvemoiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1532284830);
-INSERT INTO `wg_sessions` VALUES ('6F8UzKFziti3OkhWE5HIzp92fY77O62NR2cCKRwU', NULL, '140.205.205.25', 'Scrapy/1.5.0 (+https://scrapy.org)', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoidG1iVkRTT3hJWmxOVWNYYVRzVWRrWXRnZGJIZ2E1dFllNWpkNUpJUSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjg6Imh0dHBzOi8vbGl0bGlnaHQuY24vcmVnaXN0ZXIiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1532284830);
-INSERT INTO `wg_sessions` VALUES ('7F4D05F1hAlbvb61wUa8t4tWwD3nElhWpGuXoByb', NULL, '212.129.50.159', '', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiSEwxb2l5MHFzRjNQTWlrZ3Z4Z1RVTm9kdFJUU2V5MXFwWlBTODBiNCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjI6Imh0dHBzOi8vMzkuMTA4LjIzNi4yMzUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1532307725);
-INSERT INTO `wg_sessions` VALUES ('arttCHYiIepBxc98XOPzTBEB250qluUhcOIksNYW', NULL, '140.205.205.29', 'Go-http-client/1.1', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoieXhXQXZ6QTFybW1SajBOUExSNWVuVnp5Tlh0QjdOZ3c1dktMRFlEVyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1532286656);
-INSERT INTO `wg_sessions` VALUES ('cWl9TIhoi0VmCZD8SVbUkTWw4naB2vry1dKAS946', NULL, '5.188.207.31', '', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiUHBFOHhOdXp5eFYzVHo4b0ZFOEs5a3pJWmM2NkFvYUY1V2dQalU1aCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjI6Imh0dHBzOi8vMzkuMTA4LjIzNi4yMzUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1532316955);
-INSERT INTO `wg_sessions` VALUES ('dibRegcwpDNwXQvDUTlAsi8SMbI9o1lSdrP7uVQE', NULL, '140.205.205.23', 'Scrapy/1.5.0 (+https://scrapy.org)', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiVlVhdTlOVkViUTdLNk9EdjBvZ2pDY1NYNTVTM3hPM2VEZVdhZXFyVCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzY6Imh0dHBzOi8vbGl0bGlnaHQuY24vY29udGVudHMvbGV0dGVycyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1532284830);
-INSERT INTO `wg_sessions` VALUES ('eHybbJKaYxIHTmPiXpqrx1iQPl8uUSecaJewRVcT', NULL, '140.205.205.23', 'Scrapy/1.5.0 (+https://scrapy.org)', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiRWlraW5YNE9QZ3NlRGlnTmxFRGllRHNuUGppYWtGT09tdjNDZmJPNiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTk6Imh0dHBzOi8vbGl0bGlnaHQuY24iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1532284829);
-INSERT INTO `wg_sessions` VALUES ('KXcVhbVovygXcH2P860Yy8owzyYQ4RNNp3p7FsIl', NULL, '140.205.205.23', 'Scrapy/1.5.0 (+https://scrapy.org)', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiaGVEdmlLUmhkSWFQMTk5c3ZqYVhzR1dDNnZsWDZib0dpcGtLY0Y0SSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjU6Imh0dHBzOi8vbGl0bGlnaHQuY24vbG9naW4iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1532284830);
-INSERT INTO `wg_sessions` VALUES ('L3FeEczWjJfDrvIqSxl7IlaztvaSpBOGUp4hO366', NULL, '220.181.108.153', 'Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiMXllVmxaTGNuYXBuTmdjSXBjQW16OUV6TTRqV1lmbmI5amk0bGs0OSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTk6Imh0dHBzOi8vbGl0bGlnaHQuY24iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1532277791);
-INSERT INTO `wg_sessions` VALUES ('oQ4uWKIDjy5lptSy36fKDhuwAgc8miA9L2g6FLID', NULL, '140.205.205.25', 'Scrapy/1.5.0 (+https://scrapy.org)', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiNklZRGFkUGtKSVZ0T1pCTURyRzNOcEVzQm5ITTFmR296Smg3SEt6TiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHBzOi8vbGl0bGlnaHQuY24vY29udGVudHMvcmVhZCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1532284830);
-INSERT INTO `wg_sessions` VALUES ('P6VAhA2Qp7fwD7qFFU6ZTFDRMtvoQC3TwOCGZNFg', NULL, '140.205.205.25', 'Scrapy/1.5.0 (+https://scrapy.org)', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoicXAzT0pyWFRMaUJRa0llYk5LMk1HZU5LdElUdlQwcHloeVZrOHhiQyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjk6Imh0dHBzOi8vbGl0bGlnaHQuY24vYXJ0aWNsZS8zIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1532284830);
-INSERT INTO `wg_sessions` VALUES ('q7zuc8uYa6LjzeW4TAduzPIYuYuT6v431MOxBDQ4', NULL, '140.205.205.25', 'Scrapy/1.5.0 (+https://scrapy.org)', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiclRmVjRKcDVLM1J3WFRIQUY3RHdHcEgxRnJDY3hreFh3dlBUazVSayI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjk6Imh0dHBzOi8vbGl0bGlnaHQuY24vYXJ0aWNsZS8xIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1532284830);
-INSERT INTO `wg_sessions` VALUES ('qRg18jF6cRP6vOHiBOcmC4TPlCOtnSc679CbVAol', NULL, '14.106.227.91', 'Mozilla/5.0 (Linux; U; Android 7.1.2; zh-cn; Redmi 5 Plus Build/N2G47H) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/61.0.3163.128 Mobile Safari/537.36 XiaoMi/MiuiBrowser/9.8.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiYWU3bWNPR1FCdTlpa2xhZTlpTUlWbFZsWkRocDlkb2VxOGFtUWl6USI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTk6Imh0dHBzOi8vbGl0bGlnaHQuY24iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1532318955);
-INSERT INTO `wg_sessions` VALUES ('SSztEZhvJg92wfFWVsb7IWZrHX97XuVsBGFPLibB', NULL, '140.205.205.25', 'Go-http-client/1.1', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiRGJiQ2lxUElseTVKZDFLUTBvYmllUDdrdVpZS1VNUmI4R3BaMWxEWiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1532284351);
-INSERT INTO `wg_sessions` VALUES ('tLGLG9KFmclA9FfGeo08JiK9xvjggscpMQ2gecX3', NULL, '140.205.205.23', 'Scrapy/1.5.0 (+https://scrapy.org)', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiRTA1WG1qR2tsZzhqMVRHT2UzN1ZXTXFjYXhkSFE3Z09LRUV1TlBFVSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjk6Imh0dHBzOi8vbGl0bGlnaHQuY24vYXJ0aWNsZS8yIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1532284830);
-INSERT INTO `wg_sessions` VALUES ('u0rIOqmtM2iDo39eL6jdwqzltADW1uqGqORomoka', NULL, '107.170.226.151', 'Mozilla/5.0 zgrab/0.x', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiY1hZN1Q0MG82dFlZTkRtVHZLMVVUVkdnenNuUVBKMEtHa2R6c0gwVCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjI6Imh0dHBzOi8vMzkuMTA4LjIzNi4yMzUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1532294936);
-INSERT INTO `wg_sessions` VALUES ('WbkdnDWqtdNQMbGkCefufoxayBdcmmf7txAnx5T0', NULL, '140.205.205.23', 'Scrapy/1.5.0 (+https://scrapy.org)', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiUnpqOWNQZUJhYUhRNGtvZk5TdE1nY0pYd0psaU9PMW83SGtCNnFNUiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTk6Imh0dHBzOi8vbGl0bGlnaHQuY24iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1532284830);
-INSERT INTO `wg_sessions` VALUES ('Xrk3pySBXhra1kv7UO5DdPAbnw6ZdO5X2aoRrgbt', NULL, '106.11.242.249', 'Mozilla/5.0 (iPad; CPU OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiOW9NcE5OQ25WZ1JaeFhsZUE5TkQ1VHllZ3FvU01seTRpTkpMRlhzbSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTk6Imh0dHBzOi8vbGl0bGlnaHQuY24iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1532318816);
-INSERT INTO `wg_sessions` VALUES ('YbQp8gPGaqTcM3iHIAZ0uByTID3AS7LFDeFOtsxn', NULL, '106.15.53.214', '', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiZ3ZmQnFOb3BqODNFeldoZnJRS0pvQm9NaTVUZ0xBTGZqSDd2N3pJNCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTk6Imh0dHBzOi8vbGl0bGlnaHQuY24iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1532292036);
-
--- ----------------------------
--- Table structure for wg_teams
--- ----------------------------
-DROP TABLE IF EXISTS `wg_teams`;
-CREATE TABLE `wg_teams`  (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '队伍名称',
-  `discribe` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1' COMMENT '队伍描述',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+INSERT INTO `wg_sessions` VALUES ('1AFM0qJB2TJEBTxPXZ7eXGDu38vQwAEknlqnZ4qa', NULL, '218.75.34.10', '', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoidVJrRUNhbnFEbTdzR2hqM05uQ3hhQ0ZFVkpKUUhqZkJ5SVlGNDNRcSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjQ6Imh0dHBzOi8vdGVzdC5saXRsaWdodC5jbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1532594932);
+INSERT INTO `wg_sessions` VALUES ('2jNCVZFtO1d68McmS0IONn6YkazPR3COLshjEEOj', 1, '14.106.224.9', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoic25ZUGZuRnhCUGoyRXNUUkpZZmp2QlZjd3RVUVRGaXFUMmRTeFhRciI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjQ5OiJodHRwczovL2xpdGxpZ2h0LmNuL3BhbmVsL3JvbGUvcGVybWlzc2lvbnMvZWRpdG9yIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1532591619);
+INSERT INTO `wg_sessions` VALUES ('3B59LFkVmgEgftZLxhUc5VjfNBGbWSNwZtziBZAm', NULL, '14.215.176.141', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiTXpGeUc4bW5hdk12ZVlkUnlPOGZkTDhWNm9XREY2bXpTeEdjTFdubiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTk6Imh0dHBzOi8vbGl0bGlnaHQuY24iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1532596775);
+INSERT INTO `wg_sessions` VALUES ('dZiHOr47KauZJBFgHCd4A9i4qEgxC8SV8zWAKqN9', NULL, '14.106.224.9', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoic25ZUGZuRnhCUGoyRXNUUkpZZmp2QlZjd3RVUVRGaXFUMmRTeFhRciI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjE5OiJodHRwczovL2xpdGxpZ2h0LmNuIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTozO30=', 1532596801);
+INSERT INTO `wg_sessions` VALUES ('e9asCahirEUD7c02Z2QRmUtabKAj2PDISpQbamm1', NULL, '47.92.35.138', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiZm44NXNZcjJJSG1ScXV6OTU5ekpFNUJNZmZTT0pJQW1aeUNieTVhMiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTk6Imh0dHBzOi8vbGl0bGlnaHQuY24iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1532591235);
+INSERT INTO `wg_sessions` VALUES ('LFssWTqcFmVCETvT4gwIlO1VzImX2ot6KIkI1Dsw', 1, '14.106.224.9', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoic25ZUGZuRnhCUGoyRXNUUkpZZmp2QlZjd3RVUVRGaXFUMmRTeFhRciI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMyOiJodHRwczovL2xpdGxpZ2h0LmNuL3BhbmVsL2FkbWlucyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1532596693);
+INSERT INTO `wg_sessions` VALUES ('VmgmCP0BisZFQagcJoC1CRDO8fXPh1EO97CusK42', 2, '14.106.224.9', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoic25ZUGZuRnhCUGoyRXNUUkpZZmp2QlZjd3RVUVRGaXFUMmRTeFhRciI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMzOiJodHRwczovL2xpdGxpZ2h0LmNuL3BhbmVsL2FydGljbGUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7fQ==', 1532591672);
+INSERT INTO `wg_sessions` VALUES ('vXRHNOKQgQ9HiMm3jXA6sxe2dh7QuJ78WT57U03E', NULL, '220.181.108.154', 'Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiNjVHN3VzSGo2OVBEM3VFcGxJdEo2MTJrU2pIQTV1V24wT21aQ1dwbSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTk6Imh0dHBzOi8vbGl0bGlnaHQuY24iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1532594445);
+INSERT INTO `wg_sessions` VALUES ('wXSfqhf9BZ7AusVBOyHtuoLqgCNCUFQ7vZ7XWOOn', 1, '14.106.224.9', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoic25ZUGZuRnhCUGoyRXNUUkpZZmp2QlZjd3RVUVRGaXFUMmRTeFhRciI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMxOiJodHRwczovL2xpdGxpZ2h0LmNuL3BhbmVsL2luZGV4Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1532591532);
+INSERT INTO `wg_sessions` VALUES ('xwp3MNALbMPDfmQHjGqCqfZShpa59Hkoz9oF0xaU', NULL, '218.75.34.10', '', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiVW5VWUJqc1hKbG9HNkZwR0hlNUZvUmxJZkhST2Z5N2xjTzdtZVBFNCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTk6Imh0dHBzOi8vbGl0bGlnaHQuY24iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1532590128);
+INSERT INTO `wg_sessions` VALUES ('zeGynjjQVPFEEmepnAwxZh6weBxLyLvLT4MPm6le', 2, '14.106.224.9', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoic25ZUGZuRnhCUGoyRXNUUkpZZmp2QlZjd3RVUVRGaXFUMmRTeFhRciI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMwOiJodHRwczovL2xpdGxpZ2h0LmNuL3BhbmVsL3VzZXIiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7fQ==', 1532591551);
 
 -- ----------------------------
 -- Table structure for wg_users
@@ -545,11 +542,6 @@ CREATE TABLE `wg_users`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_name_unique`(`name`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 55 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of wg_users
--- ----------------------------
-INSERT INTO `wg_users` VALUES (51, 'yanqinsc', '$2y$10$2DfAQ6TRsurL3fiFmowAbe6NcJRqTDIYiSwu0Qa.OYUniWNACiLWe', '小石', '', 'https://litlight.cn/uploads/avatars/users/51.png', '', 'yanqinsc@qq.com', '', '', 0, '孜孜不倦，不紧不慢', NULL, 'ma2TTW7XTUxlXeTU0cIUAXsFf5MyP8ppihDWV1QyyY89QPwXTGskpaVMxrw6', '2018-07-18 15:54:22', '2018-07-20 14:01:04', NULL);
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
 
 SET FOREIGN_KEY_CHECKS = 1;

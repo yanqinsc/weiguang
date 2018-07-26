@@ -6,11 +6,11 @@ namespace App\Http\Controllers\Auth;
 use App\Model\User;
 use App\Model\RegisterCode;
 use Illuminate\Http\Request;
+use App\Traits\RegistersUsers;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Cms\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\RegisterCode as SendRegisterCode;
-use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -58,8 +58,8 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'code' => 'required|alpha_num|max:8'
-        ]);
+            'code' => 'required|alpha_num|min:8'
+        ], ['code.required' => '注册码不能为空', 'code.min' => '注册码不能小于8位']);
     }
 
     /**
