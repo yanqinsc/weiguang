@@ -62,5 +62,7 @@
     if (top.location !== self.location) {
         top.location = self.location;
     }
+
+    $(".navbar-right").hide();
 </script>
 @endsection

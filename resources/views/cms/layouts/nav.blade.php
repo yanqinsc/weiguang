@@ -22,6 +22,7 @@
             @guest
                 <li><a class="nav-link" href="{{ route('login') }}">登录</a></li>
                 <li><a class="nav-link" href="{{ route('register') }}">注册</a></li>
+
             @else
                     <li>
                         <a href="{{ route('home.base') }}" class="nav-link" style="color: #99dd00; margin-top: -5px;">
