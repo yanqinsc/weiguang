@@ -72,8 +72,7 @@ class ArticleController extends Controller
 
         DB::transaction(function () use ($data) {
             Comment::insert($data);
-            $comments = Comment::select(DB::raw('count(*) as count'))->where('aid', $data['aid'])->first();
-            Article::where('id', $data['aid'])->update(['comment_count' => $comments->count]);
+            Article::where('id', $data['aid'])->increment('comment_count');
         });
 
         $response = redirect()->back();

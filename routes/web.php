@@ -51,11 +51,11 @@ Route::prefix('admin')->group(function () {
 });
 
 // 后台管理系统
-Route::prefix('panel')->namespace('Admin')->middleware('auth:admin')->group(function () {
+Route::prefix('panel')->namespace('Admin')->middleware('auth:admin', 'admin.log')->group(function () {
     Route::get('index', 'HomeController@home')->name('home.index');
     Route::get('/', 'HomeController@index')->name('home');
     Route::post('role/authorize', 'RoleController@roleAuthorize')->name('role.authorize');
-    Route::post('role/set/menu', 'RoleController@setMenu')->name('role.set_menu');
+    Route::post('role/set/menu', 'RoleController@setMenu')->name('role.setMenu');
     Route::get('role/permissions/{role}', 'RoleController@permissions')->name('role.permissions');
     Route::get('role/menu/{id}', 'RoleController@menu')->where('id', '[0-9]+')->name('role.menu');
     Route::get('comments', 'CommentController@index')->name('comment.index');
@@ -79,7 +79,5 @@ Route::prefix('panel')->namespace('Admin')->middleware('auth:admin')->group(func
     Route::resource('admins', 'AdminsController');
     Route::resource('menu', 'MenuController');
     Route::resource('user', 'UserController');
-    Route::resource('school', 'SchoolController');
-    Route::resource('class', 'ClassController');
     Route::resource('category', 'CategoryController');
 });

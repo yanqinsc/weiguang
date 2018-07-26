@@ -65,7 +65,7 @@
 @include('admin.layouts.footer')
 <script type="text/javascript">
     $(':checkbox').change(function () {
-        let url = '{{ route('role.set_menu') }}';
+        let url = '{{ route('role.setMenu') }}';
         let data = {
             _token: '{{ csrf_token() }}',
             role_id: '{{ $role_id }}',

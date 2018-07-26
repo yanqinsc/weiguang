@@ -53,6 +53,7 @@
 
 .title-text a:hover {
     color: #99dd00;
+    text-decoration-line: none;
 }
 
 .title-text > span {

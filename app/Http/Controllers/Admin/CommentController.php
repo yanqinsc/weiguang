@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Model\Article;
 use App\Model\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -49,6 +50,8 @@ class CommentController extends Controller
                 Comment::where('id', $comment->id)->delete();
                 // 将已删除评论的所有子评论归属到其上级评论
                 Comment::where('pid', $comment->id)->update(['pid' => $comment->pid]);
+                // 文章评论减少
+                Article::where('id', $comment->aid)->whereAnd('comment_count', '>', 0)->decrement('comment_count');
             });
         }
         return redirect()->back();

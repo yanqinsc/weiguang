@@ -93,10 +93,13 @@ class AdminsController extends Controller
             return redirect()->back()->withErrors('用户不存在，请重试。');
         }
 
+        $roles = Role::all();
+
         return view('admin.admins.edit', [
             'title' => '编辑管理员信息',
             'user' => $user,
-            'id' => $id
+            'id' => $id,
+            'roles' => $roles
         ]);
     }
 
