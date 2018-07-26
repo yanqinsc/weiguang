@@ -105,7 +105,7 @@ class ArticleController extends Controller
 
     public function edit($id)
     {
-        $categories = Category::getAll();
+        $categories = Category::all();
         $article = Article::find($id);
 
         $data = [
