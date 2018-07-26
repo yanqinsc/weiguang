@@ -12,6 +12,17 @@ class ArticleController extends Controller
 {
     use Common;
 
+    public function __construct()
+    {
+        $this->middleware('can:article-list');
+        $this->middleware('can:article-create')->only(['create', 'store']);
+        $this->middleware('can:article-edit')->only(['edit', 'update']);
+        $this->middleware('can:article-destroy')->only('destroy');
+        $this->middleware('can:recycle-list')->only(['recycle','restore', 'delete']);
+        $this->middleware('can:recycle-restore')->only('restore');
+        $this->middleware('can:recycle-delete')->only('delete');
+    }
+
     public function index(Request $request)
     {
         $number = (int)$request->number ?: 15;
