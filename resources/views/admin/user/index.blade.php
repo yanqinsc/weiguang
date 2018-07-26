@@ -4,11 +4,13 @@
 <body>
 <div class="box box-info list">
     <div class="box-body">
+        @if(Auth::user()->can('user-create'))
         <div class="button-bar">
             <a class="btn btn-app bg-olive" href="{{ route('user.create') }}">
                 <i class="fa fa-plus"></i>添加
             </a>
         </div>
+        @endif
         <div class="dataTables_wrapper form-inline dt-bootstrap">
             <div class="row">
                 <div class="col-sm-12">
@@ -39,14 +41,18 @@
                                 <td class="mobile-hide">{{ mb_substr($user->motto, 0, 8) }} @if(mb_strlen($user->motto) > 8) ... @endif</td>
                                 <td class="mobile-hide"><img width="25" height="23" src="{{ $user->avatar }}" alt=""></td>
                                 <td>
+                                    @if(Auth::user()->can('user-edit'))
                                     <a href="{{ route('user.edit', ['id' => $user->id]) }}" title="编辑">
                                         <i class="fa fa-edit"></i>
                                     </a>
+                                    @endif
+                                    @if(Auth::user()->can('user-forbiden'))
                                     <a href="javascript:void(0) "
                                        data-url="{{ route('user.destroy', ['id' => $user->id]) }}"
                                        title="删除" class="a-remove">
                                         <i class="fa fa-ban"></i>
                                     </a>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

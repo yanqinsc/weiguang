@@ -4,11 +4,13 @@
 <body>
 <div class="box box-info list">
     <div class="box-body">
+        @if(Auth::user()->can('article-create'))
         <div class="button-bar">
             <a id="create-article" class="btn btn-app bg-olive" href="{{ route('article.create') }}">
                 <i class="fa fa-plus"></i>添加文章
             </a>
         </div>
+        @endif
         <div class="dataTables_wrapper form-inline dt-bootstrap">
             <div class="row">
                 <div class="col-sm-12">
@@ -42,14 +44,18 @@
                                 <td class="mobile-hide">{{ $article->created_at }}</td>
 
                                 <td>
+                                    @if(Auth::user()->can('article-edit'))
                                     <a href="{{ route('article.edit', ['id' => $article->id]) }}" title="编辑">
                                         <i class="fa fa-edit"></i>
                                     </a>
+                                    @endif
+                                    @if(Auth::user()->can('article-destroy'))
                                     <a href="javascript:void(0) "
                                        data-url="{{ route('article.destroy', ['id' => $article->id]) }}"
                                        title="删除" class="a-remove">
                                         <i class="fa fa-trash"></i>
                                     </a>
+                                    @endif
                                     <a href="{{ route('article', ['id' => $article->id]) }}" title="查看" target="_blank">
                                         <i class="fa fa-eye"></i>
                                     </a>

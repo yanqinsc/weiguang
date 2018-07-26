@@ -62,14 +62,18 @@ class AdminsController extends Controller
             'phone' => 'nullable|regex:"^[0-9]{11,15}$"'
         ]);
 
-        Admin::create([
-            'name' => $request->name,
-            'password' => bcrypt($request->password),
-            'nickname' => $request->nickname,
-            'real_name' => $request->real_name,
-            'email' => $request->email,
-            'phone' => $request->phone
-        ]);
+        DB::transaction(function () use ($request) {
+            $user = Admin::create([
+                'name' => $request->name,
+                'password' => bcrypt($request->password),
+                'nickname' => $request->nickname,
+                'real_name' => $request->real_name,
+                'email' => $request->email,
+                'phone' => $request->phone
+            ]);
+            Bouncer::assign('editor')->to($user);
+        });
+
 
         return redirect(route('admins.index'));
     }
