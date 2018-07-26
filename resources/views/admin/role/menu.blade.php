@@ -48,20 +48,6 @@
         </div>
     </div>
 </div>
-<form id="form-destroy" method="post">
-    {{ method_field('DELETE') }}
-    {{ csrf_field() }}
-    <div>
-        <div>
-            执行该操作后，该权限将被永久删除，所有拥有该权限的用户都将受到影响，确定删除？
-        </div>
-        <br>
-        <div class="timeline-footer">
-            <button type="submit" class="btn btn-danger">确定</button>
-            <button id="comfirm-cancel" type="button" class="btn btn-success">取消</button>
-        </div>
-    </div>
-</form>
 @include('admin.layouts.footer')
 <script type="text/javascript">
     $(':checkbox').change(function () {

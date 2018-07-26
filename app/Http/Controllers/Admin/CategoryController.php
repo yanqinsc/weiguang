@@ -97,13 +97,20 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {
-        $result = Category::where('id', (int)$id)->delete();
+        // 检查该分类下是否有文章
+        $category = Category::find($id);
+        if ($category) {
+            if ($category->hasArticles()->count()) {
+                return redirect()->back()->withErrors('该分类下存在文章，请先将文章分配到其它分类下再进行删除分类的操作。');
+            }
 
-        if ($result) {
-            return redirect()->back();
+            if (Category::where('id', $id)->delete()) {
+                return redirect()->back();
+            } else {
+                return redirect()->back()->withErrors('操作失败，请重试。');
+            }
         } else {
-            return redirect()->back()->withErrors('操作失败，请重试。');
+            return redirect()->back()->withErrors('分类不存。');
         }
-
     }
 }

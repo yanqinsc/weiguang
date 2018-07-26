@@ -61,7 +61,7 @@
     {{ csrf_field() }}
     <div>
         <div>
-            执行该操作后，该权限将被永久删除，所有拥有该权限的用户都将受到影响，确定删除？
+            执行该操作后，该分类将被永久删除，确定删除？
         </div>
         <br>
         <div class="timeline-footer">
@@ -71,5 +71,13 @@
     </div>
 </form>
 @include('admin.layouts.footer')
+
+@if($errors->any())
+    <script>
+        $(function () {
+            alert('{{ $errors->first() }}');
+        });
+    </script>
+@endif
 </body>
 </html>
