@@ -24,7 +24,7 @@ class LogAction
             $action = $route_names[$route];
             $method = $request->method();
             $parameters = $request->all();
-            unset($parameters['_token'], $parameters['_method']);
+            unset($parameters['_token'], $parameters['_method'], $parameters['_method']);
             (new AdminLog())->log($username, $action, $route, $method, $parameters);
         }
 

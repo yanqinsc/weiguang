@@ -10,12 +10,17 @@ class AdminLog extends Model
 
     public function log($username, $action, $route, $method, $parameters)
     {
+        $json = json_encode($parameters, JSON_UNESCAPED_UNICODE);
+        // 如果参数超过长度就舍弃
+        if (strlen($json) > 250) {
+            $json = '';
+        }
         return $this->insert([
             'username' => $username,
             'action' => $action,
             'route' => $route,
             'method' => $method,
-            'parameters' => empty($parameters) ? '' : json_encode($parameters, JSON_UNESCAPED_UNICODE)
+            'parameters' => empty($json) ? '' : $json
         ]);
     }
 }
