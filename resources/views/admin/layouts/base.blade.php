@@ -57,6 +57,15 @@
         <section class="sidebar">
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">导航栏</li>
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="{{ $user->avatar ?: asset('/cms/images/avatar.png')  }}" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <a href="#"></a>
+                        <p>{{ $user->nickname ?: $user->name }}</p>
+                    </div>
+                </div>
                 @foreach($menu as $item)
                 <li class="treeview">
                     <a href="#">

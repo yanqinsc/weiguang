@@ -22,7 +22,6 @@ class UserController extends Controller
     public function index()
     {
         $users = User::select('users.id', 'users.name', 'nickname', 'real_name', 'team_id', 'email', 'avatar', 'users.address', 'motto')
-            ->leftJoin('teams', 'team_id', '=', 'teams.id')
             ->paginate(20);
 
         return view('admin.user.index', [

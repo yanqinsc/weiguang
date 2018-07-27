@@ -25,8 +25,7 @@
                             <th class="mobile-hide">地址</th>
                             <th class="mobile-hide">格言</th>
                             <th class="mobile-hide">头像</th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-label="Engine version: activate to sort column ascending" style="width: 169px;">管理
+                            <th style="width: 169px;">管理
                             </th>
                         </thead>
                         <tbody>
@@ -67,6 +66,7 @@
         </div>
     </div>
 </div>
+@if(Auth::user()->can('user-forbiden'))
 <form id="form-destroy" method="post">
     {{ method_field('DELETE') }}
     {{ csrf_field() }}
@@ -81,6 +81,7 @@
         </div>
     </div>
 </form>
+@endif
 @include('admin.layouts.footer')
 </body>
 </html>
