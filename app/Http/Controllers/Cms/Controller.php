@@ -17,7 +17,7 @@ class Controller extends BaseController
 
     public function __construct()
     {
-        // Cms部件所有识图共享变量
+        // Cms部件所有视图共享变量
         View::share([
             'categories' => Category::getAll(),
             'hot_articles' => Article::getHotList()

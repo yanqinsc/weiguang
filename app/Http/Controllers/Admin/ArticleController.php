@@ -45,7 +45,7 @@ class ArticleController extends Controller
 
     public function create()
     {
-        $categories = Category::getAll();
+        $categories = Category::all();
         return view('admin.article.create', [
             'title' => '添加文章',
             'categories' => $categories

@@ -1,4 +1,27 @@
 <?php
+
+if (!function_exists('arrange_submenu')) {
+    function arrange_submenu($items) {
+        $menu = [];
+        // 获取一级菜单
+        foreach ($items as $key => $item) {
+            if ($item['pid'] === 0) {
+                $menu[$item['id']] = $item;
+            }
+        }
+
+        // 归纳二级菜单
+        foreach ($items as $key => $item) {
+            if ($item['pid'] === 0) {
+                continue;
+            } else {
+                $menu[$item['pid']]['sub_menu'][] = $item;
+            }
+        }
+        return $menu;
+    }
+}
+
 if (!function_exists('get_emojis')) {
     /**
      * 前端Emoji表情插件

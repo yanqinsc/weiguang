@@ -20,6 +20,16 @@
         </div>
         <br>
         <div class="input-group">
+            <span class="input-group-addon">上级分类</span>
+            <select name="pid" class="form-control" id="">
+                <option value="0">顶级分类</option>
+                @foreach($tops as $top)
+                    <option value="{{ $top->id }}" @if($category->pid == $top->id) selected @endif>{{ $top->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        <br>
+        <div class="input-group">
             <span class="input-group-addon">导航栏展示</span>
             <select name="is_nav" class="form-control" id="">
                 <option value="1">是</option>

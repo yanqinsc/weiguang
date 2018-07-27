@@ -113,3 +113,9 @@ footer p {
     border-radius: 20px;
     margin-top: -3px;
 }
+
+.dropdown-item.active,
+.dropdown-item:active {
+    color: #99dd00!important;
+    background-color: #fff;
+}
