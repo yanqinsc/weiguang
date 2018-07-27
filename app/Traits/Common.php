@@ -31,7 +31,7 @@ trait Common
             }
 
             if (file_put_contents($new_file, base64_decode(str_replace($result[1], '', $base64Image)))) {
-                $avatar_url = asset('/' . $relative_path . $file_name);
+                $avatar_url = '/' . $relative_path . $file_name;
                 $result = true;
                 if ($query) {
                     $result = $query->update([$filed => $avatar_url]);
