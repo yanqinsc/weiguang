@@ -11,7 +11,6 @@
                 <a class="nav-link" id="home"
                    href="{{ route('index') }}">首页</a>
             </li>
-
             @foreach( $categories as $item)
                 @if(empty($item['sub_menu']))
                 <li class="nav-item">
@@ -34,6 +33,10 @@
                 </li>
                 @endif
             @endforeach
+            <li class="nav-item">
+                <a class="nav-link" id="home"
+                   href="{{ route('aboutUs') }}">关于我们</a>
+            </li>
 
         </ul>
         <ul class="nav navbar-nav navbar-right">

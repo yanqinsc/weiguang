@@ -14,6 +14,7 @@
 // CMS
 Route::namespace('Cms')->group(function () {
     Route::get('/', 'ContentsController@index')->name('index');
+    Route::get('/contents/aboutus', 'ContentsController@aboutUs')->name('aboutUs');
     Route::get('/contents/{category}', 'ContentsController@index')->name('contents');
     Route::get('/article/{id}', 'ArticleController@index')->name('article');
     Route::post('/article/createComment', 'ArticleController@createComment')->name('comment.create');

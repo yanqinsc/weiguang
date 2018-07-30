@@ -44,4 +44,11 @@ class ContentsController extends Controller
             'search_count' => $contents->count() ?? null
         ]);
     }
+
+    public function aboutUs()
+    {
+        return view('cms.contents.aboutus', [
+            'current_controller' => 'aboutus'
+        ]);
+    }
 }
