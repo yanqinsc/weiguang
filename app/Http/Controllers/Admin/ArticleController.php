@@ -70,7 +70,8 @@ class ArticleController extends Controller
             'publisher_id' => $request->user()->id,
             'from' => $request->from,
             'excerpt' => $request->excerpt,
-            'key_words' => $request->key_words
+            'key_words' => $request->key_words,
+            'appreciation' => $request->appreciation
         ];
 
         $data = array_filter($data);
@@ -137,7 +138,8 @@ class ArticleController extends Controller
             'from' => $request->from,
             'excerpt' => $request->excerpt,
             'key_words' => $request->key_words,
-            'author_id' => $request->author_id
+            'author_id' => $request->author_id,
+            'appreciation' => $request->appreciation
         ];
 
         $data = array_filter($data);
