@@ -19,6 +19,10 @@
             margin-bottom: 20px;
             border-bottom: 1px solid #666;
         }
+
+        .article-body {
+            padding-right: 2em;
+        }
     </style>
     <div id="article">
         <div class="article-title">
