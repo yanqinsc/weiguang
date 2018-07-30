@@ -1,0 +1,15 @@
+.skin-blue .main-header .navbar,
+.skin-blue .main-header .logo,
+.skin-blue .main-header li .user-header {
+    background-color: #222d32;
+}
+
+@media screen and (max-width: 1200px) {
+    .mobile-hide {
+        display: none !important;
+    }
+
+    .main-footer {
+        display: none;
+    }
+}

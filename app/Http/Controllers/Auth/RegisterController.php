@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
-use App\Http\Controllers\Controller;
+
+use App\Model\User;
+use App\Model\RegisterCode;
+use Illuminate\Http\Request;
+use App\Traits\RegistersUsers;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\Cms\Controller;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Mail\RegisterCode as SendRegisterCode;
 
 class RegisterController extends Controller
 {
@@ -36,36 +41,60 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
+        parent::__construct();
         $this->middleware('guest');
+        $this->middleware('throttle:1,1')->only(['mailRegisterCode']);
     }
 
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-        ]);
+            'code' => 'required|alpha_num'
+        ], ['code.required' => '注册码不能为空']);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
-     * @return \App\User
+     * @param  array $data
+     * @return \App\Model\User
      */
     protected function create(array $data)
     {
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'password' => bcrypt($data['password'])
         ]);
+    }
+
+    public function mailRegisterCode(Request $request)
+    {
+        if ($request->ajax()) {
+            $request->validate([
+                'email' => 'required|string|email|max:255|unique:users'
+            ]);
+
+            $code = rand(100000, 999999);
+
+            RegisterCode::insert([
+                'email' => $request->email,
+                'code' => $code,
+                'created_at' => date('Y-m-d H:i:s')
+            ]);
+
+            Mail::to($request->email)->queue(new SendRegisterCode($code));
+
+            return ['code' => 200, 'msg' => 'success'];
+        }
     }
 }

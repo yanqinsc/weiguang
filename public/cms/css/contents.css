@@ -1,0 +1,156 @@
+.list-item {
+    padding-top: 1em;
+    font-size: 20px;
+    height: 9em;
+    border-bottom: 2px dashed #dee2e6;
+    min-width: 500px;
+
+}
+
+.title-picture {
+    float: left;
+    width: 9em;
+    height: 6.8em;
+    background-color: orange;
+}
+
+.title-picture i {
+    display: block;
+    color: #fff;
+    font-size: 4em;
+    font-weight: bold;
+    margin-left: 10%;
+    width: 80%;
+    text-align: center;
+}
+
+.title-text {
+    margin-right: 1em;
+    width: 26em;
+    height: 6.8em;
+    float: right;
+}
+
+.title-text i {
+    color: #a2a2a2;
+    margin-right: 10px;
+}
+
+.title-text > .title {
+    font-size: 26px;
+    margin-bottom: -5px;
+}
+
+.title-text a {
+    font-weight: bold;
+    color: #3a3a3a;
+    padding-right: 25px;
+    background-position: center right;
+    right: 0;
+    transition: all 0.5s ease-out;
+    text-decoration-line: none;
+}
+
+.title-text a:hover {
+    color: #99dd00;
+    text-decoration-line: none;
+}
+
+.title-text > span {
+    color: #656565;
+    font-size: 14px;
+    display: inline-block;
+    margin-bottom: 15px;
+    line-height: 5px;
+}
+
+.title-text > .describe {
+    font-size: 16px;
+    color: #656565;
+}
+
+.new {
+    background: #9faa65;
+    display: inline-block;
+    color: #fff;
+    border-radius: 2px;
+    width: 35px;
+    height: 17px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 17px;
+}
+
+.abstract {
+    width: 450px;
+    margin-top: 15px;
+}
+
+.pagination {
+    margin-top: 20px;
+    float: right;
+}
+
+.search-title {
+    float: left;
+    width: 100%;
+    height: 4em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    margin-left: -18px;
+    border-left: 3px solid #99dd00;
+    background-color: #f7f7f7;
+}
+
+.search-title h5 {
+    color: #666;
+    margin-top: .9em;
+    margin-left: 1em;
+}
+
+.search-title h5 i {
+    color: #ec9573;
+    margin: 0 15px;
+}
+
+@media screen and (max-width: 1200px) {
+    .abstract {
+        padding-right: 50px;
+    }
+
+    .list-item {
+        font-size: 10px;
+        min-width: auto;
+        height: 8em;
+    }
+
+    .title-text {
+        margin-left: 2em;
+        float: left;
+        width: 64%;
+    }
+
+    .title-text > .describe {
+        display: none;
+    }
+
+    .title-text > .title {
+        margin-bottom: 5px;
+    }
+
+    .title-picture i {
+        margin-top: 5%;
+    }
+
+    .title-picture {
+        width: 24%;
+        height: 6em;
+    }
+}
+
+@media screen and (min-width: 784px) and (max-width: 1200px)  {
+    .title-picture {
+        width: 18%;
+        height: 6em;
+    }
+}

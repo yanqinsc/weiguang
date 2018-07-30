@@ -1,0 +1,48 @@
+.sitebar-list {
+    margin-top: 30px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.sitebar-title {
+    width: 95%;
+    border-bottom: 1px solid #ececec;
+}
+
+.sitebar-title h4 {
+    width: 80px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    color: #666;
+    font-weight: bold;
+    text-indent: 5px;
+    border-bottom: 2px solid #99dd00;
+    margin-bottom: -1px;
+}
+
+.sitebar-list ul {
+    width: 100%;
+    margin-left: -30px;
+}
+
+.sitebar-list ul li {
+    width: 100%;
+    border-bottom: 1px dashed #ececec;
+    overflow: hidden;
+}
+
+.sitebar-list ul li a {
+    display: block;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    color: #666;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.sitebar-list a:hover {
+    color: #99dd00;
+}

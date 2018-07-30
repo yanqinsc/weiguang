@@ -13,7 +13,23 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', '微光'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Chinese Name
+    |--------------------------------------------------------------------------
+    |
+    | This value is the name of your application in chinese. This value is used when the
+    | framework needs to place the application's name in a notification or
+    | any other location as required by the application or its packages.
+    |
+    */
+
+    'article_reviewed' => env('ARTICLE_REVIEWED', false),
+    'domain' => env('APP_DOMAIN', 'localhost'),
+    'icp' => env('APP_ICP', 'xxxxxxxxx'),
+    'description' => env('APP_DESCRIPTION', 'description'),
 
     /*
     |--------------------------------------------------------------------------
@@ -39,7 +55,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -65,7 +81,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Shanghai',
 
     /*
     |--------------------------------------------------------------------------
@@ -78,7 +94,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'zh_ch',
 
     /*
     |--------------------------------------------------------------------------
@@ -176,6 +192,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Silber\Bouncer\BouncerServiceProvider::class,
+        Stevenyangecho\UEditor\UEditorServiceProvider::class
 
     ],
 
@@ -191,7 +209,6 @@ return [
     */
 
     'aliases' => [
-
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
@@ -225,7 +242,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'Bouncer' => Silber\Bouncer\BouncerFacade::class,
     ],
-
 ];

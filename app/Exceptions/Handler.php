@@ -3,7 +3,9 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Auth;
 
 class Handler extends ExceptionHandler
 {
@@ -27,12 +29,13 @@ class Handler extends ExceptionHandler
     ];
 
     /**
-     * Report or log an exception.
      *
+     * Report or log an exception.
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param  \Exception  $exception
-     * @return void
+     * @param Exception $exception
+     * @return mixed|void
+     * @throws Exception
      */
     public function report(Exception $exception)
     {
@@ -49,5 +52,20 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         return parent::render($request, $exception);
+    }
+
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        if ($request->expectsJson()) {
+            $res = response()->json(['message' => $exception->getMessage()], 401);
+        } else {
+            if (strpos($request->getRequestUri(), 'panel') === false) {
+                $res = redirect()->guest(route('login'));
+            } else {
+                $res =  redirect()->guest(route('admin.login'));
+            }
+        }
+
+        return $res;
     }
 }
