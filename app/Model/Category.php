@@ -12,7 +12,13 @@ class Category extends Model
 
     public static function getAll()
     {
-        return self::whereNotNull('is_nav')->orderBy('order', 'desc')->get();
+        $result = self::whereNotNull('is_nav')->orderBy('order', 'desc')->get()->toArray();
+        return arrange_submenu($result);
+    }
+
+    public static function getTops()
+    {
+        return self::select('id', 'name')->whereNotNull('is_nav')->where('pid', 0)->get();
     }
 
     public static function getInfoBySlug($slug, array $field = [])

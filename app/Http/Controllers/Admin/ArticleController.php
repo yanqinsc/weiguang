@@ -45,7 +45,7 @@ class ArticleController extends Controller
 
     public function create()
     {
-        $categories = Category::getAll();
+        $categories = Category::all();
         return view('admin.article.create', [
             'title' => '添加文章',
             'categories' => $categories
@@ -71,7 +71,11 @@ class ArticleController extends Controller
             'from' => $request->from,
             'excerpt' => $request->excerpt,
             'key_words' => $request->key_words,
+<<<<<<< HEAD
             'appreciation' => $request->appreciation
+=======
+            'type' => 1
+>>>>>>> 2453efe693148be233d19bec00e3ba689450472a
         ];
 
         $data = array_filter($data);

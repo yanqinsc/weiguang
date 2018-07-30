@@ -26,8 +26,10 @@ class CategoryController extends Controller
 
     public function create()
     {
+        $tops= Category::getTops();
         return view('admin.category.create', [
-            'title' => '添加分类'
+            'title' => '添加分类',
+            'tops' => $tops
         ]);
     }
 
@@ -36,13 +38,15 @@ class CategoryController extends Controller
         $request->validate([
             'name' => 'required',
             'slug' => 'required|alpha_num',
-            'is_nav' => 'required|between:0, 1|integer'
+            'is_nav' => 'required|between:0, 1|integer',
+            'pid' => 'required|integer'
         ]);
 
         $data = array_filter([
             'name' => $request->name,
             'slug' => $request->slug,
-            'desc' => $request->desc
+            'desc' => $request->desc,
+            'pid' => $request->pid
         ]);
         $data['is_nav'] = $request->is_nav == 1 ? '' : null;
         $data['allow_post'] = $request->allow_post == 1 ? '' : null;
@@ -60,7 +64,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::find($id);
-
+        $tops= Category::getTops();
         if (!$category) {
             return redirect()->back()->withErrors('分类不存在，请重试。');
         }
@@ -68,7 +72,8 @@ class CategoryController extends Controller
         return view('admin.category.edit', [
             'title' => '编辑分类',
             'category' => $category,
-            'id' => $id
+            'id' => $id,
+            'tops' => $tops
         ]);
     }
 
@@ -76,13 +81,16 @@ class CategoryController extends Controller
     {
         $request->validate([
             'slug' => 'nullable|alpha_num',
-            'is_nav' => 'nullable|between:0, 1|integer'
+            'is_nav' => 'nullable|between:0, 1|integer',
+            'pid' => 'nullable|integer',
+
         ]);
 
         $data = array_filter([
             'name' => $request->name,
             'slug' => $request->slug,
-            'desc' => $request->desc
+            'desc' => $request->desc,
+            'pid' => $request->pid
         ]);
         $data['is_nav'] = $request->is_nav == 1 ? '' : null;
         $data['allow_post'] = $request->allow_post == 1 ? '' : null;

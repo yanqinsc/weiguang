@@ -44,6 +44,8 @@ class HomeController extends Controller
             }
         }
 
+        $menu = arrange_submenu($items);
+
         return view('admin.layouts.base', [
             'title' => '控制台',
             'menu' => $menu,
