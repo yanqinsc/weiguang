@@ -28,6 +28,14 @@
         </div>
         <div class="article-body">
             {!! $article->content !!}
+            <br><br>
+            @if($article->appreciation)
+            <div id="appreciation">
+                点评：<br>
+                <p style="text-indent: 2em;">{{ $article->appreciation }}</p>
+            </div>
+            @endif
+            <h6 id="publisher">(编辑：{{ $article->publisher or $article->publisher_account }})</h6>
         </div>
         @if(count($comments))
         <div class="article-comments">

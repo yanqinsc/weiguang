@@ -40,8 +40,9 @@ class Article extends Model
     public static function getArticle($id)
     {
         return self::leftJoin('categories as c', 'category_id', '=', 'c.id')
+            ->leftJoin('admins', 'admins.id', '=', 'articles.publisher_id')
             ->where('articles.id', '=', $id)
-            ->select('articles.id', 'title', 'thumb', 'author', 'author_id', 'key_words', 'excerpt', 'view_count', 'comment_count', 'content', 'created_at', 'c.slug', 'c.name as category')
+            ->select('admins.name as publisher_account', 'admins.nickname as publisher', 'appreciation', 'articles.id', 'title', 'thumb', 'author', 'author_id', 'key_words', 'excerpt', 'view_count', 'comment_count', 'content', 'articles.created_at', 'c.slug', 'c.name as category')
             ->first();
     }
 

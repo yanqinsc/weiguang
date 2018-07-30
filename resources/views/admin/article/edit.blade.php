@@ -25,7 +25,6 @@
                 <div class="row">
                     <div class="col-md-3">
                         <select name="category_id" class="form-control">
-                            <option value="">选择分类（必选）</option>
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}" @if($article->category_id == $category->id) selected @endif>{{ $category->name }}</option>
                             @endforeach
