@@ -77,8 +77,6 @@
                     <div class="col-md-12 color-red">上传图片大小不超过500k,如果上传图片错误请检查图片大小！</div>
                 </div>
                 <br>
-                <textarea name="appreciation" class="form-control" rows="3" placeholder="点评（选填）"></textarea>
-                <br>
                 <p class="color-red show-error left">@if($errors->any()) {{ $errors->first() }} @endif</p>
                 <div class="box-footer">
                     {{--<button type="submit" value="2" class="btn btn-success right-gap">存草稿</button>--}}

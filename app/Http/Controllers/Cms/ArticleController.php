@@ -34,11 +34,7 @@ class ArticleController extends Controller
             'seo_words' => str_replace(',', '_', $article->key_words)
         ]);
 
-        $view_counts = null;
-        if(!$request->cookie('view_count')) {
-            $view_counts = unserialize($request->cookie('view_count'));
-        }
-
+        $view_counts = unserialize($request->cookie('view_count'));
         if (!$view_counts || (is_array($view_counts) && !in_array($id, $view_counts))) {
             $view_counts[] = $id;
             $value = serialize($view_counts);
