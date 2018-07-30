@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Article extends Model
 {
     use SoftDeletes;
-    protected $fillable = ['title', 'key_words', 'author', 'author_id', 'from', 'thumb', 'excerpt', 'content', 'is_hot', 'is_top', 'category_id', 'publisher_id', 'type', 'is_original'];
+    protected $fillable = ['title', 'key_words', 'author', 'author_id', 'from', 'thumb', 'excerpt', 'content', 'is_hot', 'is_top', 'category_id', 'publisher_id', 'type', 'is_original', 'appreciation'];
 
     /**
      * 查找某个分类下的所有文章
