@@ -15,7 +15,7 @@ class ArticleController extends Controller
     {
         $article = Article::getArticle($id);
         $comments = Comment::join('users', 'comments.uid', 'users.id')
-            ->select('comments.id', 'pid', 'uid', 'name', 'content', 'comments.created_at', 'avatar')
+            ->select('comments.id', 'pid', 'uid', 'nickname', 'name', 'content', 'comments.created_at', 'avatar')
             ->where(['aid' => $id])
             ->orderBy('comments.id', 'asc')
             ->whereNotNull('reviewed')

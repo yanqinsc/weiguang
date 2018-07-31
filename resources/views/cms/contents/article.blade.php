@@ -47,7 +47,7 @@
                     <div class="comment-info">
                         <img src="{{ $comment['avatar'] ?: asset('/cms/images/avatar.png') }}" alt="头像">
                         <div class="user-info">
-                            <b>{{ $comment['name'] }}</b><br>
+                            <b>{{ $comment['nickname'] ?: $comment['name'] }}</b><br>
                             <i>{{ substr($comment['created_at'], 0, 16) }}</i>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                             <div class="comment-info">
                                 <img src="{{ $reply['avatar'] ?: asset('/cms/images/avatar.png') }}" alt="头像">
                                 <div class="user-info">
-                                    <b>{{ $reply['name'] }}</b><br>
+                                    <b>{{ $comment['nickname'] ?: $comment['name'] }}</b><br>
                                     <i>{{ substr($reply['created_at'], 0, 16) }}</i>
                                 </div>
                             </div>
