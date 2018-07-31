@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Extensions\AuthenticatesLogout;
 use App\Http\Controllers\Cms\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\View;
 
 class LoginController extends Controller
 {

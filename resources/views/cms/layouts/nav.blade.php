@@ -42,8 +42,10 @@
         <ul class="nav navbar-nav navbar-right">
             @guest
                 {{--在后台登录的模板使用js隐藏登录注册链接--}}
+                @if(isset($current_controller))
                 <li><a class="nav-link" href="{{ route('login') }}">登录</a></li>
                 <li><a class="nav-link" href="{{ route('register') }}">注册</a></li>
+                @endif
             @else
                 <li>
                     <a href="{{ route('home.base') }}" class="nav-link" style="color: #99dd00; margin-top: -5px;">

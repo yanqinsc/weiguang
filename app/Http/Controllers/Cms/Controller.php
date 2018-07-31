@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Cms;
 
-use App\Model\Config;
 use App\Model\Article;
 use App\Model\Category;
 use Illuminate\Support\Facades\View;

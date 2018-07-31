@@ -7,10 +7,12 @@ use App\Model\User;
 use App\Model\RegisterCode;
 use Illuminate\Http\Request;
 use App\Traits\RegistersUsers;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Cms\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\RegisterCode as SendRegisterCode;
+
 
 class RegisterController extends Controller
 {
