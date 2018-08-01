@@ -158,9 +158,11 @@ comment-replay {
 #appreciation {
     position: relative;
     width: 100%;
-    padding: 10px;
+    padding-top: 10px;
+    padding-right: 25px;
     border-top: 1px solid #99dd00;
     margin-bottom: 30px;
+    text-align: justify;
 }
 
 #appreciation p  {
