@@ -71,7 +71,6 @@ class ArticleController extends Controller
             'from' => $request->from,
             'excerpt' => $request->excerpt,
             'key_words' => $request->key_words,
-            'appreciation' => $request->appreciation,
             'type' => 1
         ];
 
@@ -79,6 +78,7 @@ class ArticleController extends Controller
         $data['is_top'] = $request->top ? '' : null;
         $data['is_hot'] = $request->hot ? '' : null;
         $data['is_original'] = $request->original ? '' : null;
+        $data['appreciation'] = $request->appreciation ?? null;
 
         if (!empty($request->username)) {
             $data['author_id'] = User::where('name', $request->username)->first()->id;
@@ -140,13 +140,13 @@ class ArticleController extends Controller
             'excerpt' => $request->excerpt,
             'key_words' => $request->key_words,
             'author_id' => $request->author_id,
-            'appreciation' => $request->appreciation
         ];
 
         $data = array_filter($data);
         $data['is_top'] = $request->top ? '' : null;
         $data['is_hot'] = $request->hot ? '' : null;
         $data['is_original'] = $request->original ? '' : null;
+        $data['appreciation'] = $request->appreciation ?? null;
 
         if ($request->username) {
             $data['author_id'] = User::where('name', $request->username)->first()->id;
