@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
 
     @if($current_controller == 'contents')
-        <title>{{ $category->name or $article->title }}_{{ config('app.name') }}</title>
+        <title>{{ config('app.name') }}_{{ $category->name or $article->title }}</title>
         <meta name="keywords" content="微光语文,微光,语文,作文,文学,艺术,{{ $category->name }}">
         <meta name="description" content="{{ $category->desc }}">
         <link rel="stylesheet" href="{{ asset('cms/css/contents.css') }}">
