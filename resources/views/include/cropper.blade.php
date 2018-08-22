@@ -171,7 +171,7 @@
             let photo = $('#photo').cropper('getCroppedCanvas', {
                 width: 300,
                 height: 300
-            }).toDataURL('image/png');
+            }).toDataURL('image/jpeg'); // 此处设置截图格式
 
             $.ajax({
                 url: $("#post-url").val(), // 要上传的地址
